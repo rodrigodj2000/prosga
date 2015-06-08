@@ -1,0 +1,14 @@
+parameters:
+    database_driver: pdo_sqlsrv
+    database_host: sheldon
+    database_port: '1433'
+    database_name: prosga
+    database_user: sa
+    database_password: inft67496sa
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: 6f4041ef5f0982610a58f9194fb106c2a7
+    database_path: null
