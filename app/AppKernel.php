@@ -24,7 +24,8 @@ class AppKernel extends Kernel
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),                  
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new INFT\prosgaBundle\prosgaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
