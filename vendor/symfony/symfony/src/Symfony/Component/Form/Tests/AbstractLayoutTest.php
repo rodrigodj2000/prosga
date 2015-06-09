@@ -101,7 +101,10 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
 
     abstract protected function renderForm(FormView $view, array $vars = array());
 
-    abstract protected function renderEnctype(FormView $view);
+    protected function renderEnctype(FormView $view)
+    {
+        $this->markTestSkipped(sprintf('Legacy %s::renderEnctype() is not implemented.', get_class($this)));
+    }
 
     abstract protected function renderLabel(FormView $view, $label = null, array $vars = array());
 
@@ -119,8 +122,13 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
 
     abstract protected function setTheme(FormView $view, array $themes);
 
-    public function testEnctype()
+    /**
+     * @group legacy
+     */
+    public function testLegacyEnctype()
     {
+        $this->iniSet('error_reporting', -1 & ~E_USER_DEPRECATED);
+
         $form = $this->factory->createNamedBuilder('name', 'form')
             ->add('file', 'file')
             ->getForm();
@@ -128,8 +136,13 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
         $this->assertEquals('enctype="multipart/form-data"', $this->renderEnctype($form->createView()));
     }
 
-    public function testNoEnctype()
+    /**
+     * @group legacy
+     */
+    public function testLegacyNoEnctype()
     {
+        $this->iniSet('error_reporting', -1 & ~E_USER_DEPRECATED);
+
         $form = $this->factory->createNamedBuilder('name', 'form')
             ->add('text', 'text')
             ->getForm();
@@ -215,7 +228,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
         $form = $this->factory->createNamed('name', 'text');
         $html = $this->renderLabel($form->createView(), null, array(
             'attr' => array(
-                'class' => 'my&class'
+                'class' => 'my&class',
             ),
         ));
 
@@ -232,7 +245,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
         $form = $this->factory->createNamed('name', 'text');
         $html = $this->renderLabel($form->createView(), null, array(
             'label_attr' => array(
-                'class' => 'my&class'
+                'class' => 'my&class',
             ),
         ));
 
@@ -249,7 +262,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
         $form = $this->factory->createNamed('name', 'text');
         $html = $this->renderLabel($form->createView(), 'Custom label', array(
             'label_attr' => array(
-                'class' => 'my&class'
+                'class' => 'my&class',
             ),
         ));
 
@@ -270,7 +283,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
         ));
         $html = $this->renderLabel($form->createView(), null, array(
             'label_attr' => array(
-                'class' => 'my&class'
+                'class' => 'my&class',
             ),
         ));
 
@@ -555,7 +568,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
             'required' => true,
             'multiple' => false,
             'expanded' => false,
-            'empty_value' => 'Test&Me'
+            'empty_value' => 'Test&Me',
         ));
 
         // The "disabled" attribute was removed again due to a bug in the
@@ -635,6 +648,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
     {
         $form = $this->factory->createNamed('name', 'choice', array('&a'), array(
             'choices' => array('&a' => 'Choice&A', '&b' => 'Choice&B'),
+            'required' => true,
             'multiple' => true,
             'expanded' => false,
         ));
@@ -642,6 +656,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
         $this->assertWidgetMatchesXpath($form->createView(), array(),
 '/select
     [@name="name[]"]
+    [@required="required"]
     [@multiple="multiple"]
     [
         ./option[@value="&a"][@selected="selected"][.="[trans]Choice&A[/trans]"]
@@ -658,7 +673,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
             'choices' => array('&a' => 'Choice&A', '&b' => 'Choice&B'),
             'multiple' => true,
             'expanded' => false,
-            'empty_value' => 'Test&Me'
+            'empty_value' => 'Test&Me',
         ));
 
         $this->assertWidgetMatchesXpath($form->createView(), array(),
@@ -724,7 +739,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
             'choices' => array('&a' => 'Choice&A', '&b' => 'Choice&B'),
             'multiple' => false,
             'expanded' => true,
-            'empty_value' => 'Test&Me'
+            'empty_value' => 'Test&Me',
         ));
 
         $this->assertWidgetMatchesXpath($form->createView(), array(),
@@ -899,13 +914,12 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
         );
     }
 
-    public function testDateTimeWithEmptyValueOnTime()
+    public function testDateTimeWithHourAndMinute()
     {
-        $data = array('year' => '2011', 'month' => '2', 'day' => '3', 'hour' => '', 'minute' => '');
+        $data = array('year' => '2011', 'month' => '2', 'day' => '3', 'hour' => '4', 'minute' => '5');
 
         $form = $this->factory->createNamed('name', 'datetime', $data, array(
             'input' => 'array',
-            'empty_value' => array('hour' => 'Change&Me', 'minute' => 'Change&Me'),
             'required' => false,
         ));
 
@@ -930,10 +944,10 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
             [
                 ./select
                     [@id="name_time_hour"]
-                    [./option[@value=""][not(@selected)][not(@disabled)][.="[trans]Change&Me[/trans]"]]
+                    [./option[@value="4"][@selected="selected"]]
                 /following-sibling::select
                     [@id="name_time_minute"]
-                    [./option[@value=""][not(@selected)][not(@disabled)][.="[trans]Change&Me[/trans]"]]
+                    [./option[@value="5"][@selected="selected"]]
             ]
     ]
     [count(.//select)=5]
@@ -1782,8 +1796,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
         $this->assertMatchesXpath($this->renderWidget($form->createView()),
             '//input[@type="hidden"][@id="_token"][@name="_token"]
             |
-             //input[@type="text"][@id="child"][@name="child"]'
-        , 2);
+             //input[@type="text"][@id="child"][@name="child"]', 2);
     }
 
     public function testButton()
@@ -1824,7 +1837,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
     {
         $form = $this->factory->create('form', null, array(
             'method' => 'get',
-            'action' => 'http://example.com/directory'
+            'action' => 'http://example.com/directory',
         ));
 
         $html = $this->renderStart($form->createView());
@@ -1836,12 +1849,12 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
     {
         $form = $this->factory->create('form', null, array(
             'method' => 'put',
-            'action' => 'http://example.com/directory'
+            'action' => 'http://example.com/directory',
         ));
 
         $html = $this->renderStart($form->createView());
 
-        $this->assertMatchesXpath($html . '</form>',
+        $this->assertMatchesXpath($html.'</form>',
 '/form
     [./input[@type="hidden"][@name="_method"][@value="PUT"]]
     [@method="post"]
@@ -1858,7 +1871,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
 
         $html = $this->renderStart($form->createView(), array(
             'method' => 'post',
-            'action' => 'http://foo.com/directory'
+            'action' => 'http://foo.com/directory',
         ));
 
         $this->assertSame('<form method="post" action="http://foo.com/directory">', $html);
@@ -1868,7 +1881,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
     {
         $form = $this->factory->createBuilder('form', null, array(
                 'method' => 'get',
-                'action' => 'http://example.com/directory'
+                'action' => 'http://example.com/directory',
             ))
             ->add('file', 'file')
             ->getForm();
@@ -1882,7 +1895,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
     {
         $form = $this->factory->create('form', null, array(
             'method' => 'get',
-            'action' => 'http://example.com/directory'
+            'action' => 'http://example.com/directory',
         ));
 
         $html = $this->renderStart($form->createView(), array(
@@ -1890,5 +1903,19 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
         ));
 
         $this->assertSame('<form method="get" action="http://example.com/directory" class="foobar">', $html);
+    }
+
+    public function testTranslatedAttributes()
+    {
+        $view = $this->factory->createNamedBuilder('name', 'form')
+            ->add('firstName', 'text', array('attr' => array('title' => 'Foo')))
+            ->add('lastName', 'text', array('attr' => array('placeholder' => 'Bar')))
+            ->getForm()
+            ->createView();
+
+        $html = $this->renderForm($view);
+
+        $this->assertMatchesXpath($html, '/form//input[@title="[trans]Foo[/trans]"]');
+        $this->assertMatchesXpath($html, '/form//input[@placeholder="[trans]Bar[/trans]"]');
     }
 }

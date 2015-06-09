@@ -68,7 +68,7 @@ abstract class AnnotationClassLoader implements LoaderInterface
     protected $routeAnnotationClass = 'Symfony\\Component\\Routing\\Annotation\\Route';
 
     /**
-     * @var integer
+     * @var int
      */
     protected $defaultRouteIndex = 0;
 
@@ -109,13 +109,13 @@ abstract class AnnotationClassLoader implements LoaderInterface
         }
 
         $globals = array(
-            'path'         => '',
+            'path' => '',
             'requirements' => array(),
-            'options'      => array(),
-            'defaults'     => array(),
-            'schemes'      => array(),
-            'methods'      => array(),
-            'host'         => '',
+            'options' => array(),
+            'defaults' => array(),
+            'schemes' => array(),
+            'methods' => array(),
+            'host' => '',
         );
 
         $class = new \ReflectionClass($class);
@@ -237,7 +237,7 @@ abstract class AnnotationClassLoader implements LoaderInterface
         if ($this->defaultRouteIndex > 0) {
             $name .= '_'.$this->defaultRouteIndex;
         }
-        $this->defaultRouteIndex++;
+        ++$this->defaultRouteIndex;
 
         return $name;
     }

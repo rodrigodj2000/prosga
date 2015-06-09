@@ -11,7 +11,6 @@
 
 namespace Symfony\Bundle\FrameworkBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Translation\Catalogue\DiffOperation;
 use Symfony\Component\Translation\Catalogue\MergeOperation;
 use Symfony\Component\Console\Input\InputInterface;
@@ -37,26 +36,11 @@ class TranslationUpdateCommand extends ContainerAwareCommand
             ->setDefinition(array(
                 new InputArgument('locale', InputArgument::REQUIRED, 'The locale'),
                 new InputArgument('bundle', InputArgument::REQUIRED, 'The bundle where to load the messages'),
-                new InputOption(
-                    'prefix', null, InputOption::VALUE_OPTIONAL,
-                    'Override the default prefix', '__'
-                ),
-                new InputOption(
-                    'output-format', null, InputOption::VALUE_OPTIONAL,
-                    'Override the default output format', 'yml'
-                ),
-                new InputOption(
-                    'dump-messages', null, InputOption::VALUE_NONE,
-                    'Should the messages be dumped in the console'
-                ),
-                new InputOption(
-                    'force', null, InputOption::VALUE_NONE,
-                    'Should the update be done'
-                ),
-                new InputOption(
-                    'clean', null, InputOption::VALUE_NONE,
-                    'Should clean not found messages'
-                )
+                new InputOption('prefix', null, InputOption::VALUE_OPTIONAL, 'Override the default prefix', '__'),
+                new InputOption('output-format', null, InputOption::VALUE_OPTIONAL, 'Override the default output format', 'yml'),
+                new InputOption('dump-messages', null, InputOption::VALUE_NONE, 'Should the messages be dumped in the console'),
+                new InputOption('force', null, InputOption::VALUE_NONE, 'Should the update be done'),
+                new InputOption('clean', null, InputOption::VALUE_NONE, 'Should clean not found messages'),
             ))
             ->setDescription('Updates the translation file')
             ->setHelp(<<<EOF
@@ -65,8 +49,8 @@ of a given bundle. It can display them or merge the new ones into the translatio
 When new translation strings are found it can automatically add a prefix to the translation
 message.
 
-<info>php %command.full_name% --dump-messages en AcmeBundle</info>
-<info>php %command.full_name% --force --prefix="new_" fr AcmeBundle</info>
+  <info>php %command.full_name% --dump-messages en AcmeBundle</info>
+  <info>php %command.full_name% --force --prefix="new_" fr AcmeBundle</info>
 EOF
             )
         ;
@@ -117,6 +101,13 @@ EOF
             ? new DiffOperation($currentCatalogue, $extractedCatalogue)
             : new MergeOperation($currentCatalogue, $extractedCatalogue);
 
+        // Exit if no messages found.
+        if (!count($operation->getDomains())) {
+            $output->writeln("\n<comment>No translation found.</comment>");
+
+            return;
+        }
+
         // show compiled list of messages
         if ($input->getOption('dump-messages') === true) {
             foreach ($operation->getDomains() as $domain) {
@@ -134,7 +125,7 @@ EOF
                 }
             }
 
-            if ($input->getOption('output-format') == 'xliff') {
+            if ($input->getOption('output-format') == 'xlf') {
                 $output->writeln('Xliff output version is <info>1.2</info>');
             }
         }
