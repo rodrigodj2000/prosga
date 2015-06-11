@@ -70,6 +70,10 @@ class AlarmaAdmin extends Admin
             ->add('activarCada')
             ->add('modoAviso')
             ->add('observacion')
+            ->add('frecuencia', 'entity', array(
+                'class' => 'prosgaBundle:Frecuencia',
+                'property' => 'nombre',
+            ))            
         ;
     }
 }

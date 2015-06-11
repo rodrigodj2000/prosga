@@ -33,16 +33,16 @@ INFT\prosgaBundle\Entity\ProcedimientoGeneral:
             length: '2000'
             column: Alcance	  
                 
-    OneToOne:
-        ProcedGeneralAntecesor:
+    oneToOne:
+        procedGeneralAntecesor:
             targetEntity: ProcedimientoGeneral
             joinColumn:
-                name: IdProcedGeneralAntecesor
+                name: procedimientoGeneral_id
                 referencedColumnName: id
-        ProcedGeneralPredecesor:
+        procedGeneralPredecesor:
             targetEntity: ProcedimientoGeneral
             joinColumn:
-                name: IdProcedGeneralPredecesor
+                name: procedimientoGeneral_id
                 referencedColumnName: id
                 
     lifecycleCallbacks: {  }

@@ -218,7 +218,7 @@ class ProcedimientoGeneral
      * @param Persona $personaResponsable
      * @return ProcedimientoGeneral
      */
-    public function setPersonaResponsable($personaResponsable)
+    public function setPersonaResponsable(Persona $personaResponsable)
     {
         $this->personaResponsable = $personaResponsable;
     
@@ -264,7 +264,7 @@ class ProcedimientoGeneral
      * @param ProcedimientoGeneral $procedGeneralAntecesor
      * @return ProcedimientoGeneral
      */
-    public function setProcedGeneralAntecesor($procedGeneralAntecesor)
+    public function setProcedGeneralAntecesor(ProcedimientoGeneral $procedGeneralAntecesor)
     {
         $this->procedGeneralAntecesor = $procedGeneralAntecesor;
     
@@ -287,7 +287,7 @@ class ProcedimientoGeneral
      * @param ProcedimientoGeneral $procedGeneralPredecesor
      * @return ProcedimientoGeneral
      */
-    public function setProcedGeneralPredecesor($procedGeneralPredecesor)
+    public function setProcedGeneralPredecesor(ProcedimientoGeneral $procedGeneralPredecesor)
     {
         $this->procedGeneralPredecesor = $procedGeneralPredecesor;
     

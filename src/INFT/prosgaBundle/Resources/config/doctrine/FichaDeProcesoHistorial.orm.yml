@@ -17,15 +17,15 @@ INFT\prosgaBundle\Entity\FichaDeProcesoHistorial:
             type: string
             length: '500'
             column: Descripcion
-    ManyToOne:
-        FichaDeProceso:
+    manyToOne:
+        fichaDeProceso:
             targetEntity: FichaDeProceso
             joinColumn:
-            name: IdFichaDeProceso
-            referencedColumnName: id
-        Persona:
+                name: fichaDeProceso_id
+                referencedColumnName: id
+        persona:
             targetEntity: Persona
             joinColumn:
-                name: IdPersona
+                name: persona_id
                 referencedColumnName: id
     lifecycleCallbacks: {  }

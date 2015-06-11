@@ -130,7 +130,7 @@ class Auditoria
      * @param Persona $personaResponsable
      * @return Auditoria
      */
-    public function setPersonaResponsable($personaResponsable)
+    public function setPersonaResponsable(Persona $personaResponsable)
     {
         $this->personaResponsable = $personaResponsable;
     
@@ -153,7 +153,7 @@ class Auditoria
      * @param Sector $sector
      * @return Auditoria
      */
-    public function setSector($sector)
+    public function setSector(Sector $sector)
     {
         $this->sector = $sector;
     
@@ -176,7 +176,7 @@ class Auditoria
      * @param Estado $iestado
      * @return Auditoria
      */
-    public function setEstado($estado)
+    public function setEstado(Estado $estado)
     {
         $this->estado = $estado;
     

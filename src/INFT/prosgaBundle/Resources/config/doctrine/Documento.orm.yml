@@ -15,25 +15,37 @@ INFT\prosgaBundle\Entity\Documento:
             length: 255
             column: Ubicacion
             
-    ManyToOne:
-        Auditoria:
+    manyToOne:
+        auditoria:
             targetEntity: Auditoria
             joinColumn:
-                name: IdAuditoria
+                name: auditoria_id
                 referencedColumnName: id
-        Proceso:
+        proceso:
             targetEntity: Proceso
             joinColumn:
-                name: IdProceso
+                name: proceso_id
                 referencedColumnName: id
-        Estado:
+        estado:
             targetEntity: Estado
             joinColumn:
-                name: Estado
+                name: estado_id
                 referencedColumnName: id
-        Persona:
+        persona:
             targetEntity: Persona
             joinColumn:
-                name: IdPersona
+                name: persona_id
                 referencedColumnName: id
+                
+    manyToMany:
+        permisos:
+            targetEntity: Permiso
+            joinTable:
+                name: PermisoPorDocumento
+                joinColumns:
+                    permiso_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    documento_id:
+                        referencedColumnName: id
     lifecycleCallbacks: {  }

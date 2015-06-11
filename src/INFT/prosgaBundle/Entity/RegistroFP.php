@@ -204,7 +204,7 @@ class RegistroFP
      * @param FichaDeProceso $fichaDeProceso
      * @return RegistroFP
      */
-    public function setFichaDeProceso($fichaDeProceso)
+    public function setFichaDeProceso(FichaDeProceso $fichaDeProceso)
     {
         $this->fichaDeProceso = $fichaDeProceso;
     

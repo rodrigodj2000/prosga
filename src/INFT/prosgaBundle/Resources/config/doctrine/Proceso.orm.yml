@@ -11,20 +11,20 @@ INFT\prosgaBundle\Entity\Proceso:
             type: string
             length: 255
             column: Nombre
-    ManyToOne:
-        Norma:
+    manyToOne:
+        norma:
             targetEntity: Norma
             joinColumn:
-                name: IdNorma
+                name: norma_id
                 referencedColumnName: id
-        Alarma:
+        alarma:
             targetEntity: Alarma
             joinColumn: 
-                name: IdAlarma
+                name: alarma_id
                 referencedColumnName: id
-        Estado:
+        estado:
             targetEntity: Estado
             joinColumn: 
-                name: IdEstado
+                name: estado_id
                 referencedColumnName: id
     lifecycleCallbacks: {  }

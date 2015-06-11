@@ -49,6 +49,15 @@ class Control
      */
     private $fichaDeProceso;
 
+    /**
+     * @var Sector[]
+     */
+    private $sectores;
+
+
+    public function __construct(){
+        $this->sectores = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -112,7 +121,7 @@ class Control
      * @param Frecuencia $frecuencia
      * @return Control
      */
-    public function setFrecuencia($frecuencia)
+    public function setFrecuencia(Frecuencia $frecuencia)
     {
         $this->frecuencia = $frecuencia;
     
@@ -158,7 +167,7 @@ class Control
      * @param Persona $personaResponsable
      * @return Control
      */
-    public function setPersonaResponsable($personaResponsable)
+    public function setPersonaResponsable(Persona $personaResponsable)
     {
         $this->personaResponsable = $personaResponsable;
     
@@ -204,7 +213,7 @@ class Control
      * @param FichaDeProceso $fichaDeProceso
      * @return Control
      */
-    public function setFichaDeProceso($fichaDeProceso)
+    public function setFichaDeProceso(FichaDeProceso $fichaDeProceso)
     {
         $this->fichaDeProceso = $fichaDeProceso;
     
@@ -219,5 +228,17 @@ class Control
     public function getFichaDeProceso()
     {
         return $this->fichaDeProceso;
+    }
+
+    public function addSector(Sector $sector){
+        $this->sectores[] = $sector;
+    }
+
+    public function removeSector(Sector $sector){
+        $this->sectores->removeElement($sector);
+    }
+
+    public function getSectores(){
+        return $this->sectores;
     }
 }

@@ -37,7 +37,7 @@ class FichaDeProcesoHistorial
     /**
      * @var FichaDeProceso
      */
-    private $idFichaDeProceso;
+    private $fichaDeProceso;
 
 
     /**
@@ -79,7 +79,7 @@ class FichaDeProcesoHistorial
      * @param Persona $persona
      * @return FichaDeProcesoHistorial
      */
-    public function setPersona($persona)
+    public function setPersona(Persona $persona)
     {
         $this->persona = $persona;
     
@@ -148,7 +148,7 @@ class FichaDeProcesoHistorial
      * @param FichaDeProceso $fichaDeProceso
      * @return FichaDeProcesoHistorial
      */
-    public function setFichaDeProceso($fichaDeProceso)
+    public function setFichaDeProceso(FichaDeProceso $fichaDeProceso)
     {
         $this->fichaDeProceso = $fichaDeProceso;
     

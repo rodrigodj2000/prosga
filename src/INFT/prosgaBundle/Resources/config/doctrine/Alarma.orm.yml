@@ -22,15 +22,12 @@ INFT\prosgaBundle\Entity\Alarma:
             type: string
             length: '1000'
             column: Observacion
-        idFrecuencia:
-            type: integer
-            column: IdFrecuencia
             
-    ManyToOne:
-        Frecuencia:
+    manyToOne:
+        frecuencia:
             targetEntity: Frecuencia
             joinColumn: 
-                name: IdFrecuencia
+                name: frecuencia_id
                 referencedColumnName: id        
         
     lifecycleCallbacks: {  }

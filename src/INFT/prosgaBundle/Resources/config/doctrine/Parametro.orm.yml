@@ -37,11 +37,11 @@ INFT\prosgaBundle\Entity\Parametro:
             type: string
             length: '500'
             column: UbicacionRepositorio
-    ManyToOne:
-        Persona:
+    manyToOne:
+        persona:
             targetEntity: Persona
             joinColumn: 
-                name: IdPersona
+                name: persona_id
                 referencedColumnName: id
                 
     lifecycleCallbacks: {  }

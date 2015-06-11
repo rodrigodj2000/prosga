@@ -32,53 +32,53 @@ INFT\prosgaBundle\Entity\Persona:
             length: '1000'
             column: Observacion
             
-    OneToOne:
-        idCargo:
+    oneToOne:
+        cargo:
             targetEntity: Cargo
             joinColumn:
-                name: IdCargo
+                name: cargo_id
                 referencedColumnName: id
-        idUsuario:
+        usuario:
             targetEntity: Usuario
             joinColumn:
-                name: IdUsuario
+                name: usuario_id
                 referencedColumnName: id
-        idEstado:
+        estado:
             targetEntity: Estado
             joinColumn:
-                name: IdEstado
+                name: estado_id
                 referencedColumnName: id 
                 
-    ManyToMany:
-        Indicadores:
+    manyToMany:
+        indicadores:
             targetEntity: Indicador
             joinTable: 
                 name: ResponsablePorIndicador
                 joinColumns:
-                    IdIndicador:
+                    indicador_id:
                         referencedColumnName: id
-                inversedJoinColumns:
-                    IdPersona:
+                inverseJoinColumns:
+                    persona_id:
                         referencedColumnName: id
-        ProcedimientosGenerales:
+        procedimientosGenerales:
             targetEntity: ProcedimientoGeneral
             joinTable:
                 name: ResponsablePorProcedGeneral
                 joinColumns:
-                    IdPersona:
+                    persona_id:
                         referencedColumnName: id
-                inversedJoinColumns:
-                    IdProcedGeneral:
+                inverseJoinColumns:
+                    procedimientoGeneral_id:
                         referencedColumnName: id
-        RegistrosFichaProceso:
-            targetEntity: RegistroFichaDeProceso
+        registrosFichaDeProceso:
+            targetEntity: RegistroFP
             joinTable:
                 name: ResponsablePorRegistroFP
-                joinsColumns:
-                    IdPersona:
+                joinColumns:
+                    persona_id:
                         referencedColumnName: id
-                inversedJoinColumns:
-                    IdRegistroFP:
+                inverseJoinColumns:
+                    registroFP_id:
                         referencedColumnName: id
                     
     lifecycleCallbacks: {  }

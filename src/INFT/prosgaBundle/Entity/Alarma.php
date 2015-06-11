@@ -38,11 +38,6 @@ class Alarma
      * @var string
      */
     private $observacion;
-    
-    /**
-     * @var integer
-     */
-    private $idFrecuencia;
 
 
     /**
@@ -107,7 +102,7 @@ class Alarma
      * @param Frecuencia $frecuencia
      * @return Alarma
      */
-    public function setFrecuencia($frecuencia)
+    public function setFrecuencia(Frecuencia $frecuencia)
     {
         $this->frecuencia = $frecuencia;
     
@@ -168,28 +163,5 @@ class Alarma
     public function getObservacion()
     {
         return $this->observacion;
-    }
-    
-    /**
-     * Set idFrecuencia
-     *
-     * @param integer $idFrecuencia
-     * @return Alarma
-     */
-    public function setIdFrecuencia($idFrecuencia)
-    {
-        $this->idFrecuencia = $idFrecuencia;
-    
-        return $this;
-    }
-
-    /**
-     * Get idFrecuencia
-     *
-     * @return integer 
-     */
-    public function getIdFrecuencia()
-    {
-        return $this->idFrecuencia;
     }
 }

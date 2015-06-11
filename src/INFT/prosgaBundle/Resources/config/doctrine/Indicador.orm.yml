@@ -20,16 +20,16 @@ INFT\prosgaBundle\Entity\Indicador:
             length: '1000'
             column: Observacion
             
-    ManyToOne:
-        Frecuencia:
+    manyToOne:
+        frecuencia:
             targetEntity: Frecuencia
             joinColumn:
-                name: IdFrecuencia
+                name: frecuencia_id
                 referencedColumnName: id
-        FichaDeProceso:
+        fichaDeProceso:
             targetEntity: FichaDeProceso
             joinColumn:
-                name: IdFichaDeProceso
+                name: fichaDeProceso_id
                 referencedColumnName: id
                 
     lifecycleCallbacks: {  }

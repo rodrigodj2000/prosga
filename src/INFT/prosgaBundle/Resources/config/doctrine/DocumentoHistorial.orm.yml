@@ -14,15 +14,15 @@ INFT\prosgaBundle\Entity\DocumentoHistorial:
             type: string
             length: '1000'
             column: Observacion            
-    ManyToOne:
-        Documento:
+    manyToOne:
+        documento:
             targetEntity: Documento
             joinColumn: 
-                name: IdDocumento
+                name: documento_id
                 referencedColumnName: id
-        Persona:
+        persona:
             targetEntity: Persona
             joinColumn:
-                name: IdPersona
+                name: persona_id
                 referencedColumnName: id
     lifecycleCallbacks: {  }

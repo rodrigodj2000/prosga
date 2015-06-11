@@ -17,8 +17,11 @@ class ActividadAdmin extends Admin
     {
         $datagridMapper
             ->add('fechaActividad')
-            ->add('observacion')
             ->add('nombre')
+            ->add('personaResponsable', 'entity', array(
+                'class' => 'prosgaBundle:Persona',
+                'property' => 'nombre',
+                ))       
         ;
     }
 
@@ -50,6 +53,10 @@ class ActividadAdmin extends Admin
             ->add('fechaActividad')
             ->add('observacion')
             ->add('nombre')
+            ->add('personaResponsable', 'entity', array(
+                'class' => 'prosgaBundle:Persona',
+                'property' => 'nombre',
+                ))
         ;
     }
 
@@ -61,7 +68,7 @@ class ActividadAdmin extends Admin
         $showMapper
             ->add('fechaActividad')
             ->add('observacion')
-            ->add('nombre')
+            ->add('nombre')            
         ;
     }
 }

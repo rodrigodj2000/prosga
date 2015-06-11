@@ -122,7 +122,7 @@ class MatrizLegal
      * @param Frecuencia $frecuencia
      * @return MatrizLegal
      */
-    public function setFrecuencia($frecuencia)
+    public function setFrecuencia(Frecuencia $frecuencia)
     {
         $this->frecuencia = $frecuencia;
     
@@ -191,7 +191,7 @@ class MatrizLegal
      * @param Norma $norma
      * @return MatrizLegal
      */
-    public function setNorma($norma)
+    public function setNorma(Norma $norma)
     {
         $this->norma = $norma;
     
@@ -260,7 +260,7 @@ class MatrizLegal
      * @param Persona $persona
      * @return MatrizLegal
      */
-    public function setPersona($persona)
+    public function setPersona(Persona $persona)
     {
         $this->persona = $persona;
     

@@ -56,7 +56,7 @@ class ArchivoAdjunto
      * @param Documento $documento
      * @return ArchivoAdjunto
      */
-    public function setDocumento($documento)
+    public function setDocumento(Documento $documento)
     {
         $this->documento = $documento;
     
@@ -79,7 +79,7 @@ class ArchivoAdjunto
      * @param Control $control
      * @return ArchivoAdjunto
      */
-    public function setControl($control)
+    public function setControl(Control $control)
     {
         $this->control = $control;
     
@@ -102,7 +102,7 @@ class ArchivoAdjunto
      * @param Indicador $indicador
      * @return ArchivoAdjunto
      */
-    public function setIndicador($indicador)
+    public function setIndicador(Indicador $indicador)
     {
         $this->indicador = $indicador;
     
@@ -125,7 +125,7 @@ class ArchivoAdjunto
      * @param FichaDeProceso $fichaDeProceso
      * @return ArchivoAdjunto
      */
-    public function setFichaDeProceso($fichaDeProceso)
+    public function setFichaDeProceso(FichaDeProceso $fichaDeProceso)
     {
         $this->fichaDeProceso = $fichaDeProceso;
     

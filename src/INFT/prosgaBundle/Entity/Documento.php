@@ -44,6 +44,16 @@ class Documento
      */
     private $persona;
 
+    /**
+     * @var Permiso[]
+     */
+    private $permisos;
+
+
+    public function __construct(){
+        $this->permisos = new ArrayCollection();
+    }
+
 
     /**
      * Get id
@@ -107,7 +117,7 @@ class Documento
      * @param Auditoria $auditoria
      * @return Documento
      */
-    public function setAuditoria($auditoria)
+    public function setAuditoria(Auditoria $auditoria)
     {
         $this->auditoria = $auditoria;
     
@@ -130,7 +140,7 @@ class Documento
      * @param Proceso $proceso
      * @return Documento
      */
-    public function setProceso($proceso)
+    public function setProceso(Proceso $proceso)
     {
         $this->proceso = $proceso;
     
@@ -153,7 +163,7 @@ class Documento
      * @param Estado Estado
      * @return Documento
      */
-    public function setEstado($estado)
+    public function setEstado(Estado $estado)
     {
         $this->estado = $estado;
     
@@ -176,7 +186,7 @@ class Documento
      * @param Persona $persona
      * @return Documento
      */
-    public function setPersona($persona)
+    public function setPersona(Persona $persona)
     {
         $this->persona = $persona;
     
@@ -191,5 +201,17 @@ class Documento
     public function getPersona()
     {
         return $this->persona;
+    }
+
+    public function addPermiso(Permiso $permiso){
+        $this->permisos[] = $permiso;
+    }
+
+    public function removePermiso(Permiso $permiso){
+        $this->permisos->removeElement($permiso);
+    }
+
+    public function getPermisos(){
+        return $this->permisos;
     }
 }

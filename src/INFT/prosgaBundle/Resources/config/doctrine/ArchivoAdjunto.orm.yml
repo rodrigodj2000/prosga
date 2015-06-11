@@ -11,26 +11,26 @@ INFT\prosgaBundle\Entity\ArchivoAdjunto:
             type: string
             length: '1000'
             column: Observacion            
-    OneToOne:
-        Documento:
+    oneToOne:
+        documento:
             targetEntity: Documento
             joinColumn:
-                name: IdDocumento
+                name: documento_id
                 referencedColumnName: id
-        Control:
+        control:
             targetEntity: Control
             joinColumn:
-                name: IdControl
+                name: control_id
                 referencedColumnName: id
-        Indicador:
+        indicador:
             targetEntity: Indicador
             joinColumn:
-                name: IdIndicador
+                name: indicador_id
                 referencedColumnName: id
-        FichaDeProceso:
+        fichaDeProceso:
             targetEntity: FichaDeProceso
             joinColumn:
-                name: IdFichaDeProceso
+                name: fichaDeProceso_id
                 referencedColumnName: id
                 
     lifecycleCallbacks: {  }

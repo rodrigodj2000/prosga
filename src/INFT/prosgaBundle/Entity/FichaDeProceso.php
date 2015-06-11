@@ -137,7 +137,7 @@ class FichaDeProceso
      * @param Persona $personaPrepara
      * @return FichaDeProceso
      */
-    public function setPersonaPrepara($personaPrepara)
+    public function setPersonaPrepara(Persona $personaPrepara)
     {
         $this->personaPrepara = $personaPrepara;
     
@@ -160,7 +160,7 @@ class FichaDeProceso
      * @param Persona $personaAprueba
      * @return FichaDeProceso
      */
-    public function setPersonaAprueba($personaAprueba)
+    public function setPersonaAprueba(Persona $personaAprueba)
     {
         $this->personaAprueba = $personaAprueba;
     
@@ -275,7 +275,7 @@ class FichaDeProceso
      * @param Persona $personaResponsable
      * @return FichaDeProceso
      */
-    public function setPersonaResponsable($personaResponsable)
+    public function setPersonaResponsable(Persona $personaResponsable)
     {
         $this->personaResponsable = $personaResponsable;
     
@@ -321,7 +321,7 @@ class FichaDeProceso
      * @param FichaDeProceso $fichaDeProcesoAntecesor
      * @return FichaDeProceso
      */
-    public function setFichaDeProcesoAntecesor($fichaDeProcesoAntecesor)
+    public function setFichaDeProcesoAntecesor(FichaDeProceso $fichaDeProcesoAntecesor)
     {
         $this->fichaDeProcesoAntecesor = $fichaDeProcesoAntecesor;
     
@@ -344,7 +344,7 @@ class FichaDeProceso
      * @param FichaDeProceso $fichaDeProcesoPredecesor
      * @return FichaDeProceso
      */
-    public function setFichaDeProcesoPredecesor($fichaDeProcesoPredecesor)
+    public function setFichaDeProcesoPredecesor(FichaDeProceso $fichaDeProcesoPredecesor)
     {
         $this->fichaDeProcesoPredecesor = $fichaDeProcesoPredecesor;
     

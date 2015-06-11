@@ -74,7 +74,7 @@ class Proceso
      * @param Norma $norma
      * @return Proceso
      */
-    public function setNorma($norma)
+    public function setNorma(Norma $norma)
     {
         $this->norma = $norma;
     
@@ -97,7 +97,7 @@ class Proceso
      * @param Alarma $alarma
      * @return Proceso
      */
-    public function setAlarma($alarma)
+    public function setAlarma(Alarma $alarma)
     {
         $this->alarma = $alarma;
     
@@ -120,7 +120,7 @@ class Proceso
      * @param Estado $estado
      * @return Proceso
      */
-    public function setEstado($estado)
+    public function setEstado(Estado $estado)
     {
         $this->estado = $estado;
     

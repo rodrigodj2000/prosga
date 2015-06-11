@@ -125,7 +125,7 @@ class Indicador
      * @param Frecuencia $frecuencia
      * @return Indicador
      */
-    public function setFrecuencia($frecuencia)
+    public function setFrecuencia(Frecuencia $frecuencia)
     {
         $this->frecuencia = $frecuencia;
     
@@ -148,7 +148,7 @@ class Indicador
      * @param FichaDeProceso $fichaDeProceso
      * @return Indicador
      */
-    public function setFichaDeProceso($fichaDeProceso)
+    public function setFichaDeProceso(FichaDeProceso $fichaDeProceso)
     {
         $this->fichaDeProceso = $fichaDeProceso;
     

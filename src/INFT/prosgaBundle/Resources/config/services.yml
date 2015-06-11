@@ -75,3 +75,9 @@ services:
         arguments: [~, INFT\prosgaBundle\Entity\Documento, prosgaBundle:Documento]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Documento}
+
+    prosga.admin.persona:
+        class: INFT\prosgaBundle\Admin\PersonaAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\Persona, prosgaBundle:Persona]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Persona}

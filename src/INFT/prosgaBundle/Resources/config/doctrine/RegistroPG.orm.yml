@@ -31,10 +31,10 @@ INFT\prosgaBundle\Entity\RegistroPG:
             length: '1000'
             column: Observacion
             
-    ManyToOne:
-        ProcedimientoGeneral:
+    manyToOne:
+        procedimientoGeneral:
             targetEntity: ProcedimientoGeneral
             joinColumn: 
-                name: IdProcedimientoGeneral
+                name: procedimientoGeneral_id
                 referencedColumnName: id
     lifecycleCallbacks: {  }

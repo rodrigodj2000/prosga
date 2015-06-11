@@ -24,6 +24,16 @@ class Frecuencia
      */
     private $descripcion;
 
+    /**
+     * @var Alarma
+     */
+    private $alarmas;
+
+
+    public function __construct(){
+        $this->alarmas = new ArrayCollection();
+    }
+
 
     /**
      * Get id
@@ -80,4 +90,18 @@ class Frecuencia
     {
         return $this->descripcion;
     }
+
+
+    public function addAlarma(Alarma $alarma){
+        $this->alarmas[] = $alarma;
+    }
+
+    public function removeAlarma(Alarma $alarma){
+        $this->alarmas->removeElement($alarma);
+    }
+
+    public function getAlarmas(){
+        return $this->alarmas;
+    }
+
 }

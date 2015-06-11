@@ -92,7 +92,7 @@ class FichaDeProcesoSalida
      * @param FichaDeProceso $fichaDeProceso
      * @return FichaDeProcesoSalida
      */
-    public function setFichaDeProceso($fichaDeProceso)
+    public function setFichaDeProceso(FichaDeProceso $fichaDeProceso)
     {
         $this->fichaDeProceso = $fichaDeProceso;
     

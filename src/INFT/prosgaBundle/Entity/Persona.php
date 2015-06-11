@@ -59,6 +59,28 @@ class Persona
      */
     private $observacion;
 
+    /**
+     * @var Indicador[]
+     */
+    private $indicadores;
+
+    /**
+     * @var ProcedimientoGeneral[]
+     */
+    private $procedimientosGenerales;
+
+    /**
+     * @var RegistroFP[]
+     */
+    private $registrosFichaDeProceso;
+
+
+    public function __construct(){
+        $this->indicadores = new ArrayCollection();
+        $this->procedimientosGenerales = new ArrayCollection();
+        $this->registrosFichaDeProceso = new ArrayCollection();
+    }
+
 
     /**
      * Get id
@@ -191,7 +213,7 @@ class Persona
      * @param Cargo $cargo
      * @return Persona
      */
-    public function setCargo($cargo)
+    public function setCargo(Cargo $cargo)
     {
         $this->cargo = $cargo;
     
@@ -214,7 +236,7 @@ class Persona
      * @param Usuario $usuario
      * @return Persona
      */
-    public function setUsuario($usuario)
+    public function setUsuario(Usuario $usuario)
     {
         $this->usuario = $usuario;
     
@@ -237,7 +259,7 @@ class Persona
      * @param Estado $estado
      * @return Persona
      */
-    public function setEstado($estado)
+    public function setEstado(Estado $estado)
     {
         $this->estado = $estado;
     
@@ -275,5 +297,43 @@ class Persona
     public function getObservacion()
     {
         return $this->observacion;
+    }
+
+
+    public function addIndicador(Indicador $indicador){
+        $this->indicador[] = $indicador;
+    }
+
+    public function removeIndicador(Indicador $indicador){
+        $this->indicadores->removeElement($indicador);
+    }
+
+    public function getIndicadores(){
+        return $this->indicadores;
+    }
+
+    public function addProcedGeneral(ProcedimientoGeneral $procedGeneral){
+        $this->procedimientosGenerales[] = $procedGeneral;
+    }
+
+    public function removeProcedGeneral(ProcedimientoGeneral $procedGeneral){
+        $this->procedimientosGenerales->removeElement($procedGeneral);
+    }
+
+    public function getProcedimientosGenerales(){
+        return $this->procedimientosGenerales;
+    }
+
+    public function addRegistroFichaDeProceso(RegistroFP $registroFP){
+        $this->registrosFichaDeProceso[] = $registroFP;
+    }
+
+    public function removeRegistroFichaDeProceso(RegistroFP $registroFP){
+        $this->registrosFichaDeProceso->removeElement($registroFP);
+
+    }
+
+    public function getRegistrosFichaDeProceso(){
+        return $this->registrosFichaDeProceso;
     }
 }

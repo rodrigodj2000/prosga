@@ -237,7 +237,7 @@ class Parametro
      * @param Persona $persona
      * @return Parametro
      */
-    public function setPersona($persona)
+    public function setPersona(Persona $persona)
     {
         $this->persona = $persona;
     

@@ -18,41 +18,41 @@ INFT\prosgaBundle\Entity\Actividad:
             type: string
             length: 255
             column: Nombre
-    ManyToOne:
-        Persona:
+    manyToOne:
+        personaResponsable:
             targetEntity: Persona
             joinColumn:
-                name: IdPersonaResponsable
+                name: persona_id
                 referencedColumnName: id
-        Sector:
+        sector:
             targetEntity: Sector
             joinColumn:
-                name: IdSector
+                name: sector_id
                 referencedColumnName: id
-        Proceso:
+        proceso:
             targetEntity: Proceso
             joinColumn:
-                name: IdProceso
+                name: proceso_id
                 referencedColumnName: id            
-        Norma:
+        norma:
             targetEntity: Norma
             joinColumn:
-                name: IdNorma
+                name: norma_id
                 referencedColumnName: id            
-        Matrizlegal:
+        matrizlegal:
             targetEntity: MatrizLegal
             joinColumn:
-                name: IdMatrizlegal
+                name: matrizLegal_id
                 referencedColumnName: id            
-        Control:
+        control:
             targetEntity: Control
             joinColumn:
-                name: IdControl
+                name: control_id
                 referencedColumnName: id    
-        Auditoria:
+        auditoria:
             targetEntity: Auditoria
             joinColumn: 
-                name: IdAuditoria
+                name: auditoria_id
                 referencedColumnName: id
         
     lifecycleCallbacks: {  }

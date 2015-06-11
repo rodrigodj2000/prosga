@@ -23,32 +23,32 @@ INFT\prosgaBundle\Entity\Control:
             length: '1000'
             column: Observacion
             
-    ManyToOne:
-        Frecuencia:
+    manyToOne:
+        frecuencia:
             targetEntity: Frecuencia
             joinColumn:
-                name: IdFrecuencia
+                name: frecuencia_id
                 referencedColumnName: id
-        Persona:
+        personaResponsable:
             targetEntity: Persona
             joinColumn:
-                name: IdPersona
+                name: persona_id
                 referencedColumnName: id
-        FichaDeProceso:
+        fichaDeProceso:
             targetEntity: FichaDeProceso
             joinColumn:
-                name: FichaDeProceso
+                name: fichaDeProceso_id
                 referencedColumnName: id
-    ManyToMany:
-        Sectores:
+    manyToMany:
+        sectores:
             targetEntity: Sector
             joinTable:
                 name: ControlPorSector
                 joinColumns:
-                    IdControl:
+                    control_id:
                         referencedColumnName: id
                 inverseJoinColumns:
-                    IdSector:
+                    sector_id:
                         referencedColumnName: id
                 
     lifecycleCallbacks: {  }

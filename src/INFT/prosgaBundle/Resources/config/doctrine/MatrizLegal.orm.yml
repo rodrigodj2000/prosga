@@ -31,21 +31,21 @@ INFT\prosgaBundle\Entity\MatrizLegal:
             length: '500'
             column: Obligaciones
             
-    ManyToOne:
-        Persona:
+    manyToOne:
+        persona:
             targetEntity: Persona
             joinColumn: 
-                name: IdPersona
+                name: persona_id
                 referencedColumnName: id
-        Frecuencia:
+        frecuencia:
             targetEntity: Frecuencia
             joinColumn:
-                name: IdFrecuencia
+                name: frecuencia_id
                 referencedColumnName: id
-        Norma:
+        norma:
             targetEntity: Norma
             joinColumn:
-                name: IdNorma
+                name: norma_id
                 referencedColumnName: id
                 
     lifecycleCallbacks: {  }

@@ -127,7 +127,7 @@ class Actividad
      * @param Persona $personaResponsable
      * @return Actividad
      */
-    public function setPersonaResponsable($personaResponsable)
+    public function setPersonaResponsable(Persona $personaResponsable)
     {
         $this->personaResponsable = $personaResponsable;
     
@@ -150,7 +150,7 @@ class Actividad
      * @param Sector $sector
      * @return Actividad
      */
-    public function setSector($sector)
+    public function setSector(Sector $sector)
     {
         $this->sector = $sector;
     
@@ -173,7 +173,7 @@ class Actividad
      * @param Proceso $proceso
      * @return Actividad
      */
-    public function setProceso($proceso)
+    public function setProceso(Proceso $proceso)
     {
         $this->proceso = $proceso;
     
@@ -196,7 +196,7 @@ class Actividad
      * @param Norma $norma
      * @return Actividad
      */
-    public function setNorma($norma)
+    public function setNorma(Norma $norma)
     {
         $this->norma = $norma;
     
@@ -219,7 +219,7 @@ class Actividad
      * @param MatrizLegal $matrizlegal
      * @return Actividad
      */
-    public function setMatrizlegal($matrizlegal)
+    public function setMatrizlegal(MatrizLegal $matrizlegal)
     {
         $this->matrizlegal = $matrizlegal;
     
@@ -242,7 +242,7 @@ class Actividad
      * @param Control $control
      * @return Actividad
      */
-    public function setControl($control)
+    public function setControl(Control $control)
     {
         $this->control = $control;
     
@@ -288,7 +288,7 @@ class Actividad
      * @param Auditoria $auditoria
      * @return Actividad
      */
-    public function setAuditoria($auditoria)
+    public function setAuditoria(Auditoria $auditoria)
     {
         $this->auditoria = $auditoria;
     

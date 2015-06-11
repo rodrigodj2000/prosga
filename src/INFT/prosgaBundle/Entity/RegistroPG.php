@@ -204,7 +204,7 @@ class RegistroPG
      * @param ProcedimientoGeneral $procedimientoGeneral
      * @return RegistroPG
      */
-    public function setProcedimientoGeneral($procedimientoGeneral)
+    public function setProcedimientoGeneral(ProcedimientoGeneral $procedimientoGeneral)
     {
         $this->procedimientoGeneral = $procedimientoGeneral;
     

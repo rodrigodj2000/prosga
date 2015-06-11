@@ -31,10 +31,10 @@ INFT\prosgaBundle\Entity\RegistroFP:
             length: '1000'
             column: Observacion
             
-    ManyToOne:
-        FichaDeProceso:
+    manyToOne:
+        fichaDeProceso:
             targetEntity: FichaDeProceso
             joinColumn: 
-                name: IdFichaDeProceso
+                name: fichaDeProceso_id
                 referencedColumnName: id
     lifecycleCallbacks: {  }

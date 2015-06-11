@@ -74,7 +74,7 @@ class DocumentoHistorial
      * @param Persona $persona
      * @return DocumentoHistorial
      */
-    public function setPersona($persona)
+    public function setPersona(Persona $persona)
     {
         $this->persona = $persona;
     
@@ -120,7 +120,7 @@ class DocumentoHistorial
      * @param Documento $documento
      * @return DocumentoHistorial
      */
-    public function setDocumento($documento)
+    public function setDocumento(Documento $documento)
     {
         $this->documento = $documento;
     
