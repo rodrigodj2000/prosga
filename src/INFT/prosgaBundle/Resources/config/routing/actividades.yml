@@ -1,0 +1,30 @@
+actividad:
+    path:     /
+    defaults: { _controller: "prosgaBundle:Actividad:index" }
+
+actividad_show:
+    path:     /{id}/show
+    defaults: { _controller: "prosgaBundle:Actividad:show" }
+
+actividad_new:
+    path:     /new
+    defaults: { _controller: "prosgaBundle:Actividad:new" }
+
+actividad_create:
+    path:     /create
+    defaults: { _controller: "prosgaBundle:Actividad:create" }
+    requirements: { _method: post }
+
+actividad_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "prosgaBundle:Actividad:edit" }
+
+actividad_update:
+    path:     /{id}/update
+    defaults: { _controller: "prosgaBundle:Actividad:update" }
+    requirements: { _method: post|put }
+
+actividad_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "prosgaBundle:Actividad:delete" }
+    requirements: { _method: post|delete }

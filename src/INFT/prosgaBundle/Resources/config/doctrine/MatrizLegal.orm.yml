@@ -7,6 +7,10 @@ INFT\prosgaBundle\Entity\MatrizLegal:
             id: true
             generator:
                 strategy: AUTO
+        nombre:
+            type: string
+            length: 250
+            column: Nombre
         emisor:
             type: string
             length: 255

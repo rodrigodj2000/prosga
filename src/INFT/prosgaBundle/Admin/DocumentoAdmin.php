@@ -27,7 +27,7 @@ class DocumentoAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('fechaCreacion')
+            ->add('fechaCreacion', 'sonata_type_date')
             ->add('ubicacion')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -45,8 +45,8 @@ class DocumentoAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('fechaCreacion')
             ->add('ubicacion')
+
         ;
     }
 

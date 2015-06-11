@@ -15,6 +15,11 @@ class Auditoria
     private $id;
 
     /**
+     * @var string
+     */
+    private $nombre;
+
+    /**
      * @var \DateTime
      */
     private $fechaDeAuditoria;
@@ -53,6 +58,29 @@ class Auditoria
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Auditoria
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
     }
 
     /**
@@ -191,5 +219,9 @@ class Auditoria
     public function getEstado()
     {
         return $this->estado;
+    }
+
+    public function __toString(){
+        return $this->nombre;
     }
 }

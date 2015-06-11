@@ -108,4 +108,8 @@ class FichaDeProcesoEntrada
     {
         return $this->fichaDeProceso;
     }
+
+    public function __toString(){
+        return $this->valoresDeEntrada;
+    }
 }

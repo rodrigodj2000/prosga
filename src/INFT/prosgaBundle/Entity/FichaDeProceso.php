@@ -360,4 +360,8 @@ class FichaDeProceso
     {
         return $this->fichaDeProcesoPredecesor;
     }
+
+    public function __toString(){
+        return $this->nombre;
+    }
 }

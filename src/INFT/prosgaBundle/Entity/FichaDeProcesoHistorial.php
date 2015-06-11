@@ -164,4 +164,8 @@ class FichaDeProcesoHistorial
     {
         return $this->fichaDeProceso;
     }
+
+    public function __toString(){
+        return $this->descripcion;
+    }
 }

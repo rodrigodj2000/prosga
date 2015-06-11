@@ -1,15 +1,17 @@
+prosga_auditoria:
+    resource: "routing/auditoria.yml"
+    prefix: /auditoria
+    
+prosga_actividades:
+    resource: "routing/actividades.yml"        
+    prefix: /actividades
+
 prosga_homepage:
     path:     /
     defaults: { _controller: prosgaBundle:Default:home }
 
-prosga_actividades:
-    path:     /actividades
-    defaults: { _controller: prosgaBundle:Default:actividades }
-    
-prosga_auditoria:
-    path:     /auditoria
-    defaults: { _controller: prosgaBundle:Default:auditoria }
-    
+## OTROS
+
 prosga_consultas:
     path:     /consultas
     defaults: { _controller: prosgaBundle:Default:consultas }

@@ -276,4 +276,8 @@ class Parametro
     {
         return $this->ubicacionRepositorio;
     }
+
+    public function __toString(){
+        return $this->nombre;
+    }
 }

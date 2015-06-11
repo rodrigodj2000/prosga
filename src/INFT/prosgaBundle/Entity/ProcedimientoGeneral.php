@@ -304,5 +304,8 @@ class ProcedimientoGeneral
         return $this->procedGeneralPredecesor;
     }
 	
+    public function __toString(){
+        return $this->nombre;
+    }
 	
 }

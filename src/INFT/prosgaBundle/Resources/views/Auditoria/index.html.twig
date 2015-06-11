@@ -1,0 +1,48 @@
+{% extends 'prosgaBundle::template.html.twig' %}
+
+{% block content %}
+    <h2>Auditorías</h2>
+{% endblock %}
+
+{% block body_content %}    
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Fecha</th>
+                <th>Costo</th>
+                <th>Observación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('auditoria_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.fechaDeAuditoria %}{{ entity.fechaDeAuditoria|date('d/m/Y H:i') }}{% endif %}</td>
+                <td>{{ entity.costoAuditoria|number_format }}</td>
+                <td>{{ entity.observacion }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('auditoria_show', { 'id': entity.id }) }}">mostrar</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('auditoria_edit', { 'id': entity.id }) }}">editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('auditoria_new') }}">
+                Agregar nueva auditoría
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

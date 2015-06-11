@@ -220,4 +220,8 @@ class RegistroPG
     {
         return $this->procedimientoGeneral;
     }
+
+    public function __toString(){
+        return $this->nombre;
+    }
 }

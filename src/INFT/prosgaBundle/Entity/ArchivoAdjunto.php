@@ -15,6 +15,11 @@ class ArchivoAdjunto
     private $id;
 
     /**
+     * @var string
+     */
+    private $nombre;
+
+    /**
      * @var Documento
      */
     private $documento;
@@ -48,6 +53,29 @@ class ArchivoAdjunto
     public function getId()
     {
         return $this->id;
+    }
+
+     /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return ArchivoAdjunto
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
     }
 
     /**
@@ -163,5 +191,9 @@ class ArchivoAdjunto
     public function getObservacion()
     {
         return $this->observacion;
+    }
+
+    public function __toString(){
+        return $this->nombre;
     }
 }

@@ -15,6 +15,11 @@ class MatrizLegal
     private $id;
 
     /**
+     * @var string 
+     */
+    private $nombre;
+
+    /**
      * @var string
      */
     private $emisor;
@@ -68,6 +73,29 @@ class MatrizLegal
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return MatrizLegal
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
     }
 
     /**
@@ -275,5 +303,9 @@ class MatrizLegal
     public function getPersona()
     {
         return $this->persona;
+    }
+
+    public function __toString(){
+        return $this->nombre;
     }
 }

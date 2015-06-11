@@ -164,4 +164,8 @@ class Alarma
     {
         return $this->observacion;
     }
+
+    public function __toString(){
+        return $this->nombre;
+    }
 }

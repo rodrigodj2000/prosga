@@ -52,11 +52,11 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: ArchivoAdjunto}
 
-    prosga.admin.auditoria:
-        class: INFT\prosgaBundle\Admin\AuditoriaAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\Auditoria, prosgaBundle:Auditoria]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Auditoria}
+#    prosga.admin.auditoria:
+#        class: INFT\prosgaBundle\Admin\AuditoriaAdmin
+#        arguments: [~, INFT\prosgaBundle\Entity\Auditoria, prosgaBundle:Auditoria]
+#        tags:
+#            - {name: sonata.admin, manager_type: orm, group: admin, label: Auditoria}
 
     prosga.admin.control:
         class: INFT\prosgaBundle\Admin\ControlAdmin
@@ -76,11 +76,11 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Persona}
             
-    prosga.admin.actividad:
-        class: INFT\prosgaBundle\Admin\ActividadAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\Actividad, prosgaBundle:Actividad]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Actividad}
+#    prosga.admin.actividad:
+#        class: INFT\prosgaBundle\Admin\ActividadAdmin
+#        arguments: [~, INFT\prosgaBundle\Entity\Actividad, prosgaBundle:Actividad]
+#        tags:
+#            - {name: sonata.admin, manager_type: orm, group: admin, label: Actividad}
 
     prosga.admin.indicador:
         class: INFT\prosgaBundle\Admin\IndicadorAdmin

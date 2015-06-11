@@ -7,6 +7,10 @@ INFT\prosgaBundle\Entity\Auditoria:
             id: true
             generator:
                 strategy: AUTO
+        nombre:
+            type: string
+            length: 250
+            column: Nombre
         fechaDeAuditoria:
             type: datetime
             column: FechaDeAuditoria

@@ -3,7 +3,7 @@
 namespace INFT\prosgaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collection\ArrayCollection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Control
@@ -241,5 +241,9 @@ class Control
 
     public function getSectores(){
         return $this->sectores;
+    }
+
+    public function __toString(){
+        return $this->nombre;
     }
 }

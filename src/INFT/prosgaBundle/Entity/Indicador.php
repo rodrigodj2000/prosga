@@ -164,4 +164,8 @@ class Indicador
     {
         return $this->fichaDeProceso;
     }
+
+    public function __toString(){
+        return $this->nombre;
+    }
 }

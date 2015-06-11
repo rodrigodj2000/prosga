@@ -14,17 +14,7 @@ class DefaultController extends Controller
     public function homeAction()
     {
         return $this->render('prosgaBundle:Default:index.html.twig');
-    }         
-    
-    public function actividadesAction()
-    {
-        return $this->render('prosgaBundle:Default:actividades.html.twig');
-    }         
-    
-    public function auditoriaAction()
-    {
-        return $this->render('prosgaBundle:Default:auditoria.html.twig');
-    }         
+    }                
     
     public function consultasAction()
     {

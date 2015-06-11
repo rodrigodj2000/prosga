@@ -304,4 +304,8 @@ class Actividad
     {
         return $this->auditoria;
     }
+
+    public function __toString(){
+        return $this->nombre;
+    }
 }

@@ -220,4 +220,9 @@ class RegistroFP
     {
         return $this->fichaDeProceso;
     }
+
+    public function __toString(){
+        return $this->nombre;
+    }
 }
+

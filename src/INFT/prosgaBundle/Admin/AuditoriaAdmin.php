@@ -19,6 +19,9 @@ class AuditoriaAdmin extends Admin
             ->add('fechaDeAuditoria')
             ->add('costoAuditoria')
             ->add('observacion')
+            ->add('personaResponsable')
+            ->add('estado')
+            ->add('sector')
         ;
     }
 
@@ -29,6 +32,9 @@ class AuditoriaAdmin extends Admin
     {
         $listMapper
             ->add('fechaDeAuditoria')
+            ->add('personaResponsable')
+            ->add('sector')
+            ->add('estado')
             ->add('costoAuditoria')
             ->add('observacion')
             ->add('_action', 'actions', array(
@@ -48,6 +54,9 @@ class AuditoriaAdmin extends Admin
     {
         $formMapper
             ->add('fechaDeAuditoria')
+            ->add('personaResponsable')
+            ->add('sector')
+            ->add('estado')
             ->add('costoAuditoria')
             ->add('observacion')
         ;
@@ -60,6 +69,9 @@ class AuditoriaAdmin extends Admin
     {
         $showMapper
             ->add('fechaDeAuditoria')
+            ->add('personaResponsable.nombre')
+            ->add('sector.nombre')
+            ->add('estado.nombre')
             ->add('costoAuditoria')
             ->add('observacion')
         ;

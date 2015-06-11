@@ -136,4 +136,8 @@ class DocumentoHistorial
     {
         return $this->documento;
     }
+
+    public function __toString(){
+        return $this->observacion;
+    }
 }

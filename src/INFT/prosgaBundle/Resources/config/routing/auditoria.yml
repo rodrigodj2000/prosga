@@ -1,0 +1,30 @@
+auditoria:
+    path:     /
+    defaults: { _controller: "prosgaBundle:Auditoria:index" }
+
+auditoria_show:
+    path:     /{id}/show
+    defaults: { _controller: "prosgaBundle:Auditoria:show" }
+
+auditoria_new:
+    path:     /new
+    defaults: { _controller: "prosgaBundle:Auditoria:new" }
+
+auditoria_create:
+    path:     /create
+    defaults: { _controller: "prosgaBundle:Auditoria:create" }
+    requirements: { _method: post }
+
+auditoria_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "prosgaBundle:Auditoria:edit" }
+
+auditoria_update:
+    path:     /{id}/update
+    defaults: { _controller: "prosgaBundle:Auditoria:update" }
+    requirements: { _method: post|put }
+
+auditoria_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "prosgaBundle:Auditoria:delete" }
+    requirements: { _method: post|delete }

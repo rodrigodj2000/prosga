@@ -16,6 +16,11 @@ class Documento
     private $id;
 
     /**
+     * @var string
+     */
+    private $nombre;
+
+    /**
      * @var \DateTime
      */
     private $fechaCreacion;
@@ -64,6 +69,29 @@ class Documento
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string nombre
+     * @return Documento
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
     }
 
     /**
@@ -214,5 +242,9 @@ class Documento
 
     public function getPermisos(){
         return $this->permisos;
+    }
+
+    public function __toString(){
+        return $this->nombre;
     }
 }

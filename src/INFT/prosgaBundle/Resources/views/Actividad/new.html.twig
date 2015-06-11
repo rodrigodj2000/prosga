@@ -1,0 +1,18 @@
+{% extends 'prosgaBundle::template.html.twig' %}
+
+{% block content %}
+    <h2>Nueva Actividad</h2>
+{% endblock %}
+
+{% block body_content -%}
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('actividad') }}">
+            Volver a la lista
+        </a>
+    </li>
+</ul>
+{% endblock %}

@@ -7,6 +7,10 @@ INFT\prosgaBundle\Entity\ArchivoAdjunto:
             id: true
             generator:
                 strategy: AUTO
+        nombre:
+            type: string
+            length: 250
+            column: Nombre            
         observacion:
             type: string
             length: '1000'
