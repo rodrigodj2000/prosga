@@ -1,0 +1,58 @@
+INFT\prosgaBundle\Entity\Actividad:
+    type: entity
+    table: Actividad
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        fechaActividad:
+            type: datetime
+            column: FechaActividad
+        observacion:
+            type: string
+            length: '1000'
+            column: Observacion
+        nombre:
+            type: string
+            length: 255
+            column: Nombre
+    ManyToOne:
+        Persona:
+            targetEntity: Persona
+            joinColumn:
+                name: IdPersonaResponsable
+                referencedColumnName: id
+        Sector:
+            targetEntity: Sector
+            joinColumn:
+                name: IdSector
+                referencedColumnName: id
+        Proceso:
+            targetEntity: Proceso
+            joinColumn:
+                name: IdProceso
+                referencedColumnName: id            
+        Norma:
+            targetEntity: Norma
+            joinColumn:
+                name: IdNorma
+                referencedColumnName: id            
+        Matrizlegal:
+            targetEntity: MatrizLegal
+            joinColumn:
+                name: IdMatrizlegal
+                referencedColumnName: id            
+        Control:
+            targetEntity: Control
+            joinColumn:
+                name: IdControl
+                referencedColumnName: id    
+        Auditoria:
+            targetEntity: Auditoria
+            joinColumn: 
+                name: IdAuditoria
+                referencedColumnName: id
+        
+    lifecycleCallbacks: {  }

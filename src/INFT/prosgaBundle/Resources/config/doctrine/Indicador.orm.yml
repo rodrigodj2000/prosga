@@ -1,0 +1,35 @@
+INFT\prosgaBundle\Entity\Indicador:
+    type: entity
+    table: Indicador
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombre:
+            type: string
+            length: 255
+            column: Nombre
+        descripcion:
+            type: string
+            length: '500'
+            column: Descripcion
+        observacion:
+            type: string
+            length: '1000'
+            column: Observacion
+            
+    ManyToOne:
+        Frecuencia:
+            targetEntity: Frecuencia
+            joinColumn:
+                name: IdFrecuencia
+                referencedColumnName: id
+        FichaDeProceso:
+            targetEntity: FichaDeProceso
+            joinColumn:
+                name: IdFichaDeProceso
+                referencedColumnName: id
+                
+    lifecycleCallbacks: {  }

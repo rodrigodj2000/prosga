@@ -1,0 +1,77 @@
+{% extends 'RGVSiteBundle::template.html.twig' %}
+
+{% block layout_head %}            
+        
+    {% stylesheets '@RGVEasyagroBundle/Resources/public/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}    
+    
+    <title>{% block layout_title %}{% block page_title %}{% endblock %} - EasyAgro. Soluciones Tecnológicas para el Agro - Córdoba - Argentina{% endblock %}</title>    
+    
+{% endblock %}
+
+{% block layout_content %}
+    
+<div class="container">
+	<div class="row clearfix page-header">
+            <div class="col-md-4 column">			
+                {% image '@RGVEasyagroBundle/Resources/public/images/logo_300x79.png' %}
+                    <img src="{{ asset_url }}" alt="Logo Easy Agro" href="{{ path('rgv_easyagro_homepage') }}" />
+                {% endimage %}                
+            </div>
+            <div class="col-md-6 column">
+                <h3 class="text-primary text-left">
+                    {% block titulo_pagina %}{% endblock %}
+                </h3>
+            </div>   
+            <div class="col-md-2 column">
+                <h3 class="text-primary text-left">
+                    <small>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                            <a href="{{ path('fos_user_security_logout') }}">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a>
+                        {% else %}
+                            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                        {% endif %}   
+                    </small>
+                </h3>
+            </div>                   
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-8 column">
+                    {% block contenido %}{% endblock %}                     
+		</div>
+		<div class="col-md-4 column">
+                    {% block sidebar %}{% endblock %} 
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-8 column">
+                {% block side_main %}{% endblock %}                            
+		</div>
+		<div class="col-md-4 column">
+                {% block side_right %}{% endblock %}                          
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+                    <div class="footer">
+                        <h1>
+                            <small>Una aplicación de Easy Agro</small>
+                        </h1>
+                    </div>
+		</div>
+	</div>
+</div>    
+    
+{% endblock %}
+
+{% block layout_body_end_before_js %}
+
+    {% javascripts '@RGVEasyagroBundle/Resources/public/js/*' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endblock %}

@@ -1,0 +1,54 @@
+INFT\prosgaBundle\Entity\Control:
+    type: entity
+    table: Control
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombre:
+            type: string
+            length: '200'
+            column: Nombre
+        descripcion:
+            type: string
+            length: '1000'
+            column: Descripcion
+        fecha:
+            type: datetime
+            column: Fecha
+        observacion:
+            type: string
+            length: '1000'
+            column: Observacion
+            
+    ManyToOne:
+        Frecuencia:
+            targetEntity: Frecuencia
+            joinColumn:
+                name: IdFrecuencia
+                referencedColumnName: id
+        Persona:
+            targetEntity: Persona
+            joinColumn:
+                name: IdPersona
+                referencedColumnName: id
+        FichaDeProceso:
+            targetEntity: FichaDeProceso
+            joinColumn:
+                name: FichaDeProceso
+                referencedColumnName: id
+    ManyToMany:
+        Sectores:
+            targetEntity: Sector
+            joinTable:
+                name: ControlPorSector
+                joinColumns:
+                    IdControl:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    IdSector:
+                        referencedColumnName: id
+                
+    lifecycleCallbacks: {  }

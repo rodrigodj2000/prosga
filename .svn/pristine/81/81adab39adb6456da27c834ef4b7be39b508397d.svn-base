@@ -1,0 +1,50 @@
+<?php
+
+/* prosgaBundle:Default:index.html.twig */
+class __TwigTemplate_f28a0476b918d60ad4eabcdabaedf4c2ede73c1fbbfeca43dd8d4edbe1f9aee6 extends Twig_Template
+{
+    public function __construct(Twig_Environment $env)
+    {
+        parent::__construct($env);
+
+        // line 1
+        $this->parent = $this->loadTemplate("prosgaBundle::template.html.twig", "prosgaBundle:Default:index.html.twig", 1);
+        $this->blocks = array(
+            'content' => array($this, 'block_content'),
+        );
+    }
+
+    protected function doGetParent(array $context)
+    {
+        return "prosgaBundle::template.html.twig";
+    }
+
+    protected function doDisplay(array $context, array $blocks = array())
+    {
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
+    }
+
+    // line 3
+    public function block_content($context, array $blocks = array())
+    {
+        // line 4
+        echo "    <h2>Página de Inicio</h2>
+    <a class=\"btn btn-lg btn-primary\" href=\"../../components/#navbar\" role=\"button\">Ingresar</a>
+";
+    }
+
+    public function getTemplateName()
+    {
+        return "prosgaBundle:Default:index.html.twig";
+    }
+
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    public function getDebugInfo()
+    {
+        return array (  31 => 4,  28 => 3,  11 => 1,);
+    }
+}

@@ -1,0 +1,33 @@
+INFT\prosgaBundle\Entity\Alarma:
+    type: entity
+    table: Alarma
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombre:
+            type: string
+            length: 255
+            column: Nombre
+        activarCada:
+            type: integer
+            column: ActivarCada
+        modoAviso:
+            type: string
+            length: '500'
+            column: ModoAviso
+        observacion:
+            type: string
+            length: '1000'
+            column: Observacion
+            
+    ManyToOne:
+        Frecuencia:
+            targetEntity: Frecuencia
+            joinColumn: 
+                name: IdFrecuencia
+                referencedColumnName: id        
+        
+    lifecycleCallbacks: {  }

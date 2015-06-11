@@ -1,0 +1,23 @@
+{% extends '::layout_base.html.twig' %}
+
+{% block page_title %}Home{% endblock %}
+
+{% block page_content %}
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="jumbotron">
+                <h1>
+                    Bienvenido!
+                </h1>
+                <p>
+                    Usted a configurado correctamente symfony!
+                </p>
+            </div>
+        </div>  
+        <div class="col-md-12"><p>Texto de ejemplo</p>
+            <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+            <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>      
+        </div>
+    </div>
+{% endblock %}

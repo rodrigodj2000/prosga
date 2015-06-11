@@ -1,0 +1,46 @@
+INFT\prosgaBundle\Entity\Auditoria:
+    type: entity
+    table: Auditoria
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        fechaDeAuditoria:
+            type: datetime
+            column: FechaDeAuditoria
+        costoAuditoria:
+            type: decimal
+            column: CostoAuditoria
+        observaciones:
+            type: string
+            length: '1000'
+            column: Observaciones
+        idResponsable:
+            type: integer
+            column: IdResponsable
+        idSector:
+            type: integer
+            column: IdSector
+        idEstado:
+            type: integer
+            column: IdEstado
+	OneToOne:
+		Persona:
+			targetEntity: Persona
+			joinColumn: 
+				name: IdResponsable
+				referencedColumnName: id
+		Sector:
+			targetEntity: Sector
+			joinColumn:
+				name: IdSector
+				referencedColumnName: id
+		Estado:
+			targetEntity: Estado
+			joinColumn:
+				name: IdEstado
+				referencedColumnName: id			
+	
+    lifecycleCallbacks: {  }

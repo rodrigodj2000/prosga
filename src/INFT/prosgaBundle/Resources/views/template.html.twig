@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block page_title %}{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ path('prosga_homepage') }}">ProSGA</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="{{ path('prosga_actividades') }}">Actividades</a></li>
+            <li><a href="{{ path('prosga_auditoria') }}">Auditoría</a></li>
+            <li><a href="{{ path('prosga_consultas') }}">Consultas</a></li>
+            <li><a href="{{ path('prosga_acercade') }}">Acerca de...</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="{{ path('sonata_admin_dashboard') }}">Administración</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <p>
+            {% block content %}{% endblock %}            
+        <p>          
+      </div>
+    </div> <!-- /container -->
+
+{% endblock %}

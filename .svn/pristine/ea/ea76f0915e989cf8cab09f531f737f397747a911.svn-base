@@ -1,0 +1,51 @@
+INFT\prosgaBundle\Entity\Documento:
+    type: entity
+    table: Documento
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        fechaCreacion:
+            type: datetime
+            column: FechaCreacion
+        ubicacion:
+            type: string
+            length: 255
+            column: Ubicacion
+        idAuditoria:
+            type: integer
+            column: IdAuditoria
+        idProceso:
+            type: integer
+            column: IdProceso
+        idEstado:
+            type: integer
+            column: IdEstado
+        idPersona:
+            type: integer
+            column: IdPersona
+			
+	ManyToOne:
+		Auditoria:
+			targetEntity: Auditoria
+			joinColumn:
+				name: IdAuditoria
+				referencedColumnName: id
+		Proceso:
+			targetEntity: Proceso
+			joinColumn:
+				name: IdProceso
+				referencedColumnName: id
+		Estado:
+			targetEntity: Estado
+			joinColumn:
+				name: Estado
+				referencedColumnName: id
+		Persona:
+			targetEntity: Persona
+			joinColumn:
+				name: IdPersona
+				referencedColumnName: id
+    lifecycleCallbacks: {  }

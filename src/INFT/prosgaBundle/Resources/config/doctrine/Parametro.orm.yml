@@ -1,0 +1,47 @@
+INFT\prosgaBundle\Entity\Parametro:
+    type: entity
+    table: Parametro
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombre:
+            type: string
+            length: 255
+            column: Nombre
+        fuente:
+            type: string
+            length: 255
+            column: Fuente
+        tamanio:
+            type: string
+            length: 255
+            column: Tamanio
+        color:
+            type: string
+            length: 255
+            column: Color
+        adjuntarArchivo:
+            type: boolean
+            column: AdjuntarArchivo
+        extension:
+            type: string
+            length: '200'
+            column: Extension
+        relacionarDocs:
+            type: boolean
+            column: RelacionarDocs        
+        ubicacionRepositorio:
+            type: string
+            length: '500'
+            column: UbicacionRepositorio
+    ManyToOne:
+        Persona:
+            targetEntity: Persona
+            joinColumn: 
+                name: IdPersona
+                referencedColumnName: id
+                
+    lifecycleCallbacks: {  }

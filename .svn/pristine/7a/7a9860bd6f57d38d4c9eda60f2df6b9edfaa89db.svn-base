@@ -1,0 +1,93 @@
+INFT\prosgaBundle\Entity\Persona:
+    type: entity
+    table: Persona
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombre:
+            type: string
+            length: 255
+            column: Nombre
+        apellido:
+            type: string
+            length: 255
+            column: Apellido
+        mail:
+            type: string
+            length: '200'
+            column: Mail
+        telefono:
+            type: string
+            length: '100'
+            column: Telefono
+        obligaciones:
+            type: string
+            length: '1000'
+            column: Obligaciones
+		observaciones:
+            type: string
+            length: '1000'
+            column: Observaciones
+		idCargo:
+			type: integer
+			column: IdCargo
+		idUsuario:
+			type: integer
+			column: IdUsuario
+		idEstado:
+			type: integer
+			column: IdEstado
+			
+	OneToOne:
+		idCargo:
+			targetEntity: Cargo
+			joinColumn:
+				name: IdCargo
+				referencedColumnName: id
+		idUsuario:
+			targetEntity: Usuario
+			joinColumn:
+				name: IdUsuario
+				referencedColumnName: id
+        idEstado:
+			targetEntity: Estado
+			joinColumn:
+				name: IdEstado
+				referencedColumnName: id 
+				
+	ManyToMany:
+		Indicadores:
+			targetEntity: Indicador
+			joinTable: 
+				name: ResponsablePorIndicador
+				joinColumns:
+					IdIndicador:
+						referencedColumnName: id
+				inversedJoinColumns:
+					IdPersona:
+						referencedColumnName: id
+		ProcedimientosGenerales:
+			targetEntity: ProcedimientoGeneral
+			joinTable:
+				name: ResponsablePorProcedGeneral
+				joinColumns:
+					IdPersona:
+						referencedColumnName: id
+				inversedJoinColumns:
+					IdProcedGeneral:
+						referencedColumnName: id
+		RegistrosFichaProceso:
+			targetEntity: RegistroFichaDeProceso
+			joinTable:
+				name: ResponsablePorRegistroFP
+				joinsColumns:
+					IdPersona:
+						referencedColumnName: id
+				inversedJoinColumns:
+					IdRegistroFP
+						referencedColumnName: id
+				
+    lifecycleCallbacks: {  }

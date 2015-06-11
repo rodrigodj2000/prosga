@@ -1,0 +1,8 @@
+/* 
+    Author     : rodrigo
+*/
+
+.footer
+{
+    text-align: right;
+}

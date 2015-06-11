@@ -1,0 +1,26 @@
+INFT\prosgaBundle\Entity\FichaDeProcesoSalida:
+    type: entity
+    table: FichaDeProcesoSalida
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        valoresDeSalida:
+            type: string
+            length: 255
+            column: ValoresDeSalida
+        observacion:
+            type: string
+            length: '1000'
+            column: Observacion
+            
+    ManyToOne:
+        FichaDeProceso:
+            targetEntity: FichaDeProceso
+            joinColumn:
+                name: IdFichaDeProceso
+                referencedColumnName: id
+            
+    lifecycleCallbacks: {  }

@@ -1,0 +1,11 @@
+rgv_easyagro_homepage:
+    path:     /
+    defaults: { _controller: RGVEasyagroBundle:Default:index }
+
+rgv_easyagro_cliente:
+    path:     /cliente
+    defaults: { _controller: RGVEasyagroBundle:Cliente:index }
+    
+rgv_easyagro_empleado:
+    path:     /empleado
+    defaults: { _controller: RGVEasyagroBundle:Empleado:index }    

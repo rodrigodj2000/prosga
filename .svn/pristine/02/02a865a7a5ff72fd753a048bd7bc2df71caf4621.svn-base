@@ -1,0 +1,80 @@
+INFT\prosgaBundle\Entity\FichaDeProceso:
+    type: entity
+    table: FichaDeProceso
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        codigoDeFicha:
+            type: string
+            length: '100'
+            column: CodigoDeFicha
+        nombre:
+            type: string
+            length: 255
+            column: Nombre
+		fechaDeEmision:
+            type: datetime
+            column: FechaDeEmision
+        fechaDeRevision:
+            type: datetime
+            column: FechaDeRevision
+        nroDeRevision:
+            type: integer
+            column: NroDeRevision
+        objetivo:
+            type: string
+            length: '1000'
+            column: Objetivo
+		alcance:
+            type: string
+            length: '500'
+            column: Alcance
+        idPersonaPrepara:
+            type: integer
+            column: IdPersonaPrepara
+        idPersonaAprueba:
+            type: integer
+            column: IdPersonaAprueba        
+        idPersonaResponsable:
+            type: integer
+            column: IdPersonaResponsable        
+        idFichaDeProcesoAntecesor:
+            type: integer
+            column: IdFichaDeProcesoAntecesor
+        idFichaDeProcesoPredecesor:
+            type: integer
+            column: IdFichaDeProcesoPredecesor
+			
+	ManyToOne:
+		PersonaPrepara:
+			targetEntity: Persona
+			joinColumn:
+				name: IdPersonaPrepara
+				referencedColumName: id
+		PersonaAprueba:
+			targetEntity: Persona
+			joinColumn: 
+				name: IdPersonaAprueba
+				referencedColumName: id
+		PersonaRsponsable:
+			targetEntity: Persona
+			joinColumn:
+				name: IdPersonaResponsable
+				referencedColumName: id
+				
+	OneToOne:
+		FichaDeProcesoAntecesor:
+			targetEntity: FichaDeProceso
+			joinColumn: 
+				name: IdFichaDeProcesoAntecesor
+				referencedColumName: id
+		FichaDeProcesoPredecesor:
+			targetEntity: FichaDeProceso
+			joinColumn: 
+				name: IdFichaDeProcesoPredecesor
+				referencedColumName: id		
+		
+    lifecycleCallbacks: {  }

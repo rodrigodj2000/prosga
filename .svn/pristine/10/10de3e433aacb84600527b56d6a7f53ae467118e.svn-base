@@ -1,0 +1,35 @@
+INFT\prosgaBundle\Entity\DocumentoHistorial:
+    type: entity
+    table: DocumentoHistorial
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        fechaModificacion:
+            type: datetime
+            column: FechaModificacion
+        observacion:
+            type: string
+            length: '1000'
+            column: Observacion
+        idDocumento:
+            type: integer
+            column: IdDocumento			
+        idPersona:
+            type: integer
+            column: IdPersona
+			
+	ManyToOne:
+		Documento:
+			targetEntity: Documento
+			joinColumn: 
+				name: IdDocumento
+				referencedColumnName: id
+		Persona:
+			targetEntity: Persona
+			joinColumn:
+				name: IdPersona
+				referencedColumnName: id
+    lifecycleCallbacks: {  }

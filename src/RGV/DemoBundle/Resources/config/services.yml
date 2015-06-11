@@ -1,0 +1,7 @@
+parameters:
+#    rgv_demo.example.class: RGV\DemoBundle\Example
+
+services:
+#    rgv_demo.example:
+#        class: %rgv_demo.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

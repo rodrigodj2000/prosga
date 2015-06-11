@@ -1,0 +1,26 @@
+f4d965821c8d249d97dedbb741c713f13c45c19f		branch '2.2' of git://github.com/sonata-project/SonataBlockBundle
+8be4fc77f8c5f84fbbb51536d321bbd4bfd3680e	not-for-merge	branch '2.0' of git://github.com/sonata-project/SonataBlockBundle
+3f18e2df3171bb1149f55ffcb34ecc41169bf15f	not-for-merge	branch '2.1' of git://github.com/sonata-project/SonataBlockBundle
+a70128c88429076af0a889581fa45fc412fd5751	not-for-merge	branch '2.2.0-fix' of git://github.com/sonata-project/SonataBlockBundle
+a3f540a029c2e3738f74d48a4814c2936c0bb6c1	not-for-merge	branch '2.2.7-support' of git://github.com/sonata-project/SonataBlockBundle
+f7f28af8b6d9abf23e5e20704c7d5f410ab60154	not-for-merge	branch 'master' of git://github.com/sonata-project/SonataBlockBundle
+8426d6ad8c7ca385857ce74e594159fd58f17574	not-for-merge	branch 'migrate_inline_validation' of git://github.com/sonata-project/SonataBlockBundle
+c94f228a0f591a2ef2921511ae6152228c39d357	not-for-merge	tag '2.1.0' of git://github.com/sonata-project/SonataBlockBundle
+e34ad2fc8e84cd708bffc5084c9dd02d9574b137	not-for-merge	tag '2.1.1' of git://github.com/sonata-project/SonataBlockBundle
+8079bb42163dd901335d505a4ffed3b9e3851f1a	not-for-merge	tag '2.1.2' of git://github.com/sonata-project/SonataBlockBundle
+4eb1be8020bbbc7c571174fdae9a69aa90ba3ca1	not-for-merge	tag '2.2.0' of git://github.com/sonata-project/SonataBlockBundle
+3250d135f6f65d9d5e924adf9791895f986125b8	not-for-merge	tag '2.2.1' of git://github.com/sonata-project/SonataBlockBundle
+7203aa3f9b849d5ac3bf5fdd7bb12a8db0f054fe	not-for-merge	tag '2.2.10' of git://github.com/sonata-project/SonataBlockBundle
+49cb89ce354a2c814d4cc9933288e647d4201355	not-for-merge	tag '2.2.11' of git://github.com/sonata-project/SonataBlockBundle
+43574b6457aabffdd374067ca633ba3961dc766f	not-for-merge	tag '2.2.12' of git://github.com/sonata-project/SonataBlockBundle
+497edb2a757aafbd521d12afe579e23b74be8e55	not-for-merge	tag '2.2.13' of git://github.com/sonata-project/SonataBlockBundle
+0281aa93d9f5f160b2bf8d6725fdc185c3e2202a	not-for-merge	tag '2.2.2' of git://github.com/sonata-project/SonataBlockBundle
+007075b04859aec3ab1f8da714faac5c9d3dd26c	not-for-merge	tag '2.2.3' of git://github.com/sonata-project/SonataBlockBundle
+d736808c4ad148ae09b94a05bfd976c2d95a2f81	not-for-merge	tag '2.2.4' of git://github.com/sonata-project/SonataBlockBundle
+b9a84e5a7850b0402ecb285a57a76e2a29c247f6	not-for-merge	tag '2.2.5' of git://github.com/sonata-project/SonataBlockBundle
+b6cd37906e2070f8e1f6f4b6a0dd3912adfb4380	not-for-merge	tag '2.2.6' of git://github.com/sonata-project/SonataBlockBundle
+fe385865022f26b48d3742136975914d95b8aa36	not-for-merge	tag '2.2.7' of git://github.com/sonata-project/SonataBlockBundle
+7d5e97931d7db0270cb656484dff5881710e46c4	not-for-merge	tag '2.2.8' of git://github.com/sonata-project/SonataBlockBundle
+1e593e0e71693e2611765b240ebe1139eb91432b	not-for-merge	tag '2.2.9' of git://github.com/sonata-project/SonataBlockBundle
+86757470d9a0df71e74646817cb378982b259f91	not-for-merge	tag '2.3.0' of git://github.com/sonata-project/SonataBlockBundle
+f7f28af8b6d9abf23e5e20704c7d5f410ab60154	not-for-merge	tag '2.3.1' of git://github.com/sonata-project/SonataBlockBundle

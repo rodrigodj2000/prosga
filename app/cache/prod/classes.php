@@ -7039,7 +7039,7 @@ if (is_string($id)) {
 $this->load($id);
 }
 }
-return $this->sortServices($this->services);
+return $this->services;
 }
 public function getServicesByContext($context, $includeContainers = true)
 {
@@ -7054,7 +7054,7 @@ continue;
 }
 $services[$name] = $this->getService($name);
 }
-return $this->sortServices($services);
+return $services;
 }
 public function getLoadedServices()
 {
@@ -7082,16 +7082,6 @@ $this->inValidate = false;
 } catch (\Exception $e) {
 $this->inValidate = false;
 }
-}
-private function sortServices($services)
-{
-uasort($services, function($a, $b) {
-if ($a->getName() == $b->getName()) {
-return 0;
-}
-return ($a->getName() < $b->getName()) ? -1 : 1;
-});
-return $services;
 }
 }
 }
@@ -7953,12 +7943,15 @@ use Sonata\AdminBundle\Admin\FieldDescriptionInterface;
 use Sonata\AdminBundle\Builder\FormContractorInterface;
 use Sonata\AdminBundle\Builder\ListBuilderInterface;
 use Sonata\AdminBundle\Builder\DatagridBuilderInterface;
+use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
 use Sonata\AdminBundle\Security\Handler\SecurityHandlerInterface;
 use Sonata\AdminBundle\Builder\RouteBuilderInterface;
 use Sonata\AdminBundle\Translator\LabelTranslatorStrategyInterface;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Route\RouteGeneratorInterface;
 use Knp\Menu\FactoryInterface as MenuFactoryInterface;
+use Knp\Menu\ItemInterface as MenuItemInterface;
+use Sonata\CoreBundle\Model\Metadata;
 use Symfony\Component\Validator\ValidatorInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -8059,12 +8052,12 @@ public function prePersist($object);
 public function postPersist($object);
 public function preRemove($object);
 public function postRemove($object);
+public function preBatchAction($actionName, ProxyQueryInterface $query, array & $idx, $allElements);
 public function getFilterParameters();
 public function hasSubject();
 public function validate(ErrorElement $errorElement, $object);
 public function showIn($context);
 public function createObjectSecurity($object);
-public function getRoute($name);
 public function getParent();
 public function setParent(AdminInterface $admin);
 public function isChild();
@@ -8073,6 +8066,10 @@ public function setTranslationDomain($translationDomain);
 public function getTranslationDomain();
 public function getFormGroups();
 public function setFormGroups(array $formGroups);
+public function getFormTabs();
+public function setFormTabs(array $formTabs);
+public function getShowTabs();
+public function setShowTabs(array $showTabs);
 public function removeFieldFromFormGroup($key);
 public function getShowGroups();
 public function setShowGroups(array $showGroups);
@@ -8092,6 +8089,9 @@ public function getBreadcrumbs($action);
 public function setCurrentChild($currentChild);
 public function getCurrentChild();
 public function getTranslationLabel($label, $context ='', $type ='');
+public function buildSideMenu($action, AdminInterface $childAdmin = null);
+public function buildTabMenu($action, AdminInterface $childAdmin = null);
+public function getObjectMetadata($object);
 }
 }
 namespace Symfony\Component\Security\Acl\Model
@@ -8103,6 +8103,9 @@ public function getObjectIdentifier();
 }
 namespace Sonata\AdminBundle\Admin
 {
+use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
+use Sonata\AdminBundle\Route\RoutesCache;
+use Sonata\CoreBundle\Model\Metadata;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\PropertyAccess\PropertyPath;
@@ -8136,7 +8139,7 @@ abstract class Admin implements AdminInterface, DomainObjectInterface
 {
 const CONTEXT_MENU ='menu';
 const CONTEXT_DASHBOARD ='dashboard';
-const CLASS_REGEX ='@([A-Za-z0-9]*)\\\(Bundle\\\)?([A-Za-z0-9]+)Bundle\\\(Entity|Document|Model|PHPCR|CouchDocument|Phpcr|Doctrine\\\Orm|Doctrine\\\Phpcr|Doctrine\\\MongoDB|Doctrine\\\CouchDB)\\\(.*)@';
+const CLASS_REGEX ='@(?:([A-Za-z0-9]*)\\\)?(Bundle\\\)?([A-Za-z0-9]+)Bundle\\\(Entity|Document|Model|PHPCR|CouchDocument|Phpcr|Doctrine\\\Orm|Doctrine\\\Phpcr|Doctrine\\\MongoDB|Doctrine\\\CouchDB)\\\(.*)@';
 private $class;
 private $subClasses = array();
 private $list;
@@ -8153,7 +8156,9 @@ protected $baseRouteName;
 protected $baseRoutePattern;
 protected $baseControllerName;
 private $formGroups = false;
+private $formTabs = false;
 private $showGroups = false;
+private $showTabs = false;
 protected $classnameLabel;
 protected $translationDomain ='messages';
 protected $formOptions = array();
@@ -8189,7 +8194,7 @@ protected $validator = null;
 protected $configurationPool;
 protected $menu;
 protected $menuFactory;
-protected $loaded = array('view_fields'=> false,'view_groups'=> false,'routes'=> false,'side_menu'=> false,
+protected $loaded = array('view_fields'=> false,'view_groups'=> false,'routes'=> false,'tab_menu'=> false,
 );
 protected $formTheme = array();
 protected $filterTheme = array();
@@ -8198,6 +8203,7 @@ protected $extensions = array();
 protected $labelTranslatorStrategy;
 protected $supportsPreviewMode = false;
 protected $securityInformation = array();
+protected $cacheIsGranted = array();
 protected function configureFormFields(FormMapper $form)
 {
 }
@@ -8205,9 +8211,6 @@ protected function configureListFields(ListMapper $list)
 {
 }
 protected function configureDatagridFilters(DatagridMapper $filter)
-{
-}
-protected function configureShowField(ShowMapper $show)
 {
 }
 protected function configureShowFields(ShowMapper $filter)
@@ -8218,6 +8221,10 @@ protected function configureRoutes(RouteCollection $collection)
 }
 protected function configureSideMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
 {
+}
+protected function configureTabMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
+{
+$this->configureSideMenu($menu, $action, $childAdmin);
 }
 public function getExportFormats()
 {
@@ -8261,11 +8268,15 @@ $this->preUpdate($object);
 foreach ($this->extensions as $extension) {
 $extension->preUpdate($this, $object);
 }
-$this->getModelManager()->update($object);
+$result = $this->getModelManager()->update($object);
+if (null !== $result) {
+$object = $result;
+}
 $this->postUpdate($object);
 foreach ($this->extensions as $extension) {
 $extension->postUpdate($this, $object);
 }
+return $object;
 }
 public function create($object)
 {
@@ -8273,12 +8284,16 @@ $this->prePersist($object);
 foreach ($this->extensions as $extension) {
 $extension->prePersist($this, $object);
 }
-$this->getModelManager()->create($object);
+$result = $this->getModelManager()->create($object);
+if (null !== $result) {
+$object = $result;
+}
 $this->postPersist($object);
 foreach ($this->extensions as $extension) {
 $extension->postPersist($this, $object);
 }
 $this->createObjectSecurity($object);
+return $object;
 }
 public function delete($object)
 {
@@ -8305,6 +8320,9 @@ public function preRemove($object)
 {}
 public function postRemove($object)
 {}
+public function preBatchAction($actionName, ProxyQueryInterface $query, array & $idx, $allElements)
+{
+}
 protected function buildShow()
 {
 if ($this->show) {
@@ -8312,7 +8330,7 @@ return;
 }
 $this->show = new FieldDescriptionCollection();
 $mapper = new ShowMapper($this->showBuilder, $this->show, $this);
-$this->configureShowField($mapper); $this->configureShowFields($mapper);
+$this->configureShowFields($mapper);
 foreach ($this->getExtensions() as $extension) {
 $extension->configureShowFields($mapper);
 }
@@ -8393,7 +8411,7 @@ $this->datagrid->getPager()->setMaxPageLinks($this->maxPageLinks);
 $mapper = new DatagridMapper($this->getDatagridBuilder(), $this->datagrid, $this);
 $this->configureDatagridFilters($mapper);
 if ($this->isChild() && $this->getParentAssociationMapping() && !$mapper->has($this->getParentAssociationMapping())) {
-$mapper->add($this->getParentAssociationMapping(), null, array('field_type'=>'sonata_type_model_reference','field_options'=> array('model_manager'=> $this->getModelManager()
+$mapper->add($this->getParentAssociationMapping(), null, array('label'=> false,'field_type'=>'sonata_type_model_hidden','field_options'=> array('model_manager'=> $this->getModelManager()
 ),'operator_type'=>'hidden'));
 }
 foreach ($this->getExtensions() as $extension) {
@@ -8411,7 +8429,7 @@ return;
 }
 if ($this->isChild() && $this->getParentAssociationMapping()) {
 $parent = $this->getParent()->getObject($this->request->get($this->getParent()->getIdParameter()));
-$propertyAccessor = PropertyAccess::getPropertyAccessor();
+$propertyAccessor = PropertyAccess::createPropertyAccessor();
 $propertyPath = new PropertyPath($this->getParentAssociationMapping());
 $object = $this->getSubject();
 $value = $propertyAccessor->getValue($object, $propertyPath);
@@ -8436,8 +8454,8 @@ $this->getParent()->getBaseRoutePattern(),
 $this->urlize($matches[5],'-')
 );
 } else {
-$this->baseRoutePattern = sprintf('/%s/%s/%s',
-$this->urlize($matches[1],'-'),
+$this->baseRoutePattern = sprintf('/%s%s/%s',
+empty($matches[1]) ?'': $this->urlize($matches[1],'-').'/',
 $this->urlize($matches[3],'-'),
 $this->urlize($matches[5],'-')
 );
@@ -8457,8 +8475,8 @@ $this->getParent()->getBaseRouteName(),
 $this->urlize($matches[5])
 );
 } else {
-$this->baseRouteName = sprintf('admin_%s_%s_%s',
-$this->urlize($matches[1]),
+$this->baseRouteName = sprintf('admin_%s%s_%s',
+empty($matches[1]) ?'': $this->urlize($matches[1]).'_',
 $this->urlize($matches[3]),
 $this->urlize($matches[5])
 );
@@ -8472,13 +8490,13 @@ return strtolower(preg_replace('/[^a-z0-9_]/i', $sep.'$1', $word));
 }
 public function getClass()
 {
-if ($this->hasSubject()) {
+if ($this->hasSubject() && is_object($this->getSubject())) {
 return ClassUtils::getClass($this->getSubject());
 }
 if (!$this->hasActiveSubClass()) {
 if (count($this->getSubClasses()) > 0) {
 $subject = $this->getSubject();
-if ($subject) {
+if ($subject && is_object($subject)) {
 return ClassUtils::getClass($subject);
 }
 }
@@ -8555,7 +8573,7 @@ public function getIdParameter()
 {
 return $this->isChild() ?'childId':'id';
 }
-public function buildRoutes()
+private function buildRoutes()
 {
 if ($this->loaded['routes']) {
 return;
@@ -8573,26 +8591,12 @@ foreach ($this->getExtensions() as $extension) {
 $extension->configureRoutes($this, $this->routes);
 }
 }
-public function getRoute($name)
-{
-$this->buildRoutes();
-if (!$this->routes->has($name)) {
-return false;
-}
-return $this->routes->get($name);
-}
 public function hasRoute($name)
 {
-$this->buildRoutes();
-if (
-! $this->isChild()
-&& strpos($name,'.') !== false
-&& strpos($name, $this->getBaseCodeRoute() .'|') !== 0
-&& strpos($name, $this->getBaseCodeRoute() .'.') !== 0
-) {
-$name = $this->getCode() .'|'. $name;
+if (!$this->routeGenerator) {
+throw new \RuntimeException('RouteGenerator cannot be null');
 }
-return $this->routes->has($name);
+return $this->routeGenerator->hasAdminRoute($this, $name);
 }
 public function generateObjectUrl($name, $object, array $parameters = array(), $absolute = false)
 {
@@ -8716,22 +8720,26 @@ public function getDatagrid()
 $this->buildDatagrid();
 return $this->datagrid;
 }
-public function buildSideMenu($action, AdminInterface $childAdmin = null)
+public function buildTabMenu($action, AdminInterface $childAdmin = null)
 {
-if ($this->loaded['side_menu']) {
+if ($this->loaded['tab_menu']) {
 return;
 }
-$this->loaded['side_menu'] = true;
+$this->loaded['tab_menu'] = true;
 $menu = $this->menuFactory->createItem('root');
-$menu->setChildrenAttribute('class','nav nav-list');
+$menu->setChildrenAttribute('class','nav navbar-nav');
 if (method_exists($menu,"setCurrentUri")) {
 $menu->setCurrentUri($this->getRequest()->getBaseUrl().$this->getRequest()->getPathInfo());
 }
-$this->configureSideMenu($menu, $action, $childAdmin);
+$this->configureTabMenu($menu, $action, $childAdmin);
 foreach ($this->getExtensions() as $extension) {
-$extension->configureSideMenu($this, $menu, $action, $childAdmin);
+$extension->configureTabMenu($this, $menu, $action, $childAdmin);
 }
 $this->menu = $menu;
+}
+public function buildSideMenu($action, AdminInterface $childAdmin = null)
+{
+return $this->buildTabMenu($action, $childAdmin);
 }
 public function getSideMenu($action, AdminInterface $childAdmin = null)
 {
@@ -8811,6 +8819,22 @@ public function reorderFormGroup($group, array $keys)
 $formGroups = $this->getFormGroups();
 $formGroups[$group]['fields'] = array_merge(array_flip($keys), $formGroups[$group]['fields']);
 $this->setFormGroups($formGroups);
+}
+public function getFormTabs()
+{
+return $this->formTabs;
+}
+public function setFormTabs(array $formTabs)
+{
+$this->formTabs = $formTabs;
+}
+public function getShowTabs()
+{
+return $this->showTabs;
+}
+public function setShowTabs(array $showTabs)
+{
+$this->showTabs = $showTabs;
 }
 public function getShowGroups()
 {
@@ -9257,7 +9281,11 @@ return $this->securityHandler;
 }
 public function isGranted($name, $object = null)
 {
-return $this->securityHandler->isGranted($this, $name, $object ?: $this);
+$key = md5(json_encode($name) . ($object ?'/'.spl_object_hash($object) :''));
+if (!array_key_exists($key, $this->cacheIsGranted)) {
+$this->cacheIsGranted[$key] = $this->securityHandler->isGranted($this, $name, $object ?: $this);
+}
+return $this->cacheIsGranted[$key];
 }
 public function getUrlsafeIdentifier($entity)
 {
@@ -9368,6 +9396,10 @@ public function isAclEnabled()
 {
 return $this->getSecurityHandler() instanceof AclSecurityHandlerInterface;
 }
+public function getObjectMetadata($object)
+{
+return new Metadata($this->toString($object));
+}
 }
 }
 namespace Sonata\AdminBundle\Admin
@@ -9389,6 +9421,7 @@ public function configureDatagridFilters(DatagridMapper $filter);
 public function configureShowFields(ShowMapper $filter);
 public function configureRoutes(AdminInterface $admin, RouteCollection $collection);
 public function configureSideMenu(AdminInterface $admin, MenuItemInterface $menu, $action, AdminInterface $childAdmin = null);
+public function configureTabMenu(AdminInterface $admin, MenuItemInterface $menu, $action, AdminInterface $childAdmin = null);
 public function validate(AdminInterface $admin, ErrorElement $errorElement, $object);
 public function configureQuery(AdminInterface $admin, ProxyQueryInterface $query, $context ='list');
 public function alterNewInstance(AdminInterface $admin, $object);
@@ -9427,6 +9460,10 @@ public function configureRoutes(AdminInterface $admin, RouteCollection $collecti
 {}
 public function configureSideMenu(AdminInterface $admin, MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
 {}
+public function configureTabMenu(AdminInterface $admin, MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
+{
+$this->configureSideMenu($admin, $menu, $action, $childAdmin);
+}
 public function validate(AdminInterface $admin, ErrorElement $errorElement, $object)
 {}
 public function configureQuery(AdminInterface $admin, ProxyQueryInterface $query, $context ='list')
@@ -9455,6 +9492,7 @@ public function postRemove(AdminInterface $admin, $object)
 }
 namespace Sonata\AdminBundle\Admin
 {
+use Doctrine\Common\Inflector\Inflector;
 use Doctrine\Common\Util\ClassUtils;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormView;
@@ -9496,7 +9534,7 @@ public function appendFormFieldElement(AdminInterface $admin, $subject, $element
 $formBuilder = $admin->getFormBuilder();
 $form = $formBuilder->getForm();
 $form->setData($subject);
-$form->bind($admin->getRequest());
+$form->submit($admin->getRequest());
 $childFormBuilder = $this->getChildFormBuilder($formBuilder, $elementId);
 $fieldDescription = $admin->getFormFieldDescription($childFormBuilder->getName());
 try {
@@ -9534,7 +9572,10 @@ $method = sprintf('add%s', $this->camelize($mapping['fieldName']));
 if (!method_exists($object, $method)) {
 $method = rtrim($method,'s');
 if (!method_exists($object, $method)) {
+$method = sprintf('add%s', $this->camelize(Inflector::singularize($mapping['fieldName'])));
+if (!method_exists($object, $method)) {
 throw new \RuntimeException(sprintf('Please add a method %s in the %s class!', $method, ClassUtils::getClass($object)));
+}
 }
 }
 $object->$method($instance);
@@ -9719,14 +9760,14 @@ $parameters = array();
 if ($this->getOption('code')) {
 $getters[] = $this->getOption('code');
 }
-if($this->getOption('parameters')){
+if ($this->getOption('parameters')) {
 $parameters = $this->getOption('parameters');
 }
 $getters[] ='get'. $camelizedFieldName;
 $getters[] ='is'. $camelizedFieldName;
 foreach ($getters as $getter) {
 if (method_exists($object, $getter)) {
-return call_user_func_array(array($object, $getter),$parameters);
+return call_user_func_array(array($object, $getter), $parameters);
 }
 }
 if (isset($object->{$fieldName})) {
@@ -9870,6 +9911,7 @@ protected $adminServiceIds = array();
 protected $adminGroups = array();
 protected $adminClasses = array();
 protected $templates = array();
+protected $assets = array();
 protected $title;
 protected $titleLogo;
 protected $options;
@@ -9960,6 +10002,9 @@ return $admin;
 }
 public function getInstance($id)
 {
+if (!in_array($id, $this->adminServiceIds)) {
+throw new \InvalidArgumentException(sprintf('Admin service "%s" not found in admin pool.', $id));
+}
 return $this->container->get($id);
 }
 public function getContainer()
@@ -10013,12 +10058,12 @@ public function getTitle()
 {
 return $this->title;
 }
-public function getOption($name)
+public function getOption($name, $default = null)
 {
 if (isset($this->options[$name])) {
 return $this->options[$name];
 }
-return null;
+return $default;
 }
 }
 }
@@ -10163,8 +10208,6 @@ public function hasActiveFilters();
 }
 namespace Sonata\AdminBundle\Datagrid
 {
-use Sonata\AdminBundle\Datagrid\PagerInterface;
-use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
 use Sonata\AdminBundle\Filter\FilterInterface;
 use Sonata\AdminBundle\Admin\FieldDescriptionCollection;
 use Sonata\AdminBundle\Admin\FieldDescriptionInterface;
@@ -10213,14 +10256,14 @@ $this->formBuilder->add($filter->getFormName(), $type, $options);
 }
 $this->formBuilder->add('_sort_by','hidden');
 $this->formBuilder->get('_sort_by')->addViewTransformer(new CallbackTransformer(
-function($value) { return $value; },
-function($value) { return $value instanceof FieldDescriptionInterface ? $value->getName() : $value; }
+function ($value) { return $value; },
+function ($value) { return $value instanceof FieldDescriptionInterface ? $value->getName() : $value; }
 ));
 $this->formBuilder->add('_sort_order','hidden');
 $this->formBuilder->add('_page','hidden');
 $this->formBuilder->add('_per_page','hidden');
 $this->form = $this->formBuilder->getForm();
-$this->form->bind($this->values);
+$this->form->submit($this->values);
 $data = $this->form->getData();
 foreach ($this->getFilters() as $name => $filter) {
 $this->values[$name] = isset($this->values[$name]) ? $this->values[$name] : null;
@@ -10235,8 +10278,28 @@ $this->query->setSortBy($this->values['_sort_by']->getSortParentAssociationMappi
 $this->query->setSortOrder(isset($this->values['_sort_order']) ? $this->values['_sort_order'] : null);
 }
 }
-$this->pager->setMaxPerPage(isset($this->values['_per_page']) ? $this->values['_per_page'] : 25);
-$this->pager->setPage(isset($this->values['_page']) ? $this->values['_page'] : 1);
+$maxPerPage = 25;
+if (isset($this->values['_per_page'])) {
+if (is_array($this->values['_per_page'])) {
+if (isset($this->values['_per_page']['value'])) {
+$maxPerPage = $this->values['_per_page']['value'];
+}
+} else {
+$maxPerPage = $this->values['_per_page'];
+}
+}
+$this->pager->setMaxPerPage($maxPerPage);
+$page = 1;
+if (isset($this->values['_page'])) {
+if (is_array($this->values['_page'])) {
+if (isset($this->values['_page']['value'])) {
+$page = $this->values['_page']['value'];
+}
+} else {
+$page = $this->values['_page'];
+}
+}
+$this->pager->setPage($page);
 $this->pager->setQuery($this->query);
 $this->pager->init();
 $this->bound = true;
@@ -10315,10 +10378,10 @@ public function getAdmin()
 {
 return $this->admin;
 }
-public abstract function get($key);
-public abstract function has($key);
-public abstract function remove($key);
-public abstract function reorder(array $keys);
+abstract public function get($key);
+abstract public function has($key);
+abstract public function remove($key);
+abstract public function reorder(array $keys);
 }
 }
 namespace Sonata\AdminBundle\Datagrid
@@ -10402,7 +10465,8 @@ public function addIdentifier($name, $type = null, array $fieldDescriptionOption
 {
 $fieldDescriptionOptions['identifier'] = true;
 if (!isset($fieldDescriptionOptions['route']['name'])) {
-$fieldDescriptionOptions['route']['name'] ='edit';
+$routeName = $this->admin->isGranted('EDIT') ?'edit':'show';
+$fieldDescriptionOptions['route']['name'] = $routeName;
 }
 if (!isset($fieldDescriptionOptions['route']['parameters'])) {
 $fieldDescriptionOptions['route']['parameters'] = array();
@@ -10421,14 +10485,17 @@ unset($fieldDescriptionOptions['actions']['view']);
 if ($name instanceof FieldDescriptionInterface) {
 $fieldDescription = $name;
 $fieldDescription->mergeOptions($fieldDescriptionOptions);
-} elseif (is_string($name) && !$this->admin->hasListFieldDescription($name)) {
+} elseif (is_string($name)) {
+if ($this->admin->hasListFieldDescription($name)) {
+throw new \RuntimeException(sprintf('Duplicate field name "%s" in list mapper. Names should be unique.', $name));
+}
 $fieldDescription = $this->admin->getModelManager()->getNewFieldDescriptionInstance(
 $this->admin->getClass(),
 $name,
 $fieldDescriptionOptions
 );
 } else {
-throw new \RuntimeException('Unknown or duplicate field name in list mapper. Field name should be either of FieldDescriptionInterface interface or string. Names should be unique.');
+throw new \RuntimeException('Unknown field name in list mapper. Field name should be either of FieldDescriptionInterface interface or string.');
 }
 if (!$fieldDescription->getLabel()) {
 $fieldDescription->setOption('label', $this->admin->getLabelTranslatorStrategy()->getLabel($fieldDescription->getName(),'list','label'));
@@ -10939,7 +11006,7 @@ public function getFieldName()
 {
 $fieldName = $this->getOption('field_name');
 if (!$fieldName) {
-throw new \RunTimeException(sprintf('The option `field_name` must be set for field : `%s`', $this->getName()));
+throw new \RuntimeException(sprintf('The option `field_name` must be set for field: `%s`', $this->getName()));
 }
 return $fieldName;
 }
@@ -10951,7 +11018,7 @@ public function getFieldMapping()
 {
 $fieldMapping = $this->getOption('field_mapping');
 if (!$fieldMapping) {
-throw new \RunTimeException(sprintf('The option `field_mapping` must be set for field : `%s`', $this->getName()));
+throw new \RuntimeException(sprintf('The option `field_mapping` must be set for field: `%s`', $this->getName()));
 }
 return $fieldMapping;
 }
@@ -10959,7 +11026,7 @@ public function getAssociationMapping()
 {
 $associationMapping = $this->getOption('association_mapping');
 if (!$associationMapping) {
-throw new \RunTimeException(sprintf('The option `association_mapping` must be set for field : `%s`', $this->getName()));
+throw new \RuntimeException(sprintf('The option `association_mapping` must be set for field: `%s`', $this->getName()));
 }
 return $associationMapping;
 }
@@ -11384,7 +11451,7 @@ $choices = array();
 $this->entities = array();
 foreach ($entities as $key => $entity) {
 if ($this->propertyPath) {
-$propertyAccessor = PropertyAccess::getPropertyAccessor();
+$propertyAccessor = PropertyAccess::createPropertyAccessor();
 $value = $propertyAccessor->getValue($entity, $this->propertyPath);
 } else {
 try {
@@ -11573,7 +11640,7 @@ public function transform($entity)
 if (empty($entity)) {
 return null;
 }
-return current($this->modelManager->getIdentifierValues($entity));
+return $this->modelManager->getNormalizedIdentifier($entity);
 }
 }
 }
@@ -11593,7 +11660,7 @@ $this->modelManager = $modelManager;
 public static function getSubscribedEvents()
 {
 return array(
-FormEvents::BIND => array('onBind', 10),
+FormEvents::SUBMIT => array('onBind', 10),
 );
 }
 public function onBind(FormEvent $event)
@@ -11673,6 +11740,7 @@ public function buildForm(FormBuilderInterface $builder, array $options)
 $sonataAdmin = array('name'=> null,'admin'=> null,'value'=> null,'edit'=>'standard','inline'=>'natural','field_description'=> null,'block_name'=> false
 );
 $builder->setAttribute('sonata_admin_enabled', false);
+$builder->setAttribute('sonata_help', false);
 if ($options['sonata_field_description'] instanceof FieldDescriptionInterface) {
 $fieldDescription = $options['sonata_field_description'];
 $sonataAdmin['admin'] = $fieldDescription->getAdmin();
@@ -11706,6 +11774,7 @@ return $types;
 public function buildView(FormView $view, FormInterface $form, array $options)
 {
 $sonataAdmin = $form->getConfig()->getAttribute('sonata_admin');
+$sonataAdminHelp = isset($options['sonata_help']) ? $options['sonata_help'] : null;
 if ($sonataAdmin && $form->getConfig()->getAttribute('sonata_admin_enabled', true)) {
 $sonataAdmin['value'] = $form->getData();
 $block_prefixes = $view->vars['block_prefixes'];
@@ -11729,6 +11798,7 @@ $view->vars['attr'] = $attr;
 } else {
 $view->vars['sonata_admin_enabled'] = false;
 }
+$view->vars['sonata_help'] = $sonataAdminHelp;
 $view->vars['sonata_admin'] = $sonataAdmin;
 }
 public function getExtendedType()
@@ -11737,7 +11807,7 @@ return'field';
 }
 public function setDefaultOptions(OptionsResolverInterface $resolver)
 {
-$resolver->setDefaults(array('sonata_admin'=> null,'sonata_field_description'=> null,'label_render'=> true,
+$resolver->setDefaults(array('sonata_admin'=> null,'sonata_field_description'=> null,'label_render'=> true,'sonata_help'=> null
 ));
 }
 public function getValueFromFieldDescription($object, FieldDescriptionInterface $fieldDescription)
@@ -11762,23 +11832,71 @@ namespace Sonata\AdminBundle\Mapper
 abstract class BaseGroupedMapper extends BaseMapper
 {
 protected $currentGroup;
-protected abstract function getGroups();
-protected abstract function setGroups(array $groups);
+protected $currentTab;
+abstract protected function getGroups();
+abstract protected function getTabs();
+abstract protected function setGroups(array $groups);
+abstract protected function setTabs(array $tabs);
 public function with($name, array $options = array())
 {
-$groups = $this->getGroups();
-if (!isset($groups[$name])) {
-$groups[$name] = array();
+$defaultOptions = array('collapsed'=> false,'class'=> false,'description'=> false,'translation_domain'=> null,'name'=> $name,
+);
+$code = $name;
+if (array_key_exists('tab', $options) && $options['tab']) {
+$tabs = $this->getTabs();
+if ($this->currentTab) {
+if (isset($tabs[$this->currentTab]['auto_created']) && true === $tabs[$this->currentTab]['auto_created']) {
+throw new \RuntimeException('New tab was added automatically when you have added field or group. You should close current tab before adding new one OR add tabs before adding groups and fields.');
+} else {
+throw new \RuntimeException(sprintf('You should close previous tab "%s" with end() before adding new tab "%s".', $this->currentTab, $name));
 }
-$groups[$name] = array_merge(array('collapsed'=> false,'fields'=> array(),'description'=> false,'translation_domain'=> null,
-), $groups[$name], $options);
+} elseif ($this->currentGroup) {
+throw new \RuntimeException(sprintf('You should open tab before adding new group "%s".', $name));
+}
+if (!isset($tabs[$name])) {
+$tabs[$name] = array();
+}
+$tabs[$code] = array_merge($defaultOptions, array('auto_created'=> false,'groups'=> array(),
+), $tabs[$code], $options);
+$this->currentTab = $code;
+} else {
+if ($this->currentGroup) {
+throw new \RuntimeException(sprintf('You should close previous group "%s" with end() before adding new tab "%s".', $this->currentGroup, $name));
+}
+if (!$this->currentTab) {
+$this->with('default', array('tab'=> true,'auto_created'=> true,'translation_domain'=> isset($options['translation_domain']) ? $options['translation_domain'] : null
+)); }
+if ($this->currentTab !=='default') {
+$code = $this->currentTab.'.'.$name; }
+$groups = $this->getGroups();
+if (!isset($groups[$code])) {
+$groups[$code] = array();
+}
+$groups[$code] = array_merge($defaultOptions, array('fields'=> array(),
+), $groups[$code], $options);
+$this->currentGroup = $code;
 $this->setGroups($groups);
-$this->currentGroup = $name;
+$tabs = $this->getTabs();
+}
+if ($this->currentGroup && isset($tabs[$this->currentTab]) && !in_array($this->currentGroup, $tabs[$this->currentTab]['groups'])) {
+$tabs[$this->currentTab]['groups'][] = $this->currentGroup;
+}
+$this->setTabs($tabs);
 return $this;
+}
+public function tab($name, array $options = array())
+{
+return $this->with($name, array_merge($options, array('tab'=> true)));
 }
 public function end()
 {
+if ($this->currentGroup !== null) {
 $this->currentGroup = null;
+} elseif ($this->currentTab !== null) {
+$this->currentTab = null;
+} else {
+throw new \RuntimeException('No open tabs or groups, you cannot use end()');
+}
 return $this;
 }
 protected function addFieldToCurrentGroup($fieldName)
@@ -11792,7 +11910,7 @@ return $groups[$currentGroup];
 protected function getCurrentGroupName()
 {
 if (!$this->currentGroup) {
-$this->with($this->admin->getLabel());
+$this->with($this->admin->getLabel(), array('auto_created'=> true));
 }
 return $this->currentGroup;
 }
@@ -11827,6 +11945,9 @@ $fieldName = $name;
 if (!$name instanceof FormBuilder && strpos($fieldName,'.')!==false && !isset($options['property_path'])) {
 $options['property_path'] = $fieldName;
 $fieldName = str_replace('.','__', $fieldName);
+}
+if ($type =='collection') {
+$type ='sonata_type_native_collection';
 }
 $label = $fieldName;
 $group = $this->addFieldToCurrentGroup($label);
@@ -11908,6 +12029,14 @@ protected function setGroups(array $groups)
 {
 $this->admin->setFormGroups($groups);
 }
+protected function getTabs()
+{
+return $this->admin->getFormTabs();
+}
+protected function setTabs(array $tabs)
+{
+$this->admin->setFormTabs($tabs);
+}
 }
 }
 namespace Sonata\AdminBundle\Form\Type
@@ -11916,6 +12045,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\Form\ReversedTransformer;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Sonata\AdminBundle\Form\DataTransformer\ArrayToModelTransformer;
@@ -11923,13 +12053,17 @@ class AdminType extends AbstractType
 {
 public function buildForm(FormBuilderInterface $builder, array $options)
 {
-$admin = $this->getAdmin($options);
+$admin = clone $this->getAdmin($options);
+if ($admin->hasParentFieldDescription()) {
+$admin->getParentFieldDescription()->setAssociationAdmin($admin);
+}
 if ($options['delete'] && $admin->isGranted('DELETE')) {
-$builder->add('_delete','checkbox', array('required'=> false,'mapped'=> false,'translation_domain'=> $admin->getTranslationDomain()));
+if (!array_key_exists('translation_domain', $options['delete_options']['type_options'])) {
+$options['delete_options']['type_options']['translation_domain'] = $admin->getTranslationDomain();
 }
-if (!$admin->hasSubject()) {
+$builder->add('_delete', $options['delete_options']['type'], $options['delete_options']['type_options']);
+}
 $admin->setSubject($builder->getData());
-}
 $admin->defineFormBuilder($builder);
 $builder->addModelTransformer(new ArrayToModelTransformer($admin->getModelManager(), $admin->getClass()));
 }
@@ -11944,7 +12078,9 @@ public function setDefaultOptions(OptionsResolverInterface $resolver)
 {
 $resolver->setDefaults(array('delete'=> function (Options $options) {
 return ($options['btn_delete'] !== false);
-},'auto_initialize'=> false,'btn_add'=>'link_add','btn_list'=>'link_list','btn_delete'=>'link_delete','btn_catalogue'=>'SonataAdminBundle'));
+},'delete_options'=> array('type'=>'checkbox','type_options'=> array('required'=> false,'mapped'=> false,
+),
+),'auto_initialize'=> false,'btn_add'=>'link_add','btn_list'=>'link_list','btn_delete'=>'link_delete','btn_catalogue'=>'SonataAdminBundle'));
 }
 protected function getFieldDescription(array $options)
 {
@@ -12029,7 +12165,7 @@ self::TYPE_NOT_BETWEEN => $this->translator->trans('label_date_type_not_between'
 );
 $builder
 ->add('type','choice', array('choices'=> $choices,'required'=> false))
-->add('value','sonata_type_date_range', array('field_options'=> $options['field_options']))
+->add('value', $options['field_type'], array('field_options'=> $options['field_options']))
 ;
 }
 public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -12066,7 +12202,7 @@ self::TYPE_NOT_BETWEEN => $this->translator->trans('label_date_type_not_between'
 );
 $builder
 ->add('type','choice', array('choices'=> $choices,'required'=> false))
-->add('value','sonata_type_datetime_range', array('field_options'=> $options['field_options']))
+->add('value', $options['field_type'], array('field_options'=> $options['field_options']))
 ;
 }
 public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -12113,7 +12249,7 @@ self::TYPE_NOT_NULL => $this->translator->trans('label_date_type_not_null', arra
 );
 $builder
 ->add('type','choice', array('choices'=> $choices,'required'=> false))
-->add('value','datetime', array_merge(array('required'=> false), $options['field_options']))
+->add('value', $options['field_type'], array_merge(array('required'=> false), $options['field_options']))
 ;
 }
 public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -12160,7 +12296,7 @@ self::TYPE_NOT_NULL => $this->translator->trans('label_date_type_not_null', arra
 );
 $builder
 ->add('type','choice', array('choices'=> $choices,'required'=> false))
-->add('value','date', array_merge(array('required'=> false), $options['field_options']))
+->add('value', $options['field_type'], array_merge(array('required'=> false), $options['field_options']))
 ;
 }
 public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -12365,7 +12501,7 @@ $view->vars['btn_catalogue'] = $options['btn_catalogue'];
 }
 public function setDefaultOptions(OptionsResolverInterface $resolver)
 {
-$resolver->setDefaults(array('model_manager'=> null,'class'=> null,'parent'=>'text','btn_add'=>'link_add','btn_list'=>'link_list','btn_delete'=>'link_delete','btn_catalogue'=>'SonataAdminBundle'));
+$resolver->setDefaults(array('model_manager'=> null,'class'=> null,'btn_add'=>'link_add','btn_list'=>'link_list','btn_delete'=>'link_delete','btn_catalogue'=>'SonataAdminBundle'));
 }
 public function getParent()
 {
@@ -12478,6 +12614,7 @@ public function find($className, $id, $revision);
 public function findRevisionHistory($className, $limit = 20, $offset = 0);
 public function findRevision($classname, $revision);
 public function findRevisions($className, $id);
+public function diff($className, $id, $oldRevision, $newRevision);
 }
 }
 namespace Sonata\AdminBundle\Model
@@ -12674,6 +12811,7 @@ interface RouteGeneratorInterface
 public function generateUrl(AdminInterface $admin, $name, array $parameters = array(), $absolute = false);
 public function generateMenuUrl(AdminInterface $admin, $name, array $parameters = array(), $absolute = false);
 public function generate($name, array $parameters = array(), $absolute = false);
+public function hasAdminRoute(AdminInterface $admin, $name);
 }
 }
 namespace Sonata\AdminBundle\Route
@@ -12683,9 +12821,13 @@ use Symfony\Component\Routing\RouterInterface;
 class DefaultRouteGenerator implements RouteGeneratorInterface
 {
 private $router;
-public function __construct(RouterInterface $router)
+private $cache;
+private $caches = array();
+private $loaded = array();
+public function __construct(RouterInterface $router, RoutesCache $cache)
 {
 $this->router = $router;
+$this->cache = $cache;
 }
 public function generate($name, array $parameters = array(), $absolute = false)
 {
@@ -12698,20 +12840,12 @@ return $this->router->generate($arrayRoute['route'], $arrayRoute['routeParameter
 }
 public function generateMenuUrl(AdminInterface $admin, $name, array $parameters = array(), $absolute = false)
 {
-if (!$admin->isChild()) {
-if (strpos($name,'.')) {
-$name = $admin->getCode().'|'.$name;
-} else {
-$name = $admin->getCode().'.'.$name;
-}
-}
-else {
-$name = $admin->getBaseCodeRoute().'.'.$name;
+if ($admin->isChild() && $admin->hasRequest() && $admin->getRequest()->attributes->has($admin->getParent()->getIdParameter())) {
 if (isset($parameters['id'])) {
 $parameters[$admin->getIdParameter()] = $parameters['id'];
 unset($parameters['id']);
 }
-$parameters[$admin->getParent()->getIdParameter()] = $admin->getRequest()->get($admin->getParent()->getIdParameter());
+$parameters[$admin->getParent()->getIdParameter()] = $admin->getRequest()->attributes->get($admin->getParent()->getIdParameter());
 }
 if ($admin->hasParentFieldDescription()) {
 $parameters = array_merge($parameters, $admin->getParentFieldDescription()->getOption('link_parameters', array()));
@@ -12727,12 +12861,41 @@ $parameters['code'] = $admin->getCode();
 if ($admin->hasRequest()) {
 $parameters = array_merge($admin->getPersistentParameters(), $parameters);
 }
-$route = $admin->getRoute($name);
-if (!$route) {
-throw new \RuntimeException(sprintf('unable to find the route `%s`', $name));
+$code = $this->getCode($admin, $name);
+if (!array_key_exists($code, $this->caches)) {
+throw new \RuntimeException(sprintf('unable to find the route `%s`', $code));
 }
-return array('route'=> $route->getDefault('_sonata_name'),'routeParameters'=> $parameters,'routeAbsolute'=> $absolute
+return array('route'=> $this->caches[$code],'routeParameters'=> $parameters,'routeAbsolute'=> $absolute
 );
+}
+public function hasAdminRoute(AdminInterface $admin, $name)
+{
+return array_key_exists($this->getCode($admin, $name), $this->caches);
+}
+private function getCode(AdminInterface $admin, $name)
+{
+$this->loadCache($admin);
+if ($admin->isChild()) {
+return $admin->getBaseCodeRoute().'.'.$name;
+}
+if (array_key_exists($name, $this->caches)) {
+return $name;
+}
+if (strpos($name,'.')) {
+return $admin->getCode().'|'.$name;
+}
+return $admin->getCode().'.'.$name;
+}
+private function loadCache(AdminInterface $admin)
+{
+if (in_array($admin->getCode(), $this->loaded)) {
+return;
+}
+$this->caches = array_merge($this->cache->load($admin), $this->caches);
+$this->loaded[] = $admin->getCode();
+if ($admin->isChild()) {
+$this->loadCache($admin->getParent());
+}
 }
 }
 }
@@ -12760,6 +12923,7 @@ $collection->add('export');
 if ($this->manager->hasReader($admin->getClass())) {
 $collection->add('history', $admin->getRouterIdParameter().'/history');
 $collection->add('history_view_revision', $admin->getRouterIdParameter().'/history/{revision}/view');
+$collection->add('history_compare_revisions', $admin->getRouterIdParameter().'/history/{base_revision}/{compare_revision}/compare');
 }
 if ($admin->isAclEnabled()) {
 $collection->add('acl', $admin->getRouterIdParameter().'/acl');
@@ -12797,6 +12961,7 @@ $collection->add('export');
 if ($this->manager->hasReader($admin->getClass())) {
 $collection->add('history','/audit-history');
 $collection->add('history_view_revision','/audit-history-view');
+$collection->add('history_compare_revisions','/audit-history-compare');
 }
 if ($admin->isAclEnabled()) {
 $collection->add('acl', $admin->getRouterIdParameter().'/acl');
@@ -12829,17 +12994,19 @@ $this->baseControllerName = $baseControllerName;
 }
 public function add($name, $pattern = null, array $defaults = array(), array $requirements = array(), array $options = array())
 {
-$pattern = sprintf('%s/%s', $this->baseRoutePattern, $pattern ?: $name);
+$pattern = $this->baseRoutePattern .'/'. ($pattern ?: $name);
 $code = $this->getCode($name);
-$routeName = sprintf('%s_%s', $this->baseRouteName, $name);
+$routeName = $this->baseRouteName .'_'. $name;
 if (!isset($defaults['_controller'])) {
-$defaults['_controller'] = sprintf('%s:%s', $this->baseControllerName, $this->actionify($code));
+$defaults['_controller'] = $this->baseControllerName .':'. $this->actionify($code);
 }
 if (!isset($defaults['_sonata_admin'])) {
 $defaults['_sonata_admin'] = $this->baseCodeRoute;
 }
 $defaults['_sonata_name'] = $routeName;
-$this->elements[$this->getCode($name)] = new Route($pattern, $defaults, $requirements, $options);
+$this->elements[$this->getCode($name)] = function() use ($pattern, $defaults, $requirements, $options) {
+return new Route($pattern, $defaults, $requirements, $options);
+};
 return $this;
 }
 public function getCode($name)
@@ -12847,7 +13014,7 @@ public function getCode($name)
 if (strrpos($name,'.') !== false) {
 return $name;
 }
-return sprintf('%s.%s', $this->baseCodeRoute, $name);
+return $this->baseCodeRoute .'.'. $name;
 }
 public function addCollection(RouteCollection $collection)
 {
@@ -12856,8 +13023,18 @@ $this->elements[$code] = $route;
 }
 return $this;
 }
+private function resolve($element)
+{
+if (is_callable($element)) {
+return call_user_func($element);
+}
+return $element;
+}
 public function getElements()
 {
+foreach ($this->elements as $name => $element) {
+$this->elements[$name] = $this->resolve($element);
+}
 return $this->elements;
 }
 public function has($name)
@@ -12867,7 +13044,9 @@ return array_key_exists($this->getCode($name), $this->elements);
 public function get($name)
 {
 if ($this->has($name)) {
-return $this->elements[$this->getCode($name)];
+$code = $this->getCode($name);
+$this->elements[$code] = $this->resolve($this->elements[$code]);
+return $this->elements[$code];
 }
 throw new \InvalidArgumentException(sprintf('Element "%s" does not exist.', $name));
 }
@@ -12921,8 +13100,7 @@ public function getBaseRoutePattern()
 {
 return $this->baseRoutePattern;
 }
-}
-}
+}}
 namespace Symfony\Component\Security\Acl\Permission
 {
 interface PermissionMapInterface
@@ -13462,6 +13640,14 @@ protected function setGroups(array $groups)
 {
 $this->admin->setShowGroups($groups);
 }
+protected function getTabs()
+{
+return $this->admin->getShowTabs();
+}
+protected function setTabs(array $tabs)
+{
+$this->admin->setShowTabs($tabs);
+}
 }
 }
 namespace Sonata\AdminBundle\Translator
@@ -13534,13 +13720,16 @@ use Sonata\AdminBundle\Admin\FieldDescriptionInterface;
 use Sonata\AdminBundle\Exception\NoValueException;
 use Sonata\AdminBundle\Admin\Pool;
 use Symfony\Component\PropertyAccess\PropertyAccess;
+use Psr\Log\LoggerInterface;
 class SonataAdminExtension extends \Twig_Extension
 {
 protected $environment;
 protected $pool;
-public function __construct(Pool $pool)
+protected $logger;
+public function __construct(Pool $pool, LoggerInterface $logger = null)
 {
 $this->pool = $pool;
+$this->logger = $logger;
 }
 public function initRuntime(\Twig_Environment $environment)
 {
@@ -13548,7 +13737,7 @@ $this->environment = $environment;
 }
 public function getFilters()
 {
-return array('render_list_element'=> new \Twig_Filter_Method($this,'renderListElement', array('is_safe'=> array('html'))),'render_view_element'=> new \Twig_Filter_Method($this,'renderViewElement', array('is_safe'=> array('html'))),'render_relation_element'=> new \Twig_Filter_Method($this,'renderRelationElement'),'sonata_urlsafeid'=> new \Twig_Filter_Method($this,'getUrlsafeIdentifier'),'sonata_xeditable_type'=> new \Twig_Filter_Method($this,'getXEditableType'),
+return array('render_list_element'=> new \Twig_Filter_Method($this,'renderListElement', array('is_safe'=> array('html'))),'render_view_element'=> new \Twig_Filter_Method($this,'renderViewElement', array('is_safe'=> array('html'))),'render_view_element_compare'=> new \Twig_Filter_Method($this,'renderViewElementCompare', array('is_safe'=> array('html'))),'render_relation_element'=> new \Twig_Filter_Method($this,'renderRelationElement'),'sonata_urlsafeid'=> new \Twig_Filter_Method($this,'getUrlsafeIdentifier'),'sonata_xeditable_type'=> new \Twig_Filter_Method($this,'getXEditableType'),
 );
 }
 public function getTokenParsers()
@@ -13561,11 +13750,14 @@ return'sonata_admin';
 }
 protected function getTemplate(FieldDescriptionInterface $fieldDescription, $defaultTemplate)
 {
-$templateName = $fieldDescription->getTemplate() ? : $defaultTemplate;
+$templateName = $fieldDescription->getTemplate() ?: $defaultTemplate;
 try {
 $template = $this->environment->loadTemplate($templateName);
 } catch (\Twig_Error_Loader $e) {
 $template = $this->environment->loadTemplate($defaultTemplate);
+if (null !== $this->logger) {
+$this->logger->warning(sprintf('An error occured trying to load the template "%s" for the field "%s", the default template "%s" was used instead: "%s". ', $templateName, $fieldDescription->getFieldName(), $defaultTemplate, $e->getMessage()));
+}
 }
 return $template;
 }
@@ -13615,6 +13807,27 @@ $value = null;
 return $this->output($fieldDescription, $template, array('field_description'=> $fieldDescription,'object'=> $object,'value'=> $value,'admin'=> $fieldDescription->getAdmin()
 ));
 }
+public function renderViewElementCompare(FieldDescriptionInterface $fieldDescription, $baseObject, $compareObject)
+{
+$template = $this->getTemplate($fieldDescription,'SonataAdminBundle:CRUD:base_show_field.html.twig');
+try {
+$baseValue = $fieldDescription->getValue($baseObject);
+} catch (NoValueException $e) {
+$baseValue = null;
+}
+try {
+$compareValue = $fieldDescription->getValue($compareObject);
+} catch (NoValueException $e) {
+$compareValue = null;
+}
+$baseValueOutput = $template->render(array('admin'=> $fieldDescription->getAdmin(),'field_description'=> $fieldDescription,'value'=> $baseValue
+));
+$compareValueOutput = $template->render(array('field_description'=> $fieldDescription,'admin'=> $fieldDescription->getAdmin(),'value'=> $compareValue
+));
+$isDiff = $baseValueOutput !== $compareValueOutput;
+return $this->output($fieldDescription, $template, array('field_description'=> $fieldDescription,'value'=> $baseValue,'value_compare'=> $compareValue,'is_diff'=> $isDiff,'admin'=> $fieldDescription->getAdmin()
+));
+}
 public function renderRelationElement($element, FieldDescriptionInterface $fieldDescription)
 {
 if (!is_object($element)) {
@@ -13632,7 +13845,7 @@ $fieldDescription->getAdmin()->getCode()
 }
 return call_user_func(array($element, $method));
 }
-return PropertyAccess::getPropertyAccessor()->getValue($element, $propertyPath);
+return PropertyAccess::createPropertyAccessor()->getValue($element, $propertyPath);
 }
 public function getUrlsafeIdentifier($model)
 {
@@ -14075,7 +14288,7 @@ protected function getValue()
 if ($this->current =='') {
 return $this->subject;
 }
-$propertyAccessor = PropertyAccess::getPropertyAccessor();
+$propertyAccessor = PropertyAccess::createPropertyAccessor();
 return $propertyAccessor->getValue($this->subject, $this->getCurrentPropertyPath());
 }
 public function getSubject()

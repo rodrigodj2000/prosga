@@ -1,0 +1,49 @@
+INFT\prosgaBundle\Entity\ArchivoAdjunto:
+    type: entity
+    table: ArchivoAdjunto
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+		observacion:
+            type: string
+            length: '1000'
+            column: Observacion
+        idDocumento:
+            type: integer
+            column: IdDocumento
+        idControl:
+            type: integer
+            column: IdControl
+        idIndicador:
+            type: integer
+            column: IdIndicador
+        idFichaDeProceso:
+            type: integer
+            column: IdFichaDeProceso       
+			
+	OneToOne:
+		Documento:
+			targetEntity: Documento
+			joinColumn:
+				name: IdDocumento
+				referencedColumnName: id
+		Control:
+			targetEntity: Control
+			joinColumn:
+				name: IdControl
+				referencedColumnName: id
+		Indicador:
+			targetEntity: Indicador
+			joinColumn:
+				name: IdIndicador
+				referencedColumnName: id
+		FichaDeProceso:
+			targetEntity: FichaDeProceso
+			joinColumn:
+				name: IdFichaDeProceso
+				referencedColumnName: id
+				
+    lifecycleCallbacks: {  }

@@ -1,0 +1,18 @@
+INFT\prosgaBundle\Entity\Usuario:
+    type: entity
+    table: Usuario
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombreUsuario:
+            type: string
+            length: '15'
+            column: NombreUsuario
+        password:
+            type: string
+            length: 255
+            column: Password
+    lifecycleCallbacks: {  }

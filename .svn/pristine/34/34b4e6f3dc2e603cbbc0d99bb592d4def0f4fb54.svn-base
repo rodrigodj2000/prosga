@@ -1,0 +1,8 @@
+11109d,127.0.0.1,GET,http://localhost/prosga/web/app_dev.php/,1433865727,
+289c07,127.0.0.1,GET,http://localhost/prosga/web/app_dev.php/admin,1433865746,
+3923ea,127.0.0.1,GET,http://localhost/prosga/web/app_dev.php/admin/,1433865752,
+148b09,127.0.0.1,GET,http://localhost/prosga/web/app_dev.php/admin/login,1433865761,
+215cbc,127.0.0.1,POST,http://localhost/prosga/web/app_dev.php/admin/login_check,1433865782,
+324d1e,127.0.0.1,GET,http://localhost/prosga/web/app_dev.php/admin/,1433865788,
+e412ac,127.0.0.1,GET,http://localhost/prosga/web/app_dev.php/admin/dashboard,1433865797,
+228eeb,127.0.0.1,GET,http://localhost/prosga/web/app_dev.php/admin/sonata/user/user/list,1433865881,

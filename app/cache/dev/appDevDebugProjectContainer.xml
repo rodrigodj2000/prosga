@@ -19,6 +19,7 @@
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="SonataCoreBundle">Sonata\CoreBundle\SonataCoreBundle</parameter>
       <parameter key="SonataBlockBundle">Sonata\BlockBundle\SonataBlockBundle</parameter>
+      <parameter key="RGVSiteBundle">RGV\SiteBundle\RGVSiteBundle</parameter>
       <parameter key="KnpMenuBundle">Knp\Bundle\MenuBundle\KnpMenuBundle</parameter>
       <parameter key="SonataEasyExtendsBundle">Sonata\EasyExtendsBundle\SonataEasyExtendsBundle</parameter>
       <parameter key="SonataDoctrineORMAdminBundle">Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle</parameter>
@@ -33,12 +34,12 @@
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
-    <parameter key="database_driver">pdo_sqlsrv</parameter>
-    <parameter key="database_host">sheldon</parameter>
-    <parameter key="database_port">1433</parameter>
-    <parameter key="database_name">prosga_db</parameter>
-    <parameter key="database_user">sa</parameter>
-    <parameter key="database_password">inft67496sa</parameter>
+    <parameter key="database_driver">pdo_mysql</parameter>
+    <parameter key="database_host">inft.com.ar</parameter>
+    <parameter key="database_port">null</parameter>
+    <parameter key="database_name">prosga</parameter>
+    <parameter key="database_user">prosga</parameter>
+    <parameter key="database_password">prosga</parameter>
     <parameter key="mailer_transport">smtp</parameter>
     <parameter key="mailer_host">127.0.0.1</parameter>
     <parameter key="mailer_user">null</parameter>
@@ -414,7 +415,10 @@
     <parameter key="assetic.value_supplier.class">Symfony\Bundle\AsseticBundle\DefaultValueSupplier</parameter>
     <parameter key="assetic.node.paths" type="collection"/>
     <parameter key="assetic.cache_dir">D:\xampp182\htdocs\prosga\app\cache\dev/assetic</parameter>
-    <parameter key="assetic.bundles" type="collection"/>
+    <parameter key="assetic.bundles" type="collection">
+      <parameter>RGVSiteBundle</parameter>
+      <parameter>prosgaBundle</parameter>
+    </parameter>
     <parameter key="assetic.twig_extension.class">Symfony\Bundle\AsseticBundle\Twig\AsseticExtension</parameter>
     <parameter key="assetic.twig_formula_loader.class">Assetic\Extension\Twig\TwigFormulaLoader</parameter>
     <parameter key="assetic.helper.dynamic.class">Symfony\Bundle\AsseticBundle\Templating\DynamicAsseticHelper</parameter>
@@ -426,7 +430,7 @@
     <parameter key="assetic.read_from">D:\xampp182\htdocs\prosga\app/../web</parameter>
     <parameter key="assetic.write_to">D:\xampp182\htdocs\prosga\app/../web</parameter>
     <parameter key="assetic.variables" type="collection"/>
-    <parameter key="assetic.java.bin">c:\Windows\system32\java.EXE</parameter>
+    <parameter key="assetic.java.bin">C:\Windows\system32\java.EXE</parameter>
     <parameter key="assetic.node.bin">/usr/bin/node</parameter>
     <parameter key="assetic.ruby.bin">/usr/bin/ruby</parameter>
     <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
@@ -596,6 +600,7 @@
           <parameter key="percent">SonataAdminBundle:CRUD:list_percent.html.twig</parameter>
           <parameter key="choice">SonataAdminBundle:CRUD:list_choice.html.twig</parameter>
           <parameter key="url">SonataAdminBundle:CRUD:list_url.html.twig</parameter>
+          <parameter key="html">SonataAdminBundle:CRUD:list_html.html.twig</parameter>
         </parameter>
         <parameter key="show" type="collection">
           <parameter key="array">SonataAdminBundle:CRUD:show_array.html.twig</parameter>
@@ -610,10 +615,11 @@
           <parameter key="bigint">SonataAdminBundle:CRUD:base_show_field.html.twig</parameter>
           <parameter key="integer">SonataAdminBundle:CRUD:base_show_field.html.twig</parameter>
           <parameter key="decimal">SonataAdminBundle:CRUD:base_show_field.html.twig</parameter>
-          <parameter key="currency">SonataAdminBundle:CRUD:base_currency.html.twig</parameter>
-          <parameter key="percent">SonataAdminBundle:CRUD:base_percent.html.twig</parameter>
+          <parameter key="currency">SonataAdminBundle:CRUD:show_currency.html.twig</parameter>
+          <parameter key="percent">SonataAdminBundle:CRUD:show_percent.html.twig</parameter>
           <parameter key="choice">SonataAdminBundle:CRUD:show_choice.html.twig</parameter>
           <parameter key="url">SonataAdminBundle:CRUD:show_url.html.twig</parameter>
+          <parameter key="html">SonataAdminBundle:CRUD:show_html.html.twig</parameter>
         </parameter>
       </parameter>
       <parameter key="form" type="collection">
@@ -626,11 +632,14 @@
     <parameter key="sonata.admin.configuration.templates" type="collection">
       <parameter key="user_block">SonataUserBundle:Admin/Core:user_block.html.twig</parameter>
       <parameter key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</parameter>
+      <parameter key="add_block">SonataAdminBundle:Core:add_block.html.twig</parameter>
       <parameter key="layout">SonataAdminBundle::standard_layout.html.twig</parameter>
       <parameter key="ajax">SonataAdminBundle::ajax_layout.html.twig</parameter>
       <parameter key="search">SonataAdminBundle:Core:search.html.twig</parameter>
       <parameter key="list">SonataAdminBundle:CRUD:list.html.twig</parameter>
+      <parameter key="filter">SonataAdminBundle:Form:filter_admin_fields.html.twig</parameter>
       <parameter key="show">SonataAdminBundle:CRUD:show.html.twig</parameter>
+      <parameter key="show_compare">SonataAdminBundle:CRUD:show_compare.html.twig</parameter>
       <parameter key="edit">SonataAdminBundle:CRUD:edit.html.twig</parameter>
       <parameter key="preview">SonataAdminBundle:CRUD:preview.html.twig</parameter>
       <parameter key="history">SonataAdminBundle:CRUD:history.html.twig</parameter>
@@ -648,6 +657,7 @@
       <parameter key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</parameter>
       <parameter key="pager_links">SonataAdminBundle:Pager:links.html.twig</parameter>
       <parameter key="pager_results">SonataAdminBundle:Pager:results.html.twig</parameter>
+      <parameter key="tab_menu_template">SonataAdminBundle:Core:tab_menu_template.html.twig</parameter>
     </parameter>
     <parameter key="sonata.admin.configuration.admin_services" type="collection"/>
     <parameter key="sonata.admin.configuration.dashboard_groups" type="collection"/>
@@ -1047,6 +1057,7 @@
             <argument type="service" id="doctrine"/>
           </service>
         </argument>
+        <argument type="service" id="sonata.admin.route.cache_warmup"/>
       </argument>
     </service>
     <service id="cache_clearer" class="Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer">
@@ -1095,7 +1106,9 @@
     </service>
     <service id="translator.default" class="Symfony\Bundle\FrameworkBundle\Translation\Translator">
       <argument type="service" id="service_container"/>
-      <argument type="service" id="translator.selector"/>
+      <argument type="service">
+        <service class="Symfony\Component\Translation\MessageSelector" public="false"/>
+      </argument>
       <argument type="collection">
         <argument key="translation.loader.php" type="collection">
           <argument>php</argument>
@@ -1133,11 +1146,1608 @@
         <argument key="cache_dir">D:\xampp182\htdocs\prosga\app\cache\dev/translations</argument>
         <argument key="debug">true</argument>
       </argument>
+      <call method="setFallbackLocales">
+        <argument type="collection">
+          <argument>en</argument>
+        </argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.af.xlf</argument>
+        <argument>af</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ar.xlf</argument>
+        <argument>ar</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.az.xlf</argument>
+        <argument>az</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.bg.xlf</argument>
+        <argument>bg</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ca.xlf</argument>
+        <argument>ca</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.cs.xlf</argument>
+        <argument>cs</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.cy.xlf</argument>
+        <argument>cy</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.da.xlf</argument>
+        <argument>da</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.de.xlf</argument>
+        <argument>de</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.el.xlf</argument>
+        <argument>el</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.en.xlf</argument>
+        <argument>en</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.es.xlf</argument>
+        <argument>es</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.et.xlf</argument>
+        <argument>et</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.eu.xlf</argument>
+        <argument>eu</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.fa.xlf</argument>
+        <argument>fa</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.fi.xlf</argument>
+        <argument>fi</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.gl.xlf</argument>
+        <argument>gl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.he.xlf</argument>
+        <argument>he</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.hr.xlf</argument>
+        <argument>hr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.hu.xlf</argument>
+        <argument>hu</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.hy.xlf</argument>
+        <argument>hy</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.id.xlf</argument>
+        <argument>id</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.it.xlf</argument>
+        <argument>it</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ja.xlf</argument>
+        <argument>ja</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.lb.xlf</argument>
+        <argument>lb</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.lt.xlf</argument>
+        <argument>lt</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.mn.xlf</argument>
+        <argument>mn</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.nb.xlf</argument>
+        <argument>nb</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.nl.xlf</argument>
+        <argument>nl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.no.xlf</argument>
+        <argument>no</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.pl.xlf</argument>
+        <argument>pl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.pt.xlf</argument>
+        <argument>pt</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.pt_BR.xlf</argument>
+        <argument>pt_BR</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ro.xlf</argument>
+        <argument>ro</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.ru.xlf</argument>
+        <argument>ru</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sk.xlf</argument>
+        <argument>sk</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sl.xlf</argument>
+        <argument>sl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sq.xlf</argument>
+        <argument>sq</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sr_Cyrl.xlf</argument>
+        <argument>sr_Cyrl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sr_Latn.xlf</argument>
+        <argument>sr_Latn</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.sv.xlf</argument>
+        <argument>sv</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.th.xlf</argument>
+        <argument>th</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.tr.xlf</argument>
+        <argument>tr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.uk.xlf</argument>
+        <argument>uk</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.vi.xlf</argument>
+        <argument>vi</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.zh_CN.xlf</argument>
+        <argument>zh_CN</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Validator/Resources/translations\validators.zh_TW.xlf</argument>
+        <argument>zh_TW</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ar.xlf</argument>
+        <argument>ar</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.az.xlf</argument>
+        <argument>az</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.bg.xlf</argument>
+        <argument>bg</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ca.xlf</argument>
+        <argument>ca</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.cs.xlf</argument>
+        <argument>cs</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.da.xlf</argument>
+        <argument>da</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.de.xlf</argument>
+        <argument>de</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.el.xlf</argument>
+        <argument>el</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.en.xlf</argument>
+        <argument>en</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.es.xlf</argument>
+        <argument>es</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.et.xlf</argument>
+        <argument>et</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.eu.xlf</argument>
+        <argument>eu</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.fa.xlf</argument>
+        <argument>fa</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.fi.xlf</argument>
+        <argument>fi</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.gl.xlf</argument>
+        <argument>gl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.he.xlf</argument>
+        <argument>he</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.hr.xlf</argument>
+        <argument>hr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.hu.xlf</argument>
+        <argument>hu</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.hy.xlf</argument>
+        <argument>hy</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.id.xlf</argument>
+        <argument>id</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.it.xlf</argument>
+        <argument>it</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ja.xlf</argument>
+        <argument>ja</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.lb.xlf</argument>
+        <argument>lb</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.lt.xlf</argument>
+        <argument>lt</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.lv.xlf</argument>
+        <argument>lv</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.mn.xlf</argument>
+        <argument>mn</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.nb.xlf</argument>
+        <argument>nb</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.nl.xlf</argument>
+        <argument>nl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.pl.xlf</argument>
+        <argument>pl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.pt.xlf</argument>
+        <argument>pt</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.pt_BR.xlf</argument>
+        <argument>pt_BR</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ro.xlf</argument>
+        <argument>ro</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.ru.xlf</argument>
+        <argument>ru</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sk.xlf</argument>
+        <argument>sk</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sl.xlf</argument>
+        <argument>sl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sr_Cyrl.xlf</argument>
+        <argument>sr_Cyrl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sr_Latn.xlf</argument>
+        <argument>sr_Latn</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.sv.xlf</argument>
+        <argument>sv</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.uk.xlf</argument>
+        <argument>uk</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Form/Resources/translations\validators.zh_CN.xlf</argument>
+        <argument>zh_CN</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.ar.xlf</argument>
+        <argument>ar</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.az.xlf</argument>
+        <argument>az</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.bg.xlf</argument>
+        <argument>bg</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.ca.xlf</argument>
+        <argument>ca</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.cs.xlf</argument>
+        <argument>cs</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.da.xlf</argument>
+        <argument>da</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.de.xlf</argument>
+        <argument>de</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.el.xlf</argument>
+        <argument>el</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.en.xlf</argument>
+        <argument>en</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.es.xlf</argument>
+        <argument>es</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.fa.xlf</argument>
+        <argument>fa</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.gl.xlf</argument>
+        <argument>gl</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.he.xlf</argument>
+        <argument>he</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.hr.xlf</argument>
+        <argument>hr</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.hu.xlf</argument>
+        <argument>hu</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.id.xlf</argument>
+        <argument>id</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.it.xlf</argument>
+        <argument>it</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.ja.xlf</argument>
+        <argument>ja</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.lb.xlf</argument>
+        <argument>lb</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.lt.xlf</argument>
+        <argument>lt</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.nl.xlf</argument>
+        <argument>nl</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.no.xlf</argument>
+        <argument>no</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.pl.xlf</argument>
+        <argument>pl</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.pt_BR.xlf</argument>
+        <argument>pt_BR</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.pt_PT.xlf</argument>
+        <argument>pt_PT</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.ro.xlf</argument>
+        <argument>ro</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.ru.xlf</argument>
+        <argument>ru</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.sk.xlf</argument>
+        <argument>sk</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.sl.xlf</argument>
+        <argument>sl</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.sr_Cyrl.xlf</argument>
+        <argument>sr_Cyrl</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.sr_Latn.xlf</argument>
+        <argument>sr_Latn</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.sv.xlf</argument>
+        <argument>sv</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.th.xlf</argument>
+        <argument>th</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.tr.xlf</argument>
+        <argument>tr</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.ua.xlf</argument>
+        <argument>ua</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.vi.xlf</argument>
+        <argument>vi</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\symfony\symfony\src\Symfony\Component\Security\Core\Exception/../../Resources/translations\security.zh_CN.xlf</argument>
+        <argument>zh_CN</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.ar.xliff</argument>
+        <argument>ar</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.bg.xliff</argument>
+        <argument>bg</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.ca.xliff</argument>
+        <argument>ca</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.cs.xliff</argument>
+        <argument>cs</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.de.xliff</argument>
+        <argument>de</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.en.xliff</argument>
+        <argument>en</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.es.xliff</argument>
+        <argument>es</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.eu.xliff</argument>
+        <argument>eu</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.fa.xliff</argument>
+        <argument>fa</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.fi.xliff</argument>
+        <argument>fi</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.fr.xliff</argument>
+        <argument>fr</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.hr.xliff</argument>
+        <argument>hr</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.hu.xliff</argument>
+        <argument>hu</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.it.xliff</argument>
+        <argument>it</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.ja.xliff</argument>
+        <argument>ja</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.lb.xliff</argument>
+        <argument>lb</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.lt.xliff</argument>
+        <argument>lt</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.nl.xliff</argument>
+        <argument>nl</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.pl.xliff</argument>
+        <argument>pl</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.pt.xliff</argument>
+        <argument>pt</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.pt_BR.xliff</argument>
+        <argument>pt_BR</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.ro.xliff</argument>
+        <argument>ro</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.ru.xliff</argument>
+        <argument>ru</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.sk.xliff</argument>
+        <argument>sk</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.sl.xliff</argument>
+        <argument>sl</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.uk.xliff</argument>
+        <argument>uk</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\core-bundle/Resources/translations\SonataCoreBundle.zh_CN.xliff</argument>
+        <argument>zh_CN</argument>
+        <argument>SonataCoreBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\src\RGV\SiteBundle/Resources/translations\RGVSiteBundle.en.yml</argument>
+        <argument>en</argument>
+        <argument>RGVSiteBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\src\RGV\SiteBundle/Resources/translations\RGVSiteBundle.es.yml</argument>
+        <argument>es</argument>
+        <argument>RGVSiteBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\src\RGV\SiteBundle/Resources/translations\validators.en.yml</argument>
+        <argument>en</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\src\RGV\SiteBundle/Resources/translations\validators.es.yml</argument>
+        <argument>es</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.ar.xliff</argument>
+        <argument>ar</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.bg.xliff</argument>
+        <argument>bg</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.ca.xliff</argument>
+        <argument>ca</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.cs.xliff</argument>
+        <argument>cs</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.de.xliff</argument>
+        <argument>de</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.en.xliff</argument>
+        <argument>en</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.es.xliff</argument>
+        <argument>es</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.eu.xliff</argument>
+        <argument>eu</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.fa.xliff</argument>
+        <argument>fa</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.fr.xliff</argument>
+        <argument>fr</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.hr.xliff</argument>
+        <argument>hr</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.hu.xliff</argument>
+        <argument>hu</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.it.xliff</argument>
+        <argument>it</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.ja.xliff</argument>
+        <argument>ja</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.lb.xliff</argument>
+        <argument>lb</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.lt.xliff</argument>
+        <argument>lt</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.nl.xliff</argument>
+        <argument>nl</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.pl.xliff</argument>
+        <argument>pl</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.pt.xliff</argument>
+        <argument>pt</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.pt_BR.xliff</argument>
+        <argument>pt_BR</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.ro.xliff</argument>
+        <argument>ro</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.ru.xliff</argument>
+        <argument>ru</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.sk.xliff</argument>
+        <argument>sk</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.sl.xliff</argument>
+        <argument>sl</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.uk.xliff</argument>
+        <argument>uk</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/translations\SonataAdminBundle.zh_CN.xliff</argument>
+        <argument>zh_CN</argument>
+        <argument>SonataAdminBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.bg.yml</argument>
+        <argument>bg</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.ca.yml</argument>
+        <argument>ca</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.cs.yml</argument>
+        <argument>cs</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.da.yml</argument>
+        <argument>da</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.de.yml</argument>
+        <argument>de</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.en.yml</argument>
+        <argument>en</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.es.yml</argument>
+        <argument>es</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.et.yml</argument>
+        <argument>et</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.eu.yml</argument>
+        <argument>eu</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.fa.yml</argument>
+        <argument>fa</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.fi.yml</argument>
+        <argument>fi</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.fr.yml</argument>
+        <argument>fr</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.hr.yml</argument>
+        <argument>hr</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.hu.yml</argument>
+        <argument>hu</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.it.yml</argument>
+        <argument>it</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.ja.yml</argument>
+        <argument>ja</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.lb.yml</argument>
+        <argument>lb</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.lt.yml</argument>
+        <argument>lt</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.lv.yml</argument>
+        <argument>lv</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.nl.yml</argument>
+        <argument>nl</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.pl.yml</argument>
+        <argument>pl</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.pt_BR.yml</argument>
+        <argument>pt_BR</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.pt_PT.yml</argument>
+        <argument>pt_PT</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.ro.yml</argument>
+        <argument>ro</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.ru.yml</argument>
+        <argument>ru</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.sk.yml</argument>
+        <argument>sk</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.sl.yml</argument>
+        <argument>sl</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.sr_Latn.yml</argument>
+        <argument>sr_Latn</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.sv.yml</argument>
+        <argument>sv</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.tr.yml</argument>
+        <argument>tr</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.uk.yml</argument>
+        <argument>uk</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\FOSUserBundle.zh_CN.yml</argument>
+        <argument>zh_CN</argument>
+        <argument>FOSUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.bg.yml</argument>
+        <argument>bg</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.cs.yml</argument>
+        <argument>cs</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.da.yml</argument>
+        <argument>da</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.de.yml</argument>
+        <argument>de</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.en.yml</argument>
+        <argument>en</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.es.yml</argument>
+        <argument>es</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.eu.yml</argument>
+        <argument>eu</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.fa.yml</argument>
+        <argument>fa</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.fi.yml</argument>
+        <argument>fi</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.fr.yml</argument>
+        <argument>fr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.hr.yml</argument>
+        <argument>hr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.hu.yml</argument>
+        <argument>hu</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.it.yml</argument>
+        <argument>it</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.ja.yml</argument>
+        <argument>ja</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.lt.yml</argument>
+        <argument>lt</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.lv.yml</argument>
+        <argument>lv</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.nl.yml</argument>
+        <argument>nl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.pl.yml</argument>
+        <argument>pl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.pt.yml</argument>
+        <argument>pt</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.pt_BR.yml</argument>
+        <argument>pt_BR</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.ru.yml</argument>
+        <argument>ru</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.sk.yml</argument>
+        <argument>sk</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.sl.yml</argument>
+        <argument>sl</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.sr_Latn.yml</argument>
+        <argument>sr_Latn</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.sv.yml</argument>
+        <argument>sv</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.tr.yml</argument>
+        <argument>tr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.uk.yml</argument>
+        <argument>uk</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/translations\validators.zh_CN.yml</argument>
+        <argument>zh_CN</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.bg.xliff</argument>
+        <argument>bg</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.ca.xliff</argument>
+        <argument>ca</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.cs.xliff</argument>
+        <argument>cs</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.de.xliff</argument>
+        <argument>de</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.en.xliff</argument>
+        <argument>en</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.es.xliff</argument>
+        <argument>es</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.fa.xliff</argument>
+        <argument>fa</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.fr.xliff</argument>
+        <argument>fr</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.it.xliff</argument>
+        <argument>it</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.lt.xliff</argument>
+        <argument>lt</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.nl.xliff</argument>
+        <argument>nl</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.pl.xliff</argument>
+        <argument>pl</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.pt.xliff</argument>
+        <argument>pt</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.pt_BR.xliff</argument>
+        <argument>pt_BR</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.ru.xliff</argument>
+        <argument>ru</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.sk.xliff</argument>
+        <argument>sk</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.sl.xliff</argument>
+        <argument>sl</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xliff</argument>
+        <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/translations\SonataUserBundle.zh_TW.xliff</argument>
+        <argument>zh_TW</argument>
+        <argument>SonataUserBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\src\INFT\prosgaBundle/Resources/translations\RGVSiteBundle.en.yml</argument>
+        <argument>en</argument>
+        <argument>RGVSiteBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\src\INFT\prosgaBundle/Resources/translations\RGVSiteBundle.es.yml</argument>
+        <argument>es</argument>
+        <argument>RGVSiteBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\src\INFT\prosgaBundle/Resources/translations\validators.en.yml</argument>
+        <argument>en</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>D:\xampp182\htdocs\prosga\src\INFT\prosgaBundle/Resources/translations\validators.es.yml</argument>
+        <argument>es</argument>
+        <argument>validators</argument>
+      </call>
     </service>
-    <service id="translator" class="Symfony\Component\Translation\IdentityTranslator">
-      <argument type="service" id="translator.selector"/>
-    </service>
-    <service id="translator.selector" class="Symfony\Component\Translation\MessageSelector" public="false"/>
     <service id="translation.loader.php" class="Symfony\Component\Translation\Loader\PhpFileLoader">
       <tag name="translation.loader" alias="php"/>
     </service>
@@ -1404,6 +3014,8 @@
               <argument key="sonata_type_model_list">sonata.admin.form.type.model_list</argument>
               <argument key="sonata_type_model_reference">sonata.admin.form.type.model_reference</argument>
               <argument key="sonata_type_model_hidden">sonata.admin.form.type.model_hidden</argument>
+              <argument key="sonata_type_model_autocomplete">sonata.admin.form.type.model_autocomplete</argument>
+              <argument key="sonata_type_native_collection">sonata.admin.form.type.collection</argument>
               <argument key="sonata_type_filter_number">sonata.admin.form.filter.type.number</argument>
               <argument key="sonata_type_filter_choice">sonata.admin.form.filter.type.choice</argument>
               <argument key="sonata_type_filter_default">sonata.admin.form.filter.type.default</argument>
@@ -1427,6 +3039,7 @@
                 <argument>form.type_extension.form.validator</argument>
                 <argument>form.type_extension.csrf</argument>
                 <argument>sonata.admin.form.extension.field</argument>
+                <argument>sonata.admin.form.extension.field.mopa</argument>
               </argument>
               <argument key="repeated" type="collection">
                 <argument>form.type_extension.repeated.validator</argument>
@@ -1618,7 +3231,7 @@
     </service>
     <service id="templating.helper.translator" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\TranslatorHelper">
       <tag name="templating.helper" alias="translator"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
     </service>
     <service id="templating.helper.form" class="Symfony\Bundle\FrameworkBundle\Templating\Helper\FormHelper">
       <tag name="templating.helper" alias="form"/>
@@ -1938,7 +3551,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5576f0ce84bab</argument>
+            <argument>55789c67c4cb1</argument>
           </service>
         </argument>
         <argument type="service">
@@ -1952,7 +3565,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5576f0ce84bab</argument>
+            <argument>55789c67c4cb1</argument>
           </service>
         </argument>
       </argument>
@@ -2329,7 +3942,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>5576f0ce84bab</argument>
+            <argument>55789c67c4cb1</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -2447,7 +4060,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>5576f0ce84bab</argument>
+            <argument>55789c67c4cb1</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -2521,7 +4134,7 @@
         <argument type="service">
           <service class="Symfony\Bridge\Twig\Extension\TranslationExtension" public="false">
             <tag name="twig.extension"/>
-            <argument type="service" id="translator"/>
+            <argument type="service" id="translator.default"/>
           </service>
         </argument>
       </call>
@@ -2610,7 +4223,10 @@
             <argument type="service" id="templating.name_parser"/>
             <argument>true</argument>
             <argument type="collection"/>
-            <argument type="collection"/>
+            <argument type="collection">
+              <argument>RGVSiteBundle</argument>
+              <argument>prosgaBundle</argument>
+            </argument>
             <argument type="service" id="assetic.value_supplier.default" on-invalid="null"/>
           </service>
         </argument>
@@ -2748,6 +4364,60 @@
       </argument>
       <call method="addResource">
         <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.twig"/>
+            <tag name="assetic.formula_resource" loader="twig"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>RGVSiteBundle</argument>
+                  <argument>D:\xampp182\htdocs\prosga\app/Resources/RGVSiteBundle/views</argument>
+                  <argument>/\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>RGVSiteBundle</argument>
+                  <argument>D:\xampp182\htdocs\prosga\src\RGV\SiteBundle/Resources/views</argument>
+                  <argument>/\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>twig</argument>
+      </call>
+      <call method="addResource">
+        <argument type="service">
+          <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\CoalescingDirectoryResource" public="false">
+            <tag name="assetic.templating.twig"/>
+            <tag name="assetic.formula_resource" loader="twig"/>
+            <argument type="collection">
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>prosgaBundle</argument>
+                  <argument>D:\xampp182\htdocs\prosga\app/Resources/prosgaBundle/views</argument>
+                  <argument>/\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+              <argument type="service">
+                <service class="%assetic.directory_resource.class%" public="false">
+                  <argument type="service" id="templating.loader"/>
+                  <argument>prosgaBundle</argument>
+                  <argument>D:\xampp182\htdocs\prosga\src\INFT\prosgaBundle/Resources/views</argument>
+                  <argument>/\.[^.]+\.twig$/</argument>
+                </service>
+              </argument>
+            </argument>
+          </service>
+        </argument>
+        <argument>twig</argument>
+      </call>
+      <call method="addResource">
+        <argument type="service">
           <service class="Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource" public="false">
             <tag name="assetic.templating.twig"/>
             <tag name="assetic.formula_resource" loader="twig"/>
@@ -2820,12 +4490,12 @@
     <service id="doctrine.dbal.logger.profiling.default" class="Doctrine\DBAL\Logging\DebugStack" public="false"/>
     <service id="doctrine.dbal.default_connection" class="stdClass" factory-method="createConnection" factory-service="doctrine.dbal.connection_factory">
       <argument type="collection">
-        <argument key="driver">pdo_sqlsrv</argument>
-        <argument key="host">sheldon</argument>
-        <argument key="port">1433</argument>
-        <argument key="dbname">prosga_db</argument>
-        <argument key="user">sa</argument>
-        <argument key="password">inft67496sa</argument>
+        <argument key="driver">pdo_mysql</argument>
+        <argument key="host">inft.com.ar</argument>
+        <argument key="port">null</argument>
+        <argument key="dbname">prosga</argument>
+        <argument key="user">prosga</argument>
+        <argument key="password">prosga</argument>
         <argument key="charset">UTF8</argument>
         <argument key="driverOptions" type="collection"/>
       </argument>
@@ -2904,6 +4574,7 @@
               <argument key="ApplicationSonataUserBundle">Application\Sonata\UserBundle\Entity</argument>
               <argument key="FOSUserBundle">FOS\UserBundle\Entity</argument>
               <argument key="SonataUserBundle">Sonata\UserBundle\Entity</argument>
+              <argument key="prosgaBundle">INFT\prosgaBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2981,6 +4652,19 @@
                   </argument>
                   <argument>Sonata\UserBundle\Entity</argument>
                 </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver" public="false">
+                      <argument type="collection">
+                        <argument key="D:\xampp182\htdocs\prosga\src\INFT\prosgaBundle\Resources\config\doctrine">INFT\prosgaBundle\Entity</argument>
+                      </argument>
+                      <call method="setGlobalBasename">
+                        <argument>mapping</argument>
+                      </call>
+                    </service>
+                  </argument>
+                  <argument>INFT\prosgaBundle\Entity</argument>
+                </call>
               </service>
             </argument>
           </call>
@@ -3049,7 +4733,7 @@
     <service id="sonata.core.flashmessage.manager" class="Sonata\CoreBundle\FlashMessage\FlashManager">
       <tag name="sonata.status.renderer"/>
       <argument type="service" id="session"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
       <argument type="collection">
         <argument key="success" type="collection">
           <argument key="success" type="collection">
@@ -3106,15 +4790,15 @@
     </service>
     <service id="sonata.core.form.type.translatable_choice" class="Sonata\CoreBundle\Form\Type\TranslatableChoiceType">
       <tag name="form.type" alias="sonata_type_translatable_choice"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
     </service>
     <service id="sonata.core.form.type.date_range" class="Sonata\CoreBundle\Form\Type\DateRangeType">
       <tag name="form.type" alias="sonata_type_date_range"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
     </service>
     <service id="sonata.core.form.type.datetime_range" class="Sonata\CoreBundle\Form\Type\DateTimeRangeType">
       <tag name="form.type" alias="sonata_type_datetime_range"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
     </service>
     <service id="sonata.core.form.type.date_picker" class="Sonata\CoreBundle\Form\Type\DatePickerType">
       <tag name="form.type" alias="sonata_type_date_picker"/>
@@ -3126,15 +4810,15 @@
     </service>
     <service id="sonata.core.form.type.date_range_picker" class="Sonata\CoreBundle\Form\Type\DateRangePickerType">
       <tag name="form.type" alias="sonata_type_date_range_picker"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
     </service>
     <service id="sonata.core.form.type.datetime_range_picker" class="Sonata\CoreBundle\Form\Type\DateTimeRangePickerType">
       <tag name="form.type" alias="sonata_type_datetime_range_picker"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
     </service>
     <service id="sonata.core.form.type.equal" class="Sonata\CoreBundle\Form\Type\EqualType">
       <tag name="form.type" alias="sonata_type_equal"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
     </service>
     <service id="sonata.core.validator.inline" class="Sonata\CoreBundle\Validator\InlineValidator">
       <tag name="validator.constraint_validator" alias="sonata.core.validator.inline"/>
@@ -3157,7 +4841,7 @@
     <service id="sonata.core.twig.template_extension" class="Sonata\CoreBundle\Twig\Extension\TemplateExtension">
       <tag name="twig.extension"/>
       <argument>true</argument>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
       <argument type="service" id="sonata.core.model.adapter.chain"/>
     </service>
     <service id="sonata.core.model.adapter.chain" class="Sonata\CoreBundle\Model\Adapter\AdapterChain">
@@ -3485,6 +5169,7 @@
         <argument key="percent">SonataAdminBundle:CRUD:list_percent.html.twig</argument>
         <argument key="choice">SonataAdminBundle:CRUD:list_choice.html.twig</argument>
         <argument key="url">SonataAdminBundle:CRUD:list_url.html.twig</argument>
+        <argument key="html">SonataAdminBundle:CRUD:list_html.html.twig</argument>
       </argument>
     </service>
     <service id="sonata.admin.guesser.orm_list" class="Sonata\DoctrineORMAdminBundle\Guesser\TypeGuesser">
@@ -3510,10 +5195,11 @@
         <argument key="bigint">SonataAdminBundle:CRUD:base_show_field.html.twig</argument>
         <argument key="integer">SonataAdminBundle:CRUD:base_show_field.html.twig</argument>
         <argument key="decimal">SonataAdminBundle:CRUD:base_show_field.html.twig</argument>
-        <argument key="currency">SonataAdminBundle:CRUD:base_currency.html.twig</argument>
-        <argument key="percent">SonataAdminBundle:CRUD:base_percent.html.twig</argument>
+        <argument key="currency">SonataAdminBundle:CRUD:show_currency.html.twig</argument>
+        <argument key="percent">SonataAdminBundle:CRUD:show_percent.html.twig</argument>
         <argument key="choice">SonataAdminBundle:CRUD:show_choice.html.twig</argument>
         <argument key="url">SonataAdminBundle:CRUD:show_url.html.twig</argument>
+        <argument key="html">SonataAdminBundle:CRUD:show_html.html.twig</argument>
       </argument>
     </service>
     <service id="sonata.admin.guesser.orm_show" class="Sonata\DoctrineORMAdminBundle\Guesser\TypeGuesser">
@@ -3578,26 +5264,63 @@
     <service id="sonata.admin.twig.extension" class="Sonata\AdminBundle\Twig\Extension\SonataAdminExtension">
       <tag name="twig.extension"/>
       <argument type="service" id="sonata.admin.pool"/>
+      <argument type="service" id="logger" on-invalid="ignore"/>
     </service>
     <service id="sonata.admin.pool" class="Sonata\AdminBundle\Admin\Pool">
       <argument type="service" id="service_container"/>
-      <argument>Panel de Administracion</argument>
+      <argument>Panel de Administración</argument>
       <argument>bundles/sonataadmin/logo_title.png</argument>
       <argument type="collection">
+        <argument key="title_mode">both</argument>
         <argument key="html5_validate">true</argument>
         <argument key="confirm_exit">true</argument>
         <argument key="use_select2">true</argument>
+        <argument key="use_icheck">true</argument>
         <argument key="pager_links">null</argument>
+        <argument key="form_type">standard</argument>
+        <argument key="dropdown_number_groups_per_colums">2</argument>
+        <argument key="javascripts" type="collection">
+          <argument>bundles/sonataadmin/vendor/jquery/dist/jquery.min.js</argument>
+          <argument>bundles/sonataadmin/vendor/jquery.scrollTo/jquery.scrollTo.min.js</argument>
+          <argument>bundles/sonatacore/vendor/moment/min/moment.min.js</argument>
+          <argument>bundles/sonataadmin/vendor/bootstrap/dist/js/bootstrap.min.js</argument>
+          <argument>bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js</argument>
+          <argument>bundles/sonataadmin/vendor/jqueryui/ui/minified/jquery-ui.min.js</argument>
+          <argument>bundles/sonataadmin/vendor/jqueryui/ui/minified/i18n/jquery-ui-i18n.min.js</argument>
+          <argument>bundles/sonataadmin/jquery/jquery.form.js</argument>
+          <argument>bundles/sonataadmin/jquery/jquery.confirmExit.js</argument>
+          <argument>bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js</argument>
+          <argument>bundles/sonataadmin/vendor/select2/select2.min.js</argument>
+          <argument>bundles/sonataadmin/App.js</argument>
+          <argument>bundles/sonataadmin/Admin.js</argument>
+        </argument>
+        <argument key="stylesheets" type="collection">
+          <argument>bundles/sonataadmin/vendor/bootstrap/dist/css/bootstrap.min.css</argument>
+          <argument>bundles/sonataadmin/vendor/AdminLTE/css/font-awesome.min.css</argument>
+          <argument>bundles/sonataadmin/vendor/AdminLTE/css/ionicons.min.css</argument>
+          <argument>bundles/sonataadmin/vendor/AdminLTE/css/AdminLTE.css</argument>
+          <argument>bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css</argument>
+          <argument>bundles/sonataadmin/vendor/jqueryui/themes/base/jquery-ui.css</argument>
+          <argument>bundles/sonataadmin/vendor/select2/select2.css</argument>
+          <argument>bundles/sonataadmin/vendor/select2/select2-bootstrap.css</argument>
+          <argument>bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css</argument>
+          <argument>bundles/sonataadmin/css/styles.css</argument>
+          <argument>bundles/sonataadmin/css/layout.css</argument>
+        </argument>
       </argument>
+      <argument type="collection"/>
       <call method="setTemplates">
         <argument type="collection">
           <argument key="user_block">SonataUserBundle:Admin/Core:user_block.html.twig</argument>
           <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="add_block">SonataAdminBundle:Core:add_block.html.twig</argument>
           <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
           <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
           <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
           <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="filter">SonataAdminBundle:Form:filter_admin_fields.html.twig</argument>
           <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="show_compare">SonataAdminBundle:CRUD:show_compare.html.twig</argument>
           <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
           <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
           <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
@@ -3615,12 +5338,20 @@
           <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
           <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
           <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="tab_menu_template">SonataAdminBundle:Core:tab_menu_template.html.twig</argument>
         </argument>
       </call>
       <call method="setAdminServiceIds">
         <argument type="collection">
           <argument>sonata.user.admin.user</argument>
           <argument>sonata.user.admin.group</argument>
+          <argument>prosga.admin.permiso</argument>
+          <argument>prosga.admin.sector</argument>
+          <argument>prosga.admin.cargo</argument>
+          <argument>prosga.admin.estado</argument>
+          <argument>prosga.admin.frecuencia</argument>
+          <argument>prosga.admin.norma</argument>
+          <argument>prosga.admin.alarma</argument>
         </argument>
       </call>
       <call method="setAdminGroups">
@@ -3628,10 +5359,26 @@
           <argument key="sonata_user" type="collection">
             <argument key="label">sonata_user</argument>
             <argument key="label_catalogue">SonataUserBundle</argument>
+            <argument key="icon">&lt;i class="fa fa-folder"&gt;&lt;/i&gt;</argument>
             <argument key="roles" type="collection"/>
             <argument key="items" type="collection">
               <argument>sonata.user.admin.user</argument>
               <argument>sonata.user.admin.group</argument>
+            </argument>
+          </argument>
+          <argument key="admin" type="collection">
+            <argument key="label">admin</argument>
+            <argument key="label_catalogue">SonataAdminBundle</argument>
+            <argument key="icon">&lt;i class="fa fa-folder"&gt;&lt;/i&gt;</argument>
+            <argument key="roles" type="collection"/>
+            <argument key="items" type="collection">
+              <argument>prosga.admin.permiso</argument>
+              <argument>prosga.admin.sector</argument>
+              <argument>prosga.admin.cargo</argument>
+              <argument>prosga.admin.estado</argument>
+              <argument>prosga.admin.frecuencia</argument>
+              <argument>prosga.admin.norma</argument>
+              <argument>prosga.admin.alarma</argument>
             </argument>
           </argument>
         </argument>
@@ -3644,6 +5391,27 @@
           <argument key="Application\Sonata\UserBundle\Entity\Group" type="collection">
             <argument>sonata.user.admin.group</argument>
           </argument>
+          <argument key="INFT\prosgaBundle\Entity\Permiso" type="collection">
+            <argument>prosga.admin.permiso</argument>
+          </argument>
+          <argument key="INFT\prosgaBundle\Entity\Sector" type="collection">
+            <argument>prosga.admin.sector</argument>
+          </argument>
+          <argument key="INFT\prosgaBundle\Entity\Cargo" type="collection">
+            <argument>prosga.admin.cargo</argument>
+          </argument>
+          <argument key="INFT\prosgaBundle\Entity\Estado" type="collection">
+            <argument>prosga.admin.estado</argument>
+          </argument>
+          <argument key="INFT\prosgaBundle\Entity\Frecuencia" type="collection">
+            <argument>prosga.admin.frecuencia</argument>
+          </argument>
+          <argument key="INFT\prosgaBundle\Entity\Norma" type="collection">
+            <argument>prosga.admin.norma</argument>
+          </argument>
+          <argument key="INFT\prosgaBundle\Entity\Alarma" type="collection">
+            <argument>prosga.admin.alarma</argument>
+          </argument>
         </argument>
       </call>
     </service>
@@ -3653,6 +5421,13 @@
       <argument type="collection">
         <argument>sonata.user.admin.user</argument>
         <argument>sonata.user.admin.group</argument>
+        <argument>prosga.admin.permiso</argument>
+        <argument>prosga.admin.sector</argument>
+        <argument>prosga.admin.cargo</argument>
+        <argument>prosga.admin.estado</argument>
+        <argument>prosga.admin.frecuencia</argument>
+        <argument>prosga.admin.norma</argument>
+        <argument>prosga.admin.alarma</argument>
       </argument>
       <argument type="service" id="service_container"/>
     </service>
@@ -3695,6 +5470,7 @@
       <argument type="service" id="sonata.admin.pool"/>
     </service>
     <service id="sonata.admin.event.extension" class="Sonata\AdminBundle\Event\AdminEventExtension">
+      <tag name="sonata.admin.extension" global="1"/>
       <argument type="service" id="event_dispatcher"/>
     </service>
     <service id="sonata.admin.form.type.admin" class="Sonata\AdminBundle\Form\Type\AdminType">
@@ -3712,44 +5488,53 @@
     <service id="sonata.admin.form.type.model_hidden" class="Sonata\AdminBundle\Form\Type\ModelHiddenType">
       <tag name="form.type" alias="sonata_type_model_hidden"/>
     </service>
+    <service id="sonata.admin.form.type.model_autocomplete" class="Sonata\AdminBundle\Form\Type\ModelAutocompleteType">
+      <tag name="form.type" alias="sonata_type_model_autocomplete"/>
+    </service>
+    <service id="sonata.admin.form.type.collection" class="Sonata\AdminBundle\Form\Type\CollectionType">
+      <tag name="form.type" alias="sonata_type_native_collection"/>
+    </service>
     <service id="sonata.admin.form.extension.field" class="Sonata\AdminBundle\Form\Extension\Field\Type\FormTypeFieldExtension">
       <tag name="form.type_extension" alias="form"/>
       <argument type="collection">
-        <argument key="email">span5</argument>
-        <argument key="textarea">span5</argument>
-        <argument key="text">span5</argument>
-        <argument key="choice">span5</argument>
-        <argument key="integer">span5</argument>
+        <argument key="email"></argument>
+        <argument key="textarea"></argument>
+        <argument key="text"></argument>
+        <argument key="choice"></argument>
+        <argument key="integer"></argument>
         <argument key="datetime">sonata-medium-date</argument>
         <argument key="date">sonata-medium-date</argument>
       </argument>
     </service>
+    <service id="sonata.admin.form.extension.field.mopa" class="Sonata\AdminBundle\Form\Extension\Field\Type\MopaCompatibilityTypeFieldExtension">
+      <tag name="form.type_extension" alias="form"/>
+    </service>
     <service id="sonata.admin.form.filter.type.number" class="Sonata\AdminBundle\Form\Type\Filter\NumberType">
       <tag name="form.type" alias="sonata_type_filter_number"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
     </service>
     <service id="sonata.admin.form.filter.type.choice" class="Sonata\AdminBundle\Form\Type\Filter\ChoiceType">
       <tag name="form.type" alias="sonata_type_filter_choice"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
     </service>
     <service id="sonata.admin.form.filter.type.default" class="Sonata\AdminBundle\Form\Type\Filter\DefaultType">
       <tag name="form.type" alias="sonata_type_filter_default"/>
     </service>
     <service id="sonata.admin.form.filter.type.date" class="Sonata\AdminBundle\Form\Type\Filter\DateType">
       <tag name="form.type" alias="sonata_type_filter_date"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
     </service>
     <service id="sonata.admin.form.filter.type.daterange" class="Sonata\AdminBundle\Form\Type\Filter\DateRangeType">
       <tag name="form.type" alias="sonata_type_filter_date_range"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
     </service>
     <service id="sonata.admin.form.filter.type.datetime" class="Sonata\AdminBundle\Form\Type\Filter\DateTimeType">
       <tag name="form.type" alias="sonata_type_filter_datetime"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
     </service>
     <service id="sonata.admin.form.filter.type.datetime_range" class="Sonata\AdminBundle\Form\Type\Filter\DateTimeRangeType">
       <tag name="form.type" alias="sonata_type_filter_datetime_range"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
     </service>
     <service id="sonata.admin.validator.inline" class="Sonata\AdminBundle\Validator\InlineValidator">
       <tag name="validator.constraint_validator" alias="sonata.admin.validator.inline"/>
@@ -3764,6 +5549,16 @@
     </service>
     <service id="sonata.admin.route.default_generator" class="Sonata\AdminBundle\Route\DefaultRouteGenerator">
       <argument type="service" id="router"/>
+      <argument type="service" id="sonata.admin.route.cache"/>
+    </service>
+    <service id="sonata.admin.route.cache" class="Sonata\AdminBundle\Route\RoutesCache">
+      <argument>D:\xampp182\htdocs\prosga\app\cache\dev/sonata/admin</argument>
+      <argument>true</argument>
+    </service>
+    <service id="sonata.admin.route.cache_warmup" class="Sonata\AdminBundle\Route\RoutesCacheWarmUp">
+      <tag name="kernel.cache_warmer"/>
+      <argument type="service" id="sonata.admin.route.cache"/>
+      <argument type="service" id="sonata.admin.pool"/>
     </service>
     <service id="sonata.admin.block.admin_list" class="Sonata\AdminBundle\Block\AdminListBlockService">
       <tag name="sonata.block"/>
@@ -3947,7 +5742,7 @@
         <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
       </call>
       <call method="setTranslator">
-        <argument type="service" id="translator"/>
+        <argument type="service" id="translator.default"/>
       </call>
       <call method="setConfigurationPool">
         <argument type="service" id="sonata.admin.pool"/>
@@ -3976,11 +5771,14 @@
       <call method="setTemplates">
         <argument type="collection">
           <argument key="user_block">SonataUserBundle:Admin/Core:user_block.html.twig</argument>
+          <argument key="add_block">SonataAdminBundle:Core:add_block.html.twig</argument>
           <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
           <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
           <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
           <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="filter">SonataAdminBundle:Form:filter_admin_fields.html.twig</argument>
           <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="show_compare">SonataAdminBundle:CRUD:show_compare.html.twig</argument>
           <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
           <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
           <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
@@ -3997,6 +5795,7 @@
           <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
           <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
           <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="tab_menu_template">SonataAdminBundle:Core:tab_menu_template.html.twig</argument>
           <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
           <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
         </argument>
@@ -4005,6 +5804,9 @@
         <argument type="collection"/>
       </call>
       <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
     </service>
     <service id="sonata.user.admin.group" class="Sonata\UserBundle\Admin\Entity\GroupAdmin" scope="prototype">
       <tag name="sonata.admin" manager_type="orm" group="%sonata.user.admin.groupname%" label="groups" label_catalogue="SonataUserBundle" label_translator_strategy="sonata.admin.label.strategy.underscore"/>
@@ -4046,7 +5848,7 @@
         <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
       </call>
       <call method="setTranslator">
-        <argument type="service" id="translator"/>
+        <argument type="service" id="translator.default"/>
       </call>
       <call method="setConfigurationPool">
         <argument type="service" id="sonata.admin.pool"/>
@@ -4075,11 +5877,14 @@
       <call method="setTemplates">
         <argument type="collection">
           <argument key="user_block">SonataUserBundle:Admin/Core:user_block.html.twig</argument>
+          <argument key="add_block">SonataAdminBundle:Core:add_block.html.twig</argument>
           <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
           <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
           <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
           <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="filter">SonataAdminBundle:Form:filter_admin_fields.html.twig</argument>
           <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="show_compare">SonataAdminBundle:CRUD:show_compare.html.twig</argument>
           <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
           <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
           <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
@@ -4096,6 +5901,7 @@
           <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
           <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
           <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="tab_menu_template">SonataAdminBundle:Core:tab_menu_template.html.twig</argument>
           <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
           <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
         </argument>
@@ -4104,6 +5910,9 @@
         <argument type="collection"/>
       </call>
       <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
     </service>
     <service id="sonata.user.block.menu" class="Sonata\UserBundle\Block\ProfileMenuBlockService">
       <tag name="sonata.block"/>
@@ -4120,7 +5929,7 @@
     </service>
     <service id="sonata.user.profile.menu_builder" class="Sonata\UserBundle\Menu\ProfileMenuBuilder">
       <argument type="service" id="knp_menu.factory"/>
-      <argument type="service" id="translator"/>
+      <argument type="service" id="translator.default"/>
       <argument type="collection">
         <argument type="collection">
           <argument key="route">sonata_user_profile_edit</argument>
@@ -4160,6 +5969,727 @@
     </service>
     <service id="sonata.user.twig.global" class="Sonata\UserBundle\Twig\GlobalVariables">
       <argument type="service" id="service_container"/>
+    </service>
+    <service id="prosga.admin.permiso" class="INFT\prosgaBundle\Admin\PermisoAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="admin" label="Permiso"/>
+      <argument>prosga.admin.permiso</argument>
+      <argument>INFT\prosgaBundle\Entity\Permiso</argument>
+      <argument>SonataAdminBundle:CRUD</argument>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator.default"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Permiso</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataUserBundle:Admin/Core:user_block.html.twig</argument>
+          <argument key="add_block">SonataAdminBundle:Core:add_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="filter">SonataAdminBundle:Form:filter_admin_fields.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="show_compare">SonataAdminBundle:CRUD:show_compare.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="tab_menu_template">SonataAdminBundle:Core:tab_menu_template.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
+    </service>
+    <service id="prosga.admin.sector" class="INFT\prosgaBundle\Admin\SectorAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="admin" label="Sector"/>
+      <argument>prosga.admin.sector</argument>
+      <argument>INFT\prosgaBundle\Entity\Sector</argument>
+      <argument>prosgaBundle:Sector</argument>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator.default"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Sector</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataUserBundle:Admin/Core:user_block.html.twig</argument>
+          <argument key="add_block">SonataAdminBundle:Core:add_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="filter">SonataAdminBundle:Form:filter_admin_fields.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="show_compare">SonataAdminBundle:CRUD:show_compare.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="tab_menu_template">SonataAdminBundle:Core:tab_menu_template.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
+    </service>
+    <service id="prosga.admin.cargo" class="INFT\prosgaBundle\Admin\CargoAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="admin" label="Cargo"/>
+      <argument>prosga.admin.cargo</argument>
+      <argument>INFT\prosgaBundle\Entity\Cargo</argument>
+      <argument>prosgaBundle:Cargo</argument>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator.default"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Cargo</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataUserBundle:Admin/Core:user_block.html.twig</argument>
+          <argument key="add_block">SonataAdminBundle:Core:add_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="filter">SonataAdminBundle:Form:filter_admin_fields.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="show_compare">SonataAdminBundle:CRUD:show_compare.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="tab_menu_template">SonataAdminBundle:Core:tab_menu_template.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
+    </service>
+    <service id="prosga.admin.estado" class="INFT\prosgaBundle\Admin\EstadoAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="admin" label="Estado"/>
+      <argument>prosga.admin.estado</argument>
+      <argument>INFT\prosgaBundle\Entity\Estado</argument>
+      <argument>prosgaBundle:Estado</argument>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator.default"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Estado</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataUserBundle:Admin/Core:user_block.html.twig</argument>
+          <argument key="add_block">SonataAdminBundle:Core:add_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="filter">SonataAdminBundle:Form:filter_admin_fields.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="show_compare">SonataAdminBundle:CRUD:show_compare.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="tab_menu_template">SonataAdminBundle:Core:tab_menu_template.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
+    </service>
+    <service id="prosga.admin.frecuencia" class="INFT\prosgaBundle\Admin\FrecuenciaAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="admin" label="Frecuencia"/>
+      <argument>prosga.admin.frecuencia</argument>
+      <argument>INFT\prosgaBundle\Entity\Frecuencia</argument>
+      <argument>prosgaBundle:Frecuencia</argument>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator.default"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Frecuencia</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataUserBundle:Admin/Core:user_block.html.twig</argument>
+          <argument key="add_block">SonataAdminBundle:Core:add_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="filter">SonataAdminBundle:Form:filter_admin_fields.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="show_compare">SonataAdminBundle:CRUD:show_compare.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="tab_menu_template">SonataAdminBundle:Core:tab_menu_template.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
+    </service>
+    <service id="prosga.admin.norma" class="INFT\prosgaBundle\Admin\NormaAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="admin" label="Norma"/>
+      <argument>prosga.admin.norma</argument>
+      <argument>INFT\prosgaBundle\Entity\Norma</argument>
+      <argument>prosgaBundle:Norma</argument>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator.default"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Norma</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataUserBundle:Admin/Core:user_block.html.twig</argument>
+          <argument key="add_block">SonataAdminBundle:Core:add_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="filter">SonataAdminBundle:Form:filter_admin_fields.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="show_compare">SonataAdminBundle:CRUD:show_compare.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="tab_menu_template">SonataAdminBundle:Core:tab_menu_template.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
+    </service>
+    <service id="prosga.admin.alarma" class="INFT\prosgaBundle\Admin\AlarmaAdmin" scope="prototype">
+      <tag name="sonata.admin" manager_type="orm" group="admin" label="Alarma"/>
+      <argument>prosga.admin.alarma</argument>
+      <argument>INFT\prosgaBundle\Entity\Alarma</argument>
+      <argument>prosgaBundle:Alarma</argument>
+      <call method="setFormTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setFilterTheme">
+        <argument type="collection">
+          <argument>SonataDoctrineORMAdminBundle:Form:filter_admin_fields.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setManagerType">
+        <argument>orm</argument>
+      </call>
+      <call method="setModelManager">
+        <argument type="service" id="sonata.admin.manager.orm"/>
+      </call>
+      <call method="setFormContractor">
+        <argument type="service" id="sonata.admin.builder.orm_form"/>
+      </call>
+      <call method="setShowBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_show"/>
+      </call>
+      <call method="setListBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_list"/>
+      </call>
+      <call method="setDatagridBuilder">
+        <argument type="service" id="sonata.admin.builder.orm_datagrid"/>
+      </call>
+      <call method="setTranslator">
+        <argument type="service" id="translator.default"/>
+      </call>
+      <call method="setConfigurationPool">
+        <argument type="service" id="sonata.admin.pool"/>
+      </call>
+      <call method="setRouteGenerator">
+        <argument type="service" id="sonata.admin.route.default_generator"/>
+      </call>
+      <call method="setValidator">
+        <argument type="service" id="validator"/>
+      </call>
+      <call method="setSecurityHandler">
+        <argument type="service" id="sonata.admin.security.handler"/>
+      </call>
+      <call method="setMenuFactory">
+        <argument type="service" id="knp_menu.factory"/>
+      </call>
+      <call method="setRouteBuilder">
+        <argument type="service" id="sonata.admin.route.path_info"/>
+      </call>
+      <call method="setLabelTranslatorStrategy">
+        <argument type="service" id="sonata.admin.label.strategy.native"/>
+      </call>
+      <call method="setLabel">
+        <argument>Alarma</argument>
+      </call>
+      <call method="setPersistFilters">
+        <argument>false</argument>
+      </call>
+      <call method="setTemplates">
+        <argument type="collection">
+          <argument key="user_block">SonataUserBundle:Admin/Core:user_block.html.twig</argument>
+          <argument key="add_block">SonataAdminBundle:Core:add_block.html.twig</argument>
+          <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
+          <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
+          <argument key="filter">SonataAdminBundle:Form:filter_admin_fields.html.twig</argument>
+          <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
+          <argument key="show_compare">SonataAdminBundle:CRUD:show_compare.html.twig</argument>
+          <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
+          <argument key="history_revision_timestamp">SonataAdminBundle:CRUD:history_revision_timestamp.html.twig</argument>
+          <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>
+          <argument key="action">SonataAdminBundle:CRUD:action.html.twig</argument>
+          <argument key="short_object_description">SonataAdminBundle:Helper:short-object-description.html.twig</argument>
+          <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
+          <argument key="list_block">SonataAdminBundle:Block:block_admin_list.html.twig</argument>
+          <argument key="delete">SonataAdminBundle:CRUD:delete.html.twig</argument>
+          <argument key="batch">SonataAdminBundle:CRUD:list__batch.html.twig</argument>
+          <argument key="select">SonataAdminBundle:CRUD:list__select.html.twig</argument>
+          <argument key="batch_confirmation">SonataAdminBundle:CRUD:batch_confirmation.html.twig</argument>
+          <argument key="inner_list_row">SonataAdminBundle:CRUD:list_inner_row.html.twig</argument>
+          <argument key="base_list_field">SonataAdminBundle:CRUD:base_list_field.html.twig</argument>
+          <argument key="pager_links">SonataAdminBundle:Pager:links.html.twig</argument>
+          <argument key="pager_results">SonataAdminBundle:Pager:results.html.twig</argument>
+          <argument key="tab_menu_template">SonataAdminBundle:Core:tab_menu_template.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
+          <argument key="search_result_block">SonataAdminBundle:Block:block_search_result.html.twig</argument>
+        </argument>
+      </call>
+      <call method="setSecurityInformation">
+        <argument type="collection"/>
+      </call>
+      <call method="initialize"/>
+      <call method="addExtension">
+        <argument type="service" id="sonata.admin.event.extension"/>
+      </call>
     </service>
     <service id="twig.extension.acme.demo" class="Acme\DemoBundle\Twig\Extension\DemoExtension" public="false">
       <tag name="twig.extension"/>
@@ -4522,8 +7052,16 @@
         <argument>SonataBlock</argument>
       </call>
       <call method="addPath">
+        <argument>D:\xampp182\htdocs\prosga\src\RGV\SiteBundle/Resources/views</argument>
+        <argument>RGVSite</argument>
+      </call>
+      <call method="addPath">
         <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\doctrine-orm-admin-bundle/Resources/views</argument>
         <argument>SonataDoctrineORMAdmin</argument>
+      </call>
+      <call method="addPath">
+        <argument>D:\xampp182\htdocs\prosga\app/Resources/SonataAdminBundle/views</argument>
+        <argument>SonataAdmin</argument>
       </call>
       <call method="addPath">
         <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\admin-bundle/Resources/views</argument>
@@ -4532,6 +7070,10 @@
       <call method="addPath">
         <argument>D:\xampp182\htdocs\prosga\vendor\friendsofsymfony\user-bundle\FOS\UserBundle/Resources/views</argument>
         <argument>FOSUser</argument>
+      </call>
+      <call method="addPath">
+        <argument>D:\xampp182\htdocs\prosga\app/Resources/SonataUserBundle/views</argument>
+        <argument>SonataUser</argument>
       </call>
       <call method="addPath">
         <argument>D:\xampp182\htdocs\prosga\vendor\sonata-project\user-bundle/Resources/views</argument>
@@ -4717,6 +7259,7 @@
       </argument>
     </service>
     <service id="session.storage" alias="session.storage.native"/>
+    <service id="translator" alias="translator.default"/>
     <service id="security.acl.dbal.connection" alias="doctrine.dbal.default_connection"/>
     <service id="debug.templating.engine.twig" alias="templating"/>
     <service id="swiftmailer.spool" alias="swiftmailer.mailer.default.spool"/>

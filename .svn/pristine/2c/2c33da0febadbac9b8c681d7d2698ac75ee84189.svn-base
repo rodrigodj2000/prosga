@@ -1,0 +1,37 @@
+INFT\prosgaBundle\Entity\FichaDeProcesoHistorial:
+    type: entity
+    table: FichaDeProcesoHistorial
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        fecha:
+            type: datetime
+            column: Fecha
+        nroRevision:
+            type: integer
+            column: NroRevision
+        descripcion:
+            type: string
+            length: '500'
+            column: Descripcion
+        idFichaDeProceso:
+            type: integer
+            column: IdFichaDeProceso
+		idPersona:
+            type: integer
+            column: IdPersona
+	ManyToOne:
+		FichaDeProceso:
+			targetEntity: FichaDeProceso
+			joinColumn:
+				name: IdFichaDeProceso
+				referencedColumnName: id
+		Persona:
+			targetEntity: Persona
+			joinColumn:
+				name: IdPersona
+				referencedColumnName: id
+    lifecycleCallbacks: {  }

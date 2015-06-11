@@ -1,0 +1,32 @@
+INFT\prosgaBundle\Entity\Permiso:
+    type: entity
+    table: Permiso
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombre:
+            type: string
+            length: '200'
+            column: Nombre
+        descripcion:
+            type: string
+            length: 255
+            column: Descripcion
+			
+	ManyToMany:
+		Documentos:
+			targetEntity: Documento
+			joinTable:
+				name: PermisoPorDocumento
+				joinColumns:
+					IdPermiso:
+						referencedColumnName: id
+				inverseJoinColumn:
+					IdDocumento:
+						referencedColumnName: id
+			
+			
+    lifecycleCallbacks: {  }

@@ -1,0 +1,5 @@
+<?php
+
+// prosgaBundle:includes/navbar:navbar.html.twig
+return array (
+);

@@ -1,0 +1,5 @@
+{% extends 'prosgaBundle::template.html.twig' %}
+
+{% block content %}
+    <h2>Actividades</h2>
+{% endblock %}

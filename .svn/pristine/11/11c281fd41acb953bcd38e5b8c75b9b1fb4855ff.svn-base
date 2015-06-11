@@ -1,0 +1,60 @@
+INFT\prosgaBundle\Entity\MatrizLegal:
+    type: entity
+    table: MatrizLegal
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        emisor:
+            type: string
+            length: 255
+            column: Emisor
+        descripcion:
+            type: string
+            length: '1000'
+            column: Descripcion
+        vencimiento:
+            type: datetime
+            column: Vencimiento
+        observacion:
+            type: string
+            length: '1000'
+            column: Observacion
+        autoridadAAplicar:
+            type: string
+            length: 255
+            column: AutoridadAAplicar
+        obligaciones:
+            type: string
+            length: '500'
+            column: Obligaciones
+        idPersona:
+            type: integer
+            column: IdPersona
+		idFrecuencia:
+            type: integer
+            column: IdFrecuencia
+		idNorma:
+            type: integer
+            column: IdNorma
+			
+	ManyToOne:
+		Persona:
+			targetEntity: Persona
+			joinColumn: 
+				name: IdPersona
+				referencedColumnName: id
+		Frecuencia:
+			targetEntity: Frecuencia
+			joinColumn:
+				name: IdFrecuencia
+				referencedColumnName: id
+		Norma:
+			targetEntity: Norma
+			joinColumn:
+				name: IdNorma
+				referencedColumnName: id
+				
+    lifecycleCallbacks: {  }
