@@ -559,40 +559,233 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
                     }
 
-                    if (0 === strpos($pathinfo, '/admin/inft/prosga/alarma')) {
-                        // admin_inft_prosga_alarma_list
-                        if ($pathinfo === '/admin/inft/prosga/alarma/list') {
-                            return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AlarmaController::listAction',  '_sonata_admin' => 'prosga.admin.alarma',  '_sonata_name' => 'admin_inft_prosga_alarma_list',  '_route' => 'admin_inft_prosga_alarma_list',);
+                    if (0 === strpos($pathinfo, '/admin/inft/prosga/a')) {
+                        if (0 === strpos($pathinfo, '/admin/inft/prosga/alarma')) {
+                            // admin_inft_prosga_alarma_list
+                            if ($pathinfo === '/admin/inft/prosga/alarma/list') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AlarmaController::listAction',  '_sonata_admin' => 'prosga.admin.alarma',  '_sonata_name' => 'admin_inft_prosga_alarma_list',  '_route' => 'admin_inft_prosga_alarma_list',);
+                            }
+
+                            // admin_inft_prosga_alarma_create
+                            if ($pathinfo === '/admin/inft/prosga/alarma/create') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AlarmaController::createAction',  '_sonata_admin' => 'prosga.admin.alarma',  '_sonata_name' => 'admin_inft_prosga_alarma_create',  '_route' => 'admin_inft_prosga_alarma_create',);
+                            }
+
+                            // admin_inft_prosga_alarma_batch
+                            if ($pathinfo === '/admin/inft/prosga/alarma/batch') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AlarmaController::batchAction',  '_sonata_admin' => 'prosga.admin.alarma',  '_sonata_name' => 'admin_inft_prosga_alarma_batch',  '_route' => 'admin_inft_prosga_alarma_batch',);
+                            }
+
+                            // admin_inft_prosga_alarma_edit
+                            if (preg_match('#^/admin/inft/prosga/alarma/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_alarma_edit')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AlarmaController::editAction',  '_sonata_admin' => 'prosga.admin.alarma',  '_sonata_name' => 'admin_inft_prosga_alarma_edit',));
+                            }
+
+                            // admin_inft_prosga_alarma_delete
+                            if (preg_match('#^/admin/inft/prosga/alarma/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_alarma_delete')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AlarmaController::deleteAction',  '_sonata_admin' => 'prosga.admin.alarma',  '_sonata_name' => 'admin_inft_prosga_alarma_delete',));
+                            }
+
+                            // admin_inft_prosga_alarma_show
+                            if (preg_match('#^/admin/inft/prosga/alarma/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_alarma_show')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AlarmaController::showAction',  '_sonata_admin' => 'prosga.admin.alarma',  '_sonata_name' => 'admin_inft_prosga_alarma_show',));
+                            }
+
+                            // admin_inft_prosga_alarma_export
+                            if ($pathinfo === '/admin/inft/prosga/alarma/export') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AlarmaController::exportAction',  '_sonata_admin' => 'prosga.admin.alarma',  '_sonata_name' => 'admin_inft_prosga_alarma_export',  '_route' => 'admin_inft_prosga_alarma_export',);
+                            }
+
                         }
 
-                        // admin_inft_prosga_alarma_create
-                        if ($pathinfo === '/admin/inft/prosga/alarma/create') {
-                            return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AlarmaController::createAction',  '_sonata_admin' => 'prosga.admin.alarma',  '_sonata_name' => 'admin_inft_prosga_alarma_create',  '_route' => 'admin_inft_prosga_alarma_create',);
+                        if (0 === strpos($pathinfo, '/admin/inft/prosga/actividad')) {
+                            // admin_inft_prosga_actividad_list
+                            if ($pathinfo === '/admin/inft/prosga/actividad/list') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ActividadController::listAction',  '_sonata_admin' => 'prosga.admin.actividad',  '_sonata_name' => 'admin_inft_prosga_actividad_list',  '_route' => 'admin_inft_prosga_actividad_list',);
+                            }
+
+                            // admin_inft_prosga_actividad_create
+                            if ($pathinfo === '/admin/inft/prosga/actividad/create') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ActividadController::createAction',  '_sonata_admin' => 'prosga.admin.actividad',  '_sonata_name' => 'admin_inft_prosga_actividad_create',  '_route' => 'admin_inft_prosga_actividad_create',);
+                            }
+
+                            // admin_inft_prosga_actividad_batch
+                            if ($pathinfo === '/admin/inft/prosga/actividad/batch') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ActividadController::batchAction',  '_sonata_admin' => 'prosga.admin.actividad',  '_sonata_name' => 'admin_inft_prosga_actividad_batch',  '_route' => 'admin_inft_prosga_actividad_batch',);
+                            }
+
+                            // admin_inft_prosga_actividad_edit
+                            if (preg_match('#^/admin/inft/prosga/actividad/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_actividad_edit')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ActividadController::editAction',  '_sonata_admin' => 'prosga.admin.actividad',  '_sonata_name' => 'admin_inft_prosga_actividad_edit',));
+                            }
+
+                            // admin_inft_prosga_actividad_delete
+                            if (preg_match('#^/admin/inft/prosga/actividad/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_actividad_delete')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ActividadController::deleteAction',  '_sonata_admin' => 'prosga.admin.actividad',  '_sonata_name' => 'admin_inft_prosga_actividad_delete',));
+                            }
+
+                            // admin_inft_prosga_actividad_show
+                            if (preg_match('#^/admin/inft/prosga/actividad/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_actividad_show')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ActividadController::showAction',  '_sonata_admin' => 'prosga.admin.actividad',  '_sonata_name' => 'admin_inft_prosga_actividad_show',));
+                            }
+
+                            // admin_inft_prosga_actividad_export
+                            if ($pathinfo === '/admin/inft/prosga/actividad/export') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ActividadController::exportAction',  '_sonata_admin' => 'prosga.admin.actividad',  '_sonata_name' => 'admin_inft_prosga_actividad_export',  '_route' => 'admin_inft_prosga_actividad_export',);
+                            }
+
                         }
 
-                        // admin_inft_prosga_alarma_batch
-                        if ($pathinfo === '/admin/inft/prosga/alarma/batch') {
-                            return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AlarmaController::batchAction',  '_sonata_admin' => 'prosga.admin.alarma',  '_sonata_name' => 'admin_inft_prosga_alarma_batch',  '_route' => 'admin_inft_prosga_alarma_batch',);
+                        if (0 === strpos($pathinfo, '/admin/inft/prosga/archivoadjunto')) {
+                            // admin_inft_prosga_archivoadjunto_list
+                            if ($pathinfo === '/admin/inft/prosga/archivoadjunto/list') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ArchivoAdjuntoController::listAction',  '_sonata_admin' => 'prosga.admin.archivo_adjunto',  '_sonata_name' => 'admin_inft_prosga_archivoadjunto_list',  '_route' => 'admin_inft_prosga_archivoadjunto_list',);
+                            }
+
+                            // admin_inft_prosga_archivoadjunto_create
+                            if ($pathinfo === '/admin/inft/prosga/archivoadjunto/create') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ArchivoAdjuntoController::createAction',  '_sonata_admin' => 'prosga.admin.archivo_adjunto',  '_sonata_name' => 'admin_inft_prosga_archivoadjunto_create',  '_route' => 'admin_inft_prosga_archivoadjunto_create',);
+                            }
+
+                            // admin_inft_prosga_archivoadjunto_batch
+                            if ($pathinfo === '/admin/inft/prosga/archivoadjunto/batch') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ArchivoAdjuntoController::batchAction',  '_sonata_admin' => 'prosga.admin.archivo_adjunto',  '_sonata_name' => 'admin_inft_prosga_archivoadjunto_batch',  '_route' => 'admin_inft_prosga_archivoadjunto_batch',);
+                            }
+
+                            // admin_inft_prosga_archivoadjunto_edit
+                            if (preg_match('#^/admin/inft/prosga/archivoadjunto/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_archivoadjunto_edit')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ArchivoAdjuntoController::editAction',  '_sonata_admin' => 'prosga.admin.archivo_adjunto',  '_sonata_name' => 'admin_inft_prosga_archivoadjunto_edit',));
+                            }
+
+                            // admin_inft_prosga_archivoadjunto_delete
+                            if (preg_match('#^/admin/inft/prosga/archivoadjunto/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_archivoadjunto_delete')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ArchivoAdjuntoController::deleteAction',  '_sonata_admin' => 'prosga.admin.archivo_adjunto',  '_sonata_name' => 'admin_inft_prosga_archivoadjunto_delete',));
+                            }
+
+                            // admin_inft_prosga_archivoadjunto_show
+                            if (preg_match('#^/admin/inft/prosga/archivoadjunto/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_archivoadjunto_show')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ArchivoAdjuntoController::showAction',  '_sonata_admin' => 'prosga.admin.archivo_adjunto',  '_sonata_name' => 'admin_inft_prosga_archivoadjunto_show',));
+                            }
+
+                            // admin_inft_prosga_archivoadjunto_export
+                            if ($pathinfo === '/admin/inft/prosga/archivoadjunto/export') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ArchivoAdjuntoController::exportAction',  '_sonata_admin' => 'prosga.admin.archivo_adjunto',  '_sonata_name' => 'admin_inft_prosga_archivoadjunto_export',  '_route' => 'admin_inft_prosga_archivoadjunto_export',);
+                            }
+
                         }
 
-                        // admin_inft_prosga_alarma_edit
-                        if (preg_match('#^/admin/inft/prosga/alarma/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_alarma_edit')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AlarmaController::editAction',  '_sonata_admin' => 'prosga.admin.alarma',  '_sonata_name' => 'admin_inft_prosga_alarma_edit',));
+                        if (0 === strpos($pathinfo, '/admin/inft/prosga/auditoria')) {
+                            // admin_inft_prosga_auditoria_list
+                            if ($pathinfo === '/admin/inft/prosga/auditoria/list') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AuditoriaController::listAction',  '_sonata_admin' => 'prosga.admin.auditoria',  '_sonata_name' => 'admin_inft_prosga_auditoria_list',  '_route' => 'admin_inft_prosga_auditoria_list',);
+                            }
+
+                            // admin_inft_prosga_auditoria_create
+                            if ($pathinfo === '/admin/inft/prosga/auditoria/create') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AuditoriaController::createAction',  '_sonata_admin' => 'prosga.admin.auditoria',  '_sonata_name' => 'admin_inft_prosga_auditoria_create',  '_route' => 'admin_inft_prosga_auditoria_create',);
+                            }
+
+                            // admin_inft_prosga_auditoria_batch
+                            if ($pathinfo === '/admin/inft/prosga/auditoria/batch') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AuditoriaController::batchAction',  '_sonata_admin' => 'prosga.admin.auditoria',  '_sonata_name' => 'admin_inft_prosga_auditoria_batch',  '_route' => 'admin_inft_prosga_auditoria_batch',);
+                            }
+
+                            // admin_inft_prosga_auditoria_edit
+                            if (preg_match('#^/admin/inft/prosga/auditoria/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_auditoria_edit')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AuditoriaController::editAction',  '_sonata_admin' => 'prosga.admin.auditoria',  '_sonata_name' => 'admin_inft_prosga_auditoria_edit',));
+                            }
+
+                            // admin_inft_prosga_auditoria_delete
+                            if (preg_match('#^/admin/inft/prosga/auditoria/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_auditoria_delete')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AuditoriaController::deleteAction',  '_sonata_admin' => 'prosga.admin.auditoria',  '_sonata_name' => 'admin_inft_prosga_auditoria_delete',));
+                            }
+
+                            // admin_inft_prosga_auditoria_show
+                            if (preg_match('#^/admin/inft/prosga/auditoria/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_auditoria_show')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AuditoriaController::showAction',  '_sonata_admin' => 'prosga.admin.auditoria',  '_sonata_name' => 'admin_inft_prosga_auditoria_show',));
+                            }
+
+                            // admin_inft_prosga_auditoria_export
+                            if ($pathinfo === '/admin/inft/prosga/auditoria/export') {
+                                return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AuditoriaController::exportAction',  '_sonata_admin' => 'prosga.admin.auditoria',  '_sonata_name' => 'admin_inft_prosga_auditoria_export',  '_route' => 'admin_inft_prosga_auditoria_export',);
+                            }
+
                         }
 
-                        // admin_inft_prosga_alarma_delete
-                        if (preg_match('#^/admin/inft/prosga/alarma/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_alarma_delete')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AlarmaController::deleteAction',  '_sonata_admin' => 'prosga.admin.alarma',  '_sonata_name' => 'admin_inft_prosga_alarma_delete',));
+                    }
+
+                    if (0 === strpos($pathinfo, '/admin/inft/prosga/control')) {
+                        // admin_inft_prosga_control_list
+                        if ($pathinfo === '/admin/inft/prosga/control/list') {
+                            return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ControlController::listAction',  '_sonata_admin' => 'prosga.admin.control',  '_sonata_name' => 'admin_inft_prosga_control_list',  '_route' => 'admin_inft_prosga_control_list',);
                         }
 
-                        // admin_inft_prosga_alarma_show
-                        if (preg_match('#^/admin/inft/prosga/alarma/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_alarma_show')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AlarmaController::showAction',  '_sonata_admin' => 'prosga.admin.alarma',  '_sonata_name' => 'admin_inft_prosga_alarma_show',));
+                        // admin_inft_prosga_control_create
+                        if ($pathinfo === '/admin/inft/prosga/control/create') {
+                            return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ControlController::createAction',  '_sonata_admin' => 'prosga.admin.control',  '_sonata_name' => 'admin_inft_prosga_control_create',  '_route' => 'admin_inft_prosga_control_create',);
                         }
 
-                        // admin_inft_prosga_alarma_export
-                        if ($pathinfo === '/admin/inft/prosga/alarma/export') {
-                            return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\AlarmaController::exportAction',  '_sonata_admin' => 'prosga.admin.alarma',  '_sonata_name' => 'admin_inft_prosga_alarma_export',  '_route' => 'admin_inft_prosga_alarma_export',);
+                        // admin_inft_prosga_control_batch
+                        if ($pathinfo === '/admin/inft/prosga/control/batch') {
+                            return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ControlController::batchAction',  '_sonata_admin' => 'prosga.admin.control',  '_sonata_name' => 'admin_inft_prosga_control_batch',  '_route' => 'admin_inft_prosga_control_batch',);
+                        }
+
+                        // admin_inft_prosga_control_edit
+                        if (preg_match('#^/admin/inft/prosga/control/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_control_edit')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ControlController::editAction',  '_sonata_admin' => 'prosga.admin.control',  '_sonata_name' => 'admin_inft_prosga_control_edit',));
+                        }
+
+                        // admin_inft_prosga_control_delete
+                        if (preg_match('#^/admin/inft/prosga/control/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_control_delete')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ControlController::deleteAction',  '_sonata_admin' => 'prosga.admin.control',  '_sonata_name' => 'admin_inft_prosga_control_delete',));
+                        }
+
+                        // admin_inft_prosga_control_show
+                        if (preg_match('#^/admin/inft/prosga/control/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_control_show')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ControlController::showAction',  '_sonata_admin' => 'prosga.admin.control',  '_sonata_name' => 'admin_inft_prosga_control_show',));
+                        }
+
+                        // admin_inft_prosga_control_export
+                        if ($pathinfo === '/admin/inft/prosga/control/export') {
+                            return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\ControlController::exportAction',  '_sonata_admin' => 'prosga.admin.control',  '_sonata_name' => 'admin_inft_prosga_control_export',  '_route' => 'admin_inft_prosga_control_export',);
+                        }
+
+                    }
+
+                    if (0 === strpos($pathinfo, '/admin/inft/prosga/documento')) {
+                        // admin_inft_prosga_documento_list
+                        if ($pathinfo === '/admin/inft/prosga/documento/list') {
+                            return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\DocumentoController::listAction',  '_sonata_admin' => 'prosga.admin.documento',  '_sonata_name' => 'admin_inft_prosga_documento_list',  '_route' => 'admin_inft_prosga_documento_list',);
+                        }
+
+                        // admin_inft_prosga_documento_create
+                        if ($pathinfo === '/admin/inft/prosga/documento/create') {
+                            return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\DocumentoController::createAction',  '_sonata_admin' => 'prosga.admin.documento',  '_sonata_name' => 'admin_inft_prosga_documento_create',  '_route' => 'admin_inft_prosga_documento_create',);
+                        }
+
+                        // admin_inft_prosga_documento_batch
+                        if ($pathinfo === '/admin/inft/prosga/documento/batch') {
+                            return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\DocumentoController::batchAction',  '_sonata_admin' => 'prosga.admin.documento',  '_sonata_name' => 'admin_inft_prosga_documento_batch',  '_route' => 'admin_inft_prosga_documento_batch',);
+                        }
+
+                        // admin_inft_prosga_documento_edit
+                        if (preg_match('#^/admin/inft/prosga/documento/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_documento_edit')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\DocumentoController::editAction',  '_sonata_admin' => 'prosga.admin.documento',  '_sonata_name' => 'admin_inft_prosga_documento_edit',));
+                        }
+
+                        // admin_inft_prosga_documento_delete
+                        if (preg_match('#^/admin/inft/prosga/documento/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_documento_delete')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\DocumentoController::deleteAction',  '_sonata_admin' => 'prosga.admin.documento',  '_sonata_name' => 'admin_inft_prosga_documento_delete',));
+                        }
+
+                        // admin_inft_prosga_documento_show
+                        if (preg_match('#^/admin/inft/prosga/documento/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_inft_prosga_documento_show')), array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\DocumentoController::showAction',  '_sonata_admin' => 'prosga.admin.documento',  '_sonata_name' => 'admin_inft_prosga_documento_show',));
+                        }
+
+                        // admin_inft_prosga_documento_export
+                        if ($pathinfo === '/admin/inft/prosga/documento/export') {
+                            return array (  '_controller' => 'INFT\\prosgaBundle\\Controller\\DocumentoController::exportAction',  '_sonata_admin' => 'prosga.admin.documento',  '_sonata_name' => 'admin_inft_prosga_documento_export',  '_route' => 'admin_inft_prosga_documento_export',);
                         }
 
                     }
