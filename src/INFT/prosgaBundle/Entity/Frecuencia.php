@@ -3,6 +3,7 @@
 namespace INFT\prosgaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Frecuencia
@@ -102,6 +103,10 @@ class Frecuencia
 
     public function getAlarmas(){
         return $this->alarmas;
+    }
+
+    public function __toString(){
+        return $this->nombre;
     }
 
 }

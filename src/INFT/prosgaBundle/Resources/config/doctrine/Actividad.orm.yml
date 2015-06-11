@@ -21,6 +21,7 @@ INFT\prosgaBundle\Entity\Actividad:
     manyToOne:
         personaResponsable:
             targetEntity: Persona
+            inversedBy: actividades
             joinColumn:
                 name: persona_id
                 referencedColumnName: id

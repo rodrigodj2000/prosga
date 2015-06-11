@@ -19,6 +19,6 @@ INFT\prosgaBundle\Entity\Frecuencia:
     oneToMany:
         alarmas:
             targetEntity: Alarma
-            mappedBy: Frecuencia
+            mappedBy: frecuencia
                 
     lifecycleCallbacks: {  }

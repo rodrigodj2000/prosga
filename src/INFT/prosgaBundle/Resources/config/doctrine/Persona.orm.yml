@@ -80,5 +80,9 @@ INFT\prosgaBundle\Entity\Persona:
                 inverseJoinColumns:
                     registroFP_id:
                         referencedColumnName: id
+    oneToMany:
+        actividades:
+            targetEntity: Actividad
+            mappedBy: personaResponsable
                     
     lifecycleCallbacks: {  }

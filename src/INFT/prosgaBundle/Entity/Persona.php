@@ -3,6 +3,7 @@
 namespace INFT\prosgaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Persona
@@ -74,11 +75,18 @@ class Persona
      */
     private $registrosFichaDeProceso;
 
+    /**
+     * @var Actividad[]
+     */
+    private $actividades;
+
+
 
     public function __construct(){
         $this->indicadores = new ArrayCollection();
         $this->procedimientosGenerales = new ArrayCollection();
         $this->registrosFichaDeProceso = new ArrayCollection();
+        $this->actividades = new ArrayCollection();
     }
 
 
@@ -336,4 +344,24 @@ class Persona
     public function getRegistrosFichaDeProceso(){
         return $this->registrosFichaDeProceso;
     }
+
+    public function __toString(){
+        return $this->nombre;
+    }
+
+    public function addActividad(Actividad $actividad){
+        $this->actividades[] = $actividad;
+    }
+
+    public function removeActividad(Actividad $actividad){
+        $this->actividades->removeElement($actividad);
+
+    }
+
+    public function getActividades(){
+        return $this->actividades;
+    }
+
+    
+
 }

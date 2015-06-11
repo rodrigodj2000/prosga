@@ -26,6 +26,7 @@ INFT\prosgaBundle\Entity\Alarma:
     manyToOne:
         frecuencia:
             targetEntity: Frecuencia
+            inversedBy: alarmas
             joinColumn: 
                 name: frecuencia_id
                 referencedColumnName: id        

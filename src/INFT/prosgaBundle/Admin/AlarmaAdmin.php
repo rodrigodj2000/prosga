@@ -31,6 +31,7 @@ class AlarmaAdmin extends Admin
         $listMapper
             ->add('nombre')
             ->add('activarCada')
+            ->add('frecuencia.nombre', 'string', array('label' => 'Frecuencia'))
             ->add('modoAviso')
             ->add('observacion')
             ->add('_action', 'actions', array(
@@ -68,12 +69,9 @@ class AlarmaAdmin extends Admin
         $showMapper
             ->add('nombre')
             ->add('activarCada')
+            ->add('frecuencia.nombre', 'string', array('label' => 'Frecuencia'))
             ->add('modoAviso')
-            ->add('observacion')
-            ->add('frecuencia', 'entity', array(
-                'class' => 'prosgaBundle:Frecuencia',
-                'property' => 'nombre',
-            ))            
+            ->add('observacion')            
         ;
     }
 }

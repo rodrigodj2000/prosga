@@ -18,10 +18,7 @@ class ActividadAdmin extends Admin
         $datagridMapper
             ->add('fechaActividad')
             ->add('nombre')
-            ->add('personaResponsable', 'entity', array(
-                'class' => 'prosgaBundle:Persona',
-                'property' => 'nombre',
-                ))       
+            ->add('personaResponsable')     
         ;
     }
 
@@ -34,6 +31,7 @@ class ActividadAdmin extends Admin
             ->add('fechaActividad')
             ->add('observacion')
             ->add('nombre')
+            ->add('personaResponsable')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -53,10 +51,7 @@ class ActividadAdmin extends Admin
             ->add('fechaActividad')
             ->add('observacion')
             ->add('nombre')
-            ->add('personaResponsable', 'entity', array(
-                'class' => 'prosgaBundle:Persona',
-                'property' => 'nombre',
-                ))
+            ->add('personaResponsable', 'sonata_type_model')
         ;
     }
 
@@ -68,7 +63,7 @@ class ActividadAdmin extends Admin
         $showMapper
             ->add('fechaActividad')
             ->add('observacion')
-            ->add('nombre')            
+            ->add('nombre')           
         ;
     }
 }

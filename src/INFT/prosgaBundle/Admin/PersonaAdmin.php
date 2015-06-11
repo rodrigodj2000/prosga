@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class PersonaAdmin extends Admin
 {
+    protected $parentAssociationMapping = 'actividad';
     /**
      * @param DatagridMapper $datagridMapper
      */

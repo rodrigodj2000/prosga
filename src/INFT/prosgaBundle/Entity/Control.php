@@ -3,6 +3,7 @@
 namespace INFT\prosgaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collection\ArrayCollection;
 
 /**
  * Control

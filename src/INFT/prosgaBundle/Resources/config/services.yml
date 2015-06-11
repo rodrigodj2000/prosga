@@ -46,12 +46,6 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Alarma}
 
-    prosga.admin.actividad:
-        class: INFT\prosgaBundle\Admin\ActividadAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\Actividad, prosgaBundle:Actividad]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Actividad}
-
     prosga.admin.archivo_adjunto:
         class: INFT\prosgaBundle\Admin\ArchivoAdjuntoAdmin
         arguments: [~, INFT\prosgaBundle\Entity\ArchivoAdjunto, prosgaBundle:ArchivoAdjunto]
@@ -81,3 +75,15 @@ services:
         arguments: [~, INFT\prosgaBundle\Entity\Persona, prosgaBundle:Persona]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Persona}
+            
+    prosga.admin.actividad:
+        class: INFT\prosgaBundle\Admin\ActividadAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\Actividad, prosgaBundle:Actividad]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Actividad}
+
+    prosga.admin.indicador:
+        class: INFT\prosgaBundle\Admin\IndicadorAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\Indicador, prosgaBundle:Indicador]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Indicador}
