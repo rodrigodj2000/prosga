@@ -1,6 +1,6 @@
 actividad:
     path:     /
-    defaults: { _controller: "prosgaBundle:Actividad:index" }
+    defaults: { _controller: "prosgaBundle:Actividad:index"}    
 
 actividad_show:
     path:     /{id}/show
@@ -28,3 +28,7 @@ actividad_delete:
     path:     /{id}/delete
     defaults: { _controller: "prosgaBundle:Actividad:delete" }
     requirements: { _method: post|delete }
+    
+actividad_filtro:
+    path:     /{auditoria_id}
+    defaults: { _controller: "prosgaBundle:Actividad:index", auditoria_id = 0 }       

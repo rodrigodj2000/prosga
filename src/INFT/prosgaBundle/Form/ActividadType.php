@@ -15,16 +15,42 @@ class ActividadType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechaActividad')
-            ->add('observacion')
-            ->add('nombre')
-            ->add('personaResponsable')
-            ->add('sector')
-            ->add('proceso')
-            ->add('norma')
-            ->add('matrizlegal')
-            ->add('control')
-            ->add('auditoria')
+            ->add('nombre', 'text', array('label' =>'Nombre: ',
+                                        'attr'=> array('class' => 'form-control')
+                                        ))
+            ->add('fechaActividad', 'date', array('label' => 'Fecha: '))
+            ->add('observacion', 'textarea', array('label' => 'Observación: ',
+                                                    'attr' => array('class' => 'form-control')
+                                            ))
+            
+            ->add('personaResponsable', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Persona',
+                                                   'label' => 'Responsable: ', 
+                                                   'attr' => array('class' => 'dropdown, form-control')
+                                                  ))
+            ->add('sector', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Sector',
+                                            'label' =>'Sector: ',
+                                            'attr' => array( 'class' => 'dropdown, form-control')
+                                            ))
+            ->add('proceso', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Proceso',
+                                            'label' => 'Proceso',                                           
+                                            'attr' => array('class' => 'dropdown, form-control')
+                                            ))
+            ->add('norma', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Norma',
+                                            'label' => 'Norma: ',
+                                            'attr' => array('class' => 'dropdown, form-control')
+                                            ))
+            ->add('matrizlegal', 'entity', array('class' => 'INFT\prosgaBundle\Entity\MatrizLegal',
+                                                'label' => 'Matriz Legal: ',
+                                                'attr' => array('class' => 'dropdown, form-control')
+                                                ))
+            ->add('control', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Control',
+                                            'label' => 'Control: ',
+                                            'attr' => array('class' => 'dropdown, form-control')
+                                            ))
+            ->add('auditoria', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Auditoria',
+                                            'label' => 'Auditoria: ',
+                                            'attr' => array('class' => 'dropdown, form-control')
+                                            ))
         ;
     }
     

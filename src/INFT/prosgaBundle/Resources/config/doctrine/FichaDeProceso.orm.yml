@@ -37,29 +37,29 @@ INFT\prosgaBundle\Entity\FichaDeProceso:
         personaPrepara:
             targetEntity: Persona
             joinColumn:
-                name: persona_id
+                name: personaPrepara_id
                 referencedColumName: id
         personaAprueba:
             targetEntity: Persona
             joinColumn: 
-                name: persona_id
+                name: personaAprueba_id
                 referencedColumName: id
         personaResponsable:
             targetEntity: Persona
             joinColumn:
-                name: persona_id
+                name: personaResponsable_id
                 referencedColumName: id
                 
     oneToOne:
         fichaDeProcesoAntecesor:
             targetEntity: FichaDeProceso
             joinColumn: 
-                name: fichaDeProceso_id
+                name: fichaDeProcesoAntecesor_id
                 referencedColumName: id
         fichaDeProcesoPredecesor:
             targetEntity: FichaDeProceso
             joinColumn: 
-                name: fichaDeProceso_id
+                name: fichaDeProcesoPredecesor_id
                 referencedColumName: id
         
     lifecycleCallbacks: {  }

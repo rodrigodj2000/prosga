@@ -15,12 +15,17 @@
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         {% block head %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('bundles/prosga/jqueryui/jqueryui.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/prosga/css/bootstrap.select.min.css') }}">
     </head>
     <body>
         {% block body %}{% endblock %}
         <!-- Latest compiled and minified JavaScript -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>        
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>      
+        <script src="{{ asset('bundles/prosga/jqueryui/jqueryui.min.js') }}"></script>
+        <script src="{{ asset('bundles/prosga/jqueryui/jquery.ui.datepicker.es.js') }}"></script>
+        <link rel="stylesheet" href="{{ asset('bundles/prosga/js/bootstrap.select.min.js') }}">
         {% block body_end_before_js %}{% endblock %}
     </body>
 </html>

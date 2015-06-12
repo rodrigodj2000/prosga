@@ -1,6 +1,7 @@
 INFT\prosgaBundle\Entity\Actividad:
     type: entity
     table: Actividad
+    repositoryClass: ActividadRepository
     fields:
         id:
             type: integer

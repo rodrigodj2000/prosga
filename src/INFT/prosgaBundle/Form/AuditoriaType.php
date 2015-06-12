@@ -15,12 +15,27 @@ class AuditoriaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechaDeAuditoria')
-            ->add('costoAuditoria')
-            ->add('observacion')
-            ->add('personaResponsable')
-            ->add('sector')
-            ->add('estado')
+            ->add('fechaDeAuditoria', 'date', array('label' => 'Fecha: ',
+                                                     'attr' => array('class' => 'form-control')
+                                                  ))
+            ->add('costoAuditoria', 'integer', array('label' => 'Costo: ', 
+                                                     'attr' => array('class' => 'form-control')
+                                                  ))
+            ->add('personaResponsable', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Persona',
+                                                        'label' => 'Responsable: ', 
+                                                        'attr' => array('class' => 'form-control')
+                                                  ))
+            ->add('sector', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Sector',
+                                            'label' => 'Sector: ',
+                                            'attr' => array('class' => 'form-control')
+                                            ))
+            ->add('estado', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Estado',
+                                            'label' => 'Estado: ',
+                                            'attr' => array('class' => 'form-control')
+                                           ))
+            ->add('observacion', 'textarea', array('label' => 'Observaciones: ', 
+                                                   'attr' => array('class' => 'form-control')
+                                                  ))  
         ;
     }
     

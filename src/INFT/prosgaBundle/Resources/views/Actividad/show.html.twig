@@ -8,22 +8,101 @@
 
     <table class="table">
         <tbody>
+            <ul>
+                <ul>
+                    <tr>
+                        <th>Datos de la Actividad: {{ entity.nombre }} </th>
+                        <td></td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Nombre </li></th>
+                        <td> {{ entity.nombre }} </td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Fecha </li></th>
+                        <td> {{ entity.fechaActividad|date('Y-m-d H:i') }} </td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Responsable Actividad </li></th>
+                        <td> {{ entity.personaResponsable }} </td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Observación </li></th>
+                        <td>{{ entity.observacion }}</td>
+                    </tr>
+                </ul>   
+            </ul>
+            {% if entity.tieneProceso == true %}
             <tr>
-                <th>#</th>
-                <td>{{ entity.id }}</td>
+                <td></td>
+                <td></td>
             </tr>
+            <ul>
+                <ul>
+                    <tr>
+                        <th>Proceso Asociado</th>
+                        <td></td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Nombre Proceso </li></th>
+                        <td>{{ entity.proceso }}</td>
+                    </tr>
+                </ul>
+            </ul>
+            {% endif%}
+
+            {% if entity.tieneAuditoria == true%}
             <tr>
-                <th>Fecha</th>
-                <td>{{ entity.fechaActividad|date('Y-m-d H:i') }}</td>
             </tr>
-            <tr>
-                <th>Observación</th>
-                <td>{{ entity.observacion }}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>{{ entity.nombre }}</td>
-            </tr>
+            <ul>
+                <ul>
+                    <tr>
+                        <th>Auditoria Asociada</th>
+                        <td></td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Nombre de Auditoría </li></th>
+                        <td>{{ entity.auditoria }}</td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Fecha </li></th>
+                        <td>{{ entity.auditoria.fechaDeAuditoria|date('d-m-Y') }}</td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Responsable </li></th>
+                        <td>{{ entity.auditoria.personaResponsable}}</td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Sector </li></th>
+                        <td>{{ entity.auditoria.estado}}</td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Estado </li></th>
+                        <td>{{ entity.auditoria.estado}}</td>
+                    </tr>
+                </ul>
+            </ul>
+            {% endif %}
         </tbody>
     </table>
 

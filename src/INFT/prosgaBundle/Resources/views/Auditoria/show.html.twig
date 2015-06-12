@@ -8,22 +8,55 @@
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>#</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Fecha</th>
-                <td>{{ entity.fechaDeAuditoria|date('d/m/Y H:i') }}</td>
-            </tr>
-            <tr>
-                <th>Costo</th>
-                <td>{{ entity.costoAuditoria|number_format }}</td>
-            </tr>
-            <tr>
-                <th>Observacion</th>
-                <td>{{ entity.observacion }}</td>
-            </tr>
+            <ul>
+                <ul>
+                    <tr>
+                        <th> Datos de la Auditoria: {{ entity.nombre }} </th>
+                        <td></td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Nombre </li></th>
+                        <td>{{ entity.nombre }}</td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Fecha </li></th>
+                        <td>{{ entity.fechaDeAuditoria|date('d-m-Y') }}</td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Sector </li></th>
+                        <td>{{ entity.sector }}</td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Responsable </li></th>
+                        <td>{{ entity.personaResponsable }}</td>
+                    </tr>
+                <ul>
+                <ul>
+                    <tr>
+                        <th><li> Estado </li></th>
+                        <td>{{ entity.estado }}</td>
+                    </tr>
+                <ul>
+                    <tr>
+                        <th><li> Costo </li></th>
+                        <td>{{ entity.costoAuditoria|number_format }}</td>
+                    </tr>
+                </ul>
+                <ul>
+                    <tr>
+                        <th><li> Observacion </li></th>
+                        <td>{{ entity.observacion }}</td>
+                    </tr>
+                </ul>
+            </ul>
         </tbody>
     </table>
 

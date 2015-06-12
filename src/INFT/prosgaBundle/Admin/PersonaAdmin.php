@@ -20,6 +20,9 @@ class PersonaAdmin extends Admin
             ->add('nombre')
             ->add('apellido')
             ->add('mail')
+            ->add('cargo')
+            ->add('estado')
+
         ;
     }
 
@@ -33,6 +36,8 @@ class PersonaAdmin extends Admin
             ->add('apellido')
             ->add('mail')
             ->add('telefono')
+            ->add('cargo')
+            ->add('estado')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -53,6 +58,8 @@ class PersonaAdmin extends Admin
             ->add('apellido')
             ->add('mail')
             ->add('telefono')
+            ->add('cargo')
+            ->add('estado')
             ->add('obligaciones')
             ->add('observacion')
         ;
@@ -68,6 +75,8 @@ class PersonaAdmin extends Admin
             ->add('apellido')
             ->add('mail')
             ->add('telefono')
+            ->add('cargo')
+            ->add('estado')
             ->add('obligaciones')
             ->add('observacion')
         ;

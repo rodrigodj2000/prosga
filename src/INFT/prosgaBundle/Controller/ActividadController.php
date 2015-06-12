@@ -25,14 +25,17 @@ class ActividadController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction($auditoria_id = 0)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('prosgaBundle:Actividad')->findAll();
-
+        
+        $actividades = $em->getRepository('prosgaBundle:Actividad')->findByActividadesAuditorias($auditoria_id);
+        
+        $auditorias = $em->getRepository('prosgaBundle:Auditoria')->findAll();        
+        
         return array(
-            'entities' => $entities,
+            'entities' => $actividades,
+            'auditorias' => $auditorias,
         );
     }
     /**
@@ -243,5 +246,45 @@ class ActividadController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+
+    public function findActivitiesByAuditoriaIdAction($id)
+    {
+    	$em = $this->getDoctrine()->getManager();
+    	$actividades = $em->getRepository('prosgaBundle:Actividad')->findByAuditoriaId($id);
+
+    	return array(
+            'actividades' => $actividades,
+        );
+    }
+
+    public function findActivitiesByPersonaIdAction($id)
+    {
+    	$em = $this->getDoctrine()->getManager();
+    	$actividades = $em->getRepository('prosgaBundle:Actividad')->findByPersonaId($id);
+
+    	return array(
+    		'actividades' => $actividades,
+    		);
+    }
+
+    public function findActivitiesByProcesoIdAction($id)
+    {
+    	$em = $this->getDoctrine()->getManager();
+    	$actividades = $em->getRepository('prosgaBundle:Actividad')->findByProcesoId($id);
+
+    	return array(
+    		'actividades' => $actividades
+    		);
+    }
+
+    public function findActivitiesByControlIdAction($id)
+    {
+    	$em = $this->getDoctrine()->getManager();
+    	$actividades = $em->getRepository('prosgaBundle:Actividad')->findByControlId($id);
+
+    	return array(
+    		'actividades' => $actividades,
+    		);
     }
 }

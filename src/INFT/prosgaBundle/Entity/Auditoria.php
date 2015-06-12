@@ -3,6 +3,7 @@
 namespace INFT\prosgaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Auditoria
@@ -49,7 +50,15 @@ class Auditoria
      */
     private $estado;
 
+    /**
+     * @var Actividad[]
+     */
+    private $actividades;
 
+
+    public function _construct(){
+        $this->auditorias = new ArrayCollection();
+    }
     /**
      * Get id
      *
@@ -223,5 +232,17 @@ class Auditoria
 
     public function __toString(){
         return $this->nombre;
+    }
+
+    public function addActividad(Actividad $actividad){
+        $this->actividades[] = $actividad;
+    }
+
+    public function removeActividad(Actividad $actividad){
+        $this->actividades->removeElement($actividad);
+    }
+
+    public function getActividades(){
+        return $this->actividades;
     }
 }

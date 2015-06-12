@@ -37,4 +37,8 @@ INFT\prosgaBundle\Entity\Auditoria:
             joinColumn:
                 name: estado_id
                 referencedColumnName: id
+    oneToMany:
+        actividades:
+            targetEntity: Actividad
+            mappedBy: auditoria
     lifecycleCallbacks: {  }

@@ -1,0 +1,30 @@
+fichadeprocesoentrada:
+    path:     /
+    defaults: { _controller: "prosgaBundle:FichaDeProcesoEntrada:index" }
+
+fichadeprocesoentrada_show:
+    path:     /{id}/show
+    defaults: { _controller: "prosgaBundle:FichaDeProcesoEntrada:show" }
+
+fichadeprocesoentrada_new:
+    path:     /new
+    defaults: { _controller: "prosgaBundle:FichaDeProcesoEntrada:new" }
+
+fichadeprocesoentrada_create:
+    path:     /create
+    defaults: { _controller: "prosgaBundle:FichaDeProcesoEntrada:create" }
+    requirements: { _method: post }
+
+fichadeprocesoentrada_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "prosgaBundle:FichaDeProcesoEntrada:edit" }
+
+fichadeprocesoentrada_update:
+    path:     /{id}/update
+    defaults: { _controller: "prosgaBundle:FichaDeProcesoEntrada:update" }
+    requirements: { _method: post|put }
+
+fichadeprocesoentrada_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "prosgaBundle:FichaDeProcesoEntrada:delete" }
+    requirements: { _method: post|delete }

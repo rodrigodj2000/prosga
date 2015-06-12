@@ -305,7 +305,22 @@ class Actividad
         return $this->auditoria;
     }
 
+    public function tieneProceso(){
+        if($this->proceso == null){
+            return false;
+        }
+        return true;
+    }
+
+    public function tieneAuditoria(){
+        if($this->auditoria == null){
+            return false;
+        }
+        return true;
+    }
+
     public function __toString(){
         return $this->nombre;
     }
+    
 }

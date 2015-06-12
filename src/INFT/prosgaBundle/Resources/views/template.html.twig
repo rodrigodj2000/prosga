@@ -17,15 +17,37 @@
           </button>
           <a class="navbar-brand" href="{{ path('prosga_homepage') }}">ProSGA</a>
         </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">            
+        <div class="navbar-collapse collapse">            
+          <ul class="nav navbar-nav">       
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <li><a href="{{ path('auditoria') }}">Auditoría</a></li>
             <li><a href="{{ path('actividad') }}">Actividades</a></li>
-            <li><a href="{{ path('prosga_consultas') }}">Consultas</a></li>
+              <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="">Fichas de Proceso <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="{{ path('fichadeproceso') }}">Listar</a></li>
+                  <li><a href="{{ path('fichadeprocesoentrada') }}">De Entrada</a></li>
+                  <li><a href="{{ path('fichadeprocesosalida') }}">De Salida</a></li>
+                  <li><a href="{{ path('fichadeprocesohistorial') }}">Historial</a></li>
+              </ul>
+              </li>
+              <li><a href="{{ path('prosga_consultas') }}">Consultas</a></li>
+            {% endif %}            
             <li><a href="{{ path('prosga_acercade') }}">Acerca de...</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="{{ path('sonata_admin_dashboard') }}">Administración</a></li>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li><a href="{{ path('sonata_admin_dashboard') }}">Administración
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a></li>
+                <li class="active"><a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                </a></li>              
+                {% else %}
+                <li class="active"><a href="{{ path('fos_user_security_login') }}">Ingresar
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+            {% endif %}              
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -38,6 +60,8 @@
       </div>
     </div> <!-- /container -->
 
-    <div class="container">{% block body_content %}{% endblock %}</div>
+    <div class="container">{% block body_content %}{% endblock %}</div>    
 
 {% endblock %}
+
+{% block body_end_before_js %}{% endblock %}

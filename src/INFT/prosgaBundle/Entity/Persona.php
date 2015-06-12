@@ -346,7 +346,7 @@ class Persona
     }
 
     public function __toString(){
-        return $this->nombre;
+        return $this->nombre . " " . $this->apellido;
     }
 
     public function addActividad(Actividad $actividad){

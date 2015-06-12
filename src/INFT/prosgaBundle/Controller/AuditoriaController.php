@@ -244,4 +244,34 @@ class AuditoriaController extends Controller
             ->getForm()
         ;
     }
+
+    public function findAuditoriaByResponsableIdAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $auditorias = $em->getRepository('prosgaBundle:Auditoria')->findByResponsableId($id);
+
+        return array(
+            'auditorias' => $auditorias
+            );
+    }
+
+    public function findAuditoriaByEstadoAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $auditorias = $em->getRepository('prosgaBundle:Auditoria')->findByEstadoId($id);
+
+        return array(
+            'auditorias' => $auditorias
+            );
+    }
+
+    public function findAuditoriaBySectorAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $auditorias = $em->getRepository('prosgaBundle:Auditoria')->findBySectorId($id);
+
+        return array(
+            'auditorias' => $auditorias
+            );
+    }
 }

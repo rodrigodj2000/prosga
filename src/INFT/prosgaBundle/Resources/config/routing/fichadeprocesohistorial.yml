@@ -1,0 +1,30 @@
+fichadeprocesohistorial:
+    path:     /
+    defaults: { _controller: "prosgaBundle:FichaDeProcesoHistorial:index" }
+
+fichadeprocesohistorial_show:
+    path:     /{id}/show
+    defaults: { _controller: "prosgaBundle:FichaDeProcesoHistorial:show" }
+
+fichadeprocesohistorial_new:
+    path:     /new
+    defaults: { _controller: "prosgaBundle:FichaDeProcesoHistorial:new" }
+
+fichadeprocesohistorial_create:
+    path:     /create
+    defaults: { _controller: "prosgaBundle:FichaDeProcesoHistorial:create" }
+    requirements: { _method: post }
+
+fichadeprocesohistorial_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "prosgaBundle:FichaDeProcesoHistorial:edit" }
+
+fichadeprocesohistorial_update:
+    path:     /{id}/update
+    defaults: { _controller: "prosgaBundle:FichaDeProcesoHistorial:update" }
+    requirements: { _method: post|put }
+
+fichadeprocesohistorial_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "prosgaBundle:FichaDeProcesoHistorial:delete" }
+    requirements: { _method: post|delete }

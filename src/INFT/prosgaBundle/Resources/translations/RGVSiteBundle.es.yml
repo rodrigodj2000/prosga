@@ -16,7 +16,7 @@ group:
 
 security:
     login:
-        username: "Usuario / Email:"
+        username: "Usuario:"
         password: "Contraseña:"
         remember_me: "Recordarme en este equipo"
         submit: Entrar

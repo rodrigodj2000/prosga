@@ -5,6 +5,22 @@ prosga_auditoria:
 prosga_actividades:
     resource: "routing/actividades.yml"        
     prefix: /actividades
+    
+prosga_fichadeproceso:
+    resource: "routing/fichadeproceso.yml"        
+    prefix: /fichadeproceso
+    
+prosga_fichadeproceso_entrada:
+    resource: "routing/fichadeprocesoentrada.yml"        
+    prefix: /fichadeprocesoentrada
+    
+prosga_fichadeproceso_historial:
+    resource: "routing/fichadeprocesohistorial.yml"        
+    prefix: /fichadeprocesohistorial
+    
+prosga_fichadeproceso_salida:
+    resource: "routing/fichadeprocesosalida.yml"        
+    prefix: /fichadeprocesosalida    
 
 prosga_homepage:
     path:     /
