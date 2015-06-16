@@ -16,8 +16,13 @@ class DocumentoAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add('nombre')
             ->add('fechaCreacion')
             ->add('ubicacion')
+            ->add('auditoria')
+            ->add('estado')
+            ->add('proceso')
+            ->add('persona')
         ;
     }
 
@@ -27,8 +32,13 @@ class DocumentoAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('fechaCreacion', 'sonata_type_date')
+            ->add('nombre')
+            ->add('fechaCreacion')
             ->add('ubicacion')
+            ->add('auditoria')
+            ->add('estado')
+            ->add('proceso')
+            ->add('persona')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -45,7 +55,12 @@ class DocumentoAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('nombre')
             ->add('ubicacion')
+            ->add('auditoria')
+            ->add('estado')
+            ->add('proceso')
+            ->add('persona')
 
         ;
     }
@@ -56,8 +71,13 @@ class DocumentoAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
+            ->add('nombre')
             ->add('fechaCreacion')
             ->add('ubicacion')
+            ->add('auditoria')
+            ->add('estado')
+            ->add('proceso')
+            ->add('persona')
         ;
     }
 }

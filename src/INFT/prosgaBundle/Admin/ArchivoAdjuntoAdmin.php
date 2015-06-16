@@ -16,6 +16,11 @@ class ArchivoAdjuntoAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add('nombre')
+            ->add('documento')
+            ->add('control')
+            ->add('indicador')
+            ->add('fichaDeProceso')
             ->add('observacion')
         ;
     }
@@ -26,6 +31,11 @@ class ArchivoAdjuntoAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('nombre')
+            ->add('documento')
+            ->add('control')
+            ->add('indicador')
+            ->add('fichaDeProceso')
             ->add('observacion')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -43,6 +53,11 @@ class ArchivoAdjuntoAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('nombre')
+            ->add('documento')
+            ->add('control')
+            ->add('indicador')
+            ->add('fichaDeProceso')
             ->add('observacion')
         ;
     }
@@ -53,6 +68,11 @@ class ArchivoAdjuntoAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
+            ->add('nombre')
+            ->add('documento')
+            ->add('control')
+            ->add('indicador')
+            ->add('fichaDeProceso')
             ->add('observacion')
         ;
     }

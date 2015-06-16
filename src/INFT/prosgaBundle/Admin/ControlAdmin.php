@@ -51,7 +51,7 @@ class ControlAdmin extends Admin
         $formMapper
             ->add('nombre')
             ->add('descripcion')
-            ->add('fecha')
+            ->add('fecha', 'date')
             ->add('observacion')
         ;
     }

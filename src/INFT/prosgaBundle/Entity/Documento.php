@@ -21,7 +21,7 @@ class Documento
     private $nombre;
 
     /**
-     * @var \DateTime
+     * @var \Datetime
      */
     private $fechaCreacion;
 
@@ -58,6 +58,7 @@ class Documento
 
     public function __construct(){
         $this->permisos = new ArrayCollection();
+        $this->fechaCreacion = new \DateTime();
     }
 
 

@@ -165,7 +165,9 @@ class AuditoriaController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar Datos',
+                                             'attr' => array('class' => 'btn btn-primary espacio10')
+            ));
 
         return $form;
     }
@@ -240,7 +242,8 @@ class AuditoriaController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('auditoria_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Eliminar Auditoría',
+                                            'attr' => array('class' => 'btn btn-danger espacio10')))
             ->getForm()
         ;
     }

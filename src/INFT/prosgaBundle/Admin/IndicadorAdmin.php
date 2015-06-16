@@ -17,6 +17,10 @@ class IndicadorAdmin extends Admin
     {
         $datagridMapper
             ->add('nombre')
+            ->add('descripcion')
+            ->add('observacion')
+            ->add('frecuencia')
+            ->add('fichaDeProceso')
         ;
     }
 
@@ -29,6 +33,8 @@ class IndicadorAdmin extends Admin
             ->add('nombre')
             ->add('descripcion')
             ->add('observacion')
+            ->add('frecuencia')
+            ->add('fichaDeProceso')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -48,6 +54,8 @@ class IndicadorAdmin extends Admin
             ->add('nombre')
             ->add('descripcion')
             ->add('observacion')
+            ->add('frecuencia')
+            ->add('fichaDeProceso')
         ;
     }
 
@@ -60,6 +68,8 @@ class IndicadorAdmin extends Admin
             ->add('nombre')
             ->add('descripcion')
             ->add('observacion')
+            ->add('frecuencia')
+            ->add('fichaDeProceso')
         ;
     }
 }
