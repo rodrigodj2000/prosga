@@ -13,12 +13,20 @@ INFT\prosgaBundle\Entity\Actividad:
             column: FechaActividad
         observacion:
             type: string
-            length: '1000'
+            length: 1000
             column: Observacion
         nombre:
             type: string
             length: 255
             column: Nombre
+        aspectoAmbiental:
+            type: string
+            length: 1000
+            column: AspectoAmbiental
+        accionPrevencion:
+            type: string
+            length: 1000
+            column: AccionPrevencion
     manyToOne:
         personaResponsable:
             targetEntity: Persona

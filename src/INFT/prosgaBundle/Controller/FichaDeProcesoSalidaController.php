@@ -67,7 +67,8 @@ class FichaDeProcesoSalidaController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Crear Proceso de Salida',
+                                             'attr' => array('class' => 'btn btn-primary espacio10')));
 
         return $form;
     }
@@ -147,7 +148,8 @@ class FichaDeProcesoSalidaController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar Datos',
+                                             'attr' => array('class' => 'btn btn-primary espacio10')));
 
         return $form;
     }
@@ -217,7 +219,8 @@ class FichaDeProcesoSalidaController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('fichadeprocesosalida_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Eliminar',
+                                            'attr' => array('class' => 'btn btn-danger espacio10')))
             ->getForm()
         ;
     }

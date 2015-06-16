@@ -64,6 +64,16 @@ class Actividad
      */
     private $auditoria;
 
+    /**
+     * @var String
+     */
+    private $aspectoAmbiental;
+
+    /**
+     * @var String
+     */
+    private $accionPrevencion;
+
 
     /**
      * Get id
@@ -317,6 +327,52 @@ class Actividad
             return false;
         }
         return true;
+    }
+
+     /**
+     * Set aspectoAmbiental
+     *
+     * @param string $aspectoAmbiental
+     * @return Actividad
+     */
+    public function setAspectoAmbiental($aspectoAmbiental)
+    {
+        $this->aspectoAmbiental = $aspectoAmbiental;
+    
+        return $this;
+    }
+
+    /**
+     * Get aspectoAmbiental
+     *
+     * @return string 
+     */
+    public function getAspectoAmbiental()
+    {
+        return $this->aspectoAmbiental;
+    }
+
+    /**
+     * Set accionPrevencion
+     *
+     * @param string $accionPrevencion
+     * @return Actividad
+     */
+    public function setAccionPrevencion($accionPrevencion)
+    {
+        $this->accionPrevencion = $accionPrevencion;
+    
+        return $this;
+    }
+
+    /**
+     * Get accionPrevencion
+     *
+     * @return string 
+     */
+    public function getAccionPrevencion()
+    {
+        return $this->accionPrevencion;
     }
 
     public function __toString(){

@@ -3,19 +3,20 @@
 {% block body_content -%}
     
     <div class="row borde-1-solido">
-        <div class="col-md-3"><img alt="logo empresa" src="{{ asset('bundles/prosga/images/inft/logo_min.png') }}" class="img-responsive img-rounded" style="width: 100%" /></div>
+        <div class="col-md-3 text-center"><img alt="logo empresa" src="{{ asset('bundles/prosga/images/inft/logo_min.png') }}" class="img-responsive img-rounded" style="width: 37%" /></div>
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-8 text-center bg-info borde-1-solido "><strong><p>FICHA DE PROCESO</p></strong></div>
                 <div class="col-md-4 text-center bg-info borde-1-solido"><p>{{ entity.codigoDeFicha }}</p></div>
             </div>
             <div class="row">
-                <div class="col-md-12 text-center text-uppercase borde-1-solido"><strong><p>{{ entity.nombre }}</p></strong></div>
+                <div class="col-md-8 text-center text-uppercase borde-1-solido"><strong><p>{{ entity.nombre }}</p></strong></div>
+                <div class="col-md-4 borde-1-solido text-center"><p><strong>NORMA:</strong> {{ entity.norma }}</p></div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3 text-left borde-1-solido"><p>Preparó: {{ entity.personaResponsable}}</p></div>
+        <div class="col-md-3 text-left borde-1-solido"><p>Preparó: {{ entity.personaPrepara}}</p></div>
         <div class="col-md-3 text-left borde-1-solido"><p>Aprobó: {{ entity.personaAprueba}}</p></div>
         <div class="col-md-3 text-center borde-1-solido"><p>Fecha Emisión: {{ entity.fechaDeEmision|date('d/m/Y') }}</p></div>
         <div class="col-md-3 text-center borde-1-solido"><p>REVISIÓN: {{ entity.nroDeRevision }} Fecha: {{ entity.fechaDeRevision|date('d/m/Y') }}</p></div>

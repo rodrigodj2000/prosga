@@ -22,8 +22,10 @@
             <tr>
                 <!--th>#</th--!>
                 <th>Fecha</th>
-                <th>Observacion</th>
                 <th>Nombre</th>
+                <th>Aspecto Ambiental</th>
+                <th>Acción Prevención </th>
+                <th>Observacion</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -32,8 +34,10 @@
                 <tr>
                     <!--td><a href="{{ path('actividad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td--!>
                     <td>{% if entity.fechaActividad %}{{ entity.fechaActividad|date('d-m-Y') }}{% endif %}</td>
-                    <td>{{ entity.observacion }}</td>
                     <td>{{ entity.nombre }}</td>
+                    <td>{{ entity.aspectoAmbiental }}</td>
+                    <td>{{ entity.accionPrevencion }}</td>
+                    <td>{{ entity.observacion }}</td>
                     <td>
                     <ul>
                         <li>

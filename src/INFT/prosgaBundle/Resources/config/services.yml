@@ -87,3 +87,21 @@ services:
         arguments: [~, INFT\prosgaBundle\Entity\Indicador, prosgaBundle:Indicador]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Indicador}
+
+    prosga.admin.registro_pg:
+        class: INFT\prosgaBundle\Admin\RegistroPGAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\RegistroPG, prosgaBundle:RegistroPG]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: RegistroPG}
+
+    prosga.admin.matriz_legal:
+        class: INFT\prosgaBundle\Admin\MatrizLegalAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\MatrizLegal, prosgaBundle:MatrizLegal]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: MatrizLegal}
+
+    prosga.admin.registro_fp:
+        class: INFT\prosgaBundle\Admin\RegistroFPAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\RegistroFP, prosgaBundle:RegistroFP]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: RegistroFP}

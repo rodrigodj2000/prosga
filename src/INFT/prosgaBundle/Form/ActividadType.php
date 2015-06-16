@@ -19,6 +19,12 @@ class ActividadType extends AbstractType
                                         'attr'=> array('class' => 'form-control')
                                         ))
             ->add('fechaActividad', 'date', array('label' => 'Fecha: '))
+            ->add('aspectoAmbiental', 'text', array('label' => 'Aspecto Ambiental: ',
+                                                    'attr' => array('class' => 'form-control')
+                                                    ))
+            ->add('accionPrevencion', 'text', array('label' => 'Acción Prevención: ',
+                                                    'attr' => array('class' => 'form-control')
+                                                    ))
             ->add('observacion', 'textarea', array('label' => 'Observación: ',
                                                     'attr' => array('class' => 'form-control')
                                             ))
@@ -30,10 +36,6 @@ class ActividadType extends AbstractType
             ->add('sector', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Sector',
                                             'label' =>'Sector: ',
                                             'attr' => array( 'class' => 'dropdown, form-control')
-                                            ))
-            ->add('proceso', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Proceso',
-                                            'label' => 'Proceso',                                           
-                                            'attr' => array('class' => 'dropdown, form-control')
                                             ))
             ->add('norma', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Norma',
                                             'label' => 'Norma: ',

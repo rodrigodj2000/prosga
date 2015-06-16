@@ -103,10 +103,24 @@ class FichaDeProcesoController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        
+        $entradas = $em->getRepository('prosgaBundle:FichaDeProcesoEntrada')->findByFichaDeProceso($id);
+        
+        $salidas = $em->getRepository('prosgaBundle:FichaDeProcesoSalida')->findByFichaDeProceso($id);
+        
+        $historial = $em->getRepository('prosgaBundle:FichaDeProcesoHistorial')->findByFichaDeProceso($id);
+        
+        $controles = $em->getRepository('prosgaBundle:Control')->findByFichaDeProceso($id);
+        
+        $registros = $em->getRepository('prosgaBundle:RegistrosFP')->findByFichaDeProceso($id);
 
         return $this->render('prosgaBundle:FichaDeProceso:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+            'entity'            => $entity,
+            'delete_form'       => $deleteForm->createView(),
+            'procesosentradas'  => $entradas,
+            'procesosalidas'    => $salidas,
+            'procesohistorial'  => $historial,    
+            'registrosfp'       => $registros,
         ));
     }
 
