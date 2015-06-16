@@ -50,7 +50,7 @@ INFT\prosgaBundle\Entity\FichaDeProceso:
                 name: personaResponsable_id
                 referencedColumName: id
                 
-    oneToOne:
+    manyToOne:
         fichaDeProcesoAntecesor:
             targetEntity: FichaDeProceso
             joinColumn: 

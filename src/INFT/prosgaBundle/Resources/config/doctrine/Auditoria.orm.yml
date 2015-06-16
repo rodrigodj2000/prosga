@@ -21,7 +21,7 @@ INFT\prosgaBundle\Entity\Auditoria:
             type: string
             length: '1000'
             column: Observacion
-    oneToOne:
+    manyToOne:
         personaResponsable:
             targetEntity: Persona
             joinColumn: 

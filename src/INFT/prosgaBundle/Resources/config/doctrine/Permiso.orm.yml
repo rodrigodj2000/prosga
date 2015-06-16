@@ -15,5 +15,5 @@ INFT\prosgaBundle\Entity\Permiso:
             type: string
             length: 255
             column: Descripcion              
-            
+
     lifecycleCallbacks: {  }

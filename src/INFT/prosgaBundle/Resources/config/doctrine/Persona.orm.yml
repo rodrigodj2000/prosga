@@ -32,7 +32,7 @@ INFT\prosgaBundle\Entity\Persona:
             length: '1000'
             column: Observacion
             
-    oneToOne:
+    manyToOne:
         cargo:
             targetEntity: Cargo
             joinColumn:
@@ -84,5 +84,5 @@ INFT\prosgaBundle\Entity\Persona:
         actividades:
             targetEntity: Actividad
             mappedBy: personaResponsable
-                    
+
     lifecycleCallbacks: {  }

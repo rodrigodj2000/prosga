@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body_content %}  
-
+ 
     <div class="form-group">
         <label class="control-label">Seleccione Auditoría</label>        
         <div class="selectContainer">
@@ -16,8 +16,8 @@
             </select>      
         </div>    
     </div>
-
-    <table class="table table-striped">
+    
+    <table id="actividades" class="table table-striped">
         <thead>
             <tr>
                 <!--th>#</th--!>
@@ -29,33 +29,31 @@
         </thead>
         <tbody>
         {% for entity in entities %}
-            <tr>
-                <!--td><a href="{{ path('actividad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td--!>
-                <td>{% if entity.fechaActividad %}{{ entity.fechaActividad|date('d-m-Y') }}{% endif %}</td>
-                <td>{{ entity.observacion }}</td>
-                <td>{{ entity.nombre }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('actividad_show', { 'id': entity.id }) }}">Ver</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('actividad_edit', { 'id': entity.id }) }}">Editar</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
+                <tr>
+                    <!--td><a href="{{ path('actividad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td--!>
+                    <td>{% if entity.fechaActividad %}{{ entity.fechaActividad|date('d-m-Y') }}{% endif %}</td>
+                    <td>{{ entity.observacion }}</td>
+                    <td>{{ entity.nombre }}</td>
+                    <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('actividad_show', { 'id': entity.id }) }}">Ver</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('actividad_edit', { 'id': entity.id }) }}">Editar</a>
+                        </li>
+                    </ul>
+                    </td>
+                </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
+    <ul>
         <li>
             <a href="{{ path('actividad_new') }}">
                 Crear Actividad
             </a>
         </li>
     </ul>
-    {% endblock %}
-
-{% block body_end_before_js %}{% endblock %}
+{% endblock %}

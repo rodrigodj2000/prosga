@@ -32,8 +32,8 @@ INFT\prosgaBundle\Entity\ProcedimientoGeneral:
             type: string
             length: '2000'
             column: Alcance	  
-                
-    oneToOne:
+
+    manyToOne:
         procedGeneralAntecesor:
             targetEntity: ProcedimientoGeneral
             joinColumn:

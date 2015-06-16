@@ -15,7 +15,7 @@ INFT\prosgaBundle\Entity\ArchivoAdjunto:
             type: string
             length: '1000'
             column: Observacion            
-    oneToOne:
+    manyToOne:
         documento:
             targetEntity: Documento
             joinColumn:

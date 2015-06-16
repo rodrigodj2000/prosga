@@ -14,6 +14,12 @@
             Volver al Listado
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
+    <li>
+        {{ form_start(delete_form) }}
+        <button type="submit" class="btn btn-danger btn-xs">
+            <i class="fa fa-trash">Eliminar</i>
+        </button>
+        {{ form_end(delete_form) }}            
+    </li>
 </ul>
 {% endblock %}
