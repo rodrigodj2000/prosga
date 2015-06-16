@@ -1,14 +1,16 @@
-{% extends '::base.html.twig' %}
+{% extends 'prosgaBundle::template.html.twig' %}
 
-{% block body -%}
-    <h1>FichaDeProceso edit</h1>
+{% block content %}
+    <h2>Editar Ficha de Proceso</h2>
+{% endblock %}
 
+{% block body_content -%}
     {{ form(edit_form) }}
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('fichadeproceso') }}">
-            Back to the list
+            Volver a la Lista
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>

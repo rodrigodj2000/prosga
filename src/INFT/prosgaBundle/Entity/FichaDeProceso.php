@@ -364,4 +364,18 @@ class FichaDeProceso
     public function __toString(){
         return $this->nombre;
     }
+
+    public function tieneFichaDeProcesoAntecesor(){
+        if($this->fichaDeProcesoAntecesor == null)
+            return false;
+        else
+            return true;
+    }
+
+    public function tieneFichaDeProcesoPredecesor(){
+        if($this->fichaDeProcesoPredecesor == null)
+            return false;
+        else
+            return true;
+    }
 }

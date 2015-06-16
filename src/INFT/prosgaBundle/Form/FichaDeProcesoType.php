@@ -15,26 +15,42 @@ class FichaDeProcesoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('codigoDeFicha', 'text', array('label' => 'Código de Ficha: '))
-            ->add('nombre', 'text', array('label' => 'Nombre: '))
+            ->add('nombre', 'text', array('label' => 'Nombre: ',
+                                          'attr' => array('class' => 'form-control')
+                                          ))
+            ->add('codigoDeFicha', 'text', array('label' => 'Código de Ficha: ',
+                                                  'attr' => array('class' => 'form-control')
+                                                  ))
+            ->add('alcance', 'textarea', array('label' => 'Alcance: ',
+                                                'attr' => array('class' => 'form-control')
+                                                ))
+            ->add('objetivo', 'textarea', array('label' => 'Objetivo: ',
+                                            'attr' => array('class' => 'form-control')
+                                            ))            
             ->add('fechaDeEmision', 'date', array('label' => 'Fecha de Emisión: '))
             ->add('fechaDeRevision', 'date', array('label' => 'Fecha de Revisión: '))
-            ->add('nroDeRevision', array('label' => 'Nº Revisión: '))
-            ->add('objetivo')
-            ->add('alcance')
-            ->add('fichaDeProcesoAntecesor')
-            ->add('fichaDeProcesoPredecesor')
+            ->add('nroDeRevision', 'integer' ,array('label' => 'Nº Revisión: ',
+                                                    'attr' => array('class' => 'form-control')))            
+            
+            ->add('fichaDeProcesoAntecesor', 'entity', array('class' => 'INFT\prosgaBundle\Entity\FichaDeProceso',
+                                                              'label' => 'Ficha de Proceso Antecesora: ',
+                                                              'attr' => array('class' => 'dropdown, form-control')
+                                                              ))
+            ->add('fichaDeProcesoPredecesor', 'entity', array('class' => 'INFT\prosgaBundle\Entity\FichaDeProceso',
+                                                              'label' => 'Ficha de Proceso Predecesora: ',
+                                                              'attr' => array('class' => 'dropdown, form-control')
+                                                              ))
             ->add('personaPrepara', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Persona',
                                                         'label' => 'Prepara: ', 
-                                                        'attr' => array('class' => 'form-control')
+                                                        'attr' => array('class' => 'dropdown, form-control')
                                                   ))
             ->add('personaAprueba', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Persona',
                                                         'label' => 'Aprueba: ', 
-                                                        'attr' => array('class' => 'form-control')
+                                                        'attr' => array('class' => 'dropdown, form-control')
                                                   ))
             ->add('personaResponsable', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Persona',
                                                         'label' => 'Responsable: ', 
-                                                        'attr' => array('class' => 'form-control')
+                                                        'attr' => array('class' => 'dropdown, form-control')
                                                   ))
         ;
     }

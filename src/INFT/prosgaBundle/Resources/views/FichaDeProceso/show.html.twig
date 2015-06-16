@@ -1,19 +1,25 @@
 {% extends 'prosgaBundle::template.html.twig' %}
 
 {% block content %}
-    <h2>Ver Ficha de Proceso</h2>
+    <h2>Ver Proceso</h2>
 {% endblock %}
 
 {% block body_content -%}
 
-<a href="{{ path('fichadeproceso_show', { 'id': entity.fichaDeProcesoAntecesor.id }) }}">Ficha de Proceso Antecesora </a>
-<a href="{{ path('fichadeproceso_show', { 'id': entity.fichaDeProcesoPredecesor.id }) }}">Ficha de Proceso Predecesora</a>
+{% if entity.tieneFichaDeProcesoAntecesor == true %}
+    <a href="{{ path('fichadeproceso_show', { 'id': entity.fichaDeProcesoAntecesor.id }) }}">Ficha de Proceso Antecesora </a>
+{% endif %}
+
+{%if entity.tieneFichaDeProcesoPredecesor == true %}
+    <a href="{{ path('fichadeproceso_show', { 'id': entity.fichaDeProcesoPredecesor.id }) }}">Ficha de Proceso Predecesora</a>
+{% endif %}
+
     <table class="table">
         <tbody>
             <ul>
                 <ul>
                     <tr>
-                        <th>Datos de la Ficha de Proceso: {{ entity.nombre }}</th>
+                        <th>Datos del Proceso: {{ entity.nombre }}</th>
                         <td></td>
                     </tr>
                 </ul>

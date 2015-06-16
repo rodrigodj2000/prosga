@@ -1,16 +1,18 @@
-{% extends '::base.html.twig' %}
+{% extends 'prosgaBundle::template.html.twig' %}
 
-{% block body -%}
-    <h1>FichaDeProcesoSalida</h1>
+{% block content %}
+    <h2>Ver Salidas de Procesos</h2>
+{% endblock %}
 
-    <table class="record_properties">
+{% block body_content -%}
+    <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
+                <th> Salida del Proceso </th>
+                <td><a href="{{ path('fichadeproceso_show', { 'id': entity.fichaDeProceso.id }) }}">{{ entity.fichaDeProceso}} </a>
             </tr>
             <tr>
-                <th>Valoresdesalida</th>
+                <th>Valores de Salida</th>
                 <td>{{ entity.valoresDeSalida }}</td>
             </tr>
             <tr>
@@ -23,12 +25,12 @@
         <ul class="record_actions">
     <li>
         <a href="{{ path('fichadeprocesosalida') }}">
-            Back to the list
+            Volver al Listado
         </a>
     </li>
     <li>
         <a href="{{ path('fichadeprocesosalida_edit', { 'id': entity.id }) }}">
-            Edit
+            Editar
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>

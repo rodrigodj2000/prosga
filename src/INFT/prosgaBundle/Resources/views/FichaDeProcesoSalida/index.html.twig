@@ -1,30 +1,34 @@
-{% extends '::base.html.twig' %}
+{% extends 'prosgaBundle::template.html.twig' %}
 
-{% block body -%}
-    <h1>FichaDeProcesoSalida list</h1>
+{% block content %}
+    <h2>Salidas de Procesos</h2>
+{% endblock %}
 
-    <table class="records_list">
+{% block body_content %} 
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Valoresdesalida</th>
-                <th>Observacion</th>
-                <th>Actions</th>
+                <!--th> Id </th--!>
+                <th> Salida del Proceso </th>
+                <th> Valores de Salida </th>                
+                <th> Observaciones </th>
+                <th> Acciones </th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('fichadeprocesosalida_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.valoresDeSalida }}</td>
+                <!--td><a href="{{ path('fichadeprocesosalida_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td--!>
+                <td><a href="{{ path('fichadeproceso_show', { 'id': entity.id }) }}">{{ entity.fichaDeProceso }}</a></td>
+                <td>{{ entity.valoresDeSalida }}</td>                
                 <td>{{ entity.observacion }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('fichadeprocesosalida_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('fichadeprocesosalida_show', { 'id': entity.id }) }}">Ver</a>
                     </li>
                     <li>
-                        <a href="{{ path('fichadeprocesosalida_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('fichadeprocesosalida_edit', { 'id': entity.id }) }}">Editar</a>
                     </li>
                 </ul>
                 </td>
@@ -36,7 +40,7 @@
         <ul>
         <li>
             <a href="{{ path('fichadeprocesosalida_new') }}">
-                Create a new entry
+               Crear Salida de un Proceso
             </a>
         </li>
     </ul>

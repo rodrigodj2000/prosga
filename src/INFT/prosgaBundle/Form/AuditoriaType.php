@@ -15,9 +15,10 @@ class AuditoriaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechaDeAuditoria', 'date', array('label' => 'Fecha: ',
-                                                     'attr' => array('class' => 'form-control')
-                                                  ))
+            ->add('nombre', 'text', array('label' => 'Nombre: ',
+                                            'attr' => array('class' => 'form-control')))
+            ->add('fechaDeAuditoria', 'date', array('label' => 'Fecha: ')
+                                                  )
             ->add('costoAuditoria', 'integer', array('label' => 'Costo: ', 
                                                      'attr' => array('class' => 'form-control')
                                                   ))

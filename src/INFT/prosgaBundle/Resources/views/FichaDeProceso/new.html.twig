@@ -1,14 +1,17 @@
-{% extends '::base.html.twig' %}
+{% extends 'prosgaBundle::template.html.twig' %}
 
-{% block body -%}
-    <h1>FichaDeProceso creation</h1>
+{% block content %}
+    <h2>Nueva Ficha de Proceso</h2>
+{% endblock %}
+
+{% block body_content -%}
 
     {{ form(form) }}
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('fichadeproceso') }}">
-            Back to the list
+            Volver al Listado
         </a>
     </li>
 </ul>

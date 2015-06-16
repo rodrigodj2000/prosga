@@ -16,10 +16,11 @@ class FichaDeProcesoHistorialType extends AbstractType
     {
         $builder
             ->add('fichaDeProceso', 'entity', array('class' => 'INFT\prosgaBundle\Entity\FichaDeProceso',
-                                                    'label' => 'Ficha de Proceso: ',
+                                                    'label' => 'Proceso: ',
                                                     'attr' => array('class' => 'form-control')))
             ->add('fecha', 'date', array('label' => 'Fecha: '))
-            ->add('nroRevision', 'text', array('label' => 'Nº Revisión: '))
+            ->add('nroRevision', 'integer', array('label' => 'Nº Revisión: ',
+                                                    'attr' => array('class' => 'form-control')))
             ->add('descripcion', 'textarea', array('label' => 'Observaciones: ', 
                                                    'attr' => array('class' => 'form-control')
                                                   ))              
@@ -29,7 +30,6 @@ class FichaDeProcesoHistorialType extends AbstractType
                                                   ))
         ;
     }
-    c
     /**
      * @param OptionsResolverInterface $resolver
      */

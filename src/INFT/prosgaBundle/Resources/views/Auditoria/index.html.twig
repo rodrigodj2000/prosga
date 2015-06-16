@@ -9,27 +9,33 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Fecha</th>
-                <th>Costo</th>
-                <th>Observación</th>
-                <th>Acciones</th>
+                <th> Nombre </th>
+                <th> Fecha </th>
+                <th> Sector </th>
+                <th> Responsable </th>
+                <th> Estado </th>
+                <th> Costo </th>                
+                <th> Acciones </th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('auditoria_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.fechaDeAuditoria %}{{ entity.fechaDeAuditoria|date('d/m/Y') }}{% endif %}</td>
+                <!--td><a href="{{ path('auditoria_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td--!>
+                <td>{{ entity.nombre }}</td>
+                <td>{% if entity.fechaDeAuditoria %}{{ entity.fechaDeAuditoria|date('d-m-Y') }}{% endif %}</td>
+                <td>{{ entity.sector }}</td>
+                <td>{{ entity.personaResponsable}}</td>
+                <td>{{ entity.estado }}</td>
                 <td>{{ entity.costoAuditoria|number_format }}</td>
-                <td>{{ entity.observacion }}</td>
+                                
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('auditoria_show', { 'id': entity.id }) }}">mostrar</a>
+                        <a href="{{ path('auditoria_show', { 'id': entity.id }) }}">Ver</a>
                     </li>
                     <li>
-                        <a href="{{ path('auditoria_edit', { 'id': entity.id }) }}">editar</a>
+                        <a href="{{ path('auditoria_edit', { 'id': entity.id }) }}">Editar</a>
                     </li>
                 </ul>
                 </td>
@@ -41,7 +47,7 @@
         <ul>
         <li>
             <a href="{{ path('auditoria_new') }}">
-                Agregar nueva auditoría
+                Crear Auditoría
             </a>
         </li>
     </ul>

@@ -1,27 +1,27 @@
 {% extends 'prosgaBundle::template.html.twig' %}
 
 {% block content %}
-    <h2>Fichas de Proceso</h2>
+    <h2>Procesos</h2>
 {% endblock %}
 
 {% block body_content %} 
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
+                <!--th>Id</th--!>
                 <th>Codigo</th>
                 <th>Nombre</th>
                 <th>Alcance</th>
                 <th>Fecha de Emisión</th>
                 <th>Fecha de Revisión</th>
-                <th>Nro. de Revisión</th>               
+                <th>N° de Revisión</th>               
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('fichadeproceso_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <!--td><a href="{{ path('fichadeproceso_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td--!>
                 <td>{{ entity.codigoDeFicha }}</td>
                 <td>{{ entity.nombre }}</td>
                 <td>{% if entity.fechaDeEmision %}{{ entity.fechaDeEmision|date('d-m-Y') }}{% endif %}</td>
@@ -31,10 +31,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('fichadeproceso_show', { 'id': entity.id }) }}">mostrar</a>
+                        <a href="{{ path('fichadeproceso_show', { 'id': entity.id }) }}">Ver</a>
                     </li>
                     <li>
-                        <a href="{{ path('fichadeproceso_edit', { 'id': entity.id }) }}">editar</a>
+                        <a href="{{ path('fichadeproceso_edit', { 'id': entity.id }) }}">Editar</a>
                     </li>
                 </ul>
                 </td>
@@ -46,7 +46,7 @@
         <ul>
         <li>
             <a href="{{ path('fichadeproceso_new') }}">
-                Crear nueva Ficha de Proceso
+                Crear Proceso
             </a>
         </li>
     </ul>

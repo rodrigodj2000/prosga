@@ -20,7 +20,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>#</th>
+                <!--th>#</th--!>
                 <th>Fecha</th>
                 <th>Observacion</th>
                 <th>Nombre</th>
@@ -30,17 +30,17 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('actividad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.fechaActividad %}{{ entity.fechaActividad|date('d/m/Y') }}{% endif %}</td>
+                <!--td><a href="{{ path('actividad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td--!>
+                <td>{% if entity.fechaActividad %}{{ entity.fechaActividad|date('d-m-Y') }}{% endif %}</td>
                 <td>{{ entity.observacion }}</td>
                 <td>{{ entity.nombre }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('actividad_show', { 'id': entity.id }) }}">mostrar</a>
+                        <a href="{{ path('actividad_show', { 'id': entity.id }) }}">Ver</a>
                     </li>
                     <li>
-                        <a href="{{ path('actividad_edit', { 'id': entity.id }) }}">editar</a>
+                        <a href="{{ path('actividad_edit', { 'id': entity.id }) }}">Editar</a>
                     </li>
                 </ul>
                 </td>
@@ -52,7 +52,7 @@
         <ul>
         <li>
             <a href="{{ path('actividad_new') }}">
-                Crear nueva Actividad
+                Crear Actividad
             </a>
         </li>
     </ul>
