@@ -60,7 +60,7 @@ INFT\prosgaBundle\Entity\FichaDeProceso:
                 name: personaResponsable_id
                 referencedColumName: id
         norma:
-            targetEntity: norma
+            targetEntity: Norma
             joinColumn: 
                 name: norma_id
                 referencedColumName: id
