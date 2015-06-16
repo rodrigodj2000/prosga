@@ -32,8 +32,18 @@ INFT\prosgaBundle\Entity\FichaDeProceso:
             type: string
             length: '500'
             column: Alcance
-            
+
     manyToOne:
+        fichaDeProcesoAntecesor:
+            targetEntity: FichaDeProceso
+            joinColumn: 
+                name: fichaDeProcesoAntecesor_id
+                referencedColumName: id
+        fichaDeProcesoPredecesor:
+            targetEntity: FichaDeProceso
+            joinColumn: 
+                name: fichaDeProcesoPredecesor_id
+                referencedColumName: id
         personaPrepara:
             targetEntity: Persona
             joinColumn:
@@ -48,18 +58,6 @@ INFT\prosgaBundle\Entity\FichaDeProceso:
             targetEntity: Persona
             joinColumn:
                 name: personaResponsable_id
-                referencedColumName: id
-                
-    manyToOne:
-        fichaDeProcesoAntecesor:
-            targetEntity: FichaDeProceso
-            joinColumn: 
-                name: fichaDeProcesoAntecesor_id
-                referencedColumName: id
-        fichaDeProcesoPredecesor:
-            targetEntity: FichaDeProceso
-            joinColumn: 
-                name: fichaDeProcesoPredecesor_id
                 referencedColumName: id
         
     lifecycleCallbacks: {  }

@@ -11,3 +11,15 @@ and open the template in the editor.
 .espacio10{
     margin: 10px 0 0;
 }
+
+.borde-1-solido{
+    border: 1px solid;
+}
+
+.borde-2-solido{
+    border: 2px solid;
+}
+
+#fichaproceso div{
+    border: 1px solid;
+}

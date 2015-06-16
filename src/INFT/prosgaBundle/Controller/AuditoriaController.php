@@ -76,7 +76,8 @@ class AuditoriaController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Crear Auditoría',
+                                             'attr' => array('class' => 'btn btn-primary espacio10')));
 
         return $form;
     }

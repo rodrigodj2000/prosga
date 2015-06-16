@@ -1,10 +1,91 @@
 {% extends 'prosgaBundle::template.html.twig' %}
 
-{% block content %}
-    <h2>Ver Proceso</h2>
-{% endblock %}
+{% block content %}{% endblock %}
 
 {% block body_content -%}
+    
+    <div class="row borde-1-solido">
+        <div class="col-md-3 borde-1-solido">LOGO Empresa</div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-8 text-center"><p class="bg-info">FICHA DE PROCESO</p></div>
+                <div class="col-md-4 text-center">{{ entity.codigoDeFicha }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center text-uppercase">{{ entity.nombre }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 text-left">Preparó:</div>
+        <div class="col-md-3 text-left">Aprobó:</div>
+        <div class="col-md-3 text-center">Fecha Emisión: {{ entity.fechaDeEmision|date('d/m/Y') }}</div>
+        <div class="col-md-3 text-center">REVISIÓN: {{ entity.nroDeRevision }} Fecha: {{ entity.fechaDeRevision|date('d/m/Y') }}</div>
+    </div>
+    
+    <div class="row"><div class="col-md-12 text-left espacio10">OBJETIVO:</div></div>
+    <div class="row"><div class="col-md-12 text-left">RESPONSABLE:</div></div>
+    <div class="row"><div class="col-md-12 text-left">ALCANCE DEL PROCESO: {{ entity.alcance }}</div></div>    
+    
+    <div class="row"><div class="col-md-12 text-center espacio10"><p class="bg-info">ENTRADAS DEL PROCESO</p></div></div>
+    <div class="row">
+        <div class="col-md-4 text-center">PROVEEDOR</div>
+        <div class="col-md-4 text-center">INFORMACIÓN/PRODUCTOS</div>
+        <div class="col-md-4 text-center">OBSERVACIONES</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 text-center">--</div>
+        <div class="col-md-4 text-center">--</div>
+        <div class="col-md-4 text-center">--</div>
+    </div>    
+
+    <div class="row"><div class="col-md-12 text-center"><p class="bg-info">SALIDAS DEL PROCESO</p></div></div>
+    <div class="row">
+        <div class="col-md-4 text-center">CLIENTE</div>
+        <div class="col-md-4 text-center">INFORMACIÓN/PRODUCTOS</div>
+        <div class="col-md-4 text-center">OBSERVACIONES</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 text-center">--</div>
+        <div class="col-md-4 text-center">--</div>
+        <div class="col-md-4 text-center">--</div>
+    </div>  
+    
+    <div class="row"><div class="col-md-12 text-center"><p class="bg-info">CONTROLES AL PROCESO</p></div></div>   
+    <div class="row">
+        <div class="col-md-4 text-center">PARÁMETRO/CARACTERÍSTICAS</div>
+        <div class="col-md-4 text-center">MÉTODO DE CONTROL</div>
+        <div class="col-md-4 text-center">FRECUENCIA</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 text-center">--</div>
+        <div class="col-md-4 text-center">--</div>
+        <div class="col-md-4 text-center">--</div>
+    </div>      
+    
+    <div class="row"><div class="col-md-12 text-center"><p class="bg-info">REGISTROS APLICABLES</p></div></div>   
+    <div class="row">
+        <div class="col-md-1 text-center">CÓDIGO</div>
+        <div class="col-md-2 text-center">NOMBRE</div>
+        <div class="col-md-3 text-center">RESPONSABLES</div>
+        <div class="col-md-3 text-center">ARCHIVO EN</div>
+        <div class="col-md-3 text-center">TIEMPO ARCHIVO</div>
+    </div>    
+    <div class="row">
+        <div class="col-md-1 text-center">--</div>
+        <div class="col-md-2 text-left">--</div>
+        <div class="col-md-3 text-left">--</div>
+        <div class="col-md-3 text-left">--</div>
+        <div class="col-md-3 text-left">--</div>
+    </div>      
+    
+    <div class="row"><div class="col-md-12 text-center"><p class="bg-info">INDICADORES DEL PROCESO</p></div></div>   
+    <div class="row">
+        <div class="col-md-3 text-left">INDICADOR</div>
+        <div class="col-md-3 text-center">FRECUENCIA</div>
+        <div class="col-md-3 text-left">RESPONSABLE</div>
+        <div class="col-md-3 text-left">OBSERVACIONES</div>
+    </div>   
 
 {% if entity.tieneFichaDeProcesoAntecesor == true %}
     <a href="{{ path('fichadeproceso_show', { 'id': entity.fichaDeProcesoAntecesor.id }) }}">Ficha de Proceso Antecesora </a>
@@ -43,13 +124,13 @@
                 </ul>
                     <tr>
                         <th><li> Fecha de Emisión </li></th>
-                        <td>{{ entity.fechaDeEmision|date('Y-m-d H:i:s') }}</td>
+                        <td>{{ entity.fechaDeEmision|date('d-m-Y') }}</td>
                     </tr>
                 </ul>
                 <ul>
                     <tr>
                         <th><li> Fecha de Revisión </li></th>
-                        <td>{{ entity.fechaDeRevision|date('Y-m-d H:i:s') }}</td>
+                        <td>{{ entity.fechaDeRevision|date('d-m-Y') }}</td>
                     </tr>
                 <ul>
                     <tr>
@@ -106,6 +187,8 @@
             Editar
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
 </ul>
+        
+{{ form(delete_form) }}        
+        
 {% endblock %}
