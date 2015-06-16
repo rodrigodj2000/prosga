@@ -59,5 +59,10 @@ INFT\prosgaBundle\Entity\FichaDeProceso:
             joinColumn:
                 name: personaResponsable_id
                 referencedColumName: id
+        norma:
+            targetEntity: norma
+            joinColumn: 
+                name: norma_id
+                referencedColumName: id
         
     lifecycleCallbacks: {  }

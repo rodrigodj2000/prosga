@@ -74,6 +74,11 @@ class FichaDeProceso
      */
     private $fichaDeProcesoPredecesor;
 
+    /**
+     * @var Norma
+     */
+    private $norma;
+
 
     /**
      * Get id
@@ -377,5 +382,28 @@ class FichaDeProceso
             return false;
         else
             return true;
+    }
+
+    /**
+     * Set Norma
+     *
+     * @param Norma $norma
+     * @return Proceso
+     */
+    public function setNorma(Norma $norma)
+    {
+        $this->norma = $norma;
+    
+        return $this;
+    }
+
+    /**
+     * Get Norma
+     *
+     * @return Norma 
+     */
+    public function getNorma()
+    {
+        return $this->norma;
     }
 }

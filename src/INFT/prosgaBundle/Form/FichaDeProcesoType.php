@@ -21,6 +21,9 @@ class FichaDeProcesoType extends AbstractType
             ->add('codigoDeFicha', 'text', array('label' => 'Código de Ficha: ',
                                                   'attr' => array('class' => 'form-control')
                                                   ))
+            ->add('norma',  'entity', array('class' => 'INFT\prosgaBundle\Entity\Norma',
+                                            'label' => 'Norma: ',
+                                            'attr' => array('class' => 'dropdown , form-control')))
             ->add('alcance', 'textarea', array('label' => 'Alcance: ',
                                                 'attr' => array('class' => 'form-control')
                                                 ))

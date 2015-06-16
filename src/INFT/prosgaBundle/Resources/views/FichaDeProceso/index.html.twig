@@ -11,10 +11,11 @@
                 <!--th>Id</th--!>
                 <th>Codigo</th>
                 <th>Nombre</th>
-                <th>Alcance</th>
                 <th>Fecha de Emisión</th>
                 <th>Fecha de Revisión</th>
-                <th>N° de Revisión</th>               
+                <th>N° de Revisión</th>
+                <th>Norma</th>
+                <th>Alcance</th>               
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -27,6 +28,7 @@
                 <td>{% if entity.fechaDeEmision %}{{ entity.fechaDeEmision|date('d-m-Y') }}{% endif %}</td>
                 <td>{% if entity.fechaDeRevision %}{{ entity.fechaDeRevision|date('d-m-Y') }}{% endif %}</td>
                 <td>{{ entity.nroDeRevision }}</td>
+                <td>{{ entity.norma }}</td>
                 <td>{{ entity.alcance }}</td>
                 <td>
                 <ul>

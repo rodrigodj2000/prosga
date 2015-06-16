@@ -1,91 +1,95 @@
 {% extends 'prosgaBundle::template.html.twig' %}
 
-{% block content %}{% endblock %}
-
 {% block body_content -%}
     
     <div class="row borde-1-solido">
-        <div class="col-md-3 borde-1-solido">LOGO Empresa</div>
+        <div class="col-md-3"><img alt="logo empresa" src="{{ asset('bundles/prosga/images/inft/logo_min.png') }}" class="img-responsive img-rounded" style="width: 100%" /></div>
         <div class="col-md-9">
             <div class="row">
-                <div class="col-md-8 text-center"><p class="bg-info">FICHA DE PROCESO</p></div>
-                <div class="col-md-4 text-center">{{ entity.codigoDeFicha }}</div>
+                <div class="col-md-8 text-center bg-info borde-1-solido "><strong><p>FICHA DE PROCESO</p></strong></div>
+                <div class="col-md-4 text-center bg-info borde-1-solido"><p>{{ entity.codigoDeFicha }}</p></div>
             </div>
             <div class="row">
-                <div class="col-md-12 text-center text-uppercase">{{ entity.nombre }}</div>
+                <div class="col-md-12 text-center text-uppercase borde-1-solido"><strong><p>{{ entity.nombre }}</p></strong></div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3 text-left">Preparó:</div>
-        <div class="col-md-3 text-left">Aprobó:</div>
-        <div class="col-md-3 text-center">Fecha Emisión: {{ entity.fechaDeEmision|date('d/m/Y') }}</div>
-        <div class="col-md-3 text-center">REVISIÓN: {{ entity.nroDeRevision }} Fecha: {{ entity.fechaDeRevision|date('d/m/Y') }}</div>
+        <div class="col-md-3 text-left borde-1-solido"><p>Preparó: {{ entity.personaResponsable}}</p></div>
+        <div class="col-md-3 text-left borde-1-solido"><p>Aprobó: {{ entity.personaAprueba}}</p></div>
+        <div class="col-md-3 text-center borde-1-solido"><p>Fecha Emisión: {{ entity.fechaDeEmision|date('d/m/Y') }}</p></div>
+        <div class="col-md-3 text-center borde-1-solido"><p>REVISIÓN: {{ entity.nroDeRevision }} Fecha: {{ entity.fechaDeRevision|date('d/m/Y') }}</p></div>
     </div>
     
-    <div class="row"><div class="col-md-12 text-left espacio10">OBJETIVO:</div></div>
-    <div class="row"><div class="col-md-12 text-left">RESPONSABLE:</div></div>
-    <div class="row"><div class="col-md-12 text-left">ALCANCE DEL PROCESO: {{ entity.alcance }}</div></div>    
+    <div class="row"><div class="col-md-12 borde-1-solido text-left"><p><strong>OBJETIVOS DEL PROCESO:</strong> {{ entity.objetivo }}</p></div></div>
+    <div class="row"><div class="col-md-12 borde-1-solido text-left"><p><strong>RESPONSABLES DEL PROCESO:</strong> {{ entity.personaResponsable}}</p></div></div>
+    <div class="row"><div class="col-md-12 borde-1-solido text-left"><p><strong>ALCANCE DEL PROCESO:</strong> {{ entity.alcance }}</p></div></div>    
     
-    <div class="row"><div class="col-md-12 text-center espacio10"><p class="bg-info">ENTRADAS DEL PROCESO</p></div></div>
+    <div class="row"><div class="col-md-12 text-center borde-1-solido bg-info"><strong><p class="">ENTRADAS DEL PROCESO</p></strong></div></div>
     <div class="row">
-        <div class="col-md-4 text-center">PROVEEDOR</div>
-        <div class="col-md-4 text-center">INFORMACIÓN/PRODUCTOS</div>
-        <div class="col-md-4 text-center">OBSERVACIONES</div>
+        <div class="col-md-4 borde-1-solido text-center"><p>PROVEEDOR</p></div>
+        <div class="col-md-4 borde-1-solido text-center"><p>INFORMACIÓN/PRODUCTOS</p></div>
+        <div class="col-md-4 borde-1-solido text-center"><p>OBSERVACIONES</p></div>
     </div>
     <div class="row">
-        <div class="col-md-4 text-center">--</div>
-        <div class="col-md-4 text-center">--</div>
-        <div class="col-md-4 text-center">--</div>
+        <div class="col-md-4 borde-1-solido text-center"><p>--</p></div>
+        <div class="col-md-4 borde-1-solido text-center"><p>--</p></div>
+        <div class="col-md-4 borde-1-solido text-center"><p>--</p></div>
     </div>    
 
-    <div class="row"><div class="col-md-12 text-center"><p class="bg-info">SALIDAS DEL PROCESO</p></div></div>
+    <div class="row"><div class="col-md-12 borde-1-solido text-center bg-info"><strong><p class="">SALIDAS DEL PROCESO</p></strong></div></div>
     <div class="row">
-        <div class="col-md-4 text-center">CLIENTE</div>
-        <div class="col-md-4 text-center">INFORMACIÓN/PRODUCTOS</div>
-        <div class="col-md-4 text-center">OBSERVACIONES</div>
+        <div class="col-md-4 borde-1-solido text-center"><p>CLIENTE</p></div>
+        <div class="col-md-4 borde-1-solido text-center"><p>INFORMACIÓN/PRODUCTOS</p></div>
+        <div class="col-md-4 borde-1-solido text-center"><p>OBSERVACIONES</p></div>
     </div>
     <div class="row">
-        <div class="col-md-4 text-center">--</div>
-        <div class="col-md-4 text-center">--</div>
-        <div class="col-md-4 text-center">--</div>
+        <div class="col-md-4 borde-1-solido text-center"><p>--</p></div>
+        <div class="col-md-4 borde-1-solido text-center"><p>--</p></div>
+        <div class="col-md-4 borde-1-solido text-center"><p>--</p></div>
     </div>  
     
-    <div class="row"><div class="col-md-12 text-center"><p class="bg-info">CONTROLES AL PROCESO</p></div></div>   
+    <div class="row"><div class="col-md-12 borde-1-solido text-center bg-info"><strong><p class="">CONTROLES AL PROCESO</p></strong></div></div>   
     <div class="row">
-        <div class="col-md-4 text-center">PARÁMETRO/CARACTERÍSTICAS</div>
-        <div class="col-md-4 text-center">MÉTODO DE CONTROL</div>
-        <div class="col-md-4 text-center">FRECUENCIA</div>
+        <div class="col-md-4 borde-1-solido text-center"><p>PARÁMETRO/CARACTERÍSTICAS</p></div>
+        <div class="col-md-4 borde-1-solido text-center"><p>MÉTODO DE CONTROL</p></div>
+        <div class="col-md-4 borde-1-solido text-center"><p>FRECUENCIA</p></div>
     </div>
     <div class="row">
-        <div class="col-md-4 text-center">--</div>
-        <div class="col-md-4 text-center">--</div>
-        <div class="col-md-4 text-center">--</div>
-    </div>      
+        <div class="col-md-4 borde-1-solido text-left"><p>--</p></div>
+        <div class="col-md-4 borde-1-solido text-left"><p>--</p></div>
+        <div class="col-md-4 borde-1-solido text-center"><p>--</p></div>
+    </div>
     
-    <div class="row"><div class="col-md-12 text-center"><p class="bg-info">REGISTROS APLICABLES</p></div></div>   
+    <div class="row"><div class="col-md-12 borde-1-solido text-center bg-info"><strong><p class="">REGISTROS APLICABLES</p></strong></div></div>   
     <div class="row">
-        <div class="col-md-1 text-center">CÓDIGO</div>
-        <div class="col-md-2 text-center">NOMBRE</div>
-        <div class="col-md-3 text-center">RESPONSABLES</div>
-        <div class="col-md-3 text-center">ARCHIVO EN</div>
-        <div class="col-md-3 text-center">TIEMPO ARCHIVO</div>
+        <div class="col-md-1 borde-1-solido text-center"><p>CÓDIGO</p></div>
+        <div class="col-md-2 borde-1-solido text-center"><p>NOMBRE</p></div>
+        <div class="col-md-3 borde-1-solido text-center"><p>RESPONSABLES</p></div>
+        <div class="col-md-3 borde-1-solido text-center"><p>ARCHIVO EN</p></div>
+        <div class="col-md-3 borde-1-solido text-center"><p>TIEMPO ARCHIVO</p></div>
     </div>    
     <div class="row">
-        <div class="col-md-1 text-center">--</div>
-        <div class="col-md-2 text-left">--</div>
-        <div class="col-md-3 text-left">--</div>
-        <div class="col-md-3 text-left">--</div>
-        <div class="col-md-3 text-left">--</div>
+        <div class="col-md-1 borde-1-solido text-center"><p>--</p></div>
+        <div class="col-md-2 borde-1-solido text-left"><p>--</p></div>
+        <div class="col-md-3 borde-1-solido text-left"><p>--</p></div>
+        <div class="col-md-3 borde-1-solido text-left"><p>--</p></div>
+        <div class="col-md-3 borde-1-solido text-left"><p>--</p></div>
     </div>      
     
-    <div class="row"><div class="col-md-12 text-center"><p class="bg-info">INDICADORES DEL PROCESO</p></div></div>   
+    <div class="row"><div class="col-md-12 borde-1-solido text-center bg-info"><strong><p class="">INDICADORES DEL PROCESO</p></strong></div></div>   
     <div class="row">
-        <div class="col-md-3 text-left">INDICADOR</div>
-        <div class="col-md-3 text-center">FRECUENCIA</div>
-        <div class="col-md-3 text-left">RESPONSABLE</div>
-        <div class="col-md-3 text-left">OBSERVACIONES</div>
-    </div>   
+        <div class="col-md-3 borde-1-solido text-left"><p>INDICADOR</p></div>
+        <div class="col-md-3 borde-1-solido text-center"><p>FRECUENCIA</p></div>
+        <div class="col-md-3 borde-1-solido text-left"><p>RESPONSABLE</p></div>
+        <div class="col-md-3 borde-1-solido text-left"><p>OBSERVACIONES</p></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 borde-1-solido text-left"><p>--</p></div>
+        <div class="col-md-3 borde-1-solido text-center"><p>--</p></div>
+        <div class="col-md-3 borde-1-solido text-left"><p>--</p></div>
+        <div class="col-md-3 borde-1-solido text-left"><p>--</p></div>
+    </div>    
 
 {% if entity.tieneFichaDeProcesoAntecesor == true %}
     <a href="{{ path('fichadeproceso_show', { 'id': entity.fichaDeProcesoAntecesor.id }) }}">Ficha de Proceso Antecesora </a>
@@ -95,99 +99,18 @@
     <a href="{{ path('fichadeproceso_show', { 'id': entity.fichaDeProcesoPredecesor.id }) }}">Ficha de Proceso Predecesora</a>
 {% endif %}
 
-    <table class="table">
-        <tbody>
-            <ul>
-                <ul>
-                    <tr>
-                        <th>Datos del Proceso: {{ entity.nombre }}</th>
-                        <td></td>
-                    </tr>
-                </ul>
-                <ul>
-                    <tr>
-                        <th><li> Nombre </li></th>
-                        <td>{{ entity.nombre }}</td>
-                    </tr>
-                </ul>
-                <ul>
-                    <tr>
-                        <th><li> Código </li></th>
-                        <td>{{ entity.codigoDeFicha }}</td>
-                    </tr>
-                </ul>
-                <ul>
-                    <tr>
-                        <th><li> Alcance </li></th>
-                        <td>{{ entity.alcance }}</td>
-                    </tr>            
-                </ul>
-                    <tr>
-                        <th><li> Fecha de Emisión </li></th>
-                        <td>{{ entity.fechaDeEmision|date('d-m-Y') }}</td>
-                    </tr>
-                </ul>
-                <ul>
-                    <tr>
-                        <th><li> Fecha de Revisión </li></th>
-                        <td>{{ entity.fechaDeRevision|date('d-m-Y') }}</td>
-                    </tr>
-                <ul>
-                    <tr>
-                        <th><li> Nro. de Revisión </li></th>
-                        <td>{{ entity.nroDeRevision }}</td>
-                    </tr>
-                </ul>
-                <ul>
-                    <tr>
-                        <th><li> Objetivo </li></th>
-                        <td>{{ entity.objetivo }}</td>
-                    </tr>
-                </ul>
-            </ul>
-            <ul>
-                <ul>
-                    <tr>
-                        <th> Personas Involucradas </th>
-                        <td></td>
-                    </tr>
-                </ul>
-                <ul>
-                    <tr>
-                        <th><li> Preparó </li></th>
-                        <td>{{ entity.personaResponsable}}</td>
-                    </tr>
-                </ul>
-                <ul>
-                    <tr>
-                        <th><li> Responsable </li></th>
-                        <td>{{ entity.personaResponsable}}</td>
-                    </tr>
-                </ul>
-                <ul>
-                    <tr>
-                        <th><li> Aprobó </li></th>
-                        <td>{{ entity.personaAprueba}}</td>
-                    </tr>
-                </ul>
-
-            </ul>
-            
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('fichadeproceso') }}">
-            Volver al Listado
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('fichadeproceso_edit', { 'id': entity.id }) }}">
-            Editar
-        </a>
-    </li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('fichadeproceso') }}">
+                Volver al Listado
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('fichadeproceso_edit', { 'id': entity.id }) }}">
+                Editar
+            </a>
+        </li>
+    </ul>
         
 {{ form(delete_form) }}        
         
