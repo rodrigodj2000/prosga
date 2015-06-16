@@ -112,7 +112,7 @@ class FichaDeProcesoController extends Controller
         
         $controles = $em->getRepository('prosgaBundle:Control')->findByFichaDeProceso($id);
         
-        $registros = $em->getRepository('prosgaBundle:RegistrosFP')->findByFichaDeProceso($id);
+        $registros = $em->getRepository('prosgaBundle:RegistroFP')->findByFichaDeProceso($id);
 
         return $this->render('prosgaBundle:FichaDeProceso:show.html.twig', array(
             'entity'            => $entity,
