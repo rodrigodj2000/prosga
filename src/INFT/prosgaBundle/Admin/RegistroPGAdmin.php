@@ -35,7 +35,7 @@ class RegistroPGAdmin extends Admin
             ->add('nombre')
             ->add('archivoFisico')
             ->add('archivoDigital')
-            ->add('tiempoEnArchivo')
+            ->add('tiempoEnArchivo', 'date', array('format' => 'd/m/Y'))
             ->add('observacion')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -57,7 +57,7 @@ class RegistroPGAdmin extends Admin
             ->add('nombre')
             ->add('archivoFisico', 'text', array('required' => false))
             ->add('archivoDigital', 'text', array('required' => false))
-            ->add('tiempoEnArchivo')
+            ->add('tiempoEnArchivo', 'date', array('data' => new \DateTime('now')))
             ->add('observacion', 'textarea', array('required' => false))
         ;
     }
@@ -72,7 +72,7 @@ class RegistroPGAdmin extends Admin
             ->add('nombre')
             ->add('archivoFisico')
             ->add('archivoDigital')
-            ->add('tiempoEnArchivo')
+            ->add('tiempoEnArchivo', 'date', array('format' => 'd/m/Y'))
             ->add('observacion')
         ;
     }

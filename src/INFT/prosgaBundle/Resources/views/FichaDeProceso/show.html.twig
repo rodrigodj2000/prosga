@@ -54,7 +54,7 @@
 
     <div class="row"><div class="col-md-12 borde-1-solido text-center bg-info"><strong><p class="">SALIDAS DEL PROCESO</p></strong></div></div>
     <div class="row">
-        <div class="col-md-6 borde-1-solido text-center"><p>CLIENTE</p></div>
+        <div class="col-md-6 borde-1-solido text-center"><p>VALORES DE SALIDA</p></div>
         <div class="col-md-6 borde-1-solido text-center"><p>OBSERVACIONES</p></div>
     </div>
     {% for ps in procesosalidas %}
@@ -110,7 +110,19 @@
         <div class="col-md-3 borde-1-solido text-left"><p>{{ ind.personaResponsable }}</p></div>
         <div class="col-md-3 borde-1-solido text-left"><p>{{ ind.observacion }}</p></div>
     </div>            
-{% endfor %}
+    {% endfor %}
+    
+    <div class="row"><div class="col-md-12 borde-1-solido text-center bg-info"><strong><p class="">HISTORIAL DE CAMBIOS</p></strong></div></div>   
+    <div class="row">
+        <div class="col-md-2 borde-1-solido text-center"><p>Revisión</p></div>
+        <div class="col-md-10 borde-1-solido text-center"><p>Modificaciones Realizadas al proceso</p></div>
+    </div>
+    {% for hist in procesohistorial %}
+    <div class="row">
+        <div class="col-md-2 borde-1-solido text-center"><p>{{ hist.nroRevision }}</p></div>
+        <div class="col-md-10 borde-1-solido text-left"><p>{{ hist.descripcion }}</p></div>
+    </div>        
+    {% endfor %}
 
     <ul class="record_actions">
         <li>

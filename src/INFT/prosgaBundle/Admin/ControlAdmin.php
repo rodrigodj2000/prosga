@@ -19,6 +19,7 @@ class ControlAdmin extends Admin
             ->add('nombre')
             ->add('descripcion')
             ->add('fecha')
+            ->add('frecuencia')
             ->add('observacion')
         ;
     }
@@ -32,6 +33,7 @@ class ControlAdmin extends Admin
             ->add('nombre')
             ->add('descripcion')
             ->add('fecha')
+            ->add('frecuencia.nombre', 'string', array('label' => 'Frecuencia'))
             ->add('observacion')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -53,6 +55,10 @@ class ControlAdmin extends Admin
             ->add('nombre')
             ->add('descripcion', 'textarea', array('required' => false))
             ->add('fecha', 'date')
+            ->add('frecuencia', 'entity', array(
+                'class' => 'prosgaBundle:Frecuencia',
+                'property' => 'nombre',
+            ))  
             ->add('observacion', 'textarea', array('required' => false))
         ;
     }
@@ -66,6 +72,7 @@ class ControlAdmin extends Admin
             ->add('nombre')
             ->add('descripcion')
             ->add('fecha')
+            ->add('frecuencia.nombre', 'string', array('label' => 'Frecuencia'))
             ->add('observacion')
         ;
     }

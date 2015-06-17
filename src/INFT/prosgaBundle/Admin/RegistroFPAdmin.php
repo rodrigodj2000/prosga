@@ -35,7 +35,7 @@ class RegistroFPAdmin extends Admin
             ->add('nombre')
             ->add('ubicacionArchivoFisico')
             ->add('ubicacionArchivoDigital')
-            ->add('tiempoEnArchivo')
+            ->add('tiempoEnArchivo', 'date', array('format' => 'd/m/Y'))
             ->add('observacion')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -75,7 +75,7 @@ class RegistroFPAdmin extends Admin
             ->add('nombre')
             ->add('ubicacionArchivoFisico')
             ->add('ubicacionArchivoDigital')
-            ->add('tiempoEnArchivo')
+            ->add('tiempoEnArchivo', 'date', array('format' => 'd/m/Y'))
             ->add('observacion')
         ;
     }
