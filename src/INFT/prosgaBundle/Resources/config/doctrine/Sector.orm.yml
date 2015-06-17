@@ -18,9 +18,11 @@ INFT\prosgaBundle\Entity\Sector:
         metros2:
             type: float
             column: Metros2
+            nullable: true
         observacion:
             type: string
             length: 255
+            nullable: true
             column: Observacion
     
     lifecycleCallbacks: {  }

@@ -46,7 +46,7 @@ class FrecuenciaAdmin extends Admin
     {
         $formMapper
             ->add('nombre')
-            ->add('descripcion')
+            ->add('descripcion', 'textarea', array('required' => false))
         ;
     }
 

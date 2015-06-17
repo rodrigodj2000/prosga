@@ -127,7 +127,7 @@ class MatrizLegal
      * @param string $descripcion
      * @return MatrizLegal
      */
-    public function setDescripcion($descripcion)
+    public function setDescripcion($descripcion='')
     {
         $this->descripcion = $descripcion;
     
@@ -196,7 +196,7 @@ class MatrizLegal
      * @param string $observacion
      * @return MatrizLegal
      */
-    public function setObservacion($observacion)
+    public function setObservacion($observacion='')
     {
         $this->observacion = $observacion;
     
@@ -265,7 +265,7 @@ class MatrizLegal
      * @param string $obligaciones
      * @return MatrizLegal
      */
-    public function setObligaciones($obligaciones)
+    public function setObligaciones($obligaciones='')
     {
         $this->obligaciones = $obligaciones;
     

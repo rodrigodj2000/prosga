@@ -54,10 +54,11 @@ class RegistroFPAdmin extends Admin
     {
         $formMapper
             ->add('fichaDeProceso', 'entity', array('class' => 'prosgaBundle:FichaDeProceso'))
+            ->add('personaResponsable', 'entity', array('class' => 'prosgaBundle:Persona', 'label' => 'Responsable'))
             ->add('codigoDeFicha')
             ->add('nombre')
-            ->add('ubicacionArchivoFisico')
-            ->add('ubicacionArchivoDigital')
+            ->add('ubicacionArchivoFisico', 'text', array('required' => false))
+            ->add('ubicacionArchivoDigital', 'text', array('required' => false))
             ->add('tiempoEnArchivo', 'date', array('data' => new \DateTime('now')))
             ->add('observacion', 'textarea', array('label' => 'Observaciones',
                                                    'required' => false))

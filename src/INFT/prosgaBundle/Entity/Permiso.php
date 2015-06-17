@@ -64,7 +64,7 @@ class Permiso
      * @param string $descripcion
      * @return Permiso
      */
-    public function setDescripcion($descripcion)
+    public function setDescripcion($descripcion='')
     {
         $this->descripcion = $descripcion;
     

@@ -16,12 +16,13 @@ class FichaDeProcesoEntradaType extends AbstractType
     {
         $builder
             ->add('fichaDeProceso', 'entity', array('class' => 'INFT\prosgaBundle\Entity\FichaDeProceso',
-                                                    'label' => 'Ficha de Proceso: ',
+                                                    'label' => 'Ficha de Proceso *: ',
                                                     'attr' => array('class' => 'form-control')))  
-            ->add('valoresDeEntrada', 'text', array('label' => 'Valores de Entrada: ',
+            ->add('valoresDeEntrada', 'text', array('label' => 'Valores de Entrada *: ',
                                                    'attr' => array('class' => 'form-control')))
             ->add('observacion', 'textarea', array('label' => 'Observaciones: ', 
-                                                   'attr' => array('class' => 'form-control')
+                                                   'attr' => array('class' => 'form-control'),
+                                                   'required' => false
                                                   ))  
         ;
     }

@@ -14,6 +14,7 @@ INFT\prosgaBundle\Entity\Actividad:
         observacion:
             type: string
             length: 1000
+            nullable: true
             column: Observacion
         nombre:
             type: string
@@ -22,10 +23,12 @@ INFT\prosgaBundle\Entity\Actividad:
         aspectoAmbiental:
             type: string
             length: 1000
+            nullable: true
             column: AspectoAmbiental
         accionPrevencion:
             type: string
             length: 1000
+            nullable: true
             column: AccionPrevencion
     manyToOne:
         personaResponsable:
@@ -51,11 +54,13 @@ INFT\prosgaBundle\Entity\Actividad:
                 referencedColumnName: id            
         matrizlegal:
             targetEntity: MatrizLegal
+            nullable: true
             joinColumn:
                 name: matrizLegal_id
                 referencedColumnName: id            
         control:
             targetEntity: Control
+            nullable: true
             joinColumn:
                 name: control_id
                 referencedColumnName: id    

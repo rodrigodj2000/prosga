@@ -16,6 +16,7 @@ INFT\prosgaBundle\Entity\FichaDeProcesoHistorial:
         descripcion:
             type: string
             length: '500'
+            nullable: true
             column: Descripcion
     manyToOne:
         fichaDeProceso:

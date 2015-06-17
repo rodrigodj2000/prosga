@@ -16,7 +16,6 @@ class MatrizLegalAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
             ->add('nombre')
             ->add('emisor')
             ->add('descripcion')
@@ -33,7 +32,6 @@ class MatrizLegalAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
             ->add('nombre')
             ->add('emisor')
             ->add('descripcion')
@@ -57,14 +55,13 @@ class MatrizLegalAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
             ->add('nombre')
             ->add('emisor')
-            ->add('descripcion')
-            ->add('vencimiento')
-            ->add('observacion')
+            ->add('descripcion', 'textarea', array('required' => false))
+            ->add('vencimiento', 'date', array('data' => new \DateTime('now')))
+            ->add('observacion', 'textarea', array('required' => false))
             ->add('autoridadAAplicar')
-            ->add('obligaciones')
+            ->add('obligaciones', 'text', array('required' => false))
         ;
     }
 
@@ -74,7 +71,6 @@ class MatrizLegalAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
             ->add('nombre')
             ->add('emisor')
             ->add('descripcion')

@@ -15,7 +15,7 @@ class IndicadorAdmin extends Admin
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper
+        $datagridMapper           
             ->add('nombre')
             ->add('descripcion')
             ->add('observacion')
@@ -51,9 +51,11 @@ class IndicadorAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('fichaDeProceso', 'entity', array('class' => 'prosgaBundle:FichaDeProceso'))
+            ->add('personaResponsable', 'entity', array('class' => 'prosgaBundle:Persona', 'label' => 'Responsable'))
             ->add('nombre')
-            ->add('descripcion')
-            ->add('observacion')
+            ->add('descripcion', 'textarea', array('required' => false))
+            ->add('observacion', 'textarea', array('required' => false))
             ->add('frecuencia')
             ->add('fichaDeProceso')
         ;

@@ -97,7 +97,7 @@ class Sector
      * @param float $metros2
      * @return Sector
      */
-    public function setMetros2($metros2)
+    public function setMetros2($metros2=0.0)
     {
         $this->metros2 = $metros2;
     
@@ -120,7 +120,7 @@ class Sector
      * @param string $observacion
      * @return Sector
      */
-    public function setObservacion($observacion)
+    public function setObservacion($observacion='')
     {
         $this->observacion = $observacion;
     

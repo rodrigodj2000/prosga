@@ -16,16 +16,18 @@ class FichaDeProcesoHistorialType extends AbstractType
     {
         $builder
             ->add('fichaDeProceso', 'entity', array('class' => 'INFT\prosgaBundle\Entity\FichaDeProceso',
-                                                    'label' => 'Proceso: ',
+                                                    'label' => 'Ficha de Proceso *: ',
                                                     'attr' => array('class' => 'form-control')))
-            ->add('fecha', 'date', array('label' => 'Fecha: '))
-            ->add('nroRevision', 'integer', array('label' => 'Nº Revisión: ',
+            ->add('fecha', 'date', array('label' => 'Fecha *: ',
+                                         'data' => new \DateTime('now')))
+            ->add('nroRevision', 'integer', array('label' => 'Nº Revisión *: ',
                                                     'attr' => array('class' => 'form-control')))
             ->add('descripcion', 'textarea', array('label' => 'Observaciones: ', 
-                                                   'attr' => array('class' => 'form-control')
+                                                   'attr' => array('class' => 'form-control'),
+                                                   'required' => false
                                                   ))              
             ->add('persona', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Persona',
-                                                        'label' => 'Responsable: ', 
+                                                        'label' => 'Responsable *: ', 
                                                         'attr' => array('class' => 'form-control')
                                                   ))
         ;

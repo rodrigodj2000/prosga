@@ -49,6 +49,11 @@ class RegistroFP
      */
     private $fichaDeProceso;
 
+    /**
+     * @var Persona
+     */
+    private $personaResponsable;
+
 
     /**
      * Get id
@@ -112,7 +117,7 @@ class RegistroFP
      * @param string $ubicacionArchivoFisico
      * @return RegistroFP
      */
-    public function setUbicacionArchivoFisico($ubicacionArchivoFisico)
+    public function setUbicacionArchivoFisico($ubicacionArchivoFisico='')
     {
         $this->ubicacionArchivoFisico = $ubicacionArchivoFisico;
     
@@ -135,7 +140,7 @@ class RegistroFP
      * @param string $ubicacionArchivoDigital
      * @return RegistroFP
      */
-    public function setUbicacionArchivoDigital($ubicacionArchivoDigital)
+    public function setUbicacionArchivoDigital($ubicacionArchivoDigital='')
     {
         $this->ubicacionArchivoDigital = $ubicacionArchivoDigital;
     
@@ -181,7 +186,7 @@ class RegistroFP
      * @param string $observacion
      * @return RegistroFP
      */
-    public function setObservacion($observacion)
+    public function setObservacion($observacion='')
     {
         $this->observacion = $observacion;
     
@@ -223,6 +228,29 @@ class RegistroFP
 
     public function __toString(){
         return $this->nombre;
+    }
+
+    /**
+     * Set personaResponsable
+     *
+     * @param string $personaResponsable
+     * @return RegistroFP
+     */
+    public function setPersonaResponsable(Persona $personaResponsable)
+    {
+        $this->personaResponsable = $personaResponsable;
+    
+        return $this;
+    }
+
+    /**
+     * Get personaResponsable
+     *
+     * @return Persona 
+     */
+    public function getPersonaResponsable()
+    {
+        return $this->personaResponsable;
     }
 }
 

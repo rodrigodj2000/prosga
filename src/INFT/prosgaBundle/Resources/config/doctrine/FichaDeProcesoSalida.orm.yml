@@ -14,6 +14,7 @@ INFT\prosgaBundle\Entity\FichaDeProcesoSalida:
         observacion:
             type: string
             length: '1000'
+            nullable: true
             column: Observacion
             
     manyToOne:

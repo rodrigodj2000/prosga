@@ -14,5 +14,6 @@ INFT\prosgaBundle\Entity\Estado:
         observacion:
             type: string
             length: 255
+            nullable: true
             column: Observacion
     lifecycleCallbacks: {  }

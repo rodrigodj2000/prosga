@@ -57,7 +57,7 @@ class AlarmaAdmin extends Admin
                 'property' => 'nombre',
             ))         
             ->add('modoAviso')
-            ->add('observacion')               
+            ->add('observacion', 'textarea', array('required' => false))               
         ;
     }
 

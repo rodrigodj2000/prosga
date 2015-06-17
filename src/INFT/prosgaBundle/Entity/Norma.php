@@ -64,7 +64,7 @@ class Norma
      * @param string $observacion
      * @return Norma
      */
-    public function setObservacion($observacion)
+    public function setObservacion($observacion='')
     {
         $this->observacion = $observacion;
     

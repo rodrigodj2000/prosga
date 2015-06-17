@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : Gonzalo
 */
 
+body{
+    background-color: #b5e8cc;
+}
+
 .espacio10{
     margin: 10px 0 0;
 }

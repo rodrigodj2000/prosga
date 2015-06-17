@@ -144,7 +144,7 @@ class Auditoria
      * @param string $observacion
      * @return Auditoria
      */
-    public function setObservacion($observacion)
+    public function setObservacion($observacion='')
     {
         $this->observacion = $observacion;
     
@@ -213,7 +213,7 @@ class Auditoria
      * @param Estado $iestado
      * @return Auditoria
      */
-    public function setEstado(Estado $estado)
+    public function setEstado(Estado $estado=null)
     {
         $this->estado = $estado;
     

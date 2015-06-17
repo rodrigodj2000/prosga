@@ -18,10 +18,12 @@ INFT\prosgaBundle\Entity\RegistroPG:
         archivoFisico:
             type: string
             length: '500'
+            nullable: true
             column: ArchivoFisico
         archivoDigital:
             type: string
             length: '500'
+            nullable: true
             column: ArchivoDigital
         tiempoEnArchivo:
             type: datetime
@@ -29,6 +31,7 @@ INFT\prosgaBundle\Entity\RegistroPG:
         observacion:
             type: string
             length: '1000'
+            nullable: true
             column: Observacion
             
     manyToOne:

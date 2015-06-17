@@ -99,7 +99,7 @@ class Control
      * @param string $descripcion
      * @return Control
      */
-    public function setDescripcion($descripcion)
+    public function setDescripcion($descripcion='')
     {
         $this->descripcion = $descripcion;
     
@@ -191,7 +191,7 @@ class Control
      * @param string $observacion
      * @return Control
      */
-    public function setObservacion($observacion)
+    public function setObservacion($observacion='')
     {
         $this->observacion = $observacion;
     

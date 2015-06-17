@@ -51,8 +51,8 @@ class SectorAdmin extends Admin
         $formMapper
             ->add('nombre')
             ->add('ubicacion')
-            ->add('metros2')
-            ->add('observacion')
+            ->add('metros2', 'integer', array('required' => false))
+            ->add('observacion', 'textarea', array('required' => false))
         ;
     }
 

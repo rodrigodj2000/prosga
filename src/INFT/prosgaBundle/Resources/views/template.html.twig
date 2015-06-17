@@ -31,13 +31,12 @@
                   <li><a href="{{ path('fichadeprocesohistorial') }}">Historial</a></li>
               </ul>
               </li>
-              <li><a href="{{ path('prosga_consultas') }}">Consultas</a></li>
             {% endif %}            
             <li><a href="{{ path('prosga_acercade') }}">Acerca de...</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <li><a href="{{ path('sonata_admin_dashboard') }}">Administración
+                <li><a href="{{ path('sonata_admin_dashboard') }}" target="_blank">Administración
                     <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                     </a></li>
                 <li class="active"><a href="{{ path('fos_user_security_logout') }}">
@@ -62,6 +61,12 @@
 
     <div class="container">{% block body_content %}{% endblock %}</div>    
 
+    <div id="footer">
+      <div class="container text-center">
+          <p class="text-muted credit">FONSOFT - ANR FONSOFT 2011 - Proyecto NA 117/11 - <a href="http://inft.com.ar/" target="_blank">INFT S.A.</a></p>
+      </div>
+    </div>   
+    
 {% endblock %}
 
 {% block body_end_before_js %}{% endblock %}

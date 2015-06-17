@@ -112,7 +112,7 @@ class RegistroPG
      * @param string $archivoFisico
      * @return RegistroPG
      */
-    public function setArchivoFisico($archivoFisico)
+    public function setArchivoFisico($archivoFisico='')
     {
         $this->archivoFisico = $archivoFisico;
     
@@ -135,7 +135,7 @@ class RegistroPG
      * @param string $archivoDigital
      * @return RegistroPG
      */
-    public function setArchivoDigital($archivoDigital)
+    public function setArchivoDigital($archivoDigital='')
     {
         $this->archivoDigital = $archivoDigital;
     
@@ -181,7 +181,7 @@ class RegistroPG
      * @param string $observacion
      * @return RegistroPG
      */
-    public function setObservacion($observacion)
+    public function setObservacion($observacion='')
     {
         $this->observacion = $observacion;
     

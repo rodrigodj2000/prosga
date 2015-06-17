@@ -75,7 +75,7 @@ class Frecuencia
      * @param string $descripcion
      * @return Frecuencia
      */
-    public function setDescripcion($descripcion)
+    public function setDescripcion($descripcion='')
     {
         $this->descripcion = $descripcion;
     

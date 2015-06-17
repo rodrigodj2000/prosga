@@ -46,7 +46,7 @@ class EstadoAdmin extends Admin
     {
         $formMapper
             ->add('nombre')
-            ->add('observacion')
+            ->add('observacion', 'textarea', array('required' => false))
         ;
     }
 

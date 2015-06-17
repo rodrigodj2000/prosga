@@ -18,10 +18,12 @@ INFT\prosgaBundle\Entity\RegistroFP:
         ubicacionArchivoFisico:
             type: string
             length: 255
+            nullable: true
             column: UbicacionArchivoFisico
         ubicacionArchivoDigital:
             type: string
             length: 255
+            nullable: true
             column: UbicacionArchivoDigital
         tiempoEnArchivo:
             type: datetime
@@ -29,6 +31,7 @@ INFT\prosgaBundle\Entity\RegistroFP:
         observacion:
             type: string
             length: '1000'
+            nullable: true
             column: Observacion
             
     manyToOne:
@@ -36,5 +39,10 @@ INFT\prosgaBundle\Entity\RegistroFP:
             targetEntity: FichaDeProceso
             joinColumn: 
                 name: fichaDeProceso_id
+                referencedColumnName: id
+        personaResponsable:
+            targetEntity: Persona
+            joinColumn: 
+                name: persona_id
                 referencedColumnName: id
     lifecycleCallbacks: {  }

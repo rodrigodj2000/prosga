@@ -69,7 +69,7 @@ class FichaDeProcesoSalida
      * @param string $observacion
      * @return FichaDeProcesoSalida
      */
-    public function setObservacion($observacion)
+    public function setObservacion($observacion='')
     {
         $this->observacion = $observacion;
     

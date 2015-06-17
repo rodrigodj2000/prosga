@@ -55,10 +55,10 @@ class RegistroPGAdmin extends Admin
         $formMapper
             ->add('codigoPG')
             ->add('nombre')
-            ->add('archivoFisico')
-            ->add('archivoDigital')
+            ->add('archivoFisico', 'text', array('required' => false))
+            ->add('archivoDigital', 'text', array('required' => false))
             ->add('tiempoEnArchivo')
-            ->add('observacion')
+            ->add('observacion', 'textarea', array('required' => false))
         ;
     }
 

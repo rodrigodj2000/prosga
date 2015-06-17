@@ -29,13 +29,12 @@ class ActividadController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $actividades = $em->getRepository('prosgaBundle:Actividad')->findByActividadesAuditorias($auditoria_id);
+        $entities = $em->getRepository('prosgaBundle:Actividad')->findAll();
         
-        $auditorias = $em->getRepository('prosgaBundle:Auditoria')->findAll();        
+        //$auditorias = $em->getRepository('prosgaBundle:Auditoria')->findAll();        
         
         return array(
-            'entities' => $actividades,
-            'auditorias' => $auditorias,
+            'entities' => $entities,
         );
     }
     /**
@@ -79,7 +78,8 @@ class ActividadController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Crear Actividad',
+                                             'attr' => array('class' => 'btn btn-primary espacio10')));
 
         return $form;
     }
@@ -168,7 +168,8 @@ class ActividadController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar Datos',
+                                             'attr' => array('class' => 'btn btn-primary espacio10')));
 
         return $form;
     }
@@ -243,7 +244,8 @@ class ActividadController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('actividad_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Eliminar Ficha de Proceso',
+                                            'attr' => array('class' => 'btn btn-danger espacio10')))
             ->getForm()
         ;
     }

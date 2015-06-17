@@ -15,27 +15,31 @@ class AuditoriaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre', 'text', array('label' => 'Nombre: ',
-                                            'attr' => array('class' => 'form-control')))
-            ->add('fechaDeAuditoria', 'date', array('label' => 'Fecha: ')
+            ->add('nombre', 'text', array('label' => 'Nombre *: ',
+                                            'attr' => array('class' => 'form-control')
+                                            ))
+            ->add('fechaDeAuditoria', 'date', array('label' => 'Fecha *: ',
+                                                    'data' => new \DateTime('now')) 
                                                   )
-            ->add('costoAuditoria', 'integer', array('label' => 'Costo: ', 
+            ->add('costoAuditoria', 'integer', array('label' => 'Costo *: ', 
                                                      'attr' => array('class' => 'form-control')
                                                   ))
             ->add('personaResponsable', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Persona',
-                                                        'label' => 'Responsable: ', 
+                                                        'label' => 'Responsable *: ', 
                                                         'attr' => array('class' => 'form-control')
                                                   ))
             ->add('sector', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Sector',
-                                            'label' => 'Sector: ',
+                                            'label' => 'Sector *: ',
                                             'attr' => array('class' => 'form-control')
                                             ))
             ->add('estado', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Estado',
-                                            'label' => 'Estado: ',
-                                            'attr' => array('class' => 'form-control')
+                                            'label' => 'Estado : ',
+                                            'attr' => array('class' => 'form-control'),
+                                            'required' => false
                                            ))
             ->add('observacion', 'textarea', array('label' => 'Observaciones: ', 
-                                                   'attr' => array('class' => 'form-control')
+                                                   'attr' => array('class' => 'form-control'),
+                                                   'required' => false
                                                   ))  
         ;
     }

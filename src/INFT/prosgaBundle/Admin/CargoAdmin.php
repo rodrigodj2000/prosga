@@ -50,9 +50,9 @@ class CargoAdmin extends Admin
     {
         $formMapper
             ->add('nombre')
-            ->add('descripcion')
+            ->add('descripcion', 'text', array('required' => false))
             ->add('nivelEnOrganigrama')
-            ->add('observacion')
+            ->add('observacion', 'textarea', array('required' => false))
         ;
     }
 

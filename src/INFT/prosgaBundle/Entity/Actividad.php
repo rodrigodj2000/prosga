@@ -114,7 +114,7 @@ class Actividad
      * @param string $observacion
      * @return Actividad
      */
-    public function setObservacion($observacion)
+    public function setObservacion($observacion='')
     {
         $this->observacion = $observacion;
     
@@ -252,7 +252,7 @@ class Actividad
      * @param Control $control
      * @return Actividad
      */
-    public function setControl(Control $control)
+    public function setControl(Control $control=null)
     {
         $this->control = $control;
     
@@ -335,7 +335,7 @@ class Actividad
      * @param string $aspectoAmbiental
      * @return Actividad
      */
-    public function setAspectoAmbiental($aspectoAmbiental)
+    public function setAspectoAmbiental($aspectoAmbiental='')
     {
         $this->aspectoAmbiental = $aspectoAmbiental;
     
@@ -358,7 +358,7 @@ class Actividad
      * @param string $accionPrevencion
      * @return Actividad
      */
-    public function setAccionPrevencion($accionPrevencion)
+    public function setAccionPrevencion($accionPrevencion='')
     {
         $this->accionPrevencion = $accionPrevencion;
     

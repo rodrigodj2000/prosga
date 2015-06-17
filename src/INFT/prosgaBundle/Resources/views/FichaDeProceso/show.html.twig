@@ -2,8 +2,22 @@
 
 {% block body_content -%}
     
+<div class="row">
+    <div class="col-md-6 text-left">
+        {% if entity.tieneFichaDeProcesoAntecesor == true %}
+            <a href="{{ path('fichadeproceso_show', { 'id': entity.fichaDeProcesoAntecesor.id }) }}"><span class="glyphicon glyphicon-arrow-left"></span> Ficha de Proceso Antecesora</a>
+        {% endif %}
+    </div>
+    <div class="col-md-6 text-right">
+        {%if entity.tieneFichaDeProcesoPredecesor == true %}
+            <a href="{{ path('fichadeproceso_show', { 'id': entity.fichaDeProcesoPredecesor.id }) }}">Ficha de Proceso Predecesora <span class="glyphicon glyphicon-arrow-right"></span></a>
+        {% endif %}
+    </div>
+</div>    
+    
+<div id="fichadeproceso">
     <div class="row borde-1-solido">
-        <div class="col-md-3 text-center"><img alt="logo empresa" src="{{ asset('bundles/prosga/images/inft/logo_min.png') }}" class="img-responsive img-rounded" style="width: 37%" /></div>
+        <div class="col-md-3"><img alt="logo empresa" src="{{ asset('bundles/prosga/images/inft/logo_min.png') }}" class="img-responsive img-rounded" style="width: 37%" /></div>
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-8 text-center bg-info borde-1-solido "><strong><p>FICHA DE PROCESO</p></strong></div>
@@ -28,27 +42,27 @@
     
     <div class="row"><div class="col-md-12 text-center borde-1-solido bg-info"><strong><p class="">ENTRADAS DEL PROCESO</p></strong></div></div>
     <div class="row">
-        <div class="col-md-4 borde-1-solido text-center"><p>PROVEEDOR</p></div>
-        <div class="col-md-4 borde-1-solido text-center"><p>INFORMACIÓN/PRODUCTOS</p></div>
-        <div class="col-md-4 borde-1-solido text-center"><p>OBSERVACIONES</p></div>
+        <div class="col-md-6 borde-1-solido text-center"><p>VALORES DE ENTRADA</p></div>
+        <div class="col-md-6 borde-1-solido text-center"><p>OBSERVACIONES</p></div>
     </div>
+    {% for pe in procesosentradas %}
     <div class="row">
-        <div class="col-md-4 borde-1-solido text-center"><p>--</p></div>
-        <div class="col-md-4 borde-1-solido text-center"><p>--</p></div>
-        <div class="col-md-4 borde-1-solido text-center"><p>--</p></div>
+        <div class="col-md-6 borde-1-solido text-left"><p>{{ pe.valoresDeEntrada }}</p></div>
+        <div class="col-md-6 borde-1-solido text-left"><p>{{ pe.observacion }}</p></div>
     </div>    
+    {% endfor %}
 
     <div class="row"><div class="col-md-12 borde-1-solido text-center bg-info"><strong><p class="">SALIDAS DEL PROCESO</p></strong></div></div>
     <div class="row">
-        <div class="col-md-4 borde-1-solido text-center"><p>CLIENTE</p></div>
-        <div class="col-md-4 borde-1-solido text-center"><p>INFORMACIÓN/PRODUCTOS</p></div>
-        <div class="col-md-4 borde-1-solido text-center"><p>OBSERVACIONES</p></div>
+        <div class="col-md-6 borde-1-solido text-center"><p>CLIENTE</p></div>
+        <div class="col-md-6 borde-1-solido text-center"><p>OBSERVACIONES</p></div>
     </div>
+    {% for ps in procesosalidas %}
     <div class="row">
-        <div class="col-md-4 borde-1-solido text-center"><p>--</p></div>
-        <div class="col-md-4 borde-1-solido text-center"><p>--</p></div>
-        <div class="col-md-4 borde-1-solido text-center"><p>--</p></div>
-    </div>  
+        <div class="col-md-6 borde-1-solido text-left"><p>{{ ps.valoresDeSalida }}</p></div>
+        <div class="col-md-6 borde-1-solido text-left"><p>{{ ps.observacion }}</p></div>
+    </div>    
+    {% endfor %}
     
     <div class="row"><div class="col-md-12 borde-1-solido text-center bg-info"><strong><p class="">CONTROLES AL PROCESO</p></strong></div></div>   
     <div class="row">
@@ -56,27 +70,31 @@
         <div class="col-md-4 borde-1-solido text-center"><p>MÉTODO DE CONTROL</p></div>
         <div class="col-md-4 borde-1-solido text-center"><p>FRECUENCIA</p></div>
     </div>
+    {% for c in controles %}
     <div class="row">
-        <div class="col-md-4 borde-1-solido text-left"><p>--</p></div>
-        <div class="col-md-4 borde-1-solido text-left"><p>--</p></div>
-        <div class="col-md-4 borde-1-solido text-center"><p>--</p></div>
+        <div class="col-md-4 borde-1-solido text-left"><p>{{ c.nombre }}</p></div>
+        <div class="col-md-4 borde-1-solido text-left"><p>{{ c.descripcion }}</p></div>
+        <div class="col-md-4 borde-1-solido text-center"><p>{{ c.frecuencia }}</p></div>
     </div>
+    {% endfor %}
     
     <div class="row"><div class="col-md-12 borde-1-solido text-center bg-info"><strong><p class="">REGISTROS APLICABLES</p></strong></div></div>   
     <div class="row">
         <div class="col-md-1 borde-1-solido text-center"><p>CÓDIGO</p></div>
         <div class="col-md-2 borde-1-solido text-center"><p>NOMBRE</p></div>
-        <div class="col-md-3 borde-1-solido text-center"><p>RESPONSABLES</p></div>
+        <div class="col-md-3 borde-1-solido text-center"><p>RESPONSABLE</p></div>
         <div class="col-md-3 borde-1-solido text-center"><p>ARCHIVO EN</p></div>
         <div class="col-md-3 borde-1-solido text-center"><p>TIEMPO ARCHIVO</p></div>
     </div>    
+    {% for fp in registrosfp %}
     <div class="row">
-        <div class="col-md-1 borde-1-solido text-center"><p>--</p></div>
-        <div class="col-md-2 borde-1-solido text-left"><p>--</p></div>
-        <div class="col-md-3 borde-1-solido text-left"><p>--</p></div>
-        <div class="col-md-3 borde-1-solido text-left"><p>--</p></div>
-        <div class="col-md-3 borde-1-solido text-left"><p>--</p></div>
-    </div>      
+        <div class="col-md-1 borde-1-solido text-center"><p>{{ fp.codigoDeFicha }}</p></div>
+        <div class="col-md-2 borde-1-solido text-left"><p>{{ fp.nombre }}</p></div>
+        <div class="col-md-3 borde-1-solido text-left"><p>{{ fp.personaResponsable }}</p></div>
+        <div class="col-md-3 borde-1-solido text-left"><p>{{ fp.ubicacionArchivoFisico }}</p></div>
+        <div class="col-md-3 borde-1-solido text-left"><p>{{ fp.tiempoEnArchivo | date('d/m/Y') }}</p></div>
+    </div>
+    {% endfor %}
     
     <div class="row"><div class="col-md-12 borde-1-solido text-center bg-info"><strong><p class="">INDICADORES DEL PROCESO</p></strong></div></div>   
     <div class="row">
@@ -85,20 +103,14 @@
         <div class="col-md-3 borde-1-solido text-left"><p>RESPONSABLE</p></div>
         <div class="col-md-3 borde-1-solido text-left"><p>OBSERVACIONES</p></div>
     </div>
+    {% for ind in indicadores %}
     <div class="row">
-        <div class="col-md-3 borde-1-solido text-left"><p>--</p></div>
-        <div class="col-md-3 borde-1-solido text-center"><p>--</p></div>
-        <div class="col-md-3 borde-1-solido text-left"><p>--</p></div>
-        <div class="col-md-3 borde-1-solido text-left"><p>--</p></div>
-    </div>    
-
-{% if entity.tieneFichaDeProcesoAntecesor == true %}
-    <a href="{{ path('fichadeproceso_show', { 'id': entity.fichaDeProcesoAntecesor.id }) }}">Ficha de Proceso Antecesora </a>
-{% endif %}
-
-{%if entity.tieneFichaDeProcesoPredecesor == true %}
-    <a href="{{ path('fichadeproceso_show', { 'id': entity.fichaDeProcesoPredecesor.id }) }}">Ficha de Proceso Predecesora</a>
-{% endif %}
+        <div class="col-md-3 borde-1-solido text-left"><p>{{ ind.nombre }}</p></div>
+        <div class="col-md-3 borde-1-solido text-center"><p>{{ ind.frecuencia }}</p></div>
+        <div class="col-md-3 borde-1-solido text-left"><p>{{ ind.personaResponsable }}</p></div>
+        <div class="col-md-3 borde-1-solido text-left"><p>{{ ind.observacion }}</p></div>
+    </div>            
+{% endfor %}
 
     <ul class="record_actions">
         <li>
@@ -112,7 +124,15 @@
             </a>
         </li>
     </ul>
-        
+            
 {{ form(delete_form) }}        
+
+</div>
         
+{% endblock %}
+
+{% block body_end_before_js %}
+    <script type="text/javascript">
+        $('.jumbotron').hide();
+    </script>
 {% endblock %}

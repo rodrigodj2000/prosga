@@ -6,21 +6,9 @@
 
 {% block body_content %}  
  
-    <div class="form-group">
-        <label class="control-label">Seleccione Auditoría</label>        
-        <div class="selectContainer">
-            <select id="auditoria" class="form-control">
-            {% for auditoria in auditorias %}            
-                <option value="{{ auditoria.id }}">{{ auditoria.nombre }}</option>
-            {% endfor %}
-            </select>      
-        </div>    
-    </div>
-    
     <table id="actividades" class="table table-striped">
         <thead>
             <tr>
-                <!--th>#</th--!>
                 <th>Fecha</th>
                 <th>Nombre</th>
                 <th>Aspecto Ambiental</th>
@@ -30,10 +18,9 @@
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
-                <tr>
-                    <!--td><a href="{{ path('actividad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td--!>
-                    <td>{% if entity.fechaActividad %}{{ entity.fechaActividad|date('d-m-Y') }}{% endif %}</td>
+            {% for entity in entities %}
+            <tr>
+                    <td>{% if entity.fechaActividad %}{{ entity.fechaActividad|date('d/m/Y') }}{% endif %}</td>
                     <td>{{ entity.nombre }}</td>
                     <td>{{ entity.aspectoAmbiental }}</td>
                     <td>{{ entity.accionPrevencion }}</td>
@@ -61,3 +48,5 @@
         </li>
     </ul>
 {% endblock %}
+
+{% block body_end_before_js %}{% endblock %}

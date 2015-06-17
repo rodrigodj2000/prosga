@@ -125,7 +125,7 @@ class FichaDeProcesoHistorial
      * @param string $descripcion
      * @return FichaDeProcesoHistorial
      */
-    public function setDescripcion($descripcion)
+    public function setDescripcion($descripcion='')
     {
         $this->descripcion = $descripcion;
     

@@ -326,7 +326,7 @@ class FichaDeProceso
      * @param FichaDeProceso $fichaDeProcesoAntecesor
      * @return FichaDeProceso
      */
-    public function setFichaDeProcesoAntecesor(FichaDeProceso $fichaDeProcesoAntecesor)
+    public function setFichaDeProcesoAntecesor(FichaDeProceso $fichaDeProcesoAntecesor=null)
     {
         $this->fichaDeProcesoAntecesor = $fichaDeProcesoAntecesor;
     
@@ -349,7 +349,7 @@ class FichaDeProceso
      * @param FichaDeProceso $fichaDeProcesoPredecesor
      * @return FichaDeProceso
      */
-    public function setFichaDeProcesoPredecesor(FichaDeProceso $fichaDeProcesoPredecesor)
+    public function setFichaDeProcesoPredecesor(FichaDeProceso $fichaDeProcesoPredecesor=null)
     {
         $this->fichaDeProcesoPredecesor = $fichaDeProcesoPredecesor;
     

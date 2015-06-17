@@ -49,10 +49,11 @@ class ControlAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('fichaDeProceso', 'entity', array('class' => 'prosgaBundle:FichaDeProceso'))
             ->add('nombre')
-            ->add('descripcion')
+            ->add('descripcion', 'textarea', array('required' => false))
             ->add('fecha', 'date')
-            ->add('observacion')
+            ->add('observacion', 'textarea', array('required' => false))
         ;
     }
 

@@ -148,7 +148,7 @@ class Alarma
      * @param string $observacion
      * @return Alarma
      */
-    public function setObservacion($observacion)
+    public function setObservacion($observacion='')
     {
         $this->observacion = $observacion;
     

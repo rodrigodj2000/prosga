@@ -46,7 +46,7 @@ class PermisoAdmin extends Admin
     {
         $formMapper
             ->add('nombre')
-            ->add('descripcion')
+            ->add('descripcion', 'text', array('required' => false))
         ;
     }
 

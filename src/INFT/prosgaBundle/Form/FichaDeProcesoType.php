@@ -15,44 +15,50 @@ class FichaDeProcesoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre', 'text', array('label' => 'Nombre: ',
+            ->add('nombre', 'text', array('label' => 'Nombre *: ',
                                           'attr' => array('class' => 'form-control')
                                           ))
-            ->add('codigoDeFicha', 'text', array('label' => 'Código de Ficha: ',
+            ->add('codigoDeFicha', 'text', array('label' => 'Código de Ficha *: ',
                                                   'attr' => array('class' => 'form-control')
                                                   ))
             ->add('norma',  'entity', array('class' => 'INFT\prosgaBundle\Entity\Norma',
-                                            'label' => 'Norma: ',
+                                            'label' => 'Norma *: ',
                                             'attr' => array('class' => 'dropdown , form-control')))
-            ->add('alcance', 'textarea', array('label' => 'Alcance: ',
+            ->add('alcance', 'textarea', array('label' => 'Alcance *: ',
                                                 'attr' => array('class' => 'form-control')
                                                 ))
-            ->add('objetivo', 'textarea', array('label' => 'Objetivo: ',
+            ->add('objetivo', 'textarea', array('label' => 'Objetivo *: ',
                                             'attr' => array('class' => 'form-control')
                                             ))            
-            ->add('fechaDeEmision', 'date', array('label' => 'Fecha de Emisión: '))
-            ->add('fechaDeRevision', 'date', array('label' => 'Fecha de Revisión: '))
-            ->add('nroDeRevision', 'integer' ,array('label' => 'Nº Revisión: ',
+            ->add('fechaDeEmision', 'date', array('label' => 'Fecha de Emisión *: ',
+                                                  'data' => new \DateTime('now'))
+                                            )
+            ->add('fechaDeRevision', 'date', array('label' => 'Fecha de Revisión *: ',
+                                                    'data' => new \DateTime('now')
+                                                    ))
+            ->add('nroDeRevision', 'integer' ,array('label' => 'Nº Revisión *: ',
                                                     'attr' => array('class' => 'form-control')))            
             
             ->add('fichaDeProcesoAntecesor', 'entity', array('class' => 'INFT\prosgaBundle\Entity\FichaDeProceso',
                                                               'label' => 'Ficha de Proceso Antecesora: ',
-                                                              'attr' => array('class' => 'dropdown, form-control')
+                                                              'attr' => array('class' => 'dropdown, form-control'),
+                                                              'required' => false
                                                               ))
             ->add('fichaDeProcesoPredecesor', 'entity', array('class' => 'INFT\prosgaBundle\Entity\FichaDeProceso',
                                                               'label' => 'Ficha de Proceso Predecesora: ',
-                                                              'attr' => array('class' => 'dropdown, form-control')
+                                                              'attr' => array('class' => 'dropdown, form-control'),
+                                                              'required' =>false
                                                               ))
             ->add('personaPrepara', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Persona',
-                                                        'label' => 'Prepara: ', 
+                                                        'label' => 'Prepara *: ', 
                                                         'attr' => array('class' => 'dropdown, form-control')
                                                   ))
             ->add('personaAprueba', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Persona',
-                                                        'label' => 'Aprueba: ', 
+                                                        'label' => 'Aprueba *: ', 
                                                         'attr' => array('class' => 'dropdown, form-control')
                                                   ))
             ->add('personaResponsable', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Persona',
-                                                        'label' => 'Responsable: ', 
+                                                        'label' => 'Responsable *: ', 
                                                         'attr' => array('class' => 'dropdown, form-control')
                                                   ))
         ;

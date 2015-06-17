@@ -64,7 +64,7 @@ class Estado
      * @param string $observacion
      * @return Estado
      */
-    public function setObservacion($observacion)
+    public function setObservacion($observacion='')
     {
         $this->observacion = $observacion;
     

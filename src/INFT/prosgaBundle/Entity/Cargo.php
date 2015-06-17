@@ -74,7 +74,7 @@ class Cargo
      * @param string $descripcion
      * @return Cargo
      */
-    public function setDescripcion($descripcion)
+    public function setDescripcion($descripcion='')
     {
         $this->descripcion = $descripcion;
     
@@ -120,7 +120,7 @@ class Cargo
      * @param string $observacion
      * @return Cargo
      */
-    public function setObservacion($observacion)
+    public function setObservacion($observacion='')
     {
         $this->observacion = $observacion;
     

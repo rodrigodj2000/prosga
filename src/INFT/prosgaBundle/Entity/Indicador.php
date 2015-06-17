@@ -39,6 +39,12 @@ class Indicador
      */
     private $fichaDeProceso;
 
+    /**
+     * @var Persona
+     */
+    private $personaResponsable;
+
+
 
     /**
      * Get id
@@ -79,7 +85,7 @@ class Indicador
      * @param string $descripcion
      * @return Indicador
      */
-    public function setdescripcion($descripcion)
+    public function setdescripcion($descripcion='')
     {
         $this->descripcion = $descripcion;
     
@@ -102,7 +108,7 @@ class Indicador
      * @param string $observacion
      * @return Indicador
      */
-    public function setObservacion($observacion)
+    public function setObservacion($observacion='')
     {
         $this->observacion = $observacion;
     
@@ -163,6 +169,29 @@ class Indicador
     public function getFichaDeProceso()
     {
         return $this->fichaDeProceso;
+    }
+
+     /**
+     * Set personaResponsable
+     *
+     * @param string $personaResponsable
+     * @return Indicador
+     */
+    public function setPersonaResponsable(Persona $personaResponsable)
+    {
+        $this->personaResponsable = $personaResponsable;
+    
+        return $this;
+    }
+
+    /**
+     * Get personaResponsable
+     *
+     * @return Persona 
+     */
+    public function getPersonaResponsable()
+    {
+        return $this->personaResponsable;
     }
 
     public function __toString(){
