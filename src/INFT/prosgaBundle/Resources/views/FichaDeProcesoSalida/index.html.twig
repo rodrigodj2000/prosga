@@ -19,7 +19,7 @@
         {% for entity in entities %}
             <tr>
                 <!--td><a href="{{ path('fichadeprocesosalida_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td--!>
-                <td><a href="{{ path('fichadeproceso_show', { 'id': entity.id }) }}">{{ entity.fichaDeProceso }}</a></td>
+                <td><a href="{{ path('fichadeproceso_show', { 'id': entity.fichaDeProceso.id }) }}">{{ entity.fichaDeProceso }}</a></td>
                 <td>{{ entity.valoresDeSalida }}</td>                
                 <td>{{ entity.observacion }}</td>
                 <td>

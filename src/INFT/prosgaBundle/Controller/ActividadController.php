@@ -244,7 +244,7 @@ class ActividadController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('actividad_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar Ficha de Proceso',
+            ->add('submit', 'submit', array('label' => 'Eliminar Actividad',
                                             'attr' => array('class' => 'btn btn-danger espacio10')))
             ->getForm()
         ;
