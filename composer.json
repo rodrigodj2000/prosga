@@ -23,7 +23,9 @@
         "sonata-project/admin-bundle": "2.3.3",        
         "sonata-project/block-bundle": "2.2.*",
         "sonata-project/user-bundle": "2.2.4",
-        "sonata-project/easy-extends-bundle": "^2.1"        
+        "sonata-project/easy-extends-bundle": "^2.1",
+        "stfalcon/tinymce-bundle": "dev-master",
+        "ob/highcharts-bundle": "^1.2"
     },
     "scripts": {
         "post-install-cmd": [

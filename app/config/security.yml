@@ -67,6 +67,9 @@ security:
         - { path: ^/auditoria/*, role: [ROLE_ADMIN] }
         - { path: ^/fichas*, role: [ROLE_ADMIN] }
         - { path: ^/consultas*, role: [ROLE_ADMIN] }
+        - { path: ^/incidencias*, role: [ROLE_ADMIN] }
+        - { path: ^/tiposincidencias*, role: [ROLE_ADMIN] }
+        - { path: ^/acciones*, role: [ROLE_ADMIN] }
 
     acl:
         connection: default

@@ -108,3 +108,10 @@ sonata_user:
             handler:            sonata.user.profile.form.handler.default
             name:               sonata_user_profile_form
             validation_groups:  [Profile]           
+            
+stfalcon_tinymce:
+    theme:
+        custom:
+            plugins: ["bbcode, code, link, preview"]
+            menubar: false
+            toolbar1: "undo,redo,bold,italic,underline,link,unlink"            

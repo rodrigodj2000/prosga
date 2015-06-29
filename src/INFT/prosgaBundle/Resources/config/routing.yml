@@ -5,6 +5,18 @@ prosga_auditoria:
 prosga_actividades:
     resource: "routing/actividades.yml"        
     prefix: /actividades
+
+prosga_acciones:
+    resource: "routing/acciones.yml"        
+    prefix: /acciones    
+    
+prosga_incidencias:
+    resource: "routing/incidencias.yml"        
+    prefix: /incidencias
+    
+prosga_tiposincidencias:
+    resource: "routing/tiposincidencias.yml"        
+    prefix: /tiposincidencias
     
 prosga_fichadeproceso:
     resource: "routing/fichadeproceso.yml"        
@@ -35,3 +47,7 @@ prosga_consultas:
 prosga_acercade:
     path:     /acercade
     defaults: { _controller: prosgaBundle:Default:acercade }    
+    
+prosga_grafico:
+    path:     /grafico
+    defaults: { _controller: prosgaBundle:Default:grafico }        
