@@ -26,7 +26,8 @@ class TiposIncidenciasType extends AbstractType
             ))
             ->add('valorPermitido', 'integer', array(
                     'label' => 'Valor Permitido: ',
-                    'attr' => array('class' => 'form-control')
+                    'attr' => array('class' => 'form-control'),
+                    'required' => false
                     ))
         ;
     }

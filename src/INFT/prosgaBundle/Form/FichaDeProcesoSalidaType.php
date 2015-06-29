@@ -21,7 +21,10 @@ class FichaDeProcesoSalidaType extends AbstractType
             ->add('valoresDeSalida', 'text', array('label' => 'Valores de Entrada *: ',
                                                    'attr' => array('class' => 'form-control')))
             ->add('observacion', 'textarea', array('label' => 'Observaciones: ', 
-                                                   'attr' => array('class' => 'form-control'),
+                                                   'attr' => array(
+                                                        'class' => 'tinymce form-control',
+                                                        'data-theme' => 'custom'
+                                                        ),
                                                    'required' => false
                                                   )) 
         ;

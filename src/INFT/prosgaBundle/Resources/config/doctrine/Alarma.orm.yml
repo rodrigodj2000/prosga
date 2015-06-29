@@ -23,13 +23,11 @@ INFT\prosgaBundle\Entity\Alarma:
             length: '1000'
             nullable: true
             column: Observacion
-            
     manyToOne:
         frecuencia:
             targetEntity: Frecuencia
             inversedBy: alarmas
             joinColumn: 
                 name: frecuencia_id
-                referencedColumnName: id        
-        
+                referencedColumnName: id         
     lifecycleCallbacks: {  }

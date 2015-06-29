@@ -38,7 +38,10 @@ class AuditoriaType extends AbstractType
                                             'required' => false
                                            ))
             ->add('observacion', 'textarea', array('label' => 'Observaciones: ', 
-                                                   'attr' => array('class' => 'form-control'),
+                                                   'attr' => array(
+                                                        'class' => 'tinymce form-control',
+                                                        'data-theme' => 'custom'
+                                                        ),
                                                    'required' => false
                                                   ))  
         ;

@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use INFT\prosgaBundle\Entity\TiposIncidencias;
 use INFT\prosgaBundle\Form\TiposIncidenciasType;
 
+use Ob\HighchartsBundle\Highcharts\Highchart;
+
 /**
  * TiposIncidencias controller.
  *
@@ -230,4 +232,47 @@ class TiposIncidenciasController extends Controller
             ->getForm()
         ;
     }
+    
+    /**
+     * Gráfico de Incidencias.
+     *
+     */
+    public function graphAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('prosgaBundle:TiposIncidencias')->find($id);
+        
+        $incidencias = $em->getRepository('prosgaBundle:Incidencias')->findByTipoIncidencia($id);
+
+        $valores = array();
+        
+        foreach($incidencias as $i)
+        {
+            $valores[] = $i->getValor();
+        }
+        
+        // Chart
+        $series = array(
+            array("name" => "Valor Incidencias", "data" => $valores)
+        );
+
+        $ob = new Highchart();
+        $ob->chart->renderTo('linechart');  // The #id of the div where to render the chart
+        $ob->title->text('Gráfico de Incidencias');
+        $ob->subtitle->text($entity->getNombre());
+        $ob->xAxis->title(array('text'  => "Mediciones"))
+                ->tickInterval(1);
+        $ob->yAxis->title(array('text'  => "Valores"))
+                ->plotLines(array('value' => 2),
+                            array('width' => 2)); //$entity->getValorPermitido()
+        $ob->plotOptions->line(array('dataLabels' => (array('enabled' => 'true'))));
+        $ob->series($series);        
+        
+        return $this->render('prosgaBundle:TiposIncidencias:graph.html.twig', array(
+            'entity'  => $entity,
+            'chart'   => $ob
+        ));
+    }    
+    
 }

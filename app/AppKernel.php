@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new INFT\prosgaBundle\prosgaBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new Ob\HighchartsBundle\ObHighchartsBundle(),
+            new FM\BbcodeBundle\FMBbcodeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

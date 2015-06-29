@@ -14,16 +14,15 @@
             </tr>
             <tr>
                 <th>Detalle Incidencia</th>
-                <td>{{ entity.detalle | raw }}</td>
+                <td>{{ entity.detalle|bbcode_filter('filter_default') }}</td>
             </tr>
             <tr>
                 <th>Valor</th>
                 <td>{{ entity.valor }}</td>
             </tr>
         </tbody>
-    </table>
-
-        <ul class="record_actions">
+    </table>                   
+    <ul class="record_actions">
     <li>
         <a href="{{ path('incidencias') }}">
             Volver a la Lista

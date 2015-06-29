@@ -25,7 +25,8 @@
         "sonata-project/user-bundle": "2.2.4",
         "sonata-project/easy-extends-bundle": "^2.1",
         "stfalcon/tinymce-bundle": "dev-master",
-        "ob/highcharts-bundle": "^1.2"
+        "ob/highcharts-bundle": "^1.2",
+        "helios-ag/fm-bbcode-bundle": "^6.7"
     },
     "scripts": {
         "post-install-cmd": [

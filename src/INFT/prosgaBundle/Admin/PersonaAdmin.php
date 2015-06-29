@@ -56,7 +56,7 @@ class PersonaAdmin extends Admin
         $formMapper
             ->add('nombre')
             ->add('apellido')
-            ->add('mail')
+            ->add('mail', 'email')
             ->add('telefono')
             ->add('cargo')
             ->add('estado')

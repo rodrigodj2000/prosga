@@ -17,6 +17,7 @@ INFT\prosgaBundle\Entity\Incidencias:
         valor:
             type: integer
             column: Valor
+            nullable: true
 
     manyToOne:
         tipoIncidencia:

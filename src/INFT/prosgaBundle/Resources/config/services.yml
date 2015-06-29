@@ -105,3 +105,9 @@ services:
         arguments: [~, INFT\prosgaBundle\Entity\RegistroFP, prosgaBundle:RegistroFP]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: RegistroFP}
+
+    prosga.admin.proceso:
+        class: INFT\prosgaBundle\Admin\ProcesoAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\Proceso, prosgaBundle:Proceso]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Proceso}

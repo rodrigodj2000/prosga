@@ -46,7 +46,11 @@ prosga_consultas:
     
 prosga_acercade:
     path:     /acercade
-    defaults: { _controller: prosgaBundle:Default:acercade }    
+    defaults: { _controller: prosgaBundle:Default:acercade }
+
+prosga_pruebamail:
+    path:   /pruebamail
+    defaults: { _controller: prosgaBundle:Proceso:mail }  
     
 prosga_grafico:
     path:     /grafico

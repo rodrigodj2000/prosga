@@ -107,7 +107,12 @@ sonata_user:
             type:               sonata_user_profile
             handler:            sonata.user.profile.form.handler.default
             name:               sonata_user_profile_form
-            validation_groups:  [Profile]           
+            validation_groups:  [Profile]
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"           
             
 stfalcon_tinymce:
     theme:
@@ -115,3 +120,9 @@ stfalcon_tinymce:
             plugins: ["bbcode, code, link, preview"]
             menubar: false
             toolbar1: "undo,redo,bold,italic,underline,link,unlink"            
+            
+fm_bbcode:
+    filter_sets:
+        filter_default:
+            xhtml: true
+            filters: [ default, url ]            

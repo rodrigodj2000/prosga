@@ -29,8 +29,16 @@ class ActividadType extends AbstractType
                                                     'attr' => array('class' => 'form-control'),
                                                     'required' => false
                                                     ))
+            ->add('proceso', 'entity', array('class'=> 'INFT\prosgaBundle\Entity\Proceso',
+                                             'label' => 'Proceso',
+                                             'attr' => array('class' => 'dropdown, form-control'),
+                                             'required' => false
+                                             ))
             ->add('observacion', 'textarea', array('label' => 'Observación: ',
-                                                    'attr' => array('class' => 'form-control'),
+                                                    'attr' => array(
+                                                        'class' => 'tinymce form-control',
+                                                        'data-theme' => 'custom'
+                                                        ),
                                                     'required' => false
                                             ))
             

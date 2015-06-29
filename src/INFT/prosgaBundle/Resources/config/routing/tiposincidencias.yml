@@ -28,3 +28,7 @@ tiposincidencias_delete:
     path:     /{id}/delete
     defaults: { _controller: "prosgaBundle:TiposIncidencias:delete" }
     requirements: { _method: post|delete }
+
+tiposincidencias_graph:
+    path:     /{id}/graph
+    defaults: { _controller: "prosgaBundle:TiposIncidencias:graph" }

@@ -14,11 +14,11 @@
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody>                    
         {% for entity in entities %}
             <tr>
                 <td>{% if entity.fecha %}{{ entity.fecha|date('d/m/Y') }}{% endif %}</td>
-                <td>{{ entity.detalle }}</td>
+                <td>{{ entity.detalle|bbcode_filter('filter_default') }}</td>
                 <td>{{ entity.valor }}</td>
                 <td>
                 <ul>
