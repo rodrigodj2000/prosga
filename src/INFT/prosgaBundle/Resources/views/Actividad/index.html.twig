@@ -26,7 +26,7 @@
                     <td>{{ entity.aspectoAmbiental }}</td>
                     <td>{{ entity.accionPrevencion }}</td>
                     <td>{{ entity.proceso }}</td>
-                    <td>{{ entity.observacion }}</td>
+                    <td>{% if entity.observacion %}{{ entity.observacion|bbcode_filter('filter_default') }}{% endif %}</td>
                     <td>
                     <ul>
                         <li>

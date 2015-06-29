@@ -1,6 +1,7 @@
 INFT\prosgaBundle\Entity\TiposIncidencias:
     type: entity
-    table: null
+    table: TiposIncidencias
+    repositoryClass: TiposIncidenciasRepository
     fields:
         id:
             type: integer
@@ -15,11 +16,32 @@ INFT\prosgaBundle\Entity\TiposIncidencias:
             type: float
             column: ValorPermitido
             nullable: true
+        descripcion:
+            type: string
+            length: '500'
+            nullable: true
+            column: Descripcion
+        observacion:
+            type: string
+            length: '1000'
+            nullable: true
+            column: Observacion            
 
     manyToOne:
+        frecuencia:
+            targetEntity: Frecuencia
+            joinColumn:
+                name: frecuencia_id
+                referencedColumnName: id
         fichaDeProceso:
             targetEntity: FichaDeProceso
-            joinColumn: 
+            joinColumn:
                 name: fichaDeProceso_id
                 referencedColumnName: id
+        personaResponsable:
+            targetEntity: Persona
+            joinColumn:
+                name: personaResponsable_id
+                referencedColumnName: id
+                
     lifecycleCallbacks: {  }

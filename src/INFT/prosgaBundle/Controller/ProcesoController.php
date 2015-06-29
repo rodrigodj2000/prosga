@@ -8,20 +8,16 @@ class ProcesoController extends Controller
 {
 	public function mailAction(){
    	 $message = \Swift_Message::newInstance()
-        ->setSubject('Hello Email')
+        ->setSubject('Alarma :: ProSGA')
         ->setFrom('req@inft.com.ar')
         ->setTo('rodrigodj2000@gmail.com')
-        ->setBody('Create una Cuenta de un Profesionaaaaal!!!!! jajaj')
-        /*
-         * If you also want to include a plaintext version of the message
+        //->setBody('Create una Cuenta de un Profesionaaaaal!!!!! jajaj')        
         ->addPart(
             $this->renderView(
-                'Emails/registration.txt.twig',
-                array('name' => $name)
+                'prosgaBundle::Emails/alarma.html.twig'
             ),
-            'text/plain'
+            'text/html'
         )
-        */
     ;
     $this->get('mailer')->send($message);
 

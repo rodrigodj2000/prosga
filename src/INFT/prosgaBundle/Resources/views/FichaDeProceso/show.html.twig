@@ -36,9 +36,9 @@
         <div class="col-md-3 text-center borde-1-solido"><p>REVISIÓN: {{ entity.nroDeRevision }} Fecha: {{ entity.fechaDeRevision|date('d/m/Y') }}</p></div>
     </div>
     
-    <div class="row"><div class="col-md-12 borde-1-solido text-left"><p><strong>OBJETIVOS DEL PROCESO:</strong> {{ entity.objetivo }}</p></div></div>
+    <div class="row"><div class="col-md-12 borde-1-solido text-left"><p><strong>OBJETIVOS DEL PROCESO:</strong> {{ entity.objetivo|bbcode_filter('filter_default') }}</p></div></div>
     <div class="row"><div class="col-md-12 borde-1-solido text-left"><p><strong>RESPONSABLES DEL PROCESO:</strong> {{ entity.personaResponsable}}</p></div></div>
-    <div class="row"><div class="col-md-12 borde-1-solido text-left"><p><strong>ALCANCE DEL PROCESO:</strong> {{ entity.alcance }}</p></div></div>    
+    <div class="row"><div class="col-md-12 borde-1-solido text-left"><p><strong>ALCANCE DEL PROCESO:</strong> {{ entity.alcance|bbcode_filter('filter_default') }}</p></div></div>    
     
     <div class="row"><div class="col-md-12 text-center borde-1-solido bg-info"><strong><p class="">ENTRADAS DEL PROCESO</p></strong></div></div>
     <div class="row">
@@ -48,7 +48,7 @@
     {% for pe in procesosentradas %}
     <div class="row">
         <div class="col-md-6 borde-1-solido text-left"><p>{{ pe.valoresDeEntrada }}</p></div>
-        <div class="col-md-6 borde-1-solido text-left"><p>{{ pe.observacion }}</p></div>
+        <div class="col-md-6 borde-1-solido text-left"><p>{{ pe.observacion|bbcode_filter('filter_default') }}</p></div>
     </div>    
     {% endfor %}
 
@@ -60,7 +60,7 @@
     {% for ps in procesosalidas %}
     <div class="row">
         <div class="col-md-6 borde-1-solido text-left"><p>{{ ps.valoresDeSalida }}</p></div>
-        <div class="col-md-6 borde-1-solido text-left"><p>{{ ps.observacion }}</p></div>
+        <div class="col-md-6 borde-1-solido text-left"><p>{{ ps.observacion|bbcode_filter('filter_default') }}</p></div>
     </div>    
     {% endfor %}
     
@@ -73,7 +73,7 @@
     {% for c in controles %}
     <div class="row">
         <div class="col-md-4 borde-1-solido text-left"><p>{{ c.nombre }}</p></div>
-        <div class="col-md-4 borde-1-solido text-left"><p>{{ c.descripcion }}</p></div>
+        <div class="col-md-4 borde-1-solido text-left"><p>{{ c.descripcion|bbcode_filter('filter_default') }}</p></div>
         <div class="col-md-4 borde-1-solido text-center"><p>{{ c.frecuencia }}</p></div>
     </div>
     {% endfor %}
@@ -101,14 +101,14 @@
         <div class="col-md-3 borde-1-solido text-left"><p>INDICADOR</p></div>
         <div class="col-md-3 borde-1-solido text-center"><p>FRECUENCIA</p></div>
         <div class="col-md-3 borde-1-solido text-left"><p>RESPONSABLE</p></div>
-        <div class="col-md-3 borde-1-solido text-left"><p>OBSERVACIONES</p></div>
+        <div class="col-md-3 borde-1-solido text-left"><p>OBJETIVO</p></div>
     </div>
     {% for ind in indicadores %}
     <div class="row">
         <div class="col-md-3 borde-1-solido text-left"><p>{{ ind.nombre }}</p></div>
         <div class="col-md-3 borde-1-solido text-center"><p>{{ ind.frecuencia }}</p></div>
         <div class="col-md-3 borde-1-solido text-left"><p>{{ ind.personaResponsable }}</p></div>
-        <div class="col-md-3 borde-1-solido text-left"><p>{{ ind.observacion }}</p></div>
+        <div class="col-md-3 borde-1-solido text-left"><p>{{ ind.descripcion|bbcode_filter('filter_default') }}</p></div>
     </div>            
     {% endfor %}
     
@@ -120,7 +120,7 @@
     {% for hist in procesohistorial %}
     <div class="row">
         <div class="col-md-2 borde-1-solido text-center"><p>{{ hist.nroRevision }}</p></div>
-        <div class="col-md-10 borde-1-solido text-left"><p>{{ hist.descripcion }}</p></div>
+        <div class="col-md-10 borde-1-solido text-left"><p>{{ hist.descripcion|bbcode_filter('filter_default') }}</p></div>
     </div>        
     {% endfor %}
 

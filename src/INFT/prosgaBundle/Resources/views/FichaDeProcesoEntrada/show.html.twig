@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <th>Observaciones</th>
-                <td>{{ entity.observacion }}</td>
+                <td>{% if entity.observacion %}{{ entity.observacion|bbcode_filter('filter_default') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>

@@ -22,10 +22,9 @@ class FichaDeProcesoHistorialType extends AbstractType
                                          'data' => new \DateTime('now')))
             ->add('nroRevision', 'integer', array('label' => 'Nº Revisión *: ',
                                                     'attr' => array('class' => 'form-control')))
-            ->add('descripcion', 'textarea', array('label' => 'Observaciones: ', 
+            ->add('descripcion', 'textarea', array('label' => 'Descripción: ', 
                                                    'attr' => array('class' => 'form-control'),
-                                                   'required' => false
-                                                  ))              
+                                                   'required' => false))              
             ->add('persona', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Persona',
                                                         'label' => 'Responsable *: ', 
                                                         'attr' => array('class' => 'form-control')

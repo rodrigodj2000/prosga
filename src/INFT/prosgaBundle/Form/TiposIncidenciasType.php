@@ -16,19 +16,41 @@ class TiposIncidenciasType extends AbstractType
     {
         $builder
             ->add('fichaDeProceso', 'entity', array(
-                'label' => 'Ficha de Proceso: ',
+                'label' => 'Ficha de Proceso *: ',
                 'class' => 'prosgaBundle:FichaDeProceso',
                 'attr' => array('class' => 'form-control')
-                ))                
+                )) 
+            ->add('personaResponsable', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Persona',
+                                                        'label' => 'Responsable: ', 
+                                                        'attr' => array('class' => 'dropdown, form-control')
+                                                  ))                
             ->add('nombre', 'text', array(
-                'label' => 'Tipo de Incidencia: ',
+                'label' => 'Indicador: ',
                 'attr' => array('class' => 'form-control')
-            ))
+            ))                
             ->add('valorPermitido', 'integer', array(
                     'label' => 'Valor Permitido: ',
                     'attr' => array('class' => 'form-control'),
                     'required' => false
                     ))
+            ->add('frecuencia', 'entity', array('class' => 'INFT\prosgaBundle\Entity\Frecuencia',
+                                                        'label' => 'Frecuencia: ', 
+                                                        'attr' => array('class' => 'dropdown, form-control')
+                                                  ))      
+            ->add('descripcion', 'textarea',array(
+                'label' => 'Objetivo: ',                
+                'attr' => array(
+                    'class' => 'tinymce form-control',
+                    'data-theme' => 'custom'
+                    )
+            ))
+            ->add('observacion', 'textarea',array(
+                'label' => 'Observaciones: ',                
+                'attr' => array(
+                    'class' => 'form-control',
+                    'data-theme' => 'custom'
+                    )
+            ))                
         ;
     }
     

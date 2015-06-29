@@ -67,7 +67,7 @@ class FichaDeProcesoHistorialController extends Controller
             'method' => 'POST',
         ));
 
-                $form->add('submit', 'submit', array('label' => 'Crear Historial de Proceso',
+                $form->add('submit', 'submit', array('label' => 'Crear Historial',
                                              'attr' => array('class' => 'btn btn-primary espacio10')));
 
         return $form;

@@ -243,18 +243,25 @@ class TiposIncidenciasController extends Controller
 
         $entity = $em->getRepository('prosgaBundle:TiposIncidencias')->find($id);
         
-        $incidencias = $em->getRepository('prosgaBundle:Incidencias')->findByTipoIncidencia($id);
+        //$incidencias = $em->getRepository('prosgaBundle:Incidencias')->findByTipoIncidencia($id);
+        
+        $incidencias = $em->getRepository('prosgaBundle:TiposIncidencias')->findByIncidenciasMesxTipoIncidencia($id);
 
         $valores = array();
         
+        //var_dump($incidencias); exit;
+        
         foreach($incidencias as $i)
         {
-            $valores[] = $i->getValor();
+            //$date = new \DateTime($i['fecha']);
+            //echo $date->format('m').'<br>';            
+            //var_dump($date->format('m'));
+            //$fecha = $i['fecha'];
+            $valores[] = $i['valor'];
         }
-        
         // Chart
         $series = array(
-            array("name" => "Valor Incidencias", "data" => $valores)
+            array("name" => "Valor Incidencia", "data" => $valores)
         );
 
         $ob = new Highchart();
@@ -264,10 +271,17 @@ class TiposIncidenciasController extends Controller
         $ob->xAxis->title(array('text'  => "Mediciones"))
                 ->tickInterval(1);
         $ob->yAxis->title(array('text'  => "Valores"))
-                ->plotLines(array('value' => 2),
-                            array('width' => 2)); //$entity->getValorPermitido()
+                ->plotLines(array(
+                                array(
+                                    'value' => $entity->getValorPermitido(), 
+                                    'width' => 2, 
+                                    'color' => 'red', 
+                                    'dashStyle' => 'shortdash',
+                                    'label' => array('text' => 'Valor Permitido'))
+                                )
+                            );
         $ob->plotOptions->line(array('dataLabels' => (array('enabled' => 'true'))));
-        $ob->series($series);        
+        $ob->series($series);
         
         return $this->render('prosgaBundle:TiposIncidencias:graph.html.twig', array(
             'entity'  => $entity,

@@ -1,15 +1,18 @@
 {% extends 'prosgaBundle::template.html.twig' %}
 
 {% block content %}
-    <h2>Tipos de Incidencias</h2>
+    <h2>Indicadores</h2>
 {% endblock %}
 
 {% block body_content %} 
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Nombre</th>
+                <th>Indicador</th>
+                <th>Ficha de Proceso</th>
+                <th>Responsable</th>
                 <th>Valor permitido</th>
+                <th>Objetivo</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -17,7 +20,10 @@
         {% for entity in entities %}
             <tr>
                 <td>{{ entity.nombre }}</td>
+                <td>{{ entity.fichaDeProceso }}</td>
+                <td>{{ entity.personaResponsable }}</td>
                 <td>{{ entity.valorPermitido }}</td>
+                <td>{{ entity.descripcion }}</td>
                 <td>
                 <ul>
                     <li>

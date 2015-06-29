@@ -67,7 +67,7 @@ class FichaDeProcesoSalidaController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Crear Proceso de Salida',
+        $form->add('submit', 'submit', array('label' => 'Crear Salida',
                                              'attr' => array('class' => 'btn btn-primary espacio10')));
 
         return $form;

@@ -22,7 +22,7 @@
                 <!--td><a href="{{ path('fichadeprocesoentrada_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td--!>
                 <td><a href="{{ path('fichadeproceso_show', { 'id': entity.fichaDeProceso.id }) }}">{{ entity.fichaDeProceso }}</a></td>
                 <td>{{ entity.valoresDeEntrada }}</td>                
-                <td>{{ entity.observacion }}</td>
+                <td>{% if entity.observacion %}{{ entity.observacion|bbcode_filter('filter_default') }}{% endif %}</td>
                 <td>
                 <ul>
                     <li>
@@ -41,7 +41,7 @@
         <ul>
         <li>
             <a href="{{ path('fichadeprocesoentrada_new') }}">
-                Crear Entrada de Proceso
+                Crear Entrada de Ficha de Proceso
             </a>
         </li>
     </ul>

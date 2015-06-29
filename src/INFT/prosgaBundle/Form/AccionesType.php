@@ -16,25 +16,24 @@ class AccionesType extends AbstractType
     {
         $builder
             ->add('tipoIncidencia', 'entity', array(
-                                                    'label' => 'Tipo de Incidencia',
+                                                    'label' => 'Tipo de Incidencia *:',
                                                     'class' => 'prosgaBundle:TiposIncidencias',
                                                     'attr' => array('class' => 'form-control')
                                                     ))
-            ->add('fecha', 'date', array('label' => 'Fecha: ',
-                                         'data' => new \Datetime('now'),
-                                         'attr' => array('class' => 'form-control')
+            ->add('fecha', 'date', array('label' => 'Fecha *: ',
+                                         'data' => new \Datetime('now')
                                         ))
-            ->add('planAccion', 'text', array('label' => 'Plan de Acción: ',
+            ->add('planAccion', 'text', array('label' => 'Plan de Acción *: ',
                                             'attr' => array('class' => 'form-control')))
-            ->add('efectiva', 'choice', array(
+            ->add('efectiva', 'choice', array('label' => 'Efectiva: *',
                                                 'choices' => array(
                                                     '1' => 'Si',
                                                     '0' => 'No'
                                                 ),
                                             'attr' => array('class' => 'form-control')))
-            ->add('resultado', 'textarea', array('label' => 'Resultado: ',
+            ->add('resultado', 'textarea', array('label' => 'Resultado *: ',
                                                 'attr' => array('class' => 'form-control')))
-            ->add('analisisCausa', 'textarea', array('label' => 'Análisis de Causa: ',
+            ->add('analisisCausa', 'textarea', array('label' => 'Análisis de Causa *: ',
                                                 'attr' => array('class' => 'form-control')))
         ;
     }
