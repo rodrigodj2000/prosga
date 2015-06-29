@@ -1,0 +1,18 @@
+{% extends 'prosgaBundle::template.html.twig' %}
+
+{% block content %}
+    <h2>Editar Incidencia</h2>
+{% endblock %}
+
+{% block body_content -%}
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('incidencias') }}">
+            Volver a la lista
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

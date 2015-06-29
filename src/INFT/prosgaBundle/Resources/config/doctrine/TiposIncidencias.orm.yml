@@ -1,0 +1,24 @@
+INFT\prosgaBundle\Entity\TiposIncidencias:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        nombre:
+            type: string
+            length: 255
+            column: Nombre
+        valorPermitido:
+            type: float
+            column: ValorPermitido
+
+    manyToOne:
+        fichaDeProceso:
+            targetEntity: FichaDeProceso
+            joinColumn: 
+                name: fichaDeProceso_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

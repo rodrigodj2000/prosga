@@ -1,0 +1,35 @@
+INFT\prosgaBundle\Entity\Acciones:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        fecha:
+            type: datetime
+            column: Fecha
+        planAccion:
+            type: string
+            length: '4000'
+            column: PlanAccion
+        efectiva:
+            type: boolean
+            column: Efectiva
+        resultado:
+            type: string
+            length: '4000'
+            column: Resultado
+        analisisCausa:
+            type: string
+            length: '4000'
+            column: AnalisisCausa
+
+    manyToOne:
+        tipoIncidencia:
+            targetEntity: TiposIncidencias
+            joinColumn: 
+                name: tipoincidencia_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

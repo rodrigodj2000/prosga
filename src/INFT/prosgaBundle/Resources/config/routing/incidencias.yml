@@ -1,0 +1,30 @@
+incidencias:
+    path:     /
+    defaults: { _controller: "prosgaBundle:Incidencias:index" }
+
+incidencias_show:
+    path:     /{id}/show
+    defaults: { _controller: "prosgaBundle:Incidencias:show" }
+
+incidencias_new:
+    path:     /new
+    defaults: { _controller: "prosgaBundle:Incidencias:new" }
+
+incidencias_create:
+    path:     /create
+    defaults: { _controller: "prosgaBundle:Incidencias:create" }
+    requirements: { _method: post }
+
+incidencias_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "prosgaBundle:Incidencias:edit" }
+
+incidencias_update:
+    path:     /{id}/update
+    defaults: { _controller: "prosgaBundle:Incidencias:update" }
+    requirements: { _method: post|put }
+
+incidencias_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "prosgaBundle:Incidencias:delete" }
+    requirements: { _method: post|delete }

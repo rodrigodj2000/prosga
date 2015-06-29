@@ -1,0 +1,43 @@
+{% extends 'prosgaBundle::template.html.twig' %}
+
+{% block content %}
+    <h2>Tipos de Incidencias</h2>
+{% endblock %}
+
+{% block body_content %} 
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Valor permitido</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.valorPermitido }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('tiposincidencias_show', { 'id': entity.id }) }}">Mostrar</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('tiposincidencias_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('tiposincidencias_new') }}">
+                Agregar nuevo
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

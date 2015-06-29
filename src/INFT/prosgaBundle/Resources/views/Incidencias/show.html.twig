@@ -1,0 +1,39 @@
+{% extends 'prosgaBundle::template.html.twig' %}
+
+{% block content %}
+    <h2>Incidencias</h2>
+{% endblock %}
+
+{% block body_content -%}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ entity.fecha|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <th>Detalle Incidencia</th>
+                <td>{{ entity.detalle | raw }}</td>
+            </tr>
+            <tr>
+                <th>Valor</th>
+                <td>{{ entity.valor }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('incidencias') }}">
+            Volver a la Lista
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('incidencias_edit', { 'id': entity.id }) }}">
+            Editar
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

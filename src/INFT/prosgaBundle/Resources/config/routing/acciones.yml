@@ -1,0 +1,30 @@
+acciones:
+    path:     /
+    defaults: { _controller: "prosgaBundle:Acciones:index" }
+
+acciones_show:
+    path:     /{id}/show
+    defaults: { _controller: "prosgaBundle:Acciones:show" }
+
+acciones_new:
+    path:     /new
+    defaults: { _controller: "prosgaBundle:Acciones:new" }
+
+acciones_create:
+    path:     /create
+    defaults: { _controller: "prosgaBundle:Acciones:create" }
+    requirements: { _method: post }
+
+acciones_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "prosgaBundle:Acciones:edit" }
+
+acciones_update:
+    path:     /{id}/update
+    defaults: { _controller: "prosgaBundle:Acciones:update" }
+    requirements: { _method: post|put }
+
+acciones_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "prosgaBundle:Acciones:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,27 @@
+INFT\prosgaBundle\Entity\Incidencias:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        fecha:
+            type: datetime
+            column: Fecha
+        detalle:
+            type: string
+            length: '8000'
+            column: Detalle
+        valor:
+            type: integer
+            column: Valor
+
+    manyToOne:
+        tipoIncidencia:
+            targetEntity: TiposIncidencias
+            joinColumn: 
+                name: tipoincidencia_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }
