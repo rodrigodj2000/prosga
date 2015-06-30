@@ -1,7 +1,0 @@
-{% extends 'RGVEasyagroBundle::layout.html.twig' %}
-
-{% block page_title %}Area del Cliente{% endblock %}
-
-{% block titulo_pagina %}{% endblock %}
-
-{% block contenido %}Area Restringida a Clientes{% endblock %}

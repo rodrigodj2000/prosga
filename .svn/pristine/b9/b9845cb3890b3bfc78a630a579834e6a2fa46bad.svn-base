@@ -1,6 +1,0 @@
-{% extends 'prosgaBundle::template.html.twig' %}
-
-{% block content %}
-    <h2>Página de Inicio</h2>
-    <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">Ingresar</a>
-{% endblock %}

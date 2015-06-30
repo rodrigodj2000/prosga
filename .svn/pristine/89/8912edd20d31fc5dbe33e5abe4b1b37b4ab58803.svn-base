@@ -1,7 +1,0 @@
-parameters:
-#    rgv_site.example.class: RGV\SiteBundle\Example
-
-services:
-#    rgv_site.example:
-#        class: %rgv_site.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

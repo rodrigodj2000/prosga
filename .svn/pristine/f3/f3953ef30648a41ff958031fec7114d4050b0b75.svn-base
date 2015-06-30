@@ -1,5 +1,0 @@
-{% extends 'prosgaBundle::template.html.twig' %}
-
-{% block content %}
-    <h2>Acerca de...</h2>
-{% endblock %}

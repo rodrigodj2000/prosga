@@ -1,7 +1,0 @@
-rgv_demo_homepage:
-    path:     /
-    defaults: { _controller: RGVDemoBundle:Default:home }
-
-#rgv_demo_homepage:
-#    path:     /hello/{name}
-#    defaults: { _controller: RGVDemoBundle:Default:index }

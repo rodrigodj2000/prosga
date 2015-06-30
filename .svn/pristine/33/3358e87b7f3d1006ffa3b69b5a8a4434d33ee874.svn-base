@@ -1,7 +1,0 @@
-{% extends 'RGVEasyagroBundle::layout.html.twig' %}
-
-{% block page_title %}Area del Empleado{% endblock %}
-
-{% block titulo_pagina %}{% endblock %}
-
-{% block contenido %}Area Restringida a empleados{% endblock %}
