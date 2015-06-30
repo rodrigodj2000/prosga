@@ -99,15 +99,15 @@
     <div class="row"><div class="col-md-12 borde-1-solido text-center bg-info"><strong><p class="">INDICADORES DEL PROCESO</p></strong></div></div>   
     <div class="row">
         <div class="col-md-3 borde-1-solido text-left"><p>INDICADOR</p></div>
-        <div class="col-md-3 borde-1-solido text-center"><p>FRECUENCIA</p></div>
         <div class="col-md-3 borde-1-solido text-left"><p>RESPONSABLE</p></div>
+        <div class="col-md-3 borde-1-solido text-center"><p>FRECUENCIA</p></div>        
         <div class="col-md-3 borde-1-solido text-left"><p>OBJETIVO</p></div>
     </div>
     {% for ind in indicadores %}
     <div class="row">
         <div class="col-md-3 borde-1-solido text-left"><p>{{ ind.nombre }}</p></div>
-        <div class="col-md-3 borde-1-solido text-center"><p>{{ ind.frecuencia }}</p></div>
         <div class="col-md-3 borde-1-solido text-left"><p>{{ ind.personaResponsable }}</p></div>
+        <div class="col-md-3 borde-1-solido text-center"><p>{{ ind.frecuencia }}</p></div>        
         <div class="col-md-3 borde-1-solido text-left"><p>{{ ind.descripcion|bbcode_filter('filter_default') }}</p></div>
     </div>            
     {% endfor %}

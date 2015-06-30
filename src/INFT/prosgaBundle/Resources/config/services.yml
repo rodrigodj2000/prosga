@@ -5,52 +5,101 @@ services:
 #    prosga.example:
 #        class: %prosga.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
-    prosga.admin.permiso:
-        class: INFT\prosgaBundle\Admin\PermisoAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\Permiso, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Permiso}
 
-    prosga.admin.sector:
-        class: INFT\prosgaBundle\Admin\SectorAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\Sector, prosgaBundle:Sector]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Sector}
-    prosga.admin.cargo:
-        class: INFT\prosgaBundle\Admin\CargoAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\Cargo, prosgaBundle:Cargo]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Cargo}
 
-    prosga.admin.estado:
-        class: INFT\prosgaBundle\Admin\EstadoAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\Estado, prosgaBundle:Estado]
+#   FICHA DE PROCESO
+    prosga.admin.archivo_adjunto:
+        class: INFT\prosgaBundle\Admin\ArchivoAdjuntoAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\ArchivoAdjunto, prosgaBundle:ArchivoAdjunto]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Estado}
+            - {name: sonata.admin, manager_type: orm, group: Ficha de Proceso, label: ArchivoAdjunto}
 
-    prosga.admin.frecuencia:
-        class: INFT\prosgaBundle\Admin\FrecuenciaAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\Frecuencia, prosgaBundle:Frecuencia]
+    prosga.admin.control:
+        class: INFT\prosgaBundle\Admin\ControlAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\Control, prosgaBundle:Control]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Frecuencia}
+            - {name: sonata.admin, manager_type: orm, group: Ficha de Proceso, label: Control}
+
+    prosga.admin.documento:
+        class: INFT\prosgaBundle\Admin\DocumentoAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\Documento, prosgaBundle:Documento]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Ficha de Proceso, label: Documento}
+
+    prosga.admin.indicador:
+        class: INFT\prosgaBundle\Admin\IndicadorAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\Indicador, prosgaBundle:Indicador]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Ficha de Proceso, label: Indicadores}
+
+    prosga.admin.matriz_legal:
+        class: INFT\prosgaBundle\Admin\MatrizLegalAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\MatrizLegal, prosgaBundle:MatrizLegal]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Ficha de Proceso, label: Matriz Legal}
 
     prosga.admin.norma:
         class: INFT\prosgaBundle\Admin\NormaAdmin
         arguments: [~, INFT\prosgaBundle\Entity\Norma, prosgaBundle:Norma]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Norma}
+            - {name: sonata.admin, manager_type: orm, group: Ficha de Proceso, label: Norma}
+            
+    prosga.admin.registro_pg:
+        class: INFT\prosgaBundle\Admin\RegistroPGAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\RegistroPG, prosgaBundle:RegistroPG]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Ficha de Proceso, label: Registro PG}
+            
+    prosga.admin.registro_fp:
+        class: INFT\prosgaBundle\Admin\RegistroFPAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\RegistroFP, prosgaBundle:RegistroFP]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Ficha de Proceso, label: Registro FP}
+            
+# END FICHA DE PROCESO            
+
+#   NOTIFICACIONES
 
     prosga.admin.alarma:
         class: INFT\prosgaBundle\Admin\AlarmaAdmin
         arguments: [~, INFT\prosgaBundle\Entity\Alarma, prosgaBundle:Alarma]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Alarma}
+            - {name: sonata.admin, manager_type: orm, group: Notificaciones, label: Alarmas}
 
-    prosga.admin.archivo_adjunto:
-        class: INFT\prosgaBundle\Admin\ArchivoAdjuntoAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\ArchivoAdjunto, prosgaBundle:ArchivoAdjunto]
+    prosga.admin.frecuencia:
+        class: INFT\prosgaBundle\Admin\FrecuenciaAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\Frecuencia, prosgaBundle:Frecuencia]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: ArchivoAdjunto}
+            - {name: sonata.admin, manager_type: orm, group: Notificaciones, label: Frecuencias}
+            
+# END NOTIFICACIONES
+
+# TABLAS VARIAS
+
+    prosga.admin.cargo:
+        class: INFT\prosgaBundle\Admin\CargoAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\Cargo, prosgaBundle:Cargo]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Tablas Varias, label: Cargos}
+
+    prosga.admin.estado:
+        class: INFT\prosgaBundle\Admin\EstadoAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\Estado, prosgaBundle:Estado]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Tablas Varias, label: Estados}
+
+    prosga.admin.permiso:
+        class: INFT\prosgaBundle\Admin\PermisoAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\Permiso, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Tablas Varias, label: Permisos}
+
+    prosga.admin.sector:
+        class: INFT\prosgaBundle\Admin\SectorAdmin
+        arguments: [~, INFT\prosgaBundle\Entity\Sector, prosgaBundle:Sector]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Tablas Varias, label: Sectores}
+
 
 #    prosga.admin.auditoria:
 #        class: INFT\prosgaBundle\Admin\AuditoriaAdmin
@@ -58,23 +107,11 @@ services:
 #        tags:
 #            - {name: sonata.admin, manager_type: orm, group: admin, label: Auditoria}
 
-    prosga.admin.control:
-        class: INFT\prosgaBundle\Admin\ControlAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\Control, prosgaBundle:Control]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Control}
-
-    prosga.admin.documento:
-        class: INFT\prosgaBundle\Admin\DocumentoAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\Documento, prosgaBundle:Documento]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Documento}
-
     prosga.admin.persona:
         class: INFT\prosgaBundle\Admin\PersonaAdmin
         arguments: [~, INFT\prosgaBundle\Entity\Persona, prosgaBundle:Persona]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Persona}
+            - {name: sonata.admin, manager_type: orm, group: Tablas Varias, label: Responsables}
             
 #    prosga.admin.actividad:
 #        class: INFT\prosgaBundle\Admin\ActividadAdmin
@@ -82,32 +119,9 @@ services:
 #        tags:
 #            - {name: sonata.admin, manager_type: orm, group: admin, label: Actividad}
 
-    prosga.admin.indicador:
-        class: INFT\prosgaBundle\Admin\IndicadorAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\Indicador, prosgaBundle:Indicador]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Indicador}
+#    prosga.admin.proceso:
+#        class: INFT\prosgaBundle\Admin\ProcesoAdmin
+#        arguments: [~, INFT\prosgaBundle\Entity\Proceso, prosgaBundle:Proceso]
+#        tags:
+#            - {name: sonata.admin, manager_type: orm, group: admin, label: Proceso}
 
-    prosga.admin.registro_pg:
-        class: INFT\prosgaBundle\Admin\RegistroPGAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\RegistroPG, prosgaBundle:RegistroPG]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: RegistroPG}
-
-    prosga.admin.matriz_legal:
-        class: INFT\prosgaBundle\Admin\MatrizLegalAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\MatrizLegal, prosgaBundle:MatrizLegal]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: MatrizLegal}
-
-    prosga.admin.registro_fp:
-        class: INFT\prosgaBundle\Admin\RegistroFPAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\RegistroFP, prosgaBundle:RegistroFP]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: RegistroFP}
-
-    prosga.admin.proceso:
-        class: INFT\prosgaBundle\Admin\ProcesoAdmin
-        arguments: [~, INFT\prosgaBundle\Entity\Proceso, prosgaBundle:Proceso]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Proceso}

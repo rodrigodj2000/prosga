@@ -1,6 +1,7 @@
 {% extends 'prosgaBundle::template.html.twig' %}
 
 {% block content %}
+<h2>{{ entity.FichaDeProceso.codigoDeFicha }}: {{ entity.FichaDeProceso }} <small>(Rev. {{ entity.FichaDeProceso.nroDeRevision }})</small></h2>
 <div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 <div><a href="{{ path('acciones') }}">Tomar Acciones</a></div>
 {% endblock %}

@@ -44,7 +44,15 @@ class Indicador
      */
     private $personaResponsable;
 
+    /**
+    * @var fechaCreación
+    */
+    private $fechaCreacion;
 
+
+    public function _construct(){
+        $this->fechaCreacion = new \Date('now');
+    }
 
     /**
      * Get id
@@ -192,6 +200,17 @@ class Indicador
     public function getPersonaResponsable()
     {
         return $this->personaResponsable;
+    }
+
+
+    /**
+     * Get fechaCreacion
+     *
+     * @return fechaCreacion 
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
     }
 
     public function __toString(){

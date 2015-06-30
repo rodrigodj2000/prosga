@@ -21,6 +21,9 @@ INFT\prosgaBundle\Entity\Indicador:
             length: '1000'
             nullable: true
             column: Observacion
+        fechaCreacion:
+            type: datetime
+            column: FechaCreacion
 
     manyToOne:
         frecuencia:

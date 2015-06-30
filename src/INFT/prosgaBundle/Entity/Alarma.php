@@ -40,6 +40,7 @@ class Alarma
     private $observacion;
 
 
+
     /**
      * Get id
      *

@@ -268,8 +268,9 @@ class TiposIncidenciasController extends Controller
         $ob->chart->renderTo('linechart');  // The #id of the div where to render the chart
         $ob->title->text('Gráfico de Incidencias');
         $ob->subtitle->text($entity->getNombre());
-        $ob->xAxis->title(array('text'  => "Mediciones"))
-                ->tickInterval(1);
+        $ob->xAxis->title(array('text'  => "Incidencias mensuales"))
+                ->tickInterval(1)
+                ->categories(array('ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'));
         $ob->yAxis->title(array('text'  => "Valores"))
                 ->plotLines(array(
                                 array(

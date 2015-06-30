@@ -9,10 +9,10 @@
         <thead>
             <tr>
                 <th>Fecha</th>
-                <th>Plan de Acción</th>                
-                <th>Efectiva</th>
+                <th>Indicador</th>
+                <th>Plan de Acción</th>
                 <th>Resultado</th>
-                <th>Analisis de Causa</th>                
+                <th>Efectiva</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -20,10 +20,10 @@
         {% for entity in entities %}
             <tr>
                 <td>{% if entity.fecha %}{{ entity.fecha|date('d/m/Y') }}{% endif %}</td>
+                <td>{{ entity.TipoIncidencia }}</td>
                 <td>{{ entity.planAccion }}</td>
-                <td>{{ entity.efectiva }}</td>
                 <td>{{ entity.resultado }}</td>
-                <td>{{ entity.analisisCausa }}</td>
+                <td>{% if entity.efectiva == 1 %}{{ 'SI' }} {% elseif entity.efectiva == 2 %} {{ 'NO' }} {% endif %}</td>    <td>{{ entity.efectiva }}</td>                
                 <td>
                 <ul>
                     <li>

@@ -30,9 +30,14 @@ class Frecuencia
      */
     private $alarmas;
 
+    /**
+    * @var valorHoras
+    */
+    private $valorHoras;
+
 
     public function __construct(){
-        $this->alarmas = new ArrayCollection();
+        $this->valorHoras = new ArrayCollection();
     }
 
 
@@ -103,6 +108,29 @@ class Frecuencia
 
     public function getAlarmas(){
         return $this->alarmas;
+    }
+
+    /**
+     * Set valorHoras
+     *
+     * @param integer $valorHoras
+     * @return Frecuencia
+     */
+    public function setValorHoras($valorHoras)
+    {
+        $this->valorHoras = $valorHoras;
+    
+        return $this;
+    }
+
+    /**
+     * Get valorHoras
+     *
+     * @return integer 
+     */
+    public function getValorHoras()
+    {
+        return $this->valorHoras;
     }
 
     public function __toString(){

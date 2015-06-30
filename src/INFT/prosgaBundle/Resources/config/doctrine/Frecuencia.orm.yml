@@ -16,10 +16,11 @@ INFT\prosgaBundle\Entity\Frecuencia:
             length: 255
             nullable: true
             column: Descripcion
-    
+        valorHoras:
+            type: integer
+            column: ValorEnHoras    
     oneToMany:
         alarmas:
             targetEntity: Alarma
             mappedBy: frecuencia
-                
     lifecycleCallbacks: {  }

@@ -13,20 +13,24 @@
                 <td>{{ entity.fecha|date('d/m/Y') }}</td>
             </tr>
             <tr>
-                <th>Plan de Accion</th>
-                <td>{{ entity.planAccion }}</td>
-            </tr>
-            <tr>
-                <th>Efectiva</th>
-                <td>{{ entity.efectiva }}</td>
-            </tr>
-            <tr>
-                <th>Resultado</th>
-                <td>{{ entity.resultado }}</td>
+                <th>Indicador</th>
+                <td>{{ entity.TipoIncidencia }}</td>
             </tr>
             <tr>
                 <th>Analisis de Causa</th>
                 <td>{{ entity.analisisCausa }}</td>
+            </tr>            
+            <tr>
+                <th>Plan de Accion</th>
+                <td>{{ entity.planAccion }}</td>
+            </tr>
+            <tr>
+                <th>Resultado</th>
+                <td>{{ entity.resultado }}</td>
+            </tr>            
+            <tr>
+                <th>Efectiva</th>
+                <td>{% if entity.efectiva == 1 %}{{ 'SI' }} {% elseif entity.efectiva == 2 %} {{ 'NO' }} {% endif %}</td> <td>{{ entity.efectiva }}</td>
             </tr>
         </tbody>
     </table>

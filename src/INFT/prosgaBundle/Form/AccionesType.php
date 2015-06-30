@@ -15,26 +15,26 @@ class AccionesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('fecha', 'date', array('label' => 'Fecha: ',
+                                         'data' => new \Datetime('now')
+                                        ))
             ->add('tipoIncidencia', 'entity', array(
-                                                    'label' => 'Tipo de Incidencia *:',
+                                                    'label' => 'Indicador:',
                                                     'class' => 'prosgaBundle:TiposIncidencias',
                                                     'attr' => array('class' => 'form-control')
                                                     ))
-            ->add('fecha', 'date', array('label' => 'Fecha *: ',
-                                         'data' => new \Datetime('now')
-                                        ))
-            ->add('planAccion', 'text', array('label' => 'Plan de Acción *: ',
+            ->add('analisisCausa', 'textarea', array('label' => 'Análisis de Causa: ',
+                                                'attr' => array('class' => 'form-control')))
+            ->add('planAccion', 'textarea', array('label' => 'Plan de Acción: ',
                                             'attr' => array('class' => 'form-control')))
-            ->add('efectiva', 'choice', array('label' => 'Efectiva: *',
+            ->add('resultado', 'textarea', array('label' => 'Resultado: ',
+                                                'attr' => array('class' => 'form-control')))
+            ->add('efectiva', 'choice', array('label' => 'Efectiva:',
                                                 'choices' => array(
                                                     '1' => 'Si',
                                                     '0' => 'No'
                                                 ),
                                             'attr' => array('class' => 'form-control')))
-            ->add('resultado', 'textarea', array('label' => 'Resultado *: ',
-                                                'attr' => array('class' => 'form-control')))
-            ->add('analisisCausa', 'textarea', array('label' => 'Análisis de Causa *: ',
-                                                'attr' => array('class' => 'form-control')))
         ;
     }
     
