@@ -28,6 +28,7 @@ class FrecuenciaAdmin extends Admin
     {
         $listMapper
             ->add('nombre')
+            ->add('valorHoras', 'text', array('label' => 'Valor en Horas'))
             ->add('descripcion')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -46,6 +47,7 @@ class FrecuenciaAdmin extends Admin
     {
         $formMapper
             ->add('nombre')
+            ->add('valorHoras', 'text', array('label' => 'Valor en Horas:'))
             ->add('descripcion', 'textarea', array('required' => false))
         ;
     }
@@ -57,6 +59,7 @@ class FrecuenciaAdmin extends Admin
     {
         $showMapper
             ->add('nombre')
+            ->add('valorHoras')
             ->add('descripcion')
         ;
     }

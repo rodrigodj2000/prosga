@@ -51,7 +51,7 @@ class Indicador
 
 
     public function _construct(){
-        $this->fechaCreacion = new \Date('now');
+        $this->fechaCreacion = new \DateTime();
     }
 
     /**

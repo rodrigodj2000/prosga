@@ -47,7 +47,17 @@ class TiposIncidencias
     /**
      * @var Persona
      */
-    private $personaResponsable;    
+    private $personaResponsable;
+
+    /**
+    * @var fechaCreacion
+    */    
+    private $fechaCreacion;
+
+
+    public function _construct(){
+        $this->fechaCreacion = new \DateTime();
+    }
 
     /**
      * Get id
@@ -219,7 +229,17 @@ class TiposIncidencias
     public function getPersonaResponsable()
     {
         return $this->personaResponsable;
-    }    
+    }  
+
+    /**
+     * Get fechaCreacion
+     *
+     * @return fechaCreacion 
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }  
     
     
     public function __toString(){

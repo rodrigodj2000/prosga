@@ -25,7 +25,10 @@ INFT\prosgaBundle\Entity\TiposIncidencias:
             type: string
             length: '1000'
             nullable: true
-            column: Observacion            
+            column: Observacion
+        fechaCreacion:
+            type: datetime
+            column: FechaCreacion            
 
     manyToOne:
         frecuencia:
