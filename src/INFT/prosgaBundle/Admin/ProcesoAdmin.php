@@ -32,7 +32,7 @@ class ProcesoAdmin extends Admin
             ->add('norma.nombre', 'string', array('label' => 'Norma'))
             ->add('alarma.nombre', 'string', array('label' => 'Alarma'))
             ->add('estado.nombre', 'string', array('label' => 'Estado'))
-            ->add('_action', 'actions', array(
+            ->add('_action', 'actions', array('label' => 'Acciones',
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),

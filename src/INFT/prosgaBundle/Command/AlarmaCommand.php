@@ -38,19 +38,18 @@ class AlarmaCommand extends ContainerAwareCommand
         	$fechaNotificar = $fecha->modify('+' .$valorHoras.' hour');
 
 			$fechaNotificar = $fechaNotificar->format('d-m-Y');
-			echo $fechaNotificar;
 
 			$fechaActual = new \DateTime('now');
 			$fechaActual = $fechaActual->format('d-m-Y');
-			echo $fechaActual;
 
 			if($fechaNotificar == $fechaActual){
 				$texto_mail .= 'Debe realizar el Indicador: '. $tipoIncidencia->getNombre() .' Cuya Frecuencia es '. $frecuencia->getNombre();
 
+                $destinatario = $tipoIncidencia->getPersonaResponsable()->getMail();
 				$mensaje = \Swift_Message::newInstance()
 				->setSubject('RECORDATORIO DEL INDICADOR: '. $tipoIncidencia->getNombre())
 		        ->setFrom("req@inft.com.ar")
-		        ->setTo("celes.villarreal@gmail.com")
+		        ->setTo($destinatario)
 		        ->setBody($texto_mail);
 	        
 	        	$this->getContainer()->get('mailer')->send($mensaje);

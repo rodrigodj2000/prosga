@@ -33,7 +33,7 @@ class CargoAdmin extends Admin
             ->add('descripcion')
             ->add('nivelEnOrganigrama')
             ->add('observacion')
-            ->add('_action', 'actions', array(
+            ->add('_action', 'actions', array('label' => 'Acciones',
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),

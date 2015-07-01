@@ -35,7 +35,7 @@ class IndicadorAdmin extends Admin
             ->add('observacion')
             ->add('frecuencia')
             ->add('fichaDeProceso')
-            ->add('_action', 'actions', array(
+            ->add('_action', 'actions', array('label' => 'Acciones',
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),

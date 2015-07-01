@@ -23,8 +23,7 @@
                 <td>{{ entity.TipoIncidencia }}</td>
                 <td>{{ entity.planAccion }}</td>
                 <td>{{ entity.resultado }}</td>
-                <td>{% if entity.efectiva == 1 %}{{ 'SI' }} {% elseif entity.efectiva == 2 %} {{ 'NO' }} {% endif %}</td>    <td>{{ entity.efectiva }}</td>                
-                <td>
+                <td>{% if entity.efectiva == 1 %}{{ 'SI' }} {% elseif entity.efectiva == 2 %} {{ 'NO' }}{% endif %}</td><td>
                 <ul>
                     <li>
                         <a href="{{ path('acciones_show', { 'id': entity.id }) }}">Mostrar</a>
@@ -42,7 +41,7 @@
         <ul>
         <li>
             <a href="{{ path('acciones_new') }}">
-                Agregar nuevo
+                Agregar Nuevo
             </a>
         </li>
     </ul>

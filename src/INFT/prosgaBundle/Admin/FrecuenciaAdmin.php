@@ -30,7 +30,7 @@ class FrecuenciaAdmin extends Admin
             ->add('nombre')
             ->add('valorHoras', 'text', array('label' => 'Valor en Horas'))
             ->add('descripcion')
-            ->add('_action', 'actions', array(
+            ->add('_action', 'actions', array('label' => 'Acciones',
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),

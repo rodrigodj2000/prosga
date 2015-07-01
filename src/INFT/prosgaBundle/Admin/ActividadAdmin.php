@@ -32,7 +32,7 @@ class ActividadAdmin extends Admin
             ->add('observacion')
             ->add('nombre')
             ->add('personaResponsable')
-            ->add('_action', 'actions', array(
+            ->add('_action', 'actions', array('label' => "Acciones",
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),

@@ -37,7 +37,7 @@ class RegistroPGAdmin extends Admin
             ->add('archivoDigital')
             ->add('tiempoEnArchivo', 'date', array('format' => 'd/m/Y'))
             ->add('observacion')
-            ->add('_action', 'actions', array(
+            ->add('_action', 'actions', array('label'=> 'Acciones',
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),

@@ -38,7 +38,7 @@ class PersonaAdmin extends Admin
             ->add('telefono')
             ->add('cargo')
             ->add('estado')
-            ->add('_action', 'actions', array(
+            ->add('_action', 'actions', array('label' => 'Acciones',
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),

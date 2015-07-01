@@ -33,7 +33,7 @@ class SectorAdmin extends Admin
             ->add('ubicacion')
             ->add('metros2')
             ->add('observacion')
-            ->add('_action', 'actions', array(
+            ->add('_action', 'actions', array('label' => 'Acciones',
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),

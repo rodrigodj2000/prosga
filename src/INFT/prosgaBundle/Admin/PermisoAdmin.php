@@ -29,8 +29,8 @@ class PermisoAdmin extends Admin
         $listMapper
             ->add('nombre')
             ->add('descripcion')
-            ->add('_action', 'actions', array(
-                'actions' => array(
+            ->add('_action', 'actions', array('label' => 'Acciones',
+                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),

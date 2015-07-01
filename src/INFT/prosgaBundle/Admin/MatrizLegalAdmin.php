@@ -39,7 +39,7 @@ class MatrizLegalAdmin extends Admin
             ->add('observacion')
             ->add('autoridadAAplicar')
             ->add('obligaciones')
-            ->add('_action', 'actions', array(
+            ->add('_action', 'actions', array('label' => 'Acciones',
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
