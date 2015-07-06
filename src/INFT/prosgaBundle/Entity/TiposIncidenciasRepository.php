@@ -21,9 +21,12 @@ class TiposIncidenciasRepository extends EntityRepository
         $em = $this->getEntityManager();
         
         $consulta = $em->createQuery('
-            SELECT i.fecha, i.valor FROM prosgaBundle:Incidencias i
+            SELECT SUBSTRING(i.fecha, 6, 2) as mes, SUM(i.valor) as sumatoria, COUNT(i.id) as cantidad
+            FROM prosgaBundle:Incidencias i
             JOIN i.tipoIncidencia ti                
-            WHERE ti.id = :id');
+            WHERE ti.id = :id
+            group by mes
+            order by mes');
         
         $consulta->setParameter('id', $id);
         

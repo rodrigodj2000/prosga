@@ -54,7 +54,7 @@
                 <ul>
                     <tr>
                         <th><li> Observación </li></th>
-                        <td>{% if entity.observacion %}{{ entity.observacion|bbcode_filter('filter_default') }}</td>
+                        <td>{% if entity.observacion %}{{ entity.observacion|bbcode_filter('filter_default') }}{% endif%}</td>
                     </tr>
                 </ul>   
             </ul>

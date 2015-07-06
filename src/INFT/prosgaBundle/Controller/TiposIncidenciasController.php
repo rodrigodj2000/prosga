@@ -232,6 +232,38 @@ class TiposIncidenciasController extends Controller
             ->getForm()
         ;
     }
+
+
+    private function obtenerMes($nroMes){
+
+        switch ($nroMes) {
+            case '01':
+                return 'ENE';
+            case '02':
+                return 'FEB';
+            case '03':
+                return 'MAR';
+            case '04':
+                return 'ABR';
+            case '05':
+                return 'MAY';
+            case '06':
+                return 'JUN';
+            case '07':
+                return 'JUL';
+            case '08':
+                return 'AGO';
+            case '09':
+                return 'SEP';
+            case '10':
+                return 'OCT';
+            case '11':
+                return 'NOV';
+            case '12':
+                return 'DIC';
+        }
+
+    }
     
     /**
      * Gráfico de Incidencias.
@@ -248,18 +280,16 @@ class TiposIncidenciasController extends Controller
         $incidencias = $em->getRepository('prosgaBundle:TiposIncidencias')->findByIncidenciasMesxTipoIncidencia($id);
 
         $valores = array();
+        $meses = array();
         
         //var_dump($incidencias); exit;
         
         foreach($incidencias as $i)
         {
-            //$date = new \DateTime($i['fecha']);
-            //echo $date->format('m').'<br>';            
-            //var_dump($date->format('m'));
-            //$fecha = $i['fecha'];
-            $valores[] = $i['valor'];
+
+            $valores[] = $i['sumatoria']/ $i['cantidad']; 
+            $meses[] = $this->obtenerMes($i['mes']);       
         }
-        // Chart
         $series = array(
             array("name" => "Valor Incidencia", "data" => $valores)
         );
@@ -270,7 +300,7 @@ class TiposIncidenciasController extends Controller
         $ob->subtitle->text($entity->getNombre());
         $ob->xAxis->title(array('text'  => "Incidencias mensuales"))
                 ->tickInterval(1)
-                ->categories(array('ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'));
+                ->categories($meses);
         $ob->yAxis->title(array('text'  => "Valores"))
                 ->plotLines(array(
                                 array(
@@ -288,6 +318,6 @@ class TiposIncidenciasController extends Controller
             'entity'  => $entity,
             'chart'   => $ob
         ));
-    }    
+    } 
     
 }
