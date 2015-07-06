@@ -8,8 +8,9 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Fecha</th>
+                <th>Fecha</th>                
                 <th>Indicador</th>
+                <th>Análisis de Causa</th>
                 <th>Plan de Acción</th>
                 <th>Resultado</th>
                 <th>Efectiva</th>
@@ -19,11 +20,12 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td>{% if entity.fecha %}{{ entity.fecha|date('d/m/Y') }}{% endif %}</td>
+                <td>{% if entity.fecha %}{{ entity.fecha|date('d/m/Y') }}{% endif %}</td>                
                 <td>{{ entity.TipoIncidencia }}</td>
+                <td>{{ entity.analisisCausa }}</td>
                 <td>{{ entity.planAccion }}</td>
                 <td>{{ entity.resultado }}</td>
-                <td>{% if entity.efectiva == 1 %}{{ 'SI' }} {% elseif entity.efectiva == 2 %} {{ 'NO' }}{% endif %}</td><td>
+                <td>{% if entity.efectiva == 1 %}{{ 'SI' }} {% elseif entity.efectiva == 0 %} {{ 'NO' }}{% endif %}</td><td>
                 <ul>
                     <li>
                         <a href="{{ path('acciones_show', { 'id': entity.id }) }}">Mostrar</a>

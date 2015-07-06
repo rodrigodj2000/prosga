@@ -14,7 +14,6 @@
                 <th>Aspecto Ambiental</th>
                 <th>Acción Prevención </th>
                 <th>Proceso</th>
-                <th>Observacion</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -26,7 +25,6 @@
                     <td>{{ entity.aspectoAmbiental }}</td>
                     <td>{{ entity.accionPrevencion }}</td>
                     <td>{{ entity.proceso }}</td>
-                    <td>{% if entity.observacion %}{{ entity.observacion|bbcode_filter('filter_default') }}{% endif %}</td>
                     <td>
                     <ul>
                         <li>

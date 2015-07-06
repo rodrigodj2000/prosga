@@ -28,11 +28,12 @@ class AccionesType extends AbstractType
             ->add('planAccion', 'textarea', array('label' => 'Plan de Acción: ',
                                             'attr' => array('class' => 'form-control')))
             ->add('resultado', 'textarea', array('label' => 'Resultado: ',
-                                                'attr' => array('class' => 'form-control')))
+                                                'attr' => array('class' => 'form-control'),
+                                                'required' => false))
             ->add('efectiva', 'choice', array('label' => 'Efectiva:',
                                                 'choices' => array(
-                                                    '1' => 'Si',
-                                                    '0' => 'No'
+                                                    '0' => 'No',
+                                                    '1' => 'Si'                                                    
                                                 ),
                                             'attr' => array('class' => 'form-control')))
         ;

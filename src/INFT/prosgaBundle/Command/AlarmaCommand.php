@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class AlarmaCommand extends ContainerAwareCommand
 {
-	protected function configure()
+    protected function configure()
     {
         $this
             ->setName('prosga:notificar')
@@ -40,7 +40,7 @@ class AlarmaCommand extends ContainerAwareCommand
 			$fechaNotificar = $fechaNotificar->format('d-m-Y');
 
 			$fechaActual = new \DateTime('now');
-			$fechaActual = $fechaActual->format('d-m-Y');
+			$fechaActual = $fechaActual->format('d/m/Y');
 
 			if($fechaNotificar == $fechaActual){
 				$texto_mail .= 'Debe realizar el Indicador: '. $tipoIncidencia->getNombre() .' Cuya Frecuencia es '. $frecuencia->getNombre();

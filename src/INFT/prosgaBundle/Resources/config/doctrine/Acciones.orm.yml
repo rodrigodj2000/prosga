@@ -21,6 +21,7 @@ INFT\prosgaBundle\Entity\Acciones:
             type: string
             length: '4000'
             column: Resultado
+            nullable: TRUE
         analisisCausa:
             type: string
             length: '4000'
